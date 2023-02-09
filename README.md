@@ -10,14 +10,14 @@
 
 **Data Sources**:
 
-Cities: https://www.roadgoat.com/business/cities-api
-Parks: https://www.nps.gov/subjects/developer/api-documentation.htm
-Airports: https://airlabs.co/docs/airports
+* Cities: https://www.roadgoat.com/business/cities-api
+* Parks: https://www.nps.gov/subjects/developer/api-documentation.htm
+* Airports: https://airlabs.co/docs/airports
 
 **Models**:
 
 **Cities** (~1,000)
-* Attributes: state, population, budget score, safety score, COVID score, average rating, repeat visitors, best time to go, means of transportation
+* Attributes: state, population, budget score, safety score, average rating, best time to go, transportation
 * Media: cover photos and listings on AirBnB
 * Connections: nearest national parks/airports
 
@@ -34,6 +34,6 @@ Airports: https://airlabs.co/docs/airports
 **Organizational Technique**: One page per model with description and multimedia, grid of cards for each model page
 
 **Questions**:
-I’m traveling to New York. What national parks can I also visit during my trip?
-I’m planning a trip to the Grand Canyon. What is the closest airport and what activities can I do there? 
-I’m going on a business trip to Los Angeles. I’d like to know more about the city so that I can plan my trip better. 
+* I’m traveling to New York. What national parks can I also visit during my trip?
+* I’m planning a trip to the Grand Canyon. What is the closest airport and what activities can I do there? 
+* I’m going on a business trip to Los Angeles. I’d like to know more about the city so that I can plan my trip better. 
