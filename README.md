@@ -12,7 +12,7 @@
 
 * Cities: https://www.roadgoat.com/business/cities-api
 * Parks: https://www.nps.gov/subjects/developer/api-documentation.htm
-* Airports: https://airlabs.co/docs/airports
+* Airports: https://rapidapi.com/Active-api/api/airport-info/
 
 **Models**:
 
