@@ -10,7 +10,7 @@ IDB-7
 | --------------- | ------- | ---------------- |
 | Petar Iliev     |         | @petarilievCS    |
 | Tanya Joseph    |         | @tanyacjoseph    |
-| Audrey Chen     |         | @audreyyc        |
+| Audrey Chen     | ayc732  | @audreyyc        |
 | Noah Liu        | nl22256 | @noah.l          |
 | Pawan Somavarpu | pks729  | @pawanksomavarpu |
 
