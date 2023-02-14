@@ -8,7 +8,7 @@ IDB-7
 
 | Name            | UTEID   | GitLab           |
 | --------------- | ------- | ---------------- |
-| Petar Iliev     |         | @petarilievCS    |
+| Petar Iliev     | pi2338  | @petarilievCS    |
 | Tanya Joseph    |         | @tanyacjoseph    |
 | Audrey Chen     | ayc732  | @audreyyc        |
 | Noah Liu        | nl22256 | @noah.l          |
@@ -66,7 +66,7 @@ One page per model with description and multimedia, grid of cards for each model
 
 | Team Member     | Estimated time | Actual time |
 | --------------- | -------------- | ----------- |
-| Petar Iliev     |                |             |
+| Petar Iliev     | 8              |             |
 | Tanya Joseph    |                |             |
 | Audrey Chen     |                |             |
 | Noah Liu        | 7              |             |
