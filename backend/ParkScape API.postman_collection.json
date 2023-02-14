@@ -1,0 +1,422 @@
+{
+	"info": {
+		"_postman_id": "fa6635fc-201d-4c1c-85eb-ed2a0434a562",
+		"name": "ParkScape API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25781480"
+	},
+	"item": [
+		{
+			"name": "Park information",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "api.parkscape.me/parks/:parkID",
+					"host": [
+						"api",
+						"parkscape",
+						"me"
+					],
+					"path": [
+						"parks",
+						":parkID"
+					],
+					"variable": [
+						{
+							"key": "parkID",
+							"value": null,
+							"description": "ID of park"
+						}
+					]
+				},
+				"description": "Returns information about a park"
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "api.parkscape.me/parks/:parkID",
+							"host": [
+								"api",
+								"parkscape",
+								"me"
+							],
+							"path": [
+								"parks",
+								":parkID"
+							],
+							"variable": [
+								{
+									"key": "parkID",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "City information",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "api.parkscape.me/cities/:cityID",
+					"host": [
+						"api",
+						"parkscape",
+						"me"
+					],
+					"path": [
+						"cities",
+						":cityID"
+					],
+					"variable": [
+						{
+							"key": "cityID",
+							"value": null,
+							"description": "ID of city"
+						}
+					]
+				},
+				"description": "Returns information about a city"
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "api.parkscape.me/cities/:cityID",
+							"host": [
+								"api",
+								"parkscape",
+								"me"
+							],
+							"path": [
+								"cities",
+								":cityID"
+							],
+							"variable": [
+								{
+									"key": "cityID",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Airport information",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "api.parkscape.me/airports/:airportID",
+					"host": [
+						"api",
+						"parkscape",
+						"me"
+					],
+					"path": [
+						"airports",
+						":airportID"
+					],
+					"variable": [
+						{
+							"key": "airportID",
+							"value": null,
+							"description": "ID of airport"
+						}
+					]
+				},
+				"description": "Returns information about an airport"
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "api.parkscape.me/airports/:airportID",
+							"host": [
+								"api",
+								"parkscape",
+								"me"
+							],
+							"path": [
+								"airports",
+								":airportID"
+							],
+							"variable": [
+								{
+									"key": "airportID",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Parks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "api.parkscape.me/parks?state=<string>&activity=<string>&amenities=<string>&maxcost=<int>&mincost=<int>",
+					"host": [
+						"api",
+						"parkscape",
+						"me"
+					],
+					"path": [
+						"parks"
+					],
+					"query": [
+						{
+							"key": "state",
+							"value": "<string>",
+							"description": "Find parks in the specified state."
+						},
+						{
+							"key": "activity",
+							"value": "<string>",
+							"description": "Find parks for the specified activity."
+						},
+						{
+							"key": "amenities",
+							"value": "<string>",
+							"description": "Find parks with the specified amenity."
+						},
+						{
+							"key": "maxcost",
+							"value": "<int>",
+							"description": "Sets a maximum cost of parks to search for."
+						},
+						{
+							"key": "mincost",
+							"value": "<int>",
+							"description": "Sets a minimum cost of parks to search for."
+						}
+					]
+				},
+				"description": "Returns a list of parks"
+			},
+			"response": [
+				{
+					"name": "Parks",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "api.parkscape.me/parks",
+							"host": [
+								"api",
+								"parkscape",
+								"me"
+							],
+							"path": [
+								"parks"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Cities",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "api.parkscape.me/cities?state=<string>&maxpop=<int>&minpop=<int>&maxbudget=<int>&minsafety=<int>&minrating=<int>",
+					"host": [
+						"api",
+						"parkscape",
+						"me"
+					],
+					"path": [
+						"cities"
+					],
+					"query": [
+						{
+							"key": "state",
+							"value": "<string>",
+							"description": "Find cities in the specified state. "
+						},
+						{
+							"key": "maxpop",
+							"value": "<int>",
+							"description": "Sets a maximum population of cities to search for."
+						},
+						{
+							"key": "minpop",
+							"value": "<int>",
+							"description": "Sets a minimum population of cities to search for."
+						},
+						{
+							"key": "maxbudget",
+							"value": "<int>",
+							"description": "Sets a maximum budget score of cities to search for."
+						},
+						{
+							"key": "minsafety",
+							"value": "<int>",
+							"description": "Sets a minimum safety level of cities to search for."
+						},
+						{
+							"key": "minrating",
+							"value": "<int>",
+							"description": "Sets a minimum rating of cities to search for."
+						}
+					]
+				},
+				"description": "Returns a list of cities"
+			},
+			"response": [
+				{
+					"name": "Cities",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "api.parkscape.me/cities",
+							"host": [
+								"api",
+								"parkscape",
+								"me"
+							],
+							"path": [
+								"cities"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Airports",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "api.parkscape.me/airports?city=<string>&state=<string>&international=<boolean>",
+					"host": [
+						"api",
+						"parkscape",
+						"me"
+					],
+					"path": [
+						"airports"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "<string>",
+							"description": "Find airports near the specified city."
+						},
+						{
+							"key": "state",
+							"value": "<string>",
+							"description": "Find airports in the specified state."
+						},
+						{
+							"key": "international",
+							"value": "<boolean>",
+							"description": "Search only for international airports."
+						}
+					]
+				},
+				"description": "Returns a list of airports"
+			},
+			"response": [
+				{
+					"name": "Airports",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "api.parkscape.me/airports",
+							"host": [
+								"api",
+								"parkscape",
+								"me"
+							],
+							"path": [
+								"airports"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}
