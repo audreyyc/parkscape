@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About - ParkScape</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <script src="about.js"></script>
+  </head>
+
+  <body onload="total_stats()">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+      <div class="container-fluid ms-2 me-2">
+        <a class="navbar-brand" href="index.html">ParkScape</a>
+        <button
+          class="navbar-toggler navbar-dark"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+            <a class="nav-link active" href="about.html">About</a>
+            <a class="nav-link" href="parks.html">Parks</a>
+            <a class="nav-link" href="airports.html">Airports</a>
+            <a class="nav-link" href="cities.html">Cities</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Description -->
+    <div class="container text-center mt-5 mb-4">
+      <h1>About ParkScape</h1>
+    </div>
+    <div class="container text-left mt-5 mb-4">
+      <p>
+        ParkScape compiles information about United States airports, nearby
+        cities, and their local state/national parks -- helping travelers who
+        are visiting specific cities or parks to find other nearby locations of
+        interest (specifically nearby cities, parks, and airports).
+      </p>
+      <p>
+        Our purpose is to help travellers make more educated decisions about
+        their trips while encouraging them to experience the beautiful parks and
+        cities of the US.
+      </p>
+    </div>
+
+    <!-- Developer Card Containers -->
+    <div class="container text-center mt-5 mb-4">
+      <h1>Our Team</h1>
+    </div>
+    <div class="container text-left mt-5 mb-4">
+      <div class="row row-cols-md-5 g-4">
+        <div class="col">
+            <div class="card h-100">
+                <img src="images/petar.jpg" onload="get_stats('Petar Iliev','13425008')"
+                  class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Petar Iliev</h5>
+                    <h6 class="card-text">@petarilievCS</h6>
+                    <h6 class="card-text">Backend Developer</h6>
+                    <p class="card-text">I'm a sophomore studying Computer Science at UT Austin. 
+                      I'm from Macedonia (a small country in southern Europe). I like developing 
+                      iOS applications, boxing, working out and travelling.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Commits: </small>
+                    <small class="text-mute" id="commits_Petar Iliev">0</small>
+                    <br>
+                    <small class="text-muted">Issues: </small>
+                    <small class="text-muted" id="issues_13425008">0</small>
+                    <br>
+                    <small class="text-muted">Unit Tests: </small>
+                    <small class="text-mute" id="unittests">0</small>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img src="images/tanya.png" onload="get_stats('Tanya Joseph','13467235')"
+                  class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Tanya Joseph</h5>
+                    <h6 class="card-text">@tanyacjoseph</h6>
+                    <h6 class="card-text">Frontend Developer</h6>
+                    <p class="card-text">I am a sophomore computer science major at the University 
+                      of Texas at Austin. In my free time, I enjoy dancing, watching TV, playing cards, 
+                      and bouldering.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Commits: </small>
+                    <small class="text-mute" id="commits_Tanya Joseph">0</small>
+                    <br>
+                    <small class="text-muted">Issues: </small>
+                    <small class="text-muted" id="issues_13467235">0</small>
+                    <br>
+                    <small class="text-muted">Unit Tests: </small>
+                    <small class="text-mute" id="unittests">0</small>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img src="images/audrey.jpg" onload="get_stats('Audrey Chen','13448626')"
+                  class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Audrey Chen</h5>
+                    <h6 class="card-text">@audreyyc</h6>
+                    <h6 class="card-text">Frontend Developer</h6>
+                    <p class="card-text">I'm a sophomore Computer Science major at UT Austin 
+                      originally from Houston, Texas. My hobbies include playing instruments 
+                      and video games.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Commits: </small>
+                    <small class="text-mute" id="commits_Audrey Chen">0</small>
+                    <br>
+                    <small class="text-muted">Issues: </small>
+                    <small class="text-muted" id="issues_13448626">0</small>
+                    <br>
+                    <small class="text-muted">Unit Tests: </small>
+                    <small class="text-mute" id="unittests">0</small>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img src="images/noah.jpg" onload="get_stats('Noah Liu','13471181')"
+                  class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Noah Liu</h5>
+                    <h6 class="card-text">@noah.l</h6>
+                    <h6 class="card-text">Backend Developer</h6>
+                    <p class="card-text">I'm a second year computer science student studying 
+                      at the University of Texas at Austin. In my spare time I enjoy cooking, 
+                      hiking, and playing the guitar.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Commits: </small>
+                    <small class="text-mute" id="commits_Noah Liu">0</small>
+                    <br>
+                    <small class="text-muted">Issues: </small>
+                    <small class="text-muted" id="issues_13471181">0</small>
+                    <br>
+                    <small class="text-muted">Unit Tests: </small>
+                    <small class="text-mute" id="unittests">0</small>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <img src="images/pawan.png" onload="get_stats('Pawan Somavarpu','13552033')"
+                  class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Pawan Somavarpu</h5>
+                    <h6 class="card-text">@pawanksomavarpu</h6>
+                    <h6 class="card-text">Frontend Developer</h6>
+                    <p class="card-text">Hello! My name is Pawan Somavarpu and I grew up in San 
+                      Antonio, Texas. I am a junior Computer Science and Economics student. I 
+                      love playing poker and riding my electric skateboard.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Commits: </small>
+                    <small class="text-mute" id="commits_Pawan Somavarpu">0</small>
+                    <br>
+                    <small class="text-muted">Issues: </small>
+                    <small class="text-muted" id="issues_13552033">0</small>
+                    <br>
+                    <small class="text-muted">Unit Tests: </small>
+                    <small class="text-mute" id="unittests">0</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Repository Data -->
+    <div class="container text-center mt-5 mb-4">
+      <h2>Total GitLab Statistics</h2>
+    </div>
+    <div class="container text-center mt-5 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 id="all_commits">0</h4>
+                <h4 id="all_issues">0</h4>
+                <h4 id="all_unittests">0</h4>
+            </div>
+          </div>
+    </div>
+
+    <!-- Tools Card Containers -->
+    <div class="container text-center mt-5 mb-4">
+      <h1>Tools</h1>
+    </div>
+    <div class="container text-center mt-5 mb-4">
+      <div class="row row-cols-md-5 g-3">
+        <div class="col">
+          <div class="card h-100">
+            <a href="https://about.gitlab.com/">
+              <img src="images/gitlab.png" class="card-img-top" alt="..." />
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">GitLab</h5>
+              <p class="card-text">
+                An open-source DevOps software package which can develop,
+                secure, and operate software. Used for our git repository and CI/CD platform.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <a href="https://aws.amazon.com/">
+              <img src="images/aws.png" class="card-img-top" alt="..." />
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">Amazon Web Services</h5>
+              <p class="card-text">
+                Subsidiary of Amazon that provides on-demand cloud computing
+                platforms and APIs. Used for hosting our website/web pages.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <a href="https://code.visualstudio.com/">
+              <img src="images/vscode.png" class="card-img-top" alt="..." />
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">Visual Studio Code</h5>
+              <p class="card-text">
+                Source-code editor developed by Microsoft. Used as a main IDE for html and javascript files.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <br />
+            <a href="https://getbootstrap.com/">
+              <img src="images/bootstrap.png" class="card-img-top" alt="..." />
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">Bootstrap</h5>
+              <p class="card-text">
+                A free and open-source CSS framework directed at responsive,
+                mobile-first front-end web development. Used as a main IDE for html and javascript files
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <a href="https://reactjs.org/">
+              <img src="images/react.png" class="card-img-top" alt="..." />
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">React</h5>
+              <p class="card-text">
+                A free and open-source front-end JavaScript library for building
+                user interfaces based on UI components. Will use for later website UI design and features.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <a
+              href="https://www.microsoft.com/en-us/microsoft-teams/group-chat-software"
+            >
+              <img
+                src="images/microsoft-teams.png"
+                class="card-img-top"
+                alt="..."
+              />
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">Microsoft Teams</h5>
+              <p class="card-text">
+                Proprietary business communication platform developed by
+                Microsoft. Used for team communication.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <a href="https://www.namecheap.com/">
+              <img src="images/namecheap.png" class="card-img-top" alt="..." />
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">NameCheap</h5>
+              <p class="card-text">
+                ICANN-accredited domain name registrar and web-host. Used to register our website's domain.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- API Card Containers-->
+    <div class="container text-center mt-5 mb-4">
+      <h1>APIs</h1>
+    </div>
+    <div class="container text-center mt-5 mb-4">
+      <div class="row row-cols-md-5 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <a href="https://www.roadgoat.com/business/cities-api">
+              <img src="images/roadgoat.png" class="card-img-top" alt="..." />
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">RoadGoat Cities API</h5>
+              <p class="card-text">
+                Synthesizes information to provide the richest and most accurate
+                context about over 4.3+ million destinations. Scraped by sending requests for each instance via Postman. 
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <a href="https://developers.google.com/maps">
+              <img src="images/googlemaps.png" class="card-img-top" alt="..." />
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">Google Maps API</h5>
+              <p class="card-text">
+                Integrates Google's Place details, search, and autocomplete into
+                apps. Scraped by sending requests for each instance via Postman. 
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <a href="https://rapidapi.com/Active-api/api/airport-info/"
+              ><img src="images/rapidapi.png" class="card-img-top" alt="..." />
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">Airport Info API</h5>
+              <p class="card-text">
+                Extensive database of airport codes and data, including address,
+                phone number, website and more. Scraped by sending requests for each instance via Postman. 
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <a
+              href="https://www.nps.gov/subjects/developer/api-documentation.htm"
+            >
+              <img
+                src="images/nationalparkservice.png"
+                class="card-img-top"
+                alt="..."
+              />
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">National Park Service</h5>
+              <p class="card-text">
+                Provides authoritative National Park Service (NPS) data and
+                content about parks and their facilities, events, news, alerts,
+                and more. Scraped by sending requests for each instance via Postman. 
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <a href="https://docs.gitlab.com/ee/api/">
+              <img src="images/gitlab.png" class="card-img-top" alt="..." />
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">GitLab API</h5>
+              <p class="card-text">
+                Allows automation, interaction with GitLab, and integrating with
+                external applications. Scraped by sending requests for each instance via Postman. 
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="container text-center mt-5 mb-4">
+      <h1>FAQ (Frequently Asked Questions)</h1>
+    </div>
+    <div class="container text-left mt-5 mb-4">
+      <h4>Q: I'm traveling to Denver. How do I find nearby parks?</h4>
+      <br />
+      <p>
+        A: If you search for Denver in the "Cities" page, there will be a link
+        to "Learn More", which will take you to another page with information
+        about nearby parks and airports.
+      </p>
+    </div>
+  </body>
+</html>
