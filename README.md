@@ -3,6 +3,7 @@
 ## Team
 
 **Name:** IDB-7
+
 **Team Leader:** 
 
 | Name            | UTEID   | GitLab           |
@@ -16,8 +17,11 @@
 ## Project
 
 **Name:** ParkScape
+
 **URL:** https://www.parkscape.me
+
 **Pipeline:** https://gitlab.com/petarilievCS/cs373-idb7/-/pipelines
+
 **Git SHA:**
 
 ## Description
