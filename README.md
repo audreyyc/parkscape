@@ -1,10 +1,9 @@
-# CS 373 IDB
-
-## Group
-
-IDB-7
+# CS 373 IDB-7
 
 ## Team
+
+**Name:** IDB-7
+**Team Leader:** 
 
 | Name            | UTEID   | GitLab           |
 | --------------- | ------- | ---------------- |
@@ -14,9 +13,12 @@ IDB-7
 | Noah Liu        | nl22256 | @noah.l          |
 | Pawan Somavarpu | pks729  | @pawanksomavarpu |
 
-## Project Name
+## Project
 
-ParkScape
+**Name:** ParkScape
+**URL:** https://www.parkscape.me
+**Pipeline:** https://gitlab.com/petarilievCS/cs373-idb7/-/pipelines
+**Git SHA:**
 
 ## Description
 
