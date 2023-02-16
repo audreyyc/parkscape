@@ -79,5 +79,5 @@ One page per model with description and multimedia, grid of cards for each model
 | Petar Iliev     | 8              | 10          |
 | Tanya Joseph    | 10             | 10          |
 | Audrey Chen     | 10             | 15          |
-| Noah Liu        | 7              |             |
+| Noah Liu        | 7              | 11          |
 | Pawan Somavarpu | 8              | 9           |
