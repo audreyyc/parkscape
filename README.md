@@ -83,4 +83,4 @@ One page per model with description and multimedia, grid of cards for each model
 | Pawan Somavarpu | 8              | 9           |
 
 
-**Comments:** Referenced [GeoJobs](https://gitlab.com/sarthaksirotiya/cs373-idb/) for splash page layout. React is listed as one of the tools on the About page, but did not use it for this phase.
+**Comments:** Referenced [GeoJobs](https://gitlab.com/sarthaksirotiya/cs373-idb/) for splash page layout. React is listed as one of the tools on the About page, but we did not use it for this phase.
