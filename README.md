@@ -5,6 +5,9 @@
 **Name:** IDB-7
 
 **Project Leaders** 
+
+**Responsibilities** Organize meetings and make sure everyone is on track.
+
 **Phase 1:** Petar Iliev
 
 | Name            | UTEID   | GitLab           |
@@ -74,7 +77,7 @@ One page per model with description and multimedia, grid of cards for each model
 | Team Member     | Estimated time | Actual time |
 | --------------- | -------------- | ----------- |
 | Petar Iliev     | 8              | 10          |
-| Tanya Joseph    | 10             |             |
+| Tanya Joseph    | 10             | 10          |
 | Audrey Chen     | 10             | 15          |
 | Noah Liu        | 7              |             |
 | Pawan Somavarpu | 8              | 9           |
