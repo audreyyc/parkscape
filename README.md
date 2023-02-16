@@ -26,7 +26,7 @@
 
 **Pipeline:** https://gitlab.com/petarilievCS/cs373-idb7/-/pipelines
 
-**Git SHA:**
+**Git SHA:** [ba9b9a1a](https://gitlab.com/petarilievCS/cs373-idb7/-/commit/ba9b9a1ae82d7d8bc03dbcd7e6019bae6f9b0ef8)
 
 ## Description
 
