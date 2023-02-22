@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CS 373 IDB
 
 ## Group
@@ -10,13 +11,43 @@ IDB-7
 | --------------- | ------- | ---------------- |
 | Petar Iliev     | pi2338  | @petarilievCS    |
 | Tanya Joseph    |         | @tanyacjoseph    |
+=======
+# CS 373 IDB-7
+
+## Team
+
+**Name:** IDB-7
+
+**Project Leaders** 
+
+**Responsibilities** Organize meetings and make sure everyone is on track.
+
+**Phase 1:** Petar Iliev
+
+| Name            | UTEID   | GitLab           |
+| --------------- | ------- | ---------------- |
+| Petar Iliev     | pi2338  | @petarilievCS    |
+| Tanya Joseph    | tcj547  | @tanyacjoseph    |
+>>>>>>> beb172b4ebbe4de2055fd18001c5d1dd66b1542f
 | Audrey Chen     | ayc732  | @audreyyc        |
 | Noah Liu        | nl22256 | @noah.l          |
 | Pawan Somavarpu | pks729  | @pawanksomavarpu |
 
+<<<<<<< HEAD
 ## Project Name
 
 ParkScape
+=======
+## Project
+
+**Name:** ParkScape
+
+**URL:** https://www.parkscape.me
+
+**Pipeline:** https://gitlab.com/petarilievCS/cs373-idb7/-/pipelines
+
+**Git SHA:** [637d2150](https://gitlab.com/petarilievCS/cs373-idb7/-/commit/637d2150fc4a6c61319fc95f950f04c1f2470d43)
+>>>>>>> beb172b4ebbe4de2055fd18001c5d1dd66b1542f
 
 ## Description
 
@@ -66,8 +97,19 @@ One page per model with description and multimedia, grid of cards for each model
 
 | Team Member     | Estimated time | Actual time |
 | --------------- | -------------- | ----------- |
+<<<<<<< HEAD
 | Petar Iliev     | 8              |             |
 | Tanya Joseph    |                |             |
 | Audrey Chen     |                |             |
 | Noah Liu        | 7              |             |
 | Pawan Somavarpu | 8              |             |
+=======
+| Petar Iliev     | 8              | 10          |
+| Tanya Joseph    | 10             | 10          |
+| Audrey Chen     | 10             | 15          |
+| Noah Liu        | 7              | 11          |
+| Pawan Somavarpu | 8              | 9           |
+
+
+**Comments:** Referenced [GeoJobs](https://gitlab.com/sarthaksirotiya/cs373-idb/) for splash page layout. React is listed as one of the tools on the About page, but we did not use it for this phase.
+>>>>>>> beb172b4ebbe4de2055fd18001c5d1dd66b1542f
