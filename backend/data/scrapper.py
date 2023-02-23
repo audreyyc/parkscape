@@ -207,9 +207,11 @@ def scrapeAirportsData():
         street_number, street = airport["street_number"], airport["street"]
         address = street_number + " " + street
 
+        nearest_cities = calculateNearestCities(latitude, longitude)
+        nearest_parks = calculateNearestParks(latitude, longitude)
         airportObject = Airport(id, name, iata_code, city, state, icao_code, 
                                 phone, address, postal_code, latitude, longitude, 
-                                website, [], [])
+                                website, nearest_cities, nearest_parks)
         airportJSON = json.dumps(airportObject.__dict__, sort_keys=True)
         airportsJSON += (airportJSON + ",")
 
@@ -299,6 +301,6 @@ if __name__ == "__main__":
 
     print("Starting data scrape...")
     # scrapeParksData()
-    scrapeCitiesData()
+    # scrapeCitiesData()
     # scrapeAirportsData()
     print("Data scraping complete...")
