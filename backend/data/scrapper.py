@@ -1,11 +1,20 @@
 import requests
 from requests.auth import HTTPBasicAuth
 import json
+import math
+import sys
 
 from models import Park
 from models import City
 from models import Airport
 
+class NearbyCity:
+    def __init__(self, id, name, distance):
+        self.id = id
+        self.name = name
+        self.distance = distance
+
+# Scrapes park data for all national parks from government API
 def scrapeParksData(): 
     apiKey = "Gwv9unybpHRdKuFWR3R0R76vmjGGceiXIkNjwqlv"
     URL = "https://developer.nps.gov/api/v1/parks"
@@ -71,9 +80,11 @@ def scrapeParksData():
         for image in park["images"]:
             photos.append(image["url"])
 
+        nearest_cities = calculateNearestCities(latitude, longitude)
+        nearest_airports = calculateNearestAirports(latitude, longitude)
         parkObject = Park(id, name, description, latitude, longitude, photos,
                           phone, email, website, activities, topics, states, 
-                          weekdays, fee, [], [])
+                          weekdays, fee, nearest_cities, nearest_airports)
         parkJSON = json.dumps(parkObject.__dict__, sort_keys=True)
         parksJSON += (parkJSON) + ","
     parksJSON = parksJSON[:-1]
@@ -82,7 +93,7 @@ def scrapeParksData():
     with open("parks.json", "w") as text_file:
         text_file.write(parksJSON)
 
-
+# Scrapes data for 100 largest cities in the US from RoadGoat API
 def scrapeCitiesData():
     apiKey = "12637d12051404a70279f8952d3abd0e"
     secretKey = "59287e26bafab288a3e659e86527dc72"
@@ -148,6 +159,7 @@ def scrapeCitiesData():
     with open("cities.json", "w") as text_file:
         text_file.write(citiesJSON)
 
+# Scrapes data for US airports from Airport Info API
 def scrapeAirportsData():
         
     URL = "https://airport-info.p.rapidapi.com/airport"
@@ -204,10 +216,62 @@ def scrapeAirportsData():
         text_file.write(airportsJSON)
 
     
+# Calculates nearest cities/airports for parks
+def calculateNearestCities(lat, long):
+
+    cities = []
+    with open("cities.json") as text_file:
+        cities = json.load(text_file)
+
+    distances = {}
+    for city in cities:
+        cityLat, cityLon = city["latitude"], city["longitude"]
+        distance = math.sqrt((cityLat - lat) ** 2 + (cityLon - long) ** 2)
+        distances[distance] = (city["name"], city["id"])
+    distances = sorted(distances.items())
+    nearest_cities = distances[:3]
+
+    nearestCitiesList = []
+    for i in range(3):
+        city = nearest_cities[i]
+        nearestCitiesList.append({
+            "name" : city[1][0],
+            "id" : city[1][1],
+            "distance" : city[0]
+        })
+    return nearestCitiesList
+
+# Calculates nearest cities/airports for parks
+def calculateNearestAirports(lat, long):
+
+    airports = []
+    with open("airports.json") as text_file:
+        airports = json.load(text_file)
+
+    distances = {}
+    for airport in airports:
+        airportLat, airportLon = airport["latitude"], airport["longitude"]
+        distance = math.sqrt((airportLat - lat) ** 2 + (airportLon - long) ** 2)
+        distances[distance] = (airport["name"], airport["id"], airport["iata_code"])
+    distances = sorted(distances.items())
+    nearest_airports = distances[:3]
+
+    nearestAirportsList = []
+    for i in range(3):
+        airport = nearest_airports[i]
+        nearestAirportsList.append({
+            "name" : airport[1][0],
+            "iata_code" : airport[1][2],
+            "id" : airport[1][1],
+            "distance" : airport[0]
+        })
+    return nearestAirportsList
+
 if __name__ == "__main__":
 
     print("Starting data scrape...")
-    # scrapeParksData()
+    scrapeParksData()
     # scrapeCitiesData()
     # scrapeAirportsData()
+    # print(calculateNearestAirports(65.0935608, -142.7960021))
     print("Data scraping complete...")
