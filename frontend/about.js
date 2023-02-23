@@ -55,7 +55,7 @@ function total_stats() {
 // get total commit stats
 function total_commits() {
   var request = new XMLHttpRequest();
-  var my_url = 'https://gitlab.com/api/v4/projects/43345825/repository/commits/?per_page=1000';
+  var my_url = 'https://gitlab.com/api/v4/projects/43345825/repository/commits/';
   request.open('GET', my_url);
   request.onload = function() {
       var allData = JSON.parse(this.response);
