@@ -148,9 +148,12 @@ def scrapeCitiesData():
         except KeyError:
             pass
         
+        nearest_parks = calculateNearestParks(latitude, longitude)
+        nearest_airports = calculateNearestAirports(latitude, longitude)
         cityObject = City(id, name, short_name, long_name, latitude, longitude,
                           population, cost, safety, rating, airbnb_listings, 
-                          walkability, hiking_trails, [], [], photo)
+                          walkability, hiking_trails, nearest_airports, 
+                          nearest_parks, photo)
         cityJSON = json.dumps(cityObject.__dict__, sort_keys=True)
         citiesJSON += (cityJSON + ",")
     
@@ -216,7 +219,7 @@ def scrapeAirportsData():
         text_file.write(airportsJSON)
 
     
-# Calculates nearest cities/airports for parks
+# Calculates nearest cities to given location
 def calculateNearestCities(lat, long):
 
     cities = []
@@ -241,7 +244,32 @@ def calculateNearestCities(lat, long):
         })
     return nearestCitiesList
 
-# Calculates nearest cities/airports for parks
+# Calculates nearest parks to given location
+def calculateNearestParks(lat, long):
+
+    parks = []
+    with open("parks.json") as text_file:
+        parks = json.load(text_file)
+
+    distances = {}
+    for park in parks:
+        parkLat, parkLon = park["latitude"], park["longitude"]
+        distance = math.sqrt((parkLat - lat) ** 2 + (parkLon - long) ** 2)
+        distances[distance] = (park["name"], park["id"])
+    distances = sorted(distances.items())
+    nearest_parks = distances[:3]
+
+    nearestParksList = []
+    for i in range(3):
+        city = nearest_parks[i]
+        nearestParksList.append({
+            "name" : city[1][0],
+            "id" : city[1][1],
+            "distance" : city[0]
+        })
+    return nearestParksList
+
+# Calculates nearest airports to given location
 def calculateNearestAirports(lat, long):
 
     airports = []
@@ -270,8 +298,7 @@ def calculateNearestAirports(lat, long):
 if __name__ == "__main__":
 
     print("Starting data scrape...")
-    scrapeParksData()
-    # scrapeCitiesData()
+    # scrapeParksData()
+    scrapeCitiesData()
     # scrapeAirportsData()
-    # print(calculateNearestAirports(65.0935608, -142.7960021))
     print("Data scraping complete...")
