@@ -1,0 +1,371 @@
+{
+    "data": [
+        {
+            "id": 0,
+            "name": "Grand Canyon National Park",
+            "description": "Grand Canyon National Park, in Northern Arizona, encompasses 278 miles (447 km) of the Colorado River and adjacent uplands. Located on ancestral homeland of 11 Associated Tribes, Grand Canyon is one of the most spectacular examples of erosion anywhere in the world—unmatched in the incomparable vistas it offers visitors from the rim.",
+            "photos": [
+                "https://www.nps.gov/common/uploads/structured_data/3C7B143E-1DD8-B71B-0BD4A1EF96847292.jpg",
+                "https://www.nps.gov/common/uploads/structured_data/3C7B15A4-1DD8-B71B-0BFADECB506765CC.jpg",
+                "https://www.nps.gov/common/uploads/structured_data/3C7B1720-1DD8-B71B-0B74DCF6F887A960.jpg",
+                "https://www.nps.gov/common/uploads/structured_data/3C7B12D1-1DD8-B71B-0BCE0712F9CEA155.jpg"
+            ],
+            "phone": "928-638-7888",
+            "email": "grca_information@nps.gov",
+            "website": "www.nps.gov/grca",
+            "activities": [
+                "Arts and Culture",
+                "Cultural Demonstrations",
+                "Auto and ATV",
+                "Scenic Driving",
+                "Astronomy",
+                "Stargazing",
+                "Biking",
+                "Camping",
+                "Backcountry Camping",
+                "Car or Front Country Camping",
+                "Horse Camping (see also Horse/Stock Use)",
+                "Compass and GPS",
+                "Fishing",
+                "Food",
+                "Flying",
+                "Guided Tours",
+                "Hands-on",
+                "Volunteer Vacation",
+                "Hiking",
+                "Backcountry Hiking",
+                "Front-Country Hiking",
+                "Horse Trekking",
+                "Living History",
+                "Paddling",
+                "Whitewater Rafting",
+                "Junior Ranger Program",
+                "Wildlife watching",
+                "Birdwatching",
+                "Park Film",
+                "Museum Exhibits",
+                "Shopping",
+                "Bookstore and Park Store"
+            ],
+            "topics": [
+                "Architecture and Building",
+                "Archeology",
+                "Ruins",
+                "Aviation",
+                "Native American Heritage",
+                "Schools and Education",
+                "Transportation",
+                "Trains and Railroads",
+                "Animals",
+                "Birds",
+                "Bison",
+                "Cats (wild)",
+                "Elk",
+                "Fish",
+                "Caves, Caverns and Karst",
+                "Fire",
+                "Fossils and Paleontology",
+                "Geology",
+                "Groundwater",
+                "Freshwater Springs",
+                "Grasslands",
+                "Night Sky",
+                "River and Riparian",
+                "Scenic Views",
+                "Trails",
+                "Unique Species",
+                "Endangered",
+                "Watersheds"
+            ],
+            "weekdays": [
+                "All Day",
+                "All Day",
+                "All Day",
+                "All Day",
+                "All Day",
+                "All Day",
+                "All Day"
+            ],
+            "fees": {
+                "car": 35.0,
+                "motorcycle": 30.0,
+                "foot": 20.0
+            },
+            "nearest_cities": [
+                {
+                    "id": 1,
+                    "name": "Las Vegas",
+                    "distance": 300.1232
+                },
+                {
+                    "id": 2,
+                    "name": "Denver",
+                    "distance": 450.0231
+                },
+                {
+                    "id": 0,
+                    "name": "Salt Lake City",
+                    "distance": 560.0123
+                }
+            ],
+            "nearest_airports": [
+                {
+                    "id": 1,
+                    "name": "McCarran International Airport",
+                    "iata_code": "LAS",
+                    "distance": 30.5234
+                },
+                {
+                    "id": 2,
+                    "name": "Salt Lake City International Airport",
+                    "iata_code": "SLC",
+                    "distance": 70.2342
+                },
+                {
+                    "id": 0,
+                    "name": "Denver International Airport",
+                    "iata_code": "DEN",
+                    "distance": 140.2342
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "Rocky Mountain National Park",
+            "description": "Rocky Mountain National Park's 415 square miles (265,807 acres) encompasses a spectacular range of mountain environments. From meadows found in the montane life zone to glistening alpine lakes and up to the towering mountain peaks, there is something for everyone to discover. Along the way explore over 300 miles of hiking trails and incredible wildlife viewing.",
+            "photos": [
+                "https://www.nps.gov/common/uploads/structured_data/946DF86C-A589-3C26-9BF6E1EE2FEC13E2.jpg",
+                "https://www.nps.gov/common/uploads/structured_data/94946E3A-0937-4E29-AD7E2ABE1AC62A0B.jpg",
+                "https://www.nps.gov/common/uploads/structured_data/94A4C023-A410-40BD-0954EA7017FE67A8.jpg",
+                "https://www.nps.gov/common/uploads/structured_data/94D83299-AAD9-0C4C-5D92CCC7FBCF4400.jpg"
+            ],
+            "phone": "9705861206",
+            "email": "romo_information@nps.gov",
+            "website": "www.nps.gov/romo",
+            "activities": [
+                "Auto and ATV",
+                "Scenic Driving",
+                "Biking",
+                "Camping",
+                "Backcountry Camping",
+                "Car or Front Country Camping",
+                "Group Camping",
+                "RV Camping",
+                "Fishing",
+                "Food",
+                "Picknicking",
+                "Hands-on",
+                "Citizen Science",
+                "Volunteer Vacation",
+                "Hiking",
+                "Horse Trekking",
+                "Horseback Riding",
+                "Junior Ranger Program",
+                "Skiing",
+                "Cross-Country Skiing",
+                "Snow Play",
+                "Snowshoeing",
+                "Wildlife watching",
+                "Birdwatching",
+                "Park Film",
+                "Shopping",
+                "Bookstore and Park Store",
+                "Gift Shop and Souvenirs"
+            ],
+            "topics": [
+                "Architecture and Building",
+                "Arts",
+                "Farming and Agriculture",
+                "Ranches",
+                "Transportation",
+                "Roads, Routes and Highways",
+                "Animals",
+                "Birds",
+                "Cats (wild)",
+                "Elk",
+                "Fish",
+                "Climate Change",
+                "Fire",
+                "Forests and Woodlands",
+                "Geology",
+                "Glaciers",
+                "Natural Sounds",
+                "Night Sky",
+                "Astronomy",
+                "Trails",
+                "Wilderness"
+            ],
+            "weekdays": [
+                "All Day",
+                "All Day",
+                "All Day",
+                "All Day",
+                "All Day",
+                "All Day",
+                "All Day"
+            ],
+            "fees": {
+                "car": 30.0,
+                "motorcycle": 25.0,
+                "foot": 15.0
+            },
+            "nearest_cities": [
+                {
+                    "id": 1,
+                    "name": "Las Vegas",
+                    "distance": 300.1232
+                },
+                {
+                    "id": 2,
+                    "name": "Denver",
+                    "distance": 450.0231
+                },
+                {
+                    "id": 0,
+                    "name": "Salt Lake City",
+                    "distance": 560.0123
+                }
+            ],
+            "nearest_airports": [
+                {
+                    "id": 1,
+                    "name": "McCarran International Airport",
+                    "iata_code": "LAS",
+                    "distance": 30.5234
+                },
+                {
+                    "id": 2,
+                    "name": "Salt Lake City International Airport",
+                    "iata_code": "SLC",
+                    "distance": 70.2342
+                },
+                {
+                    "id": 0,
+                    "name": "Denver International Airport",
+                    "iata_code": "DEN",
+                    "distance": 140.2342
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Zion National Park",
+            "description": "Follow the paths where native people and pioneers walked. Gaze up at massive sandstone cliffs of cream, pink, and red that soar into a brilliant blue sky. Experience wilderness in a narrow slot canyon. Zion’s unique array of plants and animals will enchant you as you absorb the rich history of the past and enjoy the excitement of present day adventures.",
+            "photos": [
+                "https://www.nps.gov/common/uploads/structured_data/3C7F0098-1DD8-B71B-0B6C0191D7391384.jpg",
+                "https://www.nps.gov/common/uploads/structured_data/3C7EFF41-1DD8-B71B-0B50E940FE9F2658.jpg",
+                "https://www.nps.gov/common/uploads/structured_data/3C7F0203-1DD8-B71B-0B2DCAE32B684884.jpg",
+                "https://www.nps.gov/common/uploads/structured_data/3C7F0366-1DD8-B71B-0B1C1F98A8C4E757.jpg"
+            ],
+            "phone": "435-772-3256",
+            "email": "zion_park_information@nps.gov",
+            "website": " www.nps.gov/zion",
+            "activities": [
+                "Arts and Culture",
+                "Astronomy",
+                "Stargazing",
+                "Biking",
+                "Road Biking",
+                "Camping",
+                "Backcountry Camping",
+                "Car or Front Country Camping",
+                "Horse Camping (see also Horse/Stock Use)",
+                "Canyoneering",
+                "Rock Climbing",
+                "Guided Tours",
+                "Hiking",
+                "Front-Country Hiking",
+                "Junior Ranger Program",
+                "Wildlife watching",
+                "Birdwatching",
+                "Park Film",
+                "Museum Exhibits",
+                "Shopping",
+                "Bookstore and Park Store"
+            ],
+            "topics": [
+                "Architecture and Building",
+                "Archeology",
+                "Arts",
+                "Industry",
+                "Logging and Timber Cutting",
+                "Laborer and Worker",
+                "Native American Heritage",
+                "Transportation",
+                "Tunnels",
+                "Tragic Events",
+                "Floods",
+                "Westward Expansion",
+                "Animals",
+                "Birds",
+                "Cats (wild)",
+                "Elk",
+                "Fish",
+                "Tortoises and Turtles",
+                "Canyons and Canyonlands",
+                "Fire",
+                "Fossils and Paleontology",
+                "Geology",
+                "Night Sky",
+                "River and Riparian",
+                "Rock Landscapes and Features",
+                "Arches",
+                "Trails",
+                "Water Trails",
+                "Unique Species",
+                "Wilderness"
+            ],
+            "weekdays": [
+                "All Day",
+                "All Day",
+                "All Day",
+                "All Day",
+                "All Day",
+                "All Day",
+                "All Day"
+            ],
+            "fees": {
+                "car": 35.0,
+                "motorcycle": 30.0,
+                "foot": 20.0
+            },
+            "nearest_cities": [
+                {
+                    "id": 1,
+                    "name": "Las Vegas",
+                    "distance": 300.1232
+                },
+                {
+                    "id": 2,
+                    "name": "Denver",
+                    "distance": 450.0231
+                },
+                {
+                    "id": 0,
+                    "name": "Salt Lake City",
+                    "distance": 560.0123
+                }
+            ],
+            "nearest_airports": [
+                {
+                    "id": 1,
+                    "name": "McCarran International Airport",
+                    "iata_code": "LAS",
+                    "distance": 30.5234
+                },
+                {
+                    "id": 2,
+                    "name": "Salt Lake City International Airport",
+                    "iata_code": "SLC",
+                    "distance": 70.2342
+                },
+                {
+                    "id": 0,
+                    "name": "Denver International Airport",
+                    "iata_code": "DEN",
+                    "distance": 140.2342
+                }
+            ]
+        }
+    ]
+}

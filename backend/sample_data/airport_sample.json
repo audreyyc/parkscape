@@ -1,0 +1,148 @@
+{
+    "data": [
+        {
+            "id": 0,
+            "name": "Denver International Airport",
+            "iata_code": "DEN",
+            "city": "Denver",
+            "state": "Colorado",
+            "icao_code": "KDEN",
+            "phone": "+1 303-342-2000",
+            "address": "8500 Peña Blvd Denver, Colorado",
+            "zip_code": 80249,
+            "latitude": 39.8561,
+            "longitude": -104.67374,
+            "website": "https://www.flydenver.com",
+            "nearest_cities": [
+                {
+                    "id": 2,
+                    "name": "Denver",
+                    "distance": 30.2341
+                },
+                {
+                    "id": 0,
+                    "name": "Salt Lake City",
+                    "distance": 70.2342
+                },
+                {
+                    "id": 1,
+                    "name": "Las Vegas",
+                    "distance": 140.1231
+                }
+            ],
+            "nearest_parks": [
+                {
+                    "id": 1,
+                    "name": "Rocky Mountain National Park",
+                    "distance": 50.2342
+                },
+                {
+                    "id": 2,
+                    "name": "Zion National Park",
+                    "distance": 80.2342
+                },
+                {
+                    "id": 0,
+                    "name": "Grand Canyon National Park",
+                    "distance": 140.1231
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "McCarran International Airport",
+            "iata_code": "LAS",
+            "city": "Las Vegas",
+            "state": "Nevada",
+            "icao_code": "KLAS",
+            "phone": "+1 702-261-5211",
+            "address": "5757 Wayne Newton Boulevard Las Vegas, Nevada",
+            "zip_code": 89119,
+            "latitude": 36.084,
+            "longitude": -115.15374,
+            "website": "https://www.harryreidairport.com",
+            "nearest_cities": [
+                {
+                    "id": 2,
+                    "name": "Denver",
+                    "distance": 30.2341
+                },
+                {
+                    "id": 0,
+                    "name": "Salt Lake City",
+                    "distance": 70.2342
+                },
+                {
+                    "id": 1,
+                    "name": "Las Vegas",
+                    "distance": 140.1231
+                }
+            ],
+            "nearest_parks": [
+                {
+                    "id": 1,
+                    "name": "Rocky Mountain National Park",
+                    "distance": 50.2342
+                },
+                {
+                    "id": 2,
+                    "name": "Zion National Park",
+                    "distance": 80.2342
+                },
+                {
+                    "id": 0,
+                    "name": "Grand Canyon National Park",
+                    "distance": 140.1231
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Salt Lake City International Airport",
+            "iata_code": "SLC",
+            "city": "Salt Lake City",
+            "state": "Utah",
+            "icao_code": "KSLC",
+            "phone": "+1 801-575-2400",
+            "address": "776 North Terminal Drive Salt Lake City, Utah",
+            "zip_code": 84122,
+            "latitude": 40.78994,
+            "longitude": -111.97907,
+            "website": "https://slcairport.com",
+            "nearest_cities": [
+                {
+                    "id": 2,
+                    "name": "Denver",
+                    "distance": 30.2341
+                },
+                {
+                    "id": 0,
+                    "name": "Salt Lake City",
+                    "distance": 70.2342
+                },
+                {
+                    "id": 1,
+                    "name": "Las Vegas",
+                    "distance": 140.1231
+                }
+            ],
+            "nearest_parks": [
+                {
+                    "id": 1,
+                    "name": "Rocky Mountain National Park",
+                    "distance": 50.2342
+                },
+                {
+                    "id": 2,
+                    "name": "Zion National Park",
+                    "distance": 80.2342
+                },
+                {
+                    "id": 0,
+                    "name": "Grand Canyon National Park",
+                    "distance": 140.1231
+                }
+            ]
+        }
+    ]
+}
