@@ -3,32 +3,46 @@ import "./ParkCard.css";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
-const ParkCard = ({ title, imageSrc, operatingHours, phone, email }) => {
+const ParkCard = ({
+  title,
+  imageSrc,
+  operatingHours,
+  phone,
+  email,
+  parkId,
+}) => {
   return (
-    <Container className="col col-sm-12 col-md-6 col-lg-4 d-flex align-items-stretch">
-      <Card className="ms-auto me-auto mb-3 mt-3" style={{ width: "95%" }}>
-        <Card.Img
-          variant="top"
-          src={imageSrc}
-          style={{ width: "100%", height: "240px" }}
-        />
-        <Card.Body style={{ textAlign: "left" }}>
-          <Card.Title>{title}</Card.Title>
-          <Card.Text className="mt-3">
-            Operating Hours:
-            <br />
-            <OperatingHours operatingHours={operatingHours} />
-            <br />
-            Phone: {phone}
-            <br />
-            Email: {email}
-            <br />
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer className="d-flex flex-column">
-          <Button variant="primary">Learn More</Button>
-        </Card.Footer>
+    <Container className="col col-sm-12 col-md-6 col-lg-6 col-xl-4 d-flex align-items-stretch">
+      <Card className="park-card ms-auto me-auto mb-4 mt-4">
+        <Link
+          to={`/parks/${parkId}`}
+          id={parkId}
+          className="link-card d-flex align-items-stretch"
+        >
+          <Card.Img
+            variant="top"
+            src={imageSrc}
+            style={{ width: "100%", height: "240px" }}
+          />
+          <Card.Body style={{ textAlign: "left" }}>
+            <Card.Title>{title}</Card.Title>
+            <Card.Text className="mt-3">
+              Operating Hours:
+              <br />
+              <OperatingHours operatingHours={operatingHours} />
+              <br />
+              Phone: {phone}
+              <br />
+              Email: {email}
+              <br />
+            </Card.Text>
+          </Card.Body>
+          <Card.Footer className="d-flex flex-column">
+            <Button variant="primary">Learn More</Button>
+          </Card.Footer>
+        </Link>
       </Card>
     </Container>
   );
@@ -44,7 +58,7 @@ function OperatingHours({ operatingHours }) {
   }
 
   return (
-    <div style={{ marginTop: "10px" }}>
+    <div className="weekdays">
       <div
         class={
           weekdays[0]
