@@ -1,0 +1,22 @@
+
+.operatingHoursDayBoxOpen {
+    padding: 10px;
+    display: inline-block;
+    border-radius: 25%;
+    font-size: 12px;
+    font-style: normal;
+    text-align: center;
+    background: #278944;
+    color: #fff;
+}
+
+.operatingHoursDayBoxClosed {
+    padding: 10px;
+    display: inline-block;
+    border-radius: 25%;
+    font-size: 12px;
+    font-style: normal;
+    text-align: center;
+    background: #c03131;
+    color: #fff;
+}
