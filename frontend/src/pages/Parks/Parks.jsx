@@ -2,6 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/esm/Container";
 import parks_json from "./parks.json";
 import ParkCard from "../../../src/components/ParkCard/ParkCard.jsx";
+import "./Parks.css";
 
 function Parks() {
   return (
@@ -87,11 +88,12 @@ function Parks() {
         <Container className="row gx-3">
           {parks_json.map((park, index) => (
             <ParkCard
-              title={parks_json[index].name}
-              imageSrc={parks_json[index].photos[0]}
-              operatingHours={parks_json[index].weekdays}
-              phone={parks_json[index].phone}
-              email={parks_json[index].email}
+              title={park.name}
+              imageSrc={park.photos[0]}
+              operatingHours={park.weekdays}
+              phone={park.phone}
+              email={park.email}
+              parkId={park.id}
             />
           ))}
         </Container>
