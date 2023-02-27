@@ -1,13 +1,13 @@
-import './App.css';
-import Navigation from './components/Navigation';
-import Home from "./pages/Home/Home";
-import About from "./pages/About/About";
-import Cities from "./pages/Cities/Cities";
-import Parks from "./pages/Parks/Parks";
-import Airports from "./pages/Airports/Airports";
-import CityInstance from "./pages/CityInstance/CityInstance";
-import ParkInstance from "./pages/ParkInstance/ParkInstance";
-import AirportInstance from "./pages/AirportInstance/AirportInstance";
+import "./App.css";
+import Navigation from "./components/Navigation/Navigation.jsx";
+import Home from "./pages/Home/Home.jsx";
+import About from "./pages/About/About.jsx";
+import Cities from "./pages/Cities/Cities.jsx";
+import Parks from "./pages/Parks/Parks.jsx";
+import Airports from "./pages/Airports/Airports.jsx";
+import CityInstance from "./pages/CityInstance/CityInstance.jsx";
+import ParkInstance from "./pages/ParkInstance/ParkInstance.jsx";
+import AirportInstance from "./pages/AirportInstance/AirportInstance.jsx";
 
 import { Route, Routes } from "react-router-dom";
 
@@ -23,9 +23,8 @@ function App() {
         <Route path="/cities" element={<Cities />} />
         <Route path="/cities/:id" element={<CityInstance />} />
         <Route path="/airports" element={<Airports />} />
-        <Route path="/airports/:id" element={<AirportInstance/>} />
+        <Route path="/airports/:id" element={<AirportInstance />} />
       </Routes>
-
     </div>
   );
 }
