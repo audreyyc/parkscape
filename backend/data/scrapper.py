@@ -2,7 +2,6 @@ import requests
 from requests.auth import HTTPBasicAuth
 import json
 import math
-import sys
 
 from models import Park
 from models import City
