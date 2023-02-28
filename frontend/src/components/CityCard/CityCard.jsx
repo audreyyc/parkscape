@@ -9,12 +9,6 @@ import { faStar as faStar2 } from "@fortawesome/free-regular-svg-icons";
 import Rating from "react-rating";
 import "./CityCard.css";
 
-const SVGIcon = (props) => (
-  <svg className={props.className} pointerEvents="none">
-    <use xlinkHref={props.href} />
-  </svg>
-);
-
 const CityCard = ({
   name,
   imageSrc,
