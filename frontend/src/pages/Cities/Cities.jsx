@@ -15,60 +15,69 @@ function Cities() {
 
       <Container>
         <form
-          class="d-flex mx-auto mt-5 mb-4"
+          className="d-flex mx-auto mt-5 mb-4"
           role="search"
           style={{ width: "50%" }}
         >
           <input
-            class="form-control me-2"
+            className="form-control me-2"
             type="search"
             placeholder="Search"
             aria-label="Search"
           />
-          <button class="btn btn-outline-success" type="submit">
+          <button className="btn btn-outline-success" type="submit">
             Search
           </button>
         </form>
 
-        <div class="row mx-auto" style={{ width: "80%" }}>
-          <div class="col">
+        <div className="row mx-auto" style={{ width: "80%" }}>
+          <div className="col">
             <select
-              class="form-select form-select-lg mb-3"
+              className="form-select form-select-lg mb-3"
               aria-label=".form-select-lg example"
+              defaultValue={"0"}
             >
-              <option selected>Sort</option>
+              <option value="0">Sort</option>
               <option value="1">Name (A-Z)</option>
               <option value="2">Name (Z-A)</option>
               <option value="3">State (A-Z)</option>
               <option value="3">State (Z-A)</option>
+              <option value="3">Rating (High to Low)</option>
+              <option value="3">Rating (Low to High)</option>
             </select>
           </div>
-          <div class="col">
+          <div className="col">
             <select
-              class="form-select form-select-lg mb-3"
+              className="form-select form-select-lg mb-3"
               aria-label=".form-select-lg example"
+              defaultValue={"0"}
             >
-              <option selected>Phone</option>
-              <option value="1">Yes</option>
-              <option value="2">No</option>
+              <option value="0">Budget</option>
+              <option value="1">Very High</option>
+              <option value="2">High</option>
+              <option value="3">Medium High</option>
+              <option value="3">Medium</option>
             </select>
           </div>
-          <div class="col">
+          <div className="col">
             <select
-              class="form-select form-select-lg mb-3"
+              className="form-select form-select-lg mb-3"
               aria-label=".form-select-lg example"
+              defaultValue={"0"}
             >
-              <option selected>Email</option>
-              <option value="1">Yes</option>
-              <option value="2">No</option>
+              <option value="0">Safety</option>
+              <option value="1">Very High</option>
+              <option value="2">High</option>
+              <option value="3">Medium</option>
             </select>
           </div>
-          <div class="col">
+          <div className="col">
             <select
-              class="form-select form-select-lg mb-3"
+              className="form-select form-select-lg mb-3"
               aria-label=".form-select-lg example"
+              defaultValue={"0"}
             >
-              <option selected>State</option>
+              <option value="0">State</option>
               <option value="1">TX</option>
               <option value="2">CO</option>
               <option value="3">NV</option>
@@ -76,8 +85,8 @@ function Cities() {
           </div>
         </div>
 
-        <div class="text-center mt-3 mb-5">
-          <button class="btn btn-large btn-success btn-lg" type="apply">
+        <div className="text-center mt-3 mb-5">
+          <button className="btn btn-large btn-success btn-lg" type="apply">
             Apply
           </button>
         </div>
