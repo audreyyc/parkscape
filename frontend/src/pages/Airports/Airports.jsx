@@ -52,8 +52,6 @@ const Airports = () => {
               <option value="2">Name (Z-A)</option>
               <option value="3">State (A-Z)</option>
               <option value="3">State (Z-A)</option>
-              <option value="3">Rating (High to Low)</option>
-              <option value="3">Rating (Low to High)</option>
             </select>
           </div>
           <div className="col">
@@ -62,11 +60,9 @@ const Airports = () => {
               aria-label=".form-select-lg example"
               defaultValue={"0"}
             >
-              <option value="0">Budget</option>
-              <option value="1">Very High</option>
-              <option value="2">High</option>
-              <option value="3">Medium High</option>
-              <option value="3">Medium</option>
+              <option value="0">Phone</option>
+              <option value="1">Yes</option>
+              <option value="2">No</option>
             </select>
           </div>
           <div className="col">
@@ -75,10 +71,9 @@ const Airports = () => {
               aria-label=".form-select-lg example"
               defaultValue={"0"}
             >
-              <option value="0">Safety</option>
-              <option value="1">Very High</option>
-              <option value="2">High</option>
-              <option value="3">Medium</option>
+              <option value="0">Website</option>
+              <option value="1">Yes</option>
+              <option value="2">No</option>
             </select>
           </div>
           <div className="col">
