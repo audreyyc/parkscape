@@ -1,0 +1,160 @@
+{
+    "data": [
+        {
+            "id": 0,
+            "name": "Salt Lake City",
+            "state": "Utah",
+            "latitude": 40.761,
+            "longitude": -111.891,
+            "population": 186440,
+            "cost": 5,
+            "safety": 4,
+            "rating": 3.6,
+            "airbnb_listings": "https://www.airbnb.com/s/Salt+Lake+City--+UT/homes",
+            "walkability": "https://www.walkscore.com/UT/Salt_Lake_City",
+            "hiking_trails": "https://www.alltrails.com/explore?b_tl_lat=41.36&b_tl_lng=-112.49&b_br_lat=40.16&b_br_lng=-111.29",
+            "nearest_airports": [
+                {
+                    "id": 2,
+                    "name": "Salt Lake City International Airport",
+                    "iata_code": "SLC",
+                    "distance": 30.5234
+                },
+                {
+                    "id": 1,
+                    "name": "McCarran International Airport",
+                    "iata_code": "LAS",
+                    "distance": 70.2342
+                },
+                {
+                    "id": 0,
+                    "name": "Denver International Airport",
+                    "iata_code": "DEN",
+                    "distance": 140.2342
+                }
+            ],
+            "nearest_parks": [
+                {
+                    "id": 2,
+                    "name": "Zion National Park",
+                    "dist": 40.2342
+                },
+                {
+                    "id": 0,
+                    "name": "Grand Canyon National Park",
+                    "dist": 50.2341
+                },
+                {
+                    "id": 1,
+                    "name": "Rocky Mountain National Park",
+                    "dist": 70.2342
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "Las Vegas",
+            "state": "Nevada",
+            "latitude": 36.175,
+            "longitude": -115.137 ,
+            "population": 583756,
+            "cost": 6,
+            "safety": 4,
+            "rating": 3.83,
+            "airbnb_listings": "https://www.airbnb.com/s/Las+Vegas--+NV/homes",
+            "walkability": "https://www.walkscore.com/NV/Las_Vegas",
+            "hiking_trails": "https://www.alltrails.com/explore?b_tl_lat=36.77&b_tl_lng=-115.74&b_br_lat=35.57&b_br_lng=-114.54",
+            "nearest_airports": [
+                {
+                    "id": 1,
+                    "name": "McCarran International Airport",
+                    "iata_code": "LAS",
+                    "distance": 30.5234
+                },
+                {
+                    "id": 2,
+                    "name": "Salt Lake City International Airport",
+                    "iata_code": "SLC",
+                    "distance": 70.2342
+                },
+                {
+                    "id": 0,
+                    "name": "Denver International Airport",
+                    "iata_code": "DEN",
+                    "distance": 140.2342
+                }
+            ],
+            "nearest_parks": [
+                {
+                    "id": 2,
+                    "name": "Zion National Park",
+                    "dist": 40.2342
+                },
+                {
+                    "id": 0,
+                    "name": "Grand Canyon National Park",
+                    "dist": 50.2341
+                },
+                {
+                    "id": 1,
+                    "name": "Rocky Mountain National Park",
+                    "dist": 70.2342
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Denver",
+            "state": "Colorado",
+            "latitude": 39.739,
+            "longitude": -104.985,
+            "population": 600158,
+            "cost": 7,
+            "cost_text" : "Very High",
+            "safety": 4,
+            "safety_text" : "High",
+            "rating": 4.06,
+            "image" : "https://cdn.roadgoat.com/uploads/photo/image/2436/large_landscapes-1426130_1920.jpg",
+            "airbnb_listings": "https://www.airbnb.com/s/Denver--+CO/homes",
+            "walkability": "https://www.walkscore.com/CO/Denver",
+            "hiking_trails": "https://www.alltrails.com/explore?b_tl_lat=40.34&b_tl_lng=-105.58&b_br_lat=39.14&b_br_lng=-104.38",
+            "nearest_airports": [
+                {
+                    "id": 0,
+                    "name": "Denver International Airport",
+                    "iata_code": "DEN",
+                    "distance": 30.5234
+                },
+                {
+                    "id": 2,
+                    "name": "Salt Lake City International Airport",
+                    "iata_code": "SLC",
+                    "distance": 70.2342
+                },
+                {
+                    "id": 1,
+                    "name": "McCarran International Airport",
+                    "iata_code": "LAS",
+                    "distance": 140.2342
+                }
+            ],
+            "nearest_parks": [
+                {
+                    "id": 1,
+                    "name": "Rocky Mountain National Park",
+                    "dist": 40.2342
+                },
+                {
+                    "id": 2,
+                    "name": "Zion National Park",
+                    "dist": 50.2341
+                },
+                {
+                    "id": 0,
+                    "name": "Grand Canyon National Park",
+                    "dist": 70.2342
+                }
+            ]
+        }
+    ]
+}
