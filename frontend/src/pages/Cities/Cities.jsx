@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import cities_json from "./cities.json";
 import CityCard from "../../components/CityCard/CityCard";
+import Pagination from "../../components/Pagination/Pagination";
 
-function Cities() {
+const Cities = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const cardsPerPage = 12;
+
+  const indexOfLastCard = currentPage * cardsPerPage;
+  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+  const currentCards = cities_json.slice(indexOfFirstCard, indexOfLastCard);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <>
       <Container className="container text-center mt-5 mb-4">
@@ -94,7 +104,7 @@ function Cities() {
 
       <Container className="px-4">
         <Container className="row gx-3">
-          {cities_json.map((city, index) => (
+          {currentCards.map((city, index) => (
             <CityCard
               name={city.long_name}
               imageSrc={city.photo}
@@ -108,8 +118,15 @@ function Cities() {
           ))}
         </Container>
       </Container>
+
+      <Pagination
+        currentPage={currentPage}
+        cardsPerPage={cardsPerPage}
+        totalCards={cities_json.length}
+        paginate={paginate}
+      />
     </>
   );
-}
+};
 
 export default Cities;

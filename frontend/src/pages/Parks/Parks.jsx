@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import parks_json from "./parks.json";
 import ParkCard from "../../../src/components/ParkCard/ParkCard.jsx";
+import Pagination from "../../components/Pagination/Pagination";
 import "./Parks.css";
 
-function Parks() {
+const Parks = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const cardsPerPage = 12;
+
+  const indexOfLastCard = currentPage * cardsPerPage;
+  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+  const currentCards = parks_json.slice(indexOfFirstCard, indexOfLastCard);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <>
       <Container className="container text-center mt-5 mb-4">
@@ -90,7 +100,7 @@ function Parks() {
 
       <Container className="px-4">
         <Container className="row gx-3">
-          {parks_json.map((park, index) => (
+          {currentCards.map((park, index) => (
             <ParkCard
               title={park.name}
               imageSrc={park.photos[0]}
@@ -103,8 +113,15 @@ function Parks() {
           ))}
         </Container>
       </Container>
+
+      <Pagination
+        currentPage={currentPage}
+        cardsPerPage={cardsPerPage}
+        totalCards={parks_json.length}
+        paginate={paginate}
+      />
     </>
   );
-}
+};
 
 export default Parks;

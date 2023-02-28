@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import airports_json from "./airports.json";
 import AirportCard from "../../components/AirportCard/AirportCard";
+import Pagination from "../../components/Pagination/Pagination";
 
-function Airports() {
+const Airports = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const cardsPerPage = 18;
+
+  const indexOfLastCard = currentPage * cardsPerPage;
+  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+  const currentCards = airports_json.slice(indexOfFirstCard, indexOfLastCard);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <>
       <Container className="container text-center mt-5 mb-4">
@@ -94,7 +104,7 @@ function Airports() {
 
       <Container className="px-4">
         <Container className="row gx-3">
-          {airports_json.map((airport, index) => (
+          {currentCards.map((airport, index) => (
             <AirportCard
               name={airport.name}
               iata={airport.iata_code}
@@ -107,8 +117,15 @@ function Airports() {
           ))}
         </Container>
       </Container>
+
+      <Pagination
+        currentPage={currentPage}
+        cardsPerPage={cardsPerPage}
+        totalCards={airports_json.length}
+        paginate={paginate}
+      />
     </>
   );
-}
+};
 
 export default Airports;
