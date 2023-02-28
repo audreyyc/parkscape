@@ -4,10 +4,10 @@ import axios from "axios";
 
 const ParkInstance = () => {
   const parkId = useParams().id;
-  const [data, setData] = useState(null);
+  // const [data, setData] = useState(null);
 
   // useEffect(() => {
-  //   axios.get(`/parks/<${parkId}>`).then((res) => {
+  //   axios.get(`http://127.0.0.1:5000/park/${parkId}`).then((res) => {
   //     console.log(res);
   //   });
   // }, [parkId]);
