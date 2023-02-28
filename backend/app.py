@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 import sqlalchemy as db
 from sqlalchemy import Integer, Column, String, Table, MetaData, Float, JSON
 import json
@@ -7,6 +8,7 @@ PARKS, CITIES, AIRPORTS = 468, 101, 731
 db_url = 'mysql://admin:020402020402@idb7-db.cyvindjupys7.us-east-2.rds.amazonaws.com:3306/idb7?charset=utf8'
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def home():
@@ -212,3 +214,6 @@ def get_park(r_id):
     park["nearest_airports"] = row[14]
     park["nearest_cities"] = row[15]
     return json.dumps(park, indent = 4)
+
+if __name__=="main":
+    app.run()
