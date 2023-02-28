@@ -34,7 +34,7 @@ const CityCard = ({
           <Card.Body style={{ textAlign: "left" }}>
             <Card.Title>{name}</Card.Title>
             <Card.Text style={{ lineHeight: "27px" }} className="mt-3">
-              Rating:
+              Rating:{" "}
               <Rating
                 initialRating={rating}
                 readonly
