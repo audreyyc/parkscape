@@ -60,7 +60,7 @@ function OperatingHours({ operatingHours }) {
   return (
     <div className="weekdays">
       <div
-        class={
+        className={
           weekdays[0]
             ? "operatingHoursDayBoxOpen me-1"
             : "operatingHoursDayBoxClosed me-1"
@@ -69,7 +69,7 @@ function OperatingHours({ operatingHours }) {
         Mo
       </div>
       <div
-        class={
+        className={
           weekdays[1]
             ? "operatingHoursDayBoxOpen me-1"
             : "operatingHoursDayBoxClosed me-1"
@@ -78,7 +78,7 @@ function OperatingHours({ operatingHours }) {
         Tu
       </div>
       <div
-        class={
+        className={
           weekdays[2]
             ? "operatingHoursDayBoxOpen me-1"
             : "operatingHoursDayBoxClosed me-1"
@@ -87,7 +87,7 @@ function OperatingHours({ operatingHours }) {
         We
       </div>
       <div
-        class={
+        className={
           weekdays[3]
             ? "operatingHoursDayBoxOpen me-1"
             : "operatingHoursDayBoxClosed me-1"
@@ -96,7 +96,7 @@ function OperatingHours({ operatingHours }) {
         Th
       </div>
       <div
-        class={
+        className={
           weekdays[4]
             ? "operatingHoursDayBoxOpen me-1"
             : "operatingHoursDayBoxClosed me-1"
@@ -105,7 +105,7 @@ function OperatingHours({ operatingHours }) {
         Fr
       </div>
       <div
-        class={
+        className={
           weekdays[5]
             ? "operatingHoursDayBoxOpen me-1"
             : "operatingHoursDayBoxClosed me-1"
@@ -114,7 +114,7 @@ function OperatingHours({ operatingHours }) {
         Sa
       </div>
       <div
-        class={
+        className={
           weekdays[6]
             ? "operatingHoursDayBoxOpen me-1"
             : "operatingHoursDayBoxClosed me-1"
