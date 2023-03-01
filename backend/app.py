@@ -215,5 +215,5 @@ def get_park(r_id):
     park["nearest_cities"] = row[15]
     return json.dumps(park, indent = 4)
 
-if __name__=="main":
-    app.run()
+if __name__=="__main__":
+    app.run(host="0.0.0.0", port=5000)
