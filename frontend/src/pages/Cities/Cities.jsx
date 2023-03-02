@@ -1,25 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Container from "react-bootstrap/esm/Container";
-import cities_json from "./cities.json";
 import CityCard from "../../components/CityCard/CityCard";
 import Pagination from "../../components/Pagination/Pagination";
+import { Spinner } from "react-bootstrap";
 
 const Cities = () => {
+  const [data, setData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const cardsPerPage = 12;
+  const [totalPages, setTotalPages] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const indexOfLastCard = currentPage * cardsPerPage;
-  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-  const currentCards = cities_json.slice(indexOfFirstCard, indexOfLastCard);
+  // TODO CHANGE THIS
+  useEffect(() => {
+    axios.get(`https://api.parkscape.me/cities/all`).then((res) => {
+      setTotalPages(res.data.length);
+    });
+  }, [totalPages]);
+
+  useEffect(() => {
+    setLoading(true);
+    axios.get(`https://api.parkscape.me/cities/${currentPage}`).then((res) => {
+      setData(res.data);
+    });
+  }, [currentPage]);
+
+  useEffect(() => {
+    if (data) setLoading(false);
+  }, [data]);
+
+  const cardsPerPage = 12;
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <>
+    <Container className="d-flex justify-content-center flex-column">
       <Container className="container text-center mt-5 mb-4">
         <h1>Cities!</h1>
         <p style={{ fontSize: "20px", color: "darkgray" }}>
-          {cities_json.length}
+          {!loading ? totalPages : "---"}
         </p>
       </Container>
 
@@ -104,28 +123,38 @@ const Cities = () => {
 
       <Container className="px-4">
         <Container className="row gx-3">
-          {currentCards.map((city, index) => (
-            <CityCard
-              name={city.long_name}
-              imageSrc={city.photo}
-              rating={city.rating}
-              budget={city.cost}
-              population={city.population}
-              safety={city.safety}
-              cityId={city.id}
-              key={city.id}
-            />
-          ))}
+          {!loading ? (
+            data.map((city, index) => (
+              <CityCard
+                name={city.long_name}
+                imageSrc={city.photo}
+                rating={city.rating}
+                budget={city.cost}
+                population={city.population}
+                safety={city.safety}
+                cityId={city.id}
+                key={city.id}
+              />
+            ))
+          ) : (
+            <Container className="d-flex justify-content-center">
+              <Spinner className="ms-3" animation="border" />
+            </Container>
+          )}
         </Container>
       </Container>
 
-      <Pagination
-        currentPage={currentPage}
-        cardsPerPage={cardsPerPage}
-        totalCards={cities_json.length}
-        paginate={paginate}
-      />
-    </>
+      {!loading ? (
+        <Pagination
+          currentPage={currentPage}
+          cardsPerPage={cardsPerPage}
+          totalCards={totalPages}
+          paginate={paginate}
+        />
+      ) : (
+        ""
+      )}
+    </Container>
   );
 };
 
