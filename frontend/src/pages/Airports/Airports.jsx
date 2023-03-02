@@ -34,7 +34,6 @@ const Airports = () => {
   const cardsPerPage = 12;
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  console.log(data);
 
   return (
     <Container className="d-flex justify-content-center flex-column">

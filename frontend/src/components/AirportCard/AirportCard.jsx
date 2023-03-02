@@ -25,8 +25,8 @@ const AirportCard = ({ name, iata, location, website, phone, airportId }) => {
 
         <Card.Footer className="d-flex flex-column">
           <Link
-            to={`/airports/${airportId}`}
-            id={airportId}
+            to={`/airports/${airportId - 1}`}
+            id={airportId - 1}
             className="link-card d-flex align-items-stretch"
           >
             <Button variant="primary">Learn More</Button>
