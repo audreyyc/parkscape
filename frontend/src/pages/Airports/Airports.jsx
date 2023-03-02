@@ -1,25 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Container from "react-bootstrap/esm/Container";
-import airports_json from "./airports.json";
 import AirportCard from "../../components/AirportCard/AirportCard";
 import Pagination from "../../components/Pagination/Pagination";
+import { Spinner } from "react-bootstrap";
 
 const Airports = () => {
+  const [data, setData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const cardsPerPage = 18;
+  const [totalInstances, setTotalInstances] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const indexOfLastCard = currentPage * cardsPerPage;
-  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-  const currentCards = airports_json.slice(indexOfFirstCard, indexOfLastCard);
+  // TODO CHANGE THIS
+  useEffect(() => {
+    axios.get(`https://api.parkscape.me/airports/all`).then((res) => {
+      setTotalInstances(res.data.length);
+    });
+  }, [totalInstances]);
+
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get(`https://api.parkscape.me/airports/${currentPage}`)
+      .then((res) => {
+        setData(res.data);
+      });
+  }, [currentPage]);
+
+  useEffect(() => {
+    if (data) setLoading(false);
+  }, [data]);
+
+  const cardsPerPage = 12;
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  console.log(data);
 
   return (
-    <>
+    <Container className="d-flex justify-content-center flex-column">
       <Container className="container text-center mt-5 mb-4">
         <h1>Airports!</h1>
         <p style={{ fontSize: "20px", color: "darkgray" }}>
-          {airports_json.length}
+          {!loading ? totalInstances : "---"}
         </p>
       </Container>
 
@@ -99,27 +121,37 @@ const Airports = () => {
 
       <Container className="px-4">
         <Container className="row gx-3">
-          {currentCards.map((airport, index) => (
-            <AirportCard
-              name={airport.name}
-              iata={airport.iata_code}
-              location={`${airport.city}, ${airport.state}`}
-              website={<a href={airport.website}>{airport.website}</a>}
-              phone={airport.phone}
-              airportId={airport.id}
-              key={airport.id}
-            />
-          ))}
+          {!loading ? (
+            data.map((airport, index) => (
+              <AirportCard
+                name={airport.name}
+                iata={airport.iata_code}
+                location={`${airport.city}, ${airport.state}`}
+                website={<a href={airport.website}>{airport.website}</a>}
+                phone={airport.phone}
+                airportId={airport.id}
+                key={airport.id}
+              />
+            ))
+          ) : (
+            <Container className="d-flex justify-content-center">
+              <Spinner className="ms-3" animation="border" />
+            </Container>
+          )}
         </Container>
       </Container>
 
-      <Pagination
-        currentPage={currentPage}
-        cardsPerPage={cardsPerPage}
-        totalCards={airports_json.length}
-        paginate={paginate}
-      />
-    </>
+      {!loading ? (
+        <Pagination
+          currentPage={currentPage}
+          cardsPerPage={cardsPerPage}
+          totalCards={totalInstances}
+          paginate={paginate}
+        />
+      ) : (
+        ""
+      )}
+    </Container>
   );
 };
 
