@@ -17,8 +17,8 @@ const ParkCard = ({
     <Container className="col col-sm-12 col-md-6 col-lg-6 col-xl-4 d-flex align-items-stretch">
       <Card className="park-card ms-auto me-auto mb-4 mt-4">
         <Link
-          to={`/parks/${parkId}`}
-          id={parkId}
+          to={`/parks/${parkId - 1}`}
+          id={parkId - 1}
           className="link-card d-flex align-items-stretch"
         >
           <Card.Img
