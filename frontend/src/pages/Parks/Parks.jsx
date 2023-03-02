@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Container from "react-bootstrap/esm/Container";
-import parks_json from "./parks.json";
 import ParkCard from "../../../src/components/ParkCard/ParkCard.jsx";
 import Pagination from "../../components/Pagination/Pagination";
 import "./Parks.css";
@@ -144,7 +143,7 @@ const Parks = () => {
         <Pagination
           currentPage={currentPage}
           cardsPerPage={cardsPerPage}
-          totalCards={parks_json.length}
+          totalCards={totalInstances}
           paginate={paginate}
         />
       ) : (

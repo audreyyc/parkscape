@@ -8,15 +8,15 @@ import { Spinner } from "react-bootstrap";
 const Cities = () => {
   const [data, setData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(null);
+  const [totalInstances, setTotalInstances] = useState(null);
   const [loading, setLoading] = useState(true);
 
   // TODO CHANGE THIS
   useEffect(() => {
     axios.get(`https://api.parkscape.me/cities/all`).then((res) => {
-      setTotalPages(res.data.length);
+      setTotalInstances(res.data.length);
     });
-  }, [totalPages]);
+  }, [totalInstances]);
 
   useEffect(() => {
     setLoading(true);
@@ -38,7 +38,7 @@ const Cities = () => {
       <Container className="container text-center mt-5 mb-4">
         <h1>Cities!</h1>
         <p style={{ fontSize: "20px", color: "darkgray" }}>
-          {!loading ? totalPages : "---"}
+          {!loading ? totalInstances : "---"}
         </p>
       </Container>
 
@@ -148,7 +148,7 @@ const Cities = () => {
         <Pagination
           currentPage={currentPage}
           cardsPerPage={cardsPerPage}
-          totalCards={totalPages}
+          totalCards={totalInstances}
           paginate={paginate}
         />
       ) : (
