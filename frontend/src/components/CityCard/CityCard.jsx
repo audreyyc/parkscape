@@ -22,8 +22,8 @@ const CityCard = ({
     <Container className="col col-sm-12 col-md-6 col-lg-6 col-xl-4 d-flex align-items-stretch">
       <Card className="city-card ms-auto me-auto mb-4 mt-4">
         <Link
-          to={`/cities/${cityId}`}
-          id={cityId}
+          to={`/cities/${cityId - 1}`}
+          id={cityId - 1}
           className="link-card d-flex align-items-stretch"
         >
           <Card.Img
