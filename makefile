@@ -17,3 +17,22 @@ check: $(CFILES)
 clean:
 	rm -f  *.tmp
 
+# build backend Docker image
+build-backend:
+	docker build -t backend-container ./backend
+
+# run backend Docker image
+docker-backend:
+	docker run -p 5000:5000 backend-container
+
+status: 
+	make clean
+	@echo
+	git pull
+	git status
+
+pull:
+	make clean
+	@echo
+	git pull
+	git status
