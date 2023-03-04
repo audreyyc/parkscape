@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from "react-bootstrap/Card";
 import Button from 'react-bootstrap/Button';
-// import NavBar from './navbar'; // TODO: needs to be updated
+import Navigation from '../../components/Navigation/Navigation';
 import 'bootstrap/dist/css/bootstrap.css';
 import './home.css';
 
@@ -12,7 +12,7 @@ function HomePage() {
   return (
     <>
       {/* Navbar */}
-      {/* <NavBar></NavBar> // TODO: needs to be updated */}
+      <Navigation></Navigation>
 
       {/* Photo and Title */}
       <div class="bg-image">
