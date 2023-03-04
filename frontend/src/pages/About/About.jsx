@@ -4,7 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-// import NavBar from './navbar'; // TODO: needs to be updated
+import Navigation from "../../components/Navigation/Navigation.jsx";
 import DeveloperCard from "../../components/DeveloperCard/DeveloperCard.jsx";
 import { DeveloperInfo } from "./static-data/developer_info.js";
 import ToolCard from "../../components/ToolCard/ToolCard.jsx";
@@ -101,7 +101,7 @@ function AboutPage() {
   return (
     <>
       {/* Navbar */}
-      {/* <NavBar></NavBar> // TODO: needs to be updated */}
+      <Navigation></Navigation>
 
       {/* Description */}
       <Container class="container text-center mt-5 mb-4">
