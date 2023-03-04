@@ -8,6 +8,81 @@
 	"item": [
 		{
 			"name": "Park information",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"GET park API call\", function () {\r",
+							"    pm.test(\"Status code is 200\", function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"GET park results\", function () {\r",
+							"    pm.test(\"Contains website URL\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"website\");\r",
+							"    });\r",
+							"    pm.test(\"Contains activities\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"activities\");\r",
+							"    });\r",
+							"    pm.test(\"Contains fee\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"fee\");\r",
+							"    });\r",
+							"    pm.test(\"Contains photos\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"photos\");\r",
+							"    });\r",
+							"    pm.test(\"Contains nearest airports\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"nearest_airports\");\r",
+							"    });\r",
+							"    pm.test(\"Contains topics\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"topics\");\r",
+							"    });\r",
+							"    pm.test(\"Contains weekdays\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"weekdays\");\r",
+							"    });\r",
+							"    pm.test(\"Contains longitude\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"longitude\");\r",
+							"    });\r",
+							"    pm.test(\"Contains states\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"states\");\r",
+							"    });\r",
+							"    pm.test(\"Contains phone\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"phone\");\r",
+							"    });\r",
+							"    pm.test(\"Contains latitude\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"latitude\");\r",
+							"    });\r",
+							"    pm.test(\"Contains email\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"email\");\r",
+							"    });\r",
+							"    pm.test(\"Contains nearest cities\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"nearest_cities\");\r",
+							"    });\r",
+							"    pm.test(\"Contains name\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"name\");\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -19,25 +94,25 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "api.parkscape.me/parks/:parkID",
+					"raw": "https://api.parkscape.me/park/:parkID",
+					"protocol": "https",
 					"host": [
 						"api",
 						"parkscape",
 						"me"
 					],
 					"path": [
-						"parks",
+						"park",
 						":parkID"
 					],
 					"variable": [
 						{
 							"key": "parkID",
-							"value": null,
-							"description": "ID of park"
+							"value": null
 						}
 					]
 				},
-				"description": "Returns information about a park"
+				"description": "Returns the following information about a park.\n\n- **website** - the URL of the park website\n- **activities** - an array of activities available in the park\n- **fee** - the cost of entry for the park\n- **description** - a short description of the park\n- **photos** - the URL of photos of the park\n- **nearest_airports** - an array of three airports closest to the park\n- **topics** - an array of topics commonly associated with the park\n- **weekdays** - the hours of the park for each day of the week\n- **longitude** - longitude coordinate of the park\n- **id** - the ID for accessing the park with the API\n- **states** - the US state(s) in which the park is located\n- **phone** - contact phone number of the park\n- **latitude** - latitude coordinate of the park\n- **nearest_cities** - an array of three cities located closest to the park\n- **email** - contact email for the park\n- **name** - full name of the park"
 			},
 			"response": [
 				{
@@ -50,14 +125,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "api.parkscape.me/parks/:parkID",
+							"raw": "api.parkscape.me/park/:parkID",
 							"host": [
 								"api",
 								"parkscape",
 								"me"
 							],
 							"path": [
-								"parks",
+								"park",
 								":parkID"
 							],
 							"variable": [
@@ -68,15 +143,102 @@
 							]
 						}
 					},
-					"_postman_previewlanguage": null,
-					"header": null,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
 					"cookie": [],
-					"body": ""
+					"body": "{\n    \"website\": \"https://www.nps.gov/acad/index.htm\",\n    \"activities\": \"[\\\"Arts and Culture\\\", \\\"Cultural Demonstrations\\\", \\\"Astronomy\\\", \\\"Stargazing\\\", \\\"Biking\\\", \\\"Boating\\\", \\\"Camping\\\", \\\"Group Camping\\\", \\\"Climbing\\\", \\\"Rock Climbing\\\", \\\"Compass and GPS\\\", \\\"Geocaching\\\", \\\"Fishing\\\", \\\"Freshwater Fishing\\\", \\\"Fly Fishing\\\", \\\"Saltwater Fishing\\\", \\\"Food\\\", \\\"Picnicking\\\", \\\"Guided Tours\\\", \\\"Bus/Shuttle Guided Tour\\\", \\\"Boat Tour\\\", \\\"Hands-On\\\", \\\"Citizen Science\\\", \\\"Hiking\\\", \\\"Front-Country Hiking\\\", \\\"Horse Trekking\\\", \\\"Horseback Riding\\\", \\\"Ice Skating\\\", \\\"Paddling\\\", \\\"Canoeing\\\", \\\"Kayaking\\\", \\\"Stand Up Paddleboarding\\\", \\\"Junior Ranger Program\\\", \\\"Skiing\\\", \\\"Cross-Country Skiing\\\", \\\"Snow Play\\\", \\\"Snowmobiling\\\", \\\"Snowshoeing\\\", \\\"Swimming\\\", \\\"Freshwater Swimming\\\", \\\"Saltwater Swimming\\\", \\\"Wildlife Watching\\\", \\\"Birdwatching\\\", \\\"Park Film\\\", \\\"Shopping\\\", \\\"Bookstore and Park Store\\\"]\",\n    \"fee\": 30,\n    \"description\": \"Acadia National Park protects the natural beauty of the highest rocky headlands along the Atlantic coastline of the United States, an abundance of habitats, and a rich cultural heritage. At 4 million visits a year, it's one of the top 10 most-visited national parks in the United States. Visitors enjoy 27 miles of historic motor roads, 158 miles of hiking trails, and 45 miles of carriage roads.\",\n    \"photos\": \"[\\\"https://www.nps.gov/common/uploads/structured_data/3C7B45AE-1DD8-B71B-0B7EE131C7DFC2F5.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7B4BEC-1DD8-B71B-0B2CF833F93140FF.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7B477B-1DD8-B71B-0BCB48E009241BAA.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7B48F9-1DD8-B71B-0BD3B413E58978F8.jpg\\\"]\",\n    \"nearest_airports\": \"[{\\\"id\\\": 45, \\\"name\\\": \\\"Hancock County-Bar Harbor Airport\\\", \\\"distance\\\": 0.1200935062232683, \\\"iata_code\\\": \\\"BHB\\\"}, {\\\"id\\\": 44, \\\"name\\\": \\\"Bangor International Airport\\\", \\\"distance\\\": 0.6997344540909738, \\\"iata_code\\\": \\\"BGR\\\"}, {\\\"id\\\": 570, \\\"name\\\": \\\"Knox County Regional Airport\\\", \\\"distance\\\": 0.9153308760972666, \\\"iata_code\\\": \\\"RKD\\\"}]\",\n    \"topics\": \"[\\\"Arts\\\", \\\"Painting\\\", \\\"Photography\\\", \\\"Poetry and Literature\\\", \\\"Sculpture\\\", \\\"Colonization and Settlement\\\", \\\"Maritime\\\", \\\"Lighthouses\\\", \\\"Monuments and Memorials\\\", \\\"Schools and Education\\\", \\\"Transportation\\\", \\\"Bridges\\\", \\\"Roads, Routes and Highways\\\", \\\"Tragic Events\\\", \\\"Catastrophic Fires\\\", \\\"Women's History\\\", \\\"Animals\\\", \\\"Birds\\\", \\\"Fish\\\", \\\"Climate Change\\\", \\\"Fire\\\", \\\"Forests and Woodlands\\\", \\\"Geology\\\", \\\"Lakes\\\", \\\"Mountains\\\", \\\"Night Sky\\\", \\\"Astronomy\\\", \\\"Oceans\\\", \\\"Rock Landscapes and Features\\\", \\\"Trails\\\", \\\"Wetlands\\\"]\",\n    \"weekdays\": \"[\\\"All Day\\\", \\\"All Day\\\", \\\"All Day\\\", \\\"All Day\\\", \\\"All Day\\\", \\\"All Day\\\", \\\"All Day\\\"]\",\n    \"longitude\": -68.2475,\n    \"id\": 2,\n    \"states\": \"ME\",\n    \"phone\": \"2072883338\",\n    \"latitude\": 44.4093,\n    \"nearest_cities\": \"[{\\\"id\\\": 22, \\\"name\\\": \\\"Boston, MA\\\", \\\"distance\\\": 3.48064178867878}, {\\\"id\\\": 0, \\\"name\\\": \\\"New York, NY\\\", \\\"distance\\\": 6.815703576623772}, {\\\"id\\\": 68, \\\"name\\\": \\\"Jersey City, NJ\\\", \\\"distance\\\": 6.8950133710673125}]\",\n    \"email\": \"acadia_information@nps.gov\",\n    \"name\": \"Acadia National Park\"\n}"
 				}
 			]
 		},
 		{
 			"name": "City information",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"GET city API call\", function () {\r",
+							"    pm.test(\"Status code is 200\", function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"GET city results\", function () {\r",
+							"    pm.test(\"Contains rating\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"rating\");\r",
+							"    });\r",
+							"    pm.test(\"Contains AirBnB listings\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"airbnb_listings\");\r",
+							"    });\r",
+							"    pm.test(\"Contains short name\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"short_name\");\r",
+							"    });\r",
+							"    pm.test(\"Contains photo\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"photo\");\r",
+							"    });\r",
+							"    pm.test(\"Contains walkability\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"walkability\");\r",
+							"    });\r",
+							"    pm.test(\"Contains nearest parks\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"nearest_parks\");\r",
+							"    });\r",
+							"    pm.test(\"Contains longitude\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"longitude\");\r",
+							"    });\r",
+							"    pm.test(\"Contains long name\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"long_name\");\r",
+							"    });\r",
+							"    pm.test(\"Contains cost\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"cost\");\r",
+							"    });\r",
+							"    pm.test(\"Contains safety\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"safety\");\r",
+							"    });\r",
+							"    pm.test(\"Contains hiking trails\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"hiking_trails\");\r",
+							"    });\r",
+							"    pm.test(\"Contains nearest airports\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"nearest_airports\");\r",
+							"    });\r",
+							"    pm.test(\"Contains latitude\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"latitude\");\r",
+							"    });\r",
+							"    pm.test(\"Contains population\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"population\");\r",
+							"    });\r",
+							"    pm.test(\"Contains name\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"name\");\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -88,25 +250,24 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "api.parkscape.me/cities/:cityID",
+					"raw": "api.parkscape.me/city/:cityID",
 					"host": [
 						"api",
 						"parkscape",
 						"me"
 					],
 					"path": [
-						"cities",
+						"city",
 						":cityID"
 					],
 					"variable": [
 						{
 							"key": "cityID",
-							"value": null,
-							"description": "ID of city"
+							"value": null
 						}
 					]
 				},
-				"description": "Returns information about a city"
+				"description": "Returns the following information about a city.\n\n- **rating** - the user rating of the city\n- **airbnb_listings** - URL to the AirBnB listings in the city\n- **short_name** - name of the city\n- **photo** - URL to a photo of the city\n- **walkability** - URL to the city walkability score\n- **nearest_parks** - an array of three parks located closest to the city\n- **longitude** - longitude coordinate of the city\n- **long_name** - name of the city, name of the state, name of the country\n- **cost** - cost score of the city\n- **safety** - safety score of the city\n- **hiking_trails** - URL to Alltrails hiking trail search in the city\n- **nearest_airports** - an array of three airports closest to the city\n- **latitude** - latitude coordinate of the city\n- **population** - population of the city\n- **id** - the ID for accessing the city with the API\n- **name** - name of the city, abbreviation of the state"
 			},
 			"response": [
 				{
@@ -119,14 +280,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "api.parkscape.me/cities/:cityID",
+							"raw": "api.parkscape.me/city/:cityID",
 							"host": [
 								"api",
 								"parkscape",
 								"me"
 							],
 							"path": [
-								"cities",
+								"city",
 								":cityID"
 							],
 							"variable": [
@@ -137,15 +298,94 @@
 							]
 						}
 					},
-					"_postman_previewlanguage": null,
-					"header": null,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
 					"cookie": [],
-					"body": ""
+					"body": "{\n    \"rating\": 3.90909,\n    \"airbnb_listings\": \"https://www.airbnb.com/s/Los+Angeles%2C+CA/homes\",\n    \"short_name\": \"Los Angeles\",\n    \"photo\": \"https://cdn.roadgoat.com/uploads/photo/image/691/travel-guide-of-los-angeles-ca-usa-original.jpg\",\n    \"walkability\": \"https://www.walkscore.com/CA/Los_Angeles\",\n    \"nearest_parks\": \"[{\\\"id\\\": 391, \\\"name\\\": \\\"Santa Monica Mountains National Recreation Area\\\", \\\"distance\\\": 0.5291457259291961}, {\\\"id\\\": 241, \\\"name\\\": \\\"Juan Bautista de Anza National Historic Trail\\\", \\\"distance\\\": 1.034903722137139}, {\\\"id\\\": 111, \\\"name\\\": \\\"César E. Chávez National Monument\\\", \\\"distance\\\": 1.2173061848054252}]\",\n    \"longitude\": -118.244,\n    \"long_name\": \"Los Angeles, California, US\",\n    \"cost\": 7,\n    \"safety\": 4,\n    \"hiking_trails\": \"https://www.alltrails.com/explore?b_tl_lat=34.65&b_tl_lng=-118.84&b_br_lat=33.45&b_br_lng=-117.64\",\n    \"nearest_airports\": \"[{\\\"id\\\": 91, \\\"name\\\": \\\"Bob Hope Airport\\\", \\\"distance\\\": 0.1851320590821596, \\\"iata_code\\\": \\\"BUR\\\"}, {\\\"id\\\": 392, \\\"name\\\": \\\"Los Angeles International Airport\\\", \\\"distance\\\": 0.1985364754900248, \\\"iata_code\\\": \\\"LAX\\\"}, {\\\"id\\\": 291, \\\"name\\\": \\\"Hughes Airport\\\", \\\"distance\\\": 0.20043920699554096, \\\"iata_code\\\": \\\"HUS\\\"}]\",\n    \"latitude\": 34.0522,\n    \"population\": 3792621,\n    \"id\": 2,\n    \"name\": \"Los Angeles, CA\"\n}"
 				}
 			]
 		},
 		{
 			"name": "Airport information",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"GET airport API call\", function () {\r",
+							"    pm.test(\"Status code is 200\", function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"GET airport results\", function () {\r",
+							"    pm.test(\"Contains website\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"website\");\r",
+							"    });\r",
+							"    pm.test(\"Contains city\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"city\");\r",
+							"    });\r",
+							"    pm.test(\"Contains name\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"name\");\r",
+							"    });\r",
+							"    pm.test(\"Contains ICAO code\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"icao_code\");\r",
+							"    });\r",
+							"    pm.test(\"Contains nearest parks\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"nearest_parks\");\r",
+							"    });\r",
+							"    pm.test(\"Contains longitude\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"longitude\");\r",
+							"    });\r",
+							"    pm.test(\"Contains IATA code\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"iata_code\");\r",
+							"    });\r",
+							"    pm.test(\"Contains phone\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"phone\");\r",
+							"    });\r",
+							"    pm.test(\"Contains state\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"state\");\r",
+							"    });\r",
+							"    pm.test(\"Contains address\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"address\");\r",
+							"    });\r",
+							"    pm.test(\"Contains latitude\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"latitude\");\r",
+							"    });\r",
+							"    pm.test(\"Contains nearest cities\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"nearest_cities\");\r",
+							"    });\r",
+							"    pm.test(\"Contains zip code\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData).to.have.property(\"zip_code\");\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -157,25 +397,24 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "api.parkscape.me/airports/:airportID",
+					"raw": "api.parkscape.me/airport/:airportID",
 					"host": [
 						"api",
 						"parkscape",
 						"me"
 					],
 					"path": [
-						"airports",
+						"airport",
 						":airportID"
 					],
 					"variable": [
 						{
 							"key": "airportID",
-							"value": null,
-							"description": "ID of airport"
+							"value": null
 						}
 					]
 				},
-				"description": "Returns information about an airport"
+				"description": "Returns the following information about an airport.\n\n- **website** - the URL of the airport website\n- **city** - city in which the airport is located\n- **name** - full name of the airport\n- **icao_code** - ICAO airport code\n- **nearest_parks** - an array of three parks closest to the airport\n- **longitude** - longitude coordinate of the airport\n- **iata_code** - IATA airport code\n- **phone** - contact phone number of the airport\n- **state** - the US state in which the airport is located\n- **address** - airport address\n- **latitude** - latitude coordinate of the airport\n- **nearest_cities** - an array of three cities located closest to the airport\n- **id** - the ID for accessing the airport with the API\n- **zip_code** - zip code of the airport"
 			},
 			"response": [
 				{
@@ -188,14 +427,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "api.parkscape.me/airports/:airportID",
+							"raw": "api.parkscape.me/airport/:airportID",
 							"host": [
 								"api",
 								"parkscape",
 								"me"
 							],
 							"path": [
-								"airports",
+								"airport",
 								":airportID"
 							],
 							"variable": [
@@ -206,20 +445,43 @@
 							]
 						}
 					},
-					"_postman_previewlanguage": null,
-					"header": null,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
 					"cookie": [],
-					"body": ""
+					"body": "{\n    \"website\": \"http://iflyabi.com/\",\n    \"city\": \"Abilene\",\n    \"name\": \"Abilene Regional Airport\",\n    \"icao_code\": \"KABI\",\n    \"nearest_parks\": \"[{\\\"id\\\": 275, \\\"name\\\": \\\"Lyndon B Johnson National Historical Park\\\", \\\"distance\\\": 2.411822937832262}, {\\\"id\\\": 441, \\\"name\\\": \\\"Waco Mammoth National Monument\\\", \\\"distance\\\": 2.6308877799801187}, {\\\"id\\\": 15, \\\"name\\\": \\\"Amistad National Recreation Area\\\", \\\"distance\\\": 3.197253496020941}]\",\n    \"longitude\": -99.68,\n    \"iata_code\": \"ABI\",\n    \"phone\": \"+1 325-676-6367\",\n    \"state\": \"Texas\",\n    \"address\": \"2933 Airport Boulevard\",\n    \"latitude\": 32.4119,\n    \"nearest_cities\": \"[{\\\"id\\\": 12, \\\"name\\\": \\\"Fort Worth, TX\\\", \\\"distance\\\": 2.379936300536645}, {\\\"id\\\": 85, \\\"name\\\": \\\"Lubbock, TX\\\", \\\"distance\\\": 2.467921486731697}, {\\\"id\\\": 48, \\\"name\\\": \\\"Arlington, TX\\\", \\\"distance\\\": 2.5922775891119443}]\",\n    \"id\": 2,\n    \"zip_code\": \"79602\"\n}"
 				}
 			]
 		},
 		{
 			"name": "Parks",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.test(\"GET parks list API call\", function () {\r",
+							"    pm.test(\"Status code is 200\", function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "api.parkscape.me/parks?state=<string>&activity=<string>&amenities=<string>&maxcost=<int>&mincost=<int>",
+					"raw": "api.parkscape.me/parks?page=<int>&state=<string>&activity=<string>&amenities=<string>&maxcost=<int>&mincost=<int>",
 					"host": [
 						"api",
 						"parkscape",
@@ -230,14 +492,19 @@
 					],
 					"query": [
 						{
+							"key": "page",
+							"value": "<int>",
+							"description": "Get page of parks."
+						},
+						{
 							"key": "state",
 							"value": "<string>",
-							"description": "Find parks in the specified state."
+							"description": "Find parks only in the specified state."
 						},
 						{
 							"key": "activity",
 							"value": "<string>",
-							"description": "Find parks for the specified activity."
+							"description": "Find parks offering the specified activity."
 						},
 						{
 							"key": "amenities",
@@ -256,7 +523,7 @@
 						}
 					]
 				},
-				"description": "Returns a list of parks"
+				"description": "Returns a list of park objects."
 			},
 			"response": [
 				{
@@ -265,31 +532,55 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "api.parkscape.me/parks",
+							"raw": "api.parkscape.me/parks/1",
 							"host": [
 								"api",
 								"parkscape",
 								"me"
 							],
 							"path": [
-								"parks"
+								"parks",
+								"1"
 							]
 						}
 					},
-					"_postman_previewlanguage": null,
-					"header": null,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
 					"cookie": [],
-					"body": null
+					"body": "[\n    {\n        \"website\": \"https://www.nps.gov/abli/index.htm\",\n        \"activities\": \"[\\\"Astronomy\\\", \\\"Stargazing\\\", \\\"Food\\\", \\\"Picnicking\\\", \\\"Guided Tours\\\", \\\"Self-Guided Tours - Walking\\\", \\\"Hands-On\\\", \\\"Junior Ranger Program\\\", \\\"Wildlife Watching\\\", \\\"Birdwatching\\\", \\\"Park Film\\\", \\\"Museum Exhibits\\\", \\\"Shopping\\\", \\\"Bookstore and Park Store\\\", \\\"Gift Shop and Souvenirs\\\"]\",\n        \"fee\": 0,\n        \"description\": \"For over a century people from around the world have come to rural Central Kentucky to honor the humble beginnings of our 16th president, Abraham Lincoln. His early life on Kentucky's frontier shaped his character and prepared him to lead the nation through Civil War. Visit our country's first memorial to Lincoln, built with donations from young and old, and the site of his childhood home.\",\n        \"photos\": \"[\\\"https://www.nps.gov/common/uploads/structured_data/3C861078-1DD8-B71B-0B774A242EF6A706.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C861263-1DD8-B71B-0B71EF9B95F9644F.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C86137D-1DD8-B71B-0B978BACD7EBAEF1.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C8614D1-1DD8-B71B-0B1AF72CA452B051.jpg\\\"]\",\n        \"nearest_airports\": \"[{\\\"id\\\": 393, \\\"name\\\": \\\"Louisville International Airport (Standiford Field)\\\", \\\"distance\\\": 0.5932175859264418, \\\"iata_code\\\": \\\"SDF\\\"}, {\\\"id\\\": 77, \\\"name\\\": \\\"Bowling Green-Warren County Regional Airport\\\", \\\"distance\\\": 0.9780201688313114, \\\"iata_code\\\": \\\"BWG\\\"}, {\\\"id\\\": 384, \\\"name\\\": \\\"Blue Grass Airport\\\", \\\"distance\\\": 1.162151574461434, \\\"iata_code\\\": \\\"LEX\\\"}]\",\n        \"topics\": \"[\\\"Birthplace\\\", \\\"Presidents\\\", \\\"Animals\\\", \\\"Birds\\\", \\\"Caves, Caverns and Karst\\\", \\\"Geology\\\", \\\"Groundwater\\\", \\\"Freshwater Springs\\\", \\\"Night Sky\\\"]\",\n        \"weekdays\": \"[\\\"9:00AM - 5:00PM\\\", \\\"9:00AM - 5:00PM\\\", \\\"9:00AM - 5:00PM\\\", \\\"9:00AM - 5:00PM\\\", \\\"9:00AM - 5:00PM\\\", \\\"9:00AM - 5:00PM\\\", \\\"9:00AM - 5:00PM\\\"]\",\n        \"longitude\": -85.6733,\n        \"id\": 1,\n        \"states\": \"KY\",\n        \"phone\": \"2703583137\",\n        \"latitude\": 37.5859,\n        \"nearest_cities\": \"[{\\\"id\\\": 60, \\\"name\\\": \\\"Louisville, KY\\\", \\\"distance\\\": 0.6738972977711072}, {\\\"id\\\": 57, \\\"name\\\": \\\"Lexington, KY\\\", \\\"distance\\\": 1.2616223904324833}, {\\\"id\\\": 19, \\\"name\\\": \\\"Nashville, TN\\\", \\\"distance\\\": 1.803039901297087}]\",\n        \"email\": \"ABLI_Administration@nps.gov\",\n        \"name\": \"Abraham Lincoln Birthplace National Historical Park\"\n    },\n    {\n        \"website\": \"https://www.nps.gov/acad/index.htm\",\n        \"activities\": \"[\\\"Arts and Culture\\\", \\\"Cultural Demonstrations\\\", \\\"Astronomy\\\", \\\"Stargazing\\\", \\\"Biking\\\", \\\"Boating\\\", \\\"Camping\\\", \\\"Group Camping\\\", \\\"Climbing\\\", \\\"Rock Climbing\\\", \\\"Compass and GPS\\\", \\\"Geocaching\\\", \\\"Fishing\\\", \\\"Freshwater Fishing\\\", \\\"Fly Fishing\\\", \\\"Saltwater Fishing\\\", \\\"Food\\\", \\\"Picnicking\\\", \\\"Guided Tours\\\", \\\"Bus/Shuttle Guided Tour\\\", \\\"Boat Tour\\\", \\\"Hands-On\\\", \\\"Citizen Science\\\", \\\"Hiking\\\", \\\"Front-Country Hiking\\\", \\\"Horse Trekking\\\", \\\"Horseback Riding\\\", \\\"Ice Skating\\\", \\\"Paddling\\\", \\\"Canoeing\\\", \\\"Kayaking\\\", \\\"Stand Up Paddleboarding\\\", \\\"Junior Ranger Program\\\", \\\"Skiing\\\", \\\"Cross-Country Skiing\\\", \\\"Snow Play\\\", \\\"Snowmobiling\\\", \\\"Snowshoeing\\\", \\\"Swimming\\\", \\\"Freshwater Swimming\\\", \\\"Saltwater Swimming\\\", \\\"Wildlife Watching\\\", \\\"Birdwatching\\\", \\\"Park Film\\\", \\\"Shopping\\\", \\\"Bookstore and Park Store\\\"]\",\n        \"fee\": 30,\n        \"description\": \"Acadia National Park protects the natural beauty of the highest rocky headlands along the Atlantic coastline of the United States, an abundance of habitats, and a rich cultural heritage. At 4 million visits a year, it's one of the top 10 most-visited national parks in the United States. Visitors enjoy 27 miles of historic motor roads, 158 miles of hiking trails, and 45 miles of carriage roads.\",\n        \"photos\": \"[\\\"https://www.nps.gov/common/uploads/structured_data/3C7B45AE-1DD8-B71B-0B7EE131C7DFC2F5.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7B4BEC-1DD8-B71B-0B2CF833F93140FF.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7B477B-1DD8-B71B-0BCB48E009241BAA.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7B48F9-1DD8-B71B-0BD3B413E58978F8.jpg\\\"]\",\n        \"nearest_airports\": \"[{\\\"id\\\": 45, \\\"name\\\": \\\"Hancock County-Bar Harbor Airport\\\", \\\"distance\\\": 0.1200935062232683, \\\"iata_code\\\": \\\"BHB\\\"}, {\\\"id\\\": 44, \\\"name\\\": \\\"Bangor International Airport\\\", \\\"distance\\\": 0.6997344540909738, \\\"iata_code\\\": \\\"BGR\\\"}, {\\\"id\\\": 570, \\\"name\\\": \\\"Knox County Regional Airport\\\", \\\"distance\\\": 0.9153308760972666, \\\"iata_code\\\": \\\"RKD\\\"}]\",\n        \"topics\": \"[\\\"Arts\\\", \\\"Painting\\\", \\\"Photography\\\", \\\"Poetry and Literature\\\", \\\"Sculpture\\\", \\\"Colonization and Settlement\\\", \\\"Maritime\\\", \\\"Lighthouses\\\", \\\"Monuments and Memorials\\\", \\\"Schools and Education\\\", \\\"Transportation\\\", \\\"Bridges\\\", \\\"Roads, Routes and Highways\\\", \\\"Tragic Events\\\", \\\"Catastrophic Fires\\\", \\\"Women's History\\\", \\\"Animals\\\", \\\"Birds\\\", \\\"Fish\\\", \\\"Climate Change\\\", \\\"Fire\\\", \\\"Forests and Woodlands\\\", \\\"Geology\\\", \\\"Lakes\\\", \\\"Mountains\\\", \\\"Night Sky\\\", \\\"Astronomy\\\", \\\"Oceans\\\", \\\"Rock Landscapes and Features\\\", \\\"Trails\\\", \\\"Wetlands\\\"]\",\n        \"weekdays\": \"[\\\"All Day\\\", \\\"All Day\\\", \\\"All Day\\\", \\\"All Day\\\", \\\"All Day\\\", \\\"All Day\\\", \\\"All Day\\\"]\",\n        \"longitude\": -68.2475,\n        \"id\": 2,\n        \"states\": \"ME\",\n        \"phone\": \"2072883338\",\n        \"latitude\": 44.4093,\n        \"nearest_cities\": \"[{\\\"id\\\": 22, \\\"name\\\": \\\"Boston, MA\\\", \\\"distance\\\": 3.48064178867878}, {\\\"id\\\": 0, \\\"name\\\": \\\"New York, NY\\\", \\\"distance\\\": 6.815703576623772}, {\\\"id\\\": 68, \\\"name\\\": \\\"Jersey City, NJ\\\", \\\"distance\\\": 6.8950133710673125}]\",\n        \"email\": \"acadia_information@nps.gov\",\n        \"name\": \"Acadia National Park\"\n    },\n    {\n        \"website\": \"https://www.nps.gov/adam/index.htm\",\n        \"activities\": \"[\\\"Guided Tours\\\", \\\"Living History\\\", \\\"First Person Interpretation\\\", \\\"Park Film\\\", \\\"Shopping\\\", \\\"Bookstore and Park Store\\\"]\",\n        \"fee\": 15,\n        \"description\": \"From the sweet little farm at the foot of Penn’s Hill to the gentleman’s country estate at Peace field, Adams National Historical Park is the story of “heroes, statesman, philosophers … and learned women” whose ideas and actions helped to transform thirteen disparate colonies into one united nation.\",\n        \"photos\": \"[\\\"https://www.nps.gov/common/uploads/structured_data/3C7C7416-1DD8-B71B-0B1B30D0827F7C74.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7C7565-1DD8-B71B-0BEC729A3E865792.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7C76BE-1DD8-B71B-0B6DFACFB45AC5A4.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7C780E-1DD8-B71B-0B18B8DB9F39704F.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7C7945-1DD8-B71B-0BE14B48DD78B777.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7C7A77-1DD8-B71B-0BDA92321AD899C5.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7C7BE3-1DD8-B71B-0B864F7398605B7E.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7C7D4E-1DD8-B71B-0B48B5CDE41703D7.jpg\\\"]\",\n        \"nearest_airports\": \"[{\\\"id\\\": 72, \\\"name\\\": \\\"Logan International Airport\\\", \\\"distance\\\": 0.1102348436306943, \\\"iata_code\\\": \\\"BOS\\\"}, {\\\"id\\\": 54, \\\"name\\\": \\\"Laurence G. Hanscom Field\\\", \\\"distance\\\": 0.34833686418908477, \\\"iata_code\\\": \\\"BED\\\"}, {\\\"id\\\": 545, \\\"name\\\": \\\"Theodore Francis Green State Airport\\\", \\\"distance\\\": 0.6761795404781771, \\\"iata_code\\\": \\\"PVD\\\"}]\",\n        \"topics\": \"[\\\"American Revolution\\\", \\\"Women's History\\\"]\",\n        \"weekdays\": \"[\\\"10:00AM - 4:00PM\\\", \\\"10:00AM - 4:00PM\\\", \\\"10:00AM - 4:00PM\\\", \\\"10:00AM - 4:00PM\\\", \\\"10:00AM - 4:00PM\\\", \\\"Closed\\\", \\\"Closed\\\"]\",\n        \"longitude\": -71.0116,\n        \"id\": 3,\n        \"states\": \"MA\",\n        \"phone\": \"617-773-1177\",\n        \"latitude\": 42.2554,\n        \"nearest_cities\": \"[{\\\"id\\\": 22, \\\"name\\\": \\\"Boston, MA\\\", \\\"distance\\\": 0.11373649586427316}, {\\\"id\\\": 0, \\\"name\\\": \\\"New York, NY\\\", \\\"distance\\\": 3.343076357555371}, {\\\"id\\\": 68, \\\"name\\\": \\\"Jersey City, NJ\\\", \\\"distance\\\": 3.4253510121666513}]\",\n        \"email\": \"ADAM_Visitor_Center@nps.gov\",\n        \"name\": \"Adams National Historical Park\"\n    },\n    {\n        \"website\": \"https://www.nps.gov/afam/index.htm\",\n        \"activities\": \"[\\\"Guided Tours\\\", \\\"Self-Guided Tours - Walking\\\"]\",\n        \"fee\": 0,\n        \"description\": \"Over 200,000 African-American soldiers and sailors served in the U.S. Army and Navy during the Civil War. Their service helped to end the war and free over four million slaves. The African American Civil War Memorial honors their service and sacrifice.\",\n        \"photos\": \"[\\\"https://www.nps.gov/common/uploads/structured_data/3C816B50-1DD8-B71B-0BF380049FB6B6A2.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C816C97-1DD8-B71B-0B7B2A0DD09C870A.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C816DF6-1DD8-B71B-0B5D792777650EA4.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/1DA05382-E7D7-BD05-0A4A7ED42138D49D.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/1E29A16A-C551-66A4-9DABCD61403D61C7.jpg\\\"]\",\n        \"nearest_airports\": \"[{\\\"id\\\": 701, \\\"name\\\": \\\"Ronald Reagan Washington National Airport\\\", \\\"distance\\\": 0.06688917000531831, \\\"iata_code\\\": \\\"DCA\\\"}, {\\\"id\\\": 700, \\\"name\\\": \\\"Washington Dulles International Airport\\\", \\\"distance\\\": 0.432080869183079, \\\"iata_code\\\": \\\"IAD\\\"}, {\\\"id\\\": 43, \\\"name\\\": \\\"Baltimore/Washington International Thurgood Marshall Airport\\\", \\\"distance\\\": 0.4426040036194832, \\\"iata_code\\\": \\\"BWI\\\"}]\",\n        \"topics\": \"[\\\"African American Heritage\\\", \\\"Monuments and Memorials\\\", \\\"Wars and Conflicts\\\", \\\"Civil War\\\"]\",\n        \"weekdays\": \"[\\\"All Day\\\", \\\"All Day\\\", \\\"All Day\\\", \\\"All Day\\\", \\\"All Day\\\", \\\"All Day\\\", \\\"All Day\\\"]\",\n        \"longitude\": -77.026,\n        \"id\": 4,\n        \"states\": \"DC\",\n        \"phone\": \"2024266841\",\n        \"latitude\": 38.9166,\n        \"nearest_cities\": \"[{\\\"id\\\": 20, \\\"name\\\": \\\"Washington, DC\\\", \\\"distance\\\": 0.02386120281964395}, {\\\"id\\\": 94, \\\"name\\\": \\\"Arlington, VA\\\", \\\"distance\\\": 0.08599073496604716}, {\\\"id\\\": 28, \\\"name\\\": \\\"Baltimore, MD\\\", \\\"distance\\\": 0.5576290922288718}]\",\n        \"email\": \"national_mall@nps.gov\",\n        \"name\": \"African American Civil War Memorial\"\n    },\n    {\n        \"website\": \"https://www.nps.gov/afbg/index.htm\",\n        \"activities\": \"[\\\"Arts and Culture\\\", \\\"Guided Tours\\\", \\\"Junior Ranger Program\\\", \\\"Park Film\\\", \\\"Museum Exhibits\\\", \\\"Shopping\\\", \\\"Bookstore and Park Store\\\"]\",\n        \"fee\": 0,\n        \"description\": \"African Burial Ground is the oldest and largest known excavated burial ground in North America for both free and enslaved Africans. It protects the historic role slavery played in building New York\",\n        \"photos\": \"[\\\"https://www.nps.gov/common/uploads/structured_data/3C8554EA-1DD8-B71B-0BE6FF3BF04C18B8.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/7DD7997F-1DD8-B71B-0B31BFA87CFF6B77.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/7DE9E906-1DD8-B71B-0BE6C87ADBA53620.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/7DF18622-1DD8-B71B-0BC858B0C844569E.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/7DF85D09-1DD8-B71B-0BAB5B558B9CEAA9.jpg\\\"]\",\n        \"nearest_airports\": \"[{\\\"id\\\": 467, \\\"name\\\": \\\"LaGuardia Airport\\\", \\\"distance\\\": 0.1446641043169716, \\\"iata_code\\\": \\\"LGA\\\"}, {\\\"id\\\": 468, \\\"name\\\": \\\"Newark Liberty International Airport\\\", \\\"distance\\\": 0.17181406671961702, \\\"iata_code\\\": \\\"EWR\\\"}, {\\\"id\\\": 466, \\\"name\\\": \\\"John F. Kennedy International Airport\\\", \\\"distance\\\": 0.23788146355316175, \\\"iata_code\\\": \\\"JFK\\\"}]\",\n        \"topics\": \"[\\\"African American Heritage\\\", \\\"Archeology\\\", \\\"Burial, Cemetery and Gravesite\\\", \\\"Colonization and Settlement\\\", \\\"Enslavement\\\", \\\"Monuments and Memorials\\\", \\\"Social Movements\\\", \\\"Urban America\\\", \\\"Women's History\\\"]\",\n        \"weekdays\": \"[\\\"Closed\\\", \\\"10:00AM - 4:00PM\\\", \\\"10:00AM - 4:00PM\\\", \\\"10:00AM - 4:00PM\\\", \\\"10:00AM - 4:00PM\\\", \\\"10:00AM - 4:00PM\\\", \\\"Closed\\\"]\",\n        \"longitude\": -74.0045,\n        \"id\": 5,\n        \"states\": \"NY\",\n        \"phone\": \"2122384367\",\n        \"latitude\": 40.7145,\n        \"nearest_cities\": \"[{\\\"id\\\": 0, \\\"name\\\": \\\"New York, NY\\\", \\\"distance\\\": 0.030098336927014697}, {\\\"id\\\": 68, \\\"name\\\": \\\"Jersey City, NJ\\\", \\\"distance\\\": 0.0744257273071181}, {\\\"id\\\": 61, \\\"name\\\": \\\"Newark, NJ\\\", \\\"distance\\\": 0.16922121488866074}]\",\n        \"email\": \"african_burial_ground@nps.gov\",\n        \"name\": \"African Burial Ground National Monument\"\n    },\n    {\n        \"website\": \"https://www.nps.gov/agfo/index.htm\",\n        \"activities\": \"[\\\"Arts and Culture\\\", \\\"Cultural Demonstrations\\\", \\\"Astronomy\\\", \\\"Stargazing\\\", \\\"Food\\\", \\\"Picnicking\\\", \\\"Guided Tours\\\", \\\"Self-Guided Tours - Walking\\\", \\\"Hiking\\\", \\\"Junior Ranger Program\\\", \\\"Wildlife Watching\\\", \\\"Birdwatching\\\", \\\"Park Film\\\", \\\"Museum Exhibits\\\", \\\"Shopping\\\", \\\"Bookstore and Park Store\\\"]\",\n        \"fee\": 0,\n        \"description\": \"In the early 1900s, paleontologists unearthed the Age of Mammals when they found full skeletons of extinct Miocene mammals in the hills of Nebraska -- species previously only known through fragments. At the same time, an age of friendship began between rancher James Cook and Chief Red Cloud of the Lakota. These two unprecedented events are preserved and protected here... at Agate Fossil Beds.\",\n        \"photos\": \"[\\\"https://www.nps.gov/common/uploads/structured_data/3C7A058F-1DD8-B71B-0B188ED102F7285F.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7A06A9-1DD8-B71B-0BA914D99661189C.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7A07B9-1DD8-B71B-0B077C3CA4979281.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7A08CC-1DD8-B71B-0B129817C3E756C3.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7A0A12-1DD8-B71B-0BC1CC6CDF2CFD4E.jpg\\\"]\",\n        \"nearest_airports\": \"[{\\\"id\\\": 608, \\\"name\\\": \\\"Western Nebraska Regional Airport (William B. Heilig Field)\\\", \\\"distance\\\": 0.5707130977931848, \\\"iata_code\\\": \\\"BFF\\\"}, {\\\"id\\\": 107, \\\"name\\\": \\\"Chadron Municipal Airport\\\", \\\"distance\\\": 0.7730404995442791, \\\"iata_code\\\": \\\"CDR\\\"}, {\\\"id\\\": 18, \\\"name\\\": \\\"Alliance Municipal Airport\\\", \\\"distance\\\": 1.0129537288355015, \\\"iata_code\\\": \\\"AIA\\\"}]\",\n        \"topics\": \"[\\\"Farming and Agriculture\\\", \\\"Ranches\\\", \\\"Native American Heritage\\\", \\\"Westward Expansion\\\", \\\"Homesteading\\\", \\\"Animals\\\", \\\"Birds\\\", \\\"Tortoises and Turtles\\\", \\\"Fossils and Paleontology\\\", \\\"Geology\\\", \\\"Grasslands\\\", \\\"Prairies\\\", \\\"Night Sky\\\", \\\"River and Riparian\\\", \\\"Rock Landscapes and Features\\\", \\\"Scenic Views\\\"]\",\n        \"weekdays\": \"[\\\"Sunrise to Sunset\\\", \\\"Sunrise to Sunset\\\", \\\"Sunrise to Sunset\\\", \\\"Sunrise to Sunset\\\", \\\"Sunrise to Sunset\\\", \\\"Sunrise to Sunset\\\", \\\"Sunrise to Sunset\\\"]\",\n        \"longitude\": -103.754,\n        \"id\": 6,\n        \"states\": \"NE\",\n        \"phone\": \"3086654113\",\n        \"latitude\": 42.4217,\n        \"nearest_cities\": \"[{\\\"id\\\": 47, \\\"name\\\": \\\"Aurora, CO\\\", \\\"distance\\\": 2.900085795161267}, {\\\"id\\\": 18, \\\"name\\\": \\\"Denver, CO\\\", \\\"distance\\\": 2.951440340729009}, {\\\"id\\\": 38, \\\"name\\\": \\\"Colorado Springs, CO\\\", \\\"distance\\\": 3.743258361244273}]\",\n        \"email\": \"agfo_ranger_activities@nps.gov\",\n        \"name\": \"Agate Fossil Beds National Monument\"\n    },\n    {\n        \"website\": \"https://www.nps.gov/alka/index.htm\",\n        \"activities\": \"[\\\"Arts and Culture\\\", \\\"Cultural Demonstrations\\\", \\\"Auto and ATV\\\", \\\"Scenic Driving\\\", \\\"Biking\\\", \\\"Mountain Biking\\\", \\\"Road Biking\\\", \\\"Boating\\\", \\\"Motorized Boating\\\", \\\"Sailing\\\", \\\"Boat Tour\\\", \\\"Camping\\\", \\\"Canoe or Kayak Camping\\\", \\\"Car or Front Country Camping\\\", \\\"Group Camping\\\", \\\"RV Camping\\\", \\\"Compass and GPS\\\", \\\"Geocaching\\\", \\\"Orienteering\\\", \\\"Fishing\\\", \\\"Saltwater Fishing\\\", \\\"Food\\\", \\\"Picnicking\\\", \\\"Guided Tours\\\", \\\"Self-Guided Tours - Walking\\\", \\\"Self-Guided Tours - Auto\\\", \\\"Hands-On\\\", \\\"Arts and Crafts\\\", \\\"Hiking\\\", \\\"Front-Country Hiking\\\", \\\"Paddling\\\", \\\"Canoeing\\\", \\\"Canoe or Kayak Camping\\\", \\\"Kayaking\\\", \\\"Stand Up Paddleboarding\\\", \\\"Junior Ranger Program\\\", \\\"SCUBA Diving\\\", \\\"Snorkeling\\\", \\\"Surfing\\\", \\\"Swimming\\\", \\\"Saltwater Swimming\\\", \\\"Wildlife Watching\\\", \\\"Birdwatching\\\"]\",\n        \"fee\": 0,\n        \"description\": \"Established in 2000 to preserve, protect and interpret traditional Native Hawaiian culture and natural resources, Ala Kahakai National Historic Trail is a 175 mile corridor encompassing a network of culturally and historically significant trails. This \\\"trail by the sea\\\" traverses wahi pana (storied landscapes), ancient Hawaiian sites and over 200 ahupuaʻa (traditional land divisions). Connect now!\",\n        \"photos\": \"[\\\"https://www.nps.gov/common/uploads/structured_data/3C86C7EB-1DD8-B71B-0BF2A10341617580.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3145A461-D738-080A-6DBFF05B9E67ED76.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/317D3E74-B539-A668-469F5AFB6CD52961.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/317D3E74-B539-A668-469F5AFB6CD52961.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/317D3E74-B539-A668-469F5AFB6CD52961.jpg\\\"]\",\n        \"nearest_airports\": \"[{\\\"id\\\": 357, \\\"name\\\": \\\"Kona International Airport at Keāhole\\\", \\\"distance\\\": 0.6114883919623244, \\\"iata_code\\\": \\\"KOA\\\"}, {\\\"id\\\": 330, \\\"name\\\": \\\"Waimea-Kohala Airport\\\", \\\"distance\\\": 0.8809749554892384, \\\"iata_code\\\": \\\"MUE\\\"}, {\\\"id\\\": 277, \\\"name\\\": \\\"Hilo International Airport\\\", \\\"distance\\\": 1.0249598448533477, \\\"iata_code\\\": \\\"ITO\\\"}]\",\n        \"topics\": \"[\\\"Architecture and Building\\\", \\\"Archeology\\\", \\\"Ruins\\\", \\\"Arts\\\", \\\"Sculpture\\\", \\\"Explorers and Expeditions\\\", \\\"Pacific Islander Heritage\\\", \\\"Religion and Spirituality\\\", \\\"Heiau\\\", \\\"Schools and Education\\\", \\\"Transportation\\\", \\\"Roads, Routes and Highways\\\", \\\"Ancient Seas\\\", \\\"Animals\\\", \\\"Birds\\\", \\\"Fish\\\", \\\"Coasts, Islands and Atolls\\\", \\\"Forests and Woodlands\\\", \\\"Rainforest\\\", \\\"Oceans\\\", \\\"Coral Reefs\\\", \\\"Scenic Views\\\", \\\"Trails\\\", \\\"The Tropics\\\", \\\"Volcanoes\\\", \\\"Waterfalls\\\"]\",\n        \"weekdays\": \"[\\\"Sunrise to Sunset\\\", \\\"Sunrise to Sunset\\\", \\\"Sunrise to Sunset\\\", \\\"Sunrise to Sunset\\\", \\\"Sunrise to Sunset\\\", \\\"Sunrise to Sunset\\\", \\\"Sunrise to Sunset\\\"]\",\n        \"longitude\": -155.891,\n        \"id\": 7,\n        \"states\": \"HI\",\n        \"phone\": \"(808) 217-0307\",\n        \"latitude\": 19.1447,\n        \"nearest_cities\": \"[{\\\"id\\\": 53, \\\"name\\\": \\\"Honolulu, HI\\\", \\\"distance\\\": 2.9235000586417548}, {\\\"id\\\": 16, \\\"name\\\": \\\"San Francisco, CA\\\", \\\"distance\\\": 38.306860204080614}, {\\\"id\\\": 42, \\\"name\\\": \\\"Oakland, CA\\\", \\\"distance\\\": 38.45106574067702}]\",\n        \"email\": \"aric_arakaki@nps.gov\",\n        \"name\": \"Ala Kahakai National Historic Trail\"\n    },\n    {\n        \"website\": \"https://www.nps.gov/alag/index.htm\",\n        \"activities\": \"[\\\"Boating\\\", \\\"Camping\\\", \\\"Backcountry Camping\\\", \\\"Fishing\\\", \\\"Hunting and Gathering\\\", \\\"Hunting\\\", \\\"Paddling\\\", \\\"Canoe or Kayak Camping\\\", \\\"Kayaking\\\", \\\"Whitewater Rafting\\\", \\\"Wildlife Watching\\\", \\\"Birdwatching\\\"]\",\n        \"fee\": 0,\n        \"description\": \"The headwaters of Alagnak Wild River lie within the rugged Aleutian Range of neighboring Katmai National Park and Preserve. Meandering west towards Bristol Bay and the Bering Sea, the Alagnak traverses the beautiful Alaska Peninsula, providing an unparalleled opportunity to experience the unique wilderness, wildlife, and cultural heritage of southwest Alaska.\",\n        \"photos\": \"[\\\"https://www.nps.gov/common/uploads/structured_data/3C7E810E-1DD8-B71B-0B92FDF31F5C0CA6.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7E8259-1DD8-B71B-0B45810F0CB6E02C.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7E8391-1DD8-B71B-0BB3E18B7F96110A.jpg\\\"]\",\n        \"nearest_airports\": \"[{\\\"id\\\": 299, \\\"name\\\": \\\"Igiugig Airport\\\", \\\"distance\\\": 0.3436124700112269, \\\"iata_code\\\": \\\"IGG\\\"}, {\\\"id\\\": 346, \\\"name\\\": \\\"King Salmon Airport\\\", \\\"distance\\\": 0.6551918716585126, \\\"iata_code\\\": \\\"AKN\\\"}, {\\\"id\\\": 380, \\\"name\\\": \\\"Levelock Airport (FAA: 9Z8)\\\", \\\"distance\\\": 0.7519767926866933, \\\"iata_code\\\": \\\"KLL\\\"}]\",\n        \"topics\": \"[\\\"Archeology\\\", \\\"Animals\\\", \\\"Birds\\\", \\\"Fish\\\", \\\"Arctic\\\", \\\"Tundra\\\", \\\"Groundwater\\\", \\\"River and Riparian\\\", \\\"Wetlands\\\", \\\"Wilderness\\\"]\",\n        \"weekdays\": \"[\\\"All Day\\\", \\\"All Day\\\", \\\"All Day\\\", \\\"All Day\\\", \\\"All Day\\\", \\\"All Day\\\", \\\"All Day\\\"]\",\n        \"longitude\": -156.112,\n        \"id\": 8,\n        \"states\": \"AK\",\n        \"phone\": \"9072463305\",\n        \"latitude\": 59.0518,\n        \"nearest_cities\": \"[{\\\"id\\\": 74, \\\"name\\\": \\\"Anchorage, AK\\\", \\\"distance\\\": 6.578614173802086}, {\\\"id\\\": 17, \\\"name\\\": \\\"Seattle, WA\\\", \\\"distance\\\": 35.66630594003457}, {\\\"id\\\": 24, \\\"name\\\": \\\"Portland, OR\\\", \\\"distance\\\": 36.0689408114012}]\",\n        \"email\": \"KATM_Visitor_Information@nps.gov\",\n        \"name\": \"Alagnak Wild River\"\n    },\n    {\n        \"website\": \"https://www.nps.gov/anch/index.htm\",\n        \"activities\": \"[]\",\n        \"fee\": 0,\n        \"description\": \"Alaska’s parks, forests, and refuges are rich and varied. The Alaska Public Lands Information Centers help visitors and residents to have meaningful, safe, enjoyable experiences on public lands, and encourages them to sustain the natural and cultural resources of Alaska. These centers provide trip-planning, interpretation, and education for all ages.\",\n        \"photos\": \"[\\\"https://www.nps.gov/common/uploads/structured_data/2595FA12-DF7A-1B6C-55D8F41ABCA2E011.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C86397B-1DD8-B71B-0B8F02FE5D76B46D.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C860F61-1DD8-B71B-0B4E7399BE80347C.jpg\\\"]\",\n        \"nearest_airports\": \"[{\\\"id\\\": 24, \\\"name\\\": \\\"Ted Stevens Anchorage International Airport\\\", \\\"distance\\\": 0.1047382245410125, \\\"iata_code\\\": \\\"ANC\\\"}, {\\\"id\\\": 649, \\\"name\\\": \\\"Talkeetna Airport\\\", \\\"distance\\\": 1.120865987163944, \\\"iata_code\\\": \\\"TKA\\\"}, {\\\"id\\\": 614, \\\"name\\\": \\\"Seward Airport\\\", \\\"distance\\\": 1.1884182731412385, \\\"iata_code\\\": \\\"SWD\\\"}]\",\n        \"topics\": \"[]\",\n        \"weekdays\": \"[\\\"Closed\\\", \\\"Closed\\\", \\\"Closed\\\", \\\"Closed\\\", \\\"Closed\\\", \\\"Closed\\\", \\\"Closed\\\"]\",\n        \"longitude\": -149.895,\n        \"id\": 9,\n        \"states\": \"AK\",\n        \"phone\": \"9076443661\",\n        \"latitude\": 61.2188,\n        \"nearest_cities\": \"[{\\\"id\\\": 74, \\\"name\\\": \\\"Anchorage, AK\\\", \\\"distance\\\": 0.005791470970336048}, {\\\"id\\\": 17, \\\"name\\\": \\\"Seattle, WA\\\", \\\"distance\\\": 30.740724430456343}, {\\\"id\\\": 24, \\\"name\\\": \\\"Portland, OR\\\", \\\"distance\\\": 31.419441145010452}]\",\n        \"email\": \"anch_web_mail@nps.gov\",\n        \"name\": \"Alaska Public Lands\"\n    },\n    {\n        \"website\": \"https://www.nps.gov/alca/index.htm\",\n        \"activities\": \"[\\\"Food\\\", \\\"Wildlife Watching\\\", \\\"Birdwatching\\\", \\\"Shopping\\\", \\\"Bookstore and Park Store\\\"]\",\n        \"fee\": 41,\n        \"description\": \"Alcatraz reveals stories of American incarceration, justice, and our common humanity. This small island was once a fort, a military prison, and a maximum security federal penitentiary. In 1969, the Indians of All Tribes occupied Alcatraz for 19 months in the name of freedom and Native American civil rights. We invite you to explore Alcatraz's complex history and natural beauty.\",\n        \"photos\": \"[\\\"https://www.nps.gov/common/uploads/structured_data/2514A14F-D5E3-BB31-4A0C4175BF61216A.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/5482A294-DB42-56E0-FCCCD03C986AE1DC.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/A5C1D012-1DD8-B71B-0BA00C730D46F141.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/A61F4F58-1DD8-B71B-0B981C552798242B.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/A64B4FF8-1DD8-B71B-0B63B232325C8081.jpg\\\"]\",\n        \"nearest_airports\": \"[{\\\"id\\\": 592, \\\"name\\\": \\\"San Francisco International Airport\\\", \\\"distance\\\": 0.21012587131487576, \\\"iata_code\\\": \\\"SFO\\\"}, {\\\"id\\\": 487, \\\"name\\\": \\\"Oakland International Airport\\\", \\\"distance\\\": 0.2331585144296384, \\\"iata_code\\\": \\\"OAK\\\"}, {\\\"id\\\": 149, \\\"name\\\": \\\"Buchanan Field Airport\\\", \\\"distance\\\": 0.4016534382143869, \\\"iata_code\\\": \\\"CCR\\\"}]\",\n        \"topics\": \"[\\\"Colonization and Settlement\\\", \\\"Forts\\\", \\\"Incarceration\\\", \\\"Jails and Prisons\\\", \\\"Maritime\\\", \\\"Maritime - Military\\\", \\\"Lighthouses\\\", \\\"Medicine\\\", \\\"Hospital\\\", \\\"Military\\\", \\\"US Army\\\", \\\"Native American Heritage\\\", \\\"Social Movements\\\", \\\"Wars and Conflicts\\\", \\\"Tribal Conflicts\\\", \\\"Animals\\\", \\\"Birds\\\"]\",\n        \"weekdays\": \"[\\\"9:00AM - 6:30PM\\\", \\\"9:00AM - 9:30PM\\\", \\\"9:00AM - 9:30PM\\\", \\\"9:00AM - 9:30PM\\\", \\\"9:00AM - 9:30PM\\\", \\\"9:00AM - 9:30PM\\\", \\\"9:00AM - 6:30PM\\\"]\",\n        \"longitude\": -122.423,\n        \"id\": 10,\n        \"states\": \"CA\",\n        \"phone\": \"4155614900\",\n        \"latitude\": 37.8268,\n        \"nearest_cities\": \"[{\\\"id\\\": 16, \\\"name\\\": \\\"San Francisco, CA\\\", \\\"distance\\\": 0.05195724964079634}, {\\\"id\\\": 42, \\\"name\\\": \\\"Oakland, CA\\\", \\\"distance\\\": 0.1538587922578291}, {\\\"id\\\": 98, \\\"name\\\": \\\"Fremont, CA\\\", \\\"distance\\\": 0.5160477761593785}]\",\n        \"email\": \"goga_alca_socialmedia@nps.gov\",\n        \"name\": \"Alcatraz Island\"\n    },\n    {\n        \"website\": \"https://www.nps.gov/aleu/index.htm\",\n        \"activities\": \"[\\\"Guided Tours\\\", \\\"Self-Guided Tours - Walking\\\", \\\"Self-Guided Tours - Auto\\\", \\\"Junior Ranger Program\\\", \\\"Wildlife Watching\\\", \\\"Birdwatching\\\", \\\"Museum Exhibits\\\"]\",\n        \"fee\": 6,\n        \"description\": \"During World War II the remote Aleutian Islands, home to the Unangax̂ (Aleut) people for over 8,000 years, became a fiercely contested battleground in the Pacific. This thousand-mile-long archipelago saw invasion by Japanese forces, the occupation of two islands; a mass relocation of Unangax̂ civilians; a 15-month air war; and one of the deadliest battles in the Pacific Theater.\",\n        \"photos\": \"[\\\"https://www.nps.gov/common/uploads/structured_data/3C7BC1AE-1DD8-B71B-0BF60FDE7A21822B.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7BC37B-1DD8-B71B-0BA4AF7F3700FE86.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7BC517-1DD8-B71B-0BD7C869F63B3276.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7BC68B-1DD8-B71B-0BED69DAACF6A5AC.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7BC7CF-1DD8-B71B-0B73637962E06C74.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C7BC97B-1DD8-B71B-0B9A70C0C0988F0E.jpg\\\"]\",\n        \"nearest_airports\": \"[{\\\"id\\\": 182, \\\"name\\\": \\\"Unalaska Airport\\\", \\\"distance\\\": 0.02925556637632747, \\\"iata_code\\\": \\\"DUT\\\"}, {\\\"id\\\": 474, \\\"name\\\": \\\"Nikolski Air Station\\\", \\\"distance\\\": 2.524812993946287, \\\"iata_code\\\": \\\"IKO\\\"}, {\\\"id\\\": 141, \\\"name\\\": \\\"Cold Bay Airport\\\", \\\"distance\\\": 4.012345727887876, \\\"iata_code\\\": \\\"CDB\\\"}]\",\n        \"topics\": \"[\\\"Archeology\\\", \\\"Aviation\\\", \\\"Colonization and Settlement\\\", \\\"Forts\\\", \\\"Incarceration\\\", \\\"Maritime\\\", \\\"Coastal Defenses\\\", \\\"Maritime - Military\\\", \\\"Ships and Shipwrecks\\\", \\\"Military\\\", \\\"US Army\\\", \\\"US Navy\\\", \\\"US Marines\\\", \\\"US Coast Guard\\\", \\\"US Air Force (Army Air Corps)\\\", \\\"Indigenous and Native Warrior\\\", \\\"Battlefields\\\", \\\"Monuments and Memorials\\\", \\\"Native American Heritage\\\", \\\"Religion and Spirituality\\\", \\\"Tragic Events\\\", \\\"Forced Marches\\\", \\\"Massacres\\\", \\\"Wars and Conflicts\\\", \\\"World War II\\\", \\\"Arctic\\\", \\\"Tundra\\\", \\\"Coasts, Islands and Atolls\\\", \\\"Mountains\\\", \\\"Scenic Views\\\"]\",\n        \"weekdays\": \"[\\\"9:00AM - 10:00AM\\\", \\\"9:00AM - 10:00AM\\\", \\\"9:00AM - 10:00AM\\\", \\\"9:00AM - 10:00AM\\\", \\\"9:00AM - 10:00AM\\\", \\\"9:00AM - 10:00AM\\\", \\\"9:00AM - 10:00AM\\\"]\",\n        \"longitude\": -166.52,\n        \"id\": 11,\n        \"states\": \"AK\",\n        \"phone\": \"9076443472\",\n        \"latitude\": 53.9143,\n        \"nearest_cities\": \"[{\\\"id\\\": 74, \\\"name\\\": \\\"Anchorage, AK\\\", \\\"distance\\\": 18.15351291827562}, {\\\"id\\\": 53, \\\"name\\\": \\\"Honolulu, HI\\\", \\\"distance\\\": 33.73809799687143}, {\\\"id\\\": 17, \\\"name\\\": \\\"Seattle, WA\\\", \\\"distance\\\": 44.63562080295288}]\",\n        \"email\": \"rachel_mason@nps.gov\",\n        \"name\": \"Aleutian Islands World War II National Historic Area\"\n    },\n    {\n        \"website\": \"https://www.nps.gov/alfl/index.htm\",\n        \"activities\": \"[\\\"Arts and Culture\\\", \\\"Craft Demonstrations\\\", \\\"Camping\\\", \\\"Guided Tours\\\", \\\"Junior Ranger Program\\\", \\\"Park Film\\\", \\\"Museum Exhibits\\\"]\",\n        \"fee\": 0,\n        \"description\": \"13,000 years ago, this site was well-known by mammoth hunters as a source of flint for tools. Centuries passed, but the colorful flint never lost its value or usefulness in the Texas Panhandle. Learn how important this site was to the survival, commerce and culture of the people of the High Plains.\",\n        \"photos\": \"[\\\"https://www.nps.gov/common/uploads/structured_data/3C7EFA64-1DD8-B71B-0BD2E6EF7D52B0BF.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/EEB4ED5A-C735-67E9-6E61B710C6E01D72.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C8458AC-1DD8-B71B-0B159537D27B805A.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C845A12-1DD8-B71B-0B5DCB73747198EF.jpg\\\", \\\"https://www.nps.gov/common/uploads/structured_data/3C845BA9-1DD8-B71B-0B63C45334DC3128.jpg\\\"]\",\n        \"nearest_airports\": \"[{\\\"id\\\": 21, \\\"name\\\": \\\"Rick Husband Amarillo International Airport\\\", \\\"distance\\\": 0.36340385638855777, \\\"iata_code\\\": \\\"AMA\\\"}, {\\\"id\\\": 385, \\\"name\\\": \\\"Liberal Mid-America Regional Airport\\\", \\\"distance\\\": 1.6299487718634258, \\\"iata_code\\\": \\\"LBL\\\"}, {\\\"id\\\": 137, \\\"name\\\": \\\"Clovis Municipal Airport\\\", \\\"distance\\\": 1.8204709820772988, \\\"iata_code\\\": \\\"CVN\\\"}]\",\n        \"topics\": \"[\\\"Native American Heritage\\\", \\\"Geology\\\"]\",\n        \"weekdays\": \"[\\\"9:00AM - 4:00PM\\\", \\\"9:00AM - 4:00AM\\\", \\\"9:00AM - 4:00PM\\\", \\\"9:00AM - 4:00PM\\\", \\\"9:00AM - 4:00PM\\\", \\\"9:00AM - 4:00PM\\\", \\\"9:00AM - 4:00PM\\\"]\",\n        \"longitude\": -101.672,\n        \"id\": 12,\n        \"states\": \"TX\",\n        \"phone\": \"8068576680\",\n        \"latitude\": 35.582,\n        \"nearest_cities\": \"[{\\\"id\\\": 85, \\\"name\\\": \\\"Lubbock, TX\\\", \\\"distance\\\": 2.0124866728073165}, {\\\"id\\\": 21, \\\"name\\\": \\\"Oklahoma City, OK\\\", \\\"distance\\\": 4.156845462599139}, {\\\"id\\\": 38, \\\"name\\\": \\\"Colorado Springs, CO\\\", \\\"distance\\\": 4.5271731178269645}]\",\n        \"email\": \"lamr_interpretation@nps.gov\",\n        \"name\": \"Alibates Flint Quarries National Monument\"\n    }\n]"
 				}
 			]
 		},
 		{
 			"name": "Cities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"GET cities list API call\", function () {\r",
+							"    pm.test(\"Status code is 200\", function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "api.parkscape.me/cities?state=<string>&maxpop=<int>&minpop=<int>&maxbudget=<int>&minsafety=<int>&minrating=<int>",
+					"raw": "api.parkscape.me/cities?page=<int>&state=<string>&maxpop=<int>&minpop=<int>&maxbudget=<int>&minsafety=<int>&minrating=<int>",
 					"host": [
 						"api",
 						"parkscape",
@@ -300,9 +591,14 @@
 					],
 					"query": [
 						{
+							"key": "page",
+							"value": "<int>",
+							"description": "Get page of cities."
+						},
+						{
 							"key": "state",
 							"value": "<string>",
-							"description": "Find cities in the specified state. "
+							"description": "Find cities only in the specified state. "
 						},
 						{
 							"key": "maxpop",
@@ -331,7 +627,7 @@
 						}
 					]
 				},
-				"description": "Returns a list of cities"
+				"description": "Returns a list of city objects."
 			},
 			"response": [
 				{
@@ -340,31 +636,47 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "api.parkscape.me/cities",
+							"raw": "api.parkscape.me/cities/1",
 							"host": [
 								"api",
 								"parkscape",
 								"me"
 							],
 							"path": [
-								"cities"
+								"cities",
+								"1"
 							]
 						}
 					},
 					"_postman_previewlanguage": null,
 					"header": null,
 					"cookie": [],
-					"body": null
+					"body": "[ { \"rating\": 4.23729, \"airbnb_listings\": \"https://www.airbnb.com/s/New+York%2C+NY/homes\", \"short_name\": \"New York\", \"photo\": \"https://cdn.roadgoat.com/uploads/photo/image/608/travel-guide-of-new-york-ny-usa-original.jpg\", \"walkability\": \"https://www.walkscore.com/NY/New_York\", \"nearest_parks\": \"[{\\\"id\\\": 411, \\\"name\\\": \\\"Theodore Roosevelt Birthplace National Historic Site\\\", \\\"distance\\\": 0.005022664901314437}, {\\\"id\\\": 407, \\\"name\\\": \\\"Stonewall National Monument\\\", \\\"distance\\\": 0.01166220724550416}, {\\\"id\\\": 274, \\\"name\\\": \\\"Lower East Side Tenement Museum National Historic Site\\\", \\\"distance\\\": 0.02355944838260192}]\", \"longitude\": -73.9926, \"long_name\": \"New York, New York State, US\", \"cost\": 8, \"safety\": 4, \"hiking_trails\": \"https://www.alltrails.com/explore?b_tl_lat=41.34&b_tl_lng=-74.59&b_br_lat=40.14&b_br_lng=-73.39\", \"nearest_airports\": \"[{\\\"id\\\": 467, \\\"name\\\": \\\"LaGuardia Airport\\\", \\\"distance\\\": 0.12362443210386004, \\\"iata_code\\\": \\\"LGA\\\"}, {\\\"id\\\": 468, \\\"name\\\": \\\"Newark Liberty International Airport\\\", \\\"distance\\\": 0.189326610036722, \\\"iata_code\\\": \\\"EWR\\\"}, {\\\"id\\\": 466, \\\"name\\\": \\\"John F. Kennedy International Airport\\\", \\\"distance\\\": 0.23700150857959837, \\\"iata_code\\\": \\\"JFK\\\"}]\", \"latitude\": 40.7422, \"population\": 8175133, \"id\": 1, \"name\": \"New York, NY\" }, { \"rating\": 3.90909, \"airbnb_listings\": \"https://www.airbnb.com/s/Los+Angeles%2C+CA/homes\", \"short_name\": \"Los Angeles\", \"photo\": \"https://cdn.roadgoat.com/uploads/photo/image/691/travel-guide-of-los-angeles-ca-usa-original.jpg\", \"walkability\": \"https://www.walkscore.com/CA/Los_Angeles\", \"nearest_parks\": \"[{\\\"id\\\": 391, \\\"name\\\": \\\"Santa Monica Mountains National Recreation Area\\\", \\\"distance\\\": 0.5291457259291961}, {\\\"id\\\": 241, \\\"name\\\": \\\"Juan Bautista de Anza National Historic Trail\\\", \\\"distance\\\": 1.034903722137139}, {\\\"id\\\": 111, \\\"name\\\": \\\"C\\u00e9sar E. Ch\\u00e1vez National Monument\\\", \\\"distance\\\": 1.2173061848054252}]\", \"longitude\": -118.244, \"long_name\": \"Los Angeles, California, US\", \"cost\": 7, \"safety\": 4, \"hiking_trails\": \"https://www.alltrails.com/explore?b_tl_lat=34.65&b_tl_lng=-118.84&b_br_lat=33.45&b_br_lng=-117.64\", \"nearest_airports\": \"[{\\\"id\\\": 91, \\\"name\\\": \\\"Bob Hope Airport\\\", \\\"distance\\\": 0.1851320590821596, \\\"iata_code\\\": \\\"BUR\\\"}, {\\\"id\\\": 392, \\\"name\\\": \\\"Los Angeles International Airport\\\", \\\"distance\\\": 0.1985364754900248, \\\"iata_code\\\": \\\"LAX\\\"}, {\\\"id\\\": 291, \\\"name\\\": \\\"Hughes Airport\\\", \\\"distance\\\": 0.20043920699554096, \\\"iata_code\\\": \\\"HUS\\\"}]\", \"latitude\": 34.0522, \"population\": 3792621, \"id\": 2, \"name\": \"Los Angeles, CA\" }, { \"rating\": 4.42424, \"airbnb_listings\": \"https://www.airbnb.com/s/Chicago%2C+IL/homes\", \"short_name\": \"Chicago\", \"photo\": \"https://cdn.roadgoat.com/uploads/photo/image/388/travel-guide-of-chicago-il-usa-original.jpg\", \"walkability\": \"https://www.walkscore.com/IL/Chicago\", \"nearest_parks\": \"[{\\\"id\\\": 361, \\\"name\\\": \\\"Pullman National Historical Park\\\", \\\"distance\\\": 0.16112449039346174}, {\\\"id\\\": 229, \\\"name\\\": \\\"Indiana Dunes National Park\\\", \\\"distance\\\": 0.5929156128787239}, {\\\"id\\\": 266, \\\"name\\\": \\\"Lincoln Home National Historic Site\\\", \\\"distance\\\": 2.8626299067139303}]\", \"longitude\": -87.65, \"long_name\": \"Chicago, Illinois, US\", \"cost\": 7, \"safety\": 4, \"hiking_trails\": \"https://www.alltrails.com/explore?b_tl_lat=42.45&b_tl_lng=-88.25&b_br_lat=41.25&b_br_lng=-87.05\", \"nearest_airports\": \"[{\\\"id\\\": 120, \\\"name\\\": \\\"Midway International Airport\\\", \\\"distance\\\": 0.12013959217926726, \\\"iata_code\\\": \\\"MDW\\\"}, {\\\"id\\\": 121, \\\"name\\\": \\\"O'Hare International Airport\\\", \\\"distance\\\": 0.28565163151818845, \\\"iata_code\\\": \\\"ORD\\\"}, {\\\"id\\\": 230, \\\"name\\\": \\\"Gary/Chicago International Airport\\\", \\\"distance\\\": 0.3351660653243303, \\\"iata_code\\\": \\\"GYY\\\"}]\", \"latitude\": 41.85, \"population\": 2695598, \"id\": 3, \"name\": \"Chicago, IL\" }, { \"rating\": 2.92857, \"airbnb_listings\": \"https://www.airbnb.com/s/Houston%2C+TX/homes\", \"short_name\": \"Houston\", \"photo\": \"https://cdn.roadgoat.com/uploads/photo/image/384/travel-guide-of-houston-tx-usa-original.jpg\", \"walkability\": \"https://www.walkscore.com/TX/Houston\", \"nearest_parks\": \"[{\\\"id\\\": 39, \\\"name\\\": \\\"Big Thicket National Preserve\\\", \\\"distance\\\": 1.1984237844876633}, {\\\"id\\\": 127, \\\"name\\\": \\\"El Camino Real de los Tejas National Historic Trail\\\", \\\"distance\\\": 2.0036943195268737}, {\\\"id\\\": 441, \\\"name\\\": \\\"Waco Mammoth National Monument\\\", \\\"distance\\\": 2.583967668444003}]\", \"longitude\": -95.3633, \"long_name\": \"Houston, Texas, US\", \"cost\": 6, \"safety\": 3, \"hiking_trails\": \"https://www.alltrails.com/explore?b_tl_lat=30.36&b_tl_lng=-95.96&b_br_lat=29.16&b_br_lng=-94.76\", \"nearest_airports\": \"[{\\\"id\\\": 289, \\\"name\\\": \\\"William P. Hobby Airport\\\", \\\"distance\\\": 0.14572673864463262, \\\"iata_code\\\": \\\"HOU\\\"}, {\\\"id\\\": 290, \\\"name\\\": \\\"George Bush Intercontinental Airport\\\", \\\"distance\\\": 0.2284803531947547, \\\"iata_code\\\": \\\"IAH\\\"}, {\\\"id\\\": 142, \\\"name\\\": \\\"Easterwood Airport (Easterwood Field)\\\", \\\"distance\\\": 1.2977335037013524, \\\"iata_code\\\": \\\"CLL\\\"}]\", \"latitude\": 29.7633, \"population\": 2099451, \"id\": 4, \"name\": \"Houston, TX\" }, { \"rating\": 3.92308, \"airbnb_listings\": \"https://www.airbnb.com/s/Phoenix%2C+AZ/homes\", \"short_name\": \"Phoenix\", \"photo\": \"https://cdn.roadgoat.com/uploads/photo/image/399/travel-guide-of-phoenix-az-usa-original.jpg\", \"walkability\": \"https://www.walkscore.com/AZ/Phoenix\", \"nearest_parks\": \"[{\\\"id\\\": 76, \\\"name\\\": \\\"Casa Grande Ruins National Monument\\\", \\\"distance\\\": 0.7049430380579429}, {\\\"id\\\": 421, \\\"name\\\": \\\"Tonto National Monument\\\", \\\"distance\\\": 0.9810894078831864}, {\\\"id\\\": 297, \\\"name\\\": \\\"Montezuma Castle National Monument\\\", \\\"distance\\\": 1.2022825853990131}]\", \"longitude\": -112.074, \"long_name\": \"Phoenix, Arizona, US\", \"cost\": 6, \"safety\": 4, \"hiking_trails\": \"https://www.alltrails.com/explore?b_tl_lat=34.05&b_tl_lng=-112.67&b_br_lat=32.85&b_br_lng=-111.47\", \"nearest_airports\": \"[{\\\"id\\\": 516, \\\"name\\\": \\\"Phoenix Sky Harbor International Airport\\\", \\\"distance\\\": 0.06717560025038545, \\\"iata_code\\\": \\\"PHX\\\"}, {\\\"id\\\": 542, \\\"name\\\": \\\"Ernest A. Love Field\\\", \\\"distance\\\": 1.252281243810669, \\\"iata_code\\\": \\\"PRC\\\"}, {\\\"id\\\": 211, \\\"name\\\": \\\"Flagstaff Pulliam Airport\\\", \\\"distance\\\": 1.7393618193121885, \\\"iata_code\\\": \\\"FLG\\\"}]\", \"latitude\": 33.4484, \"population\": 1445632, \"id\": 5, \"name\": \"Phoenix, AZ\" }, { \"rating\": 3.76, \"airbnb_listings\": \"https://www.airbnb.com/s/Philadelphia%2C+PA/homes\", \"short_name\": \"Philadelphia\", \"photo\": \"https://cdn.roadgoat.com/uploads/photo/image/353/travel-guide-of-philadelphia-pa-usa-original.jpg\", \"walkability\": \"https://www.walkscore.com/PA/Philadelphia\", \"nearest_parks\": \"[{\\\"id\\\": 228, \\\"name\\\": \\\"Independence National Historical Park\\\", \\\"distance\\\": 0.01657946699744924}, {\\\"id\\\": 123, \\\"name\\\": \\\"Edgar Allan Poe National Historic Site\\\", \\\"distance\\\": 0.01681161213186734}, {\\\"id\\\": 410, \\\"name\\\": \\\"Thaddeus Kosciuszko National Memorial\\\", \\\"distance\\\": 0.018709491594837573}]\", \"longitude\": -75.1638, \"long_name\": \"Philadelphia, Pennsylvania, US\", \"cost\": 7, \"safety\": 4, \"hiking_trails\": \"https://www.alltrails.com/explore?b_tl_lat=40.55&b_tl_lng=-75.76&b_br_lat=39.35&b_br_lng=-74.56\", \"nearest_airports\": \"[{\\\"id\\\": 514, \\\"name\\\": \\\"Philadelphia International Airport\\\", \\\"distance\\\": 0.11071069706672108, \\\"iata_code\\\": \\\"PHL\\\"}, {\\\"id\\\": 670, \\\"name\\\": \\\"Trenton\\u2013Mercer Airport\\\", \\\"distance\\\": 0.47800438093076153, \\\"iata_code\\\": \\\"TTN\\\"}, {\\\"id\\\": 183, \\\"name\\\": \\\"Lehigh Valley International Airport\\\", \\\"distance\\\": 0.7525819107479224, \\\"iata_code\\\": \\\"ABE\\\"}]\", \"latitude\": 39.9523, \"population\": 1526006, \"id\": 6, \"name\": \"Philadelphia, PA\" }, { \"rating\": 4.07143, \"airbnb_listings\": \"https://www.airbnb.com/s/San+Antonio%2C+TX/homes\", \"short_name\": \"San Antonio\", \"photo\": \"https://cdn.roadgoat.com/uploads/photo/image/383/travel-guide-of-san-antonio-tx-usa-original.jpg\", \"walkability\": \"https://www.walkscore.com/TX/San_Antonio\", \"nearest_parks\": \"[{\\\"id\\\": 385, \\\"name\\\": \\\"San Antonio Missions National Historical Park\\\", \\\"distance\\\": 0.12890023019231267}, {\\\"id\\\": 275, \\\"name\\\": \\\"Lyndon B Johnson National Historical Park\\\", \\\"distance\\\": 0.8355619528678907}, {\\\"id\\\": 127, \\\"name\\\": \\\"El Camino Real de los Tejas National Historic Trail\\\", \\\"distance\\\": 1.333364300447712}]\", \"longitude\": -98.4936, \"long_name\": \"San Antonio, Texas, US\", \"cost\": 5, \"safety\": 4, \"hiking_trails\": \"https://www.alltrails.com/explore?b_tl_lat=30.02&b_tl_lng=-99.09&b_br_lat=28.82&b_br_lng=-97.89\", \"nearest_airports\": \"[{\\\"id\\\": 590, \\\"name\\\": \\\"San Antonio International Airport\\\", \\\"distance\\\": 0.11002165507299018, \\\"iata_code\\\": \\\"SAT\\\"}, {\\\"id\\\": 41, \\\"name\\\": \\\"Austin\\u2013Bergstrom International Airport\\\", \\\"distance\\\": 1.132459939381525, \\\"iata_code\\\": \\\"AUS\\\"}, {\\\"id\\\": 693, \\\"name\\\": \\\"Victoria Regional Airport\\\", \\\"distance\\\": 1.6743437122422014, \\\"iata_code\\\": \\\"VCT\\\"}]\", \"latitude\": 29.4241, \"population\": 1327407, \"id\": 7, \"name\": \"San Antonio, TX\" }, { \"rating\": 4.15385, \"airbnb_listings\": \"https://www.airbnb.com/s/San+Diego%2C+CA/homes\", \"short_name\": \"San Diego\", \"photo\": \"https://cdn.roadgoat.com/uploads/photo/image/413/travel-guide-of-san-diego-ca-usa-original.jpg\", \"walkability\": \"https://www.walkscore.com/CA/San_Diego\", \"nearest_parks\": \"[{\\\"id\\\": 57, \\\"name\\\": \\\"Cabrillo National Monument\\\", \\\"distance\\\": 0.09470397633858986}, {\\\"id\\\": 241, \\\"name\\\": \\\"Juan Bautista de Anza National Historic Trail\\\", \\\"distance\\\": 1.1609394298381326}, {\\\"id\\\": 240, \\\"name\\\": \\\"Joshua Tree National Park\\\", \\\"distance\\\": 1.7812697228967924}]\", \"longitude\": -117.157, \"long_name\": \"San Diego, California, US\", \"cost\": 7, \"safety\": 4, \"hiking_trails\": \"https://www.alltrails.com/explore?b_tl_lat=33.32&b_tl_lng=-117.76&b_br_lat=32.12&b_br_lng=-116.56\", \"nearest_airports\": \"[{\\\"id\\\": 591, \\\"name\\\": \\\"San Diego International Airport\\\", \\\"distance\\\": 0.04050253098265552, \\\"iata_code\\\": \\\"SAN\\\"}, {\\\"id\\\": 100, \\\"name\\\": \\\"McClellan\\u2013Palomar Airport (FAA: CRQ)\\\", \\\"distance\\\": 0.42919180962479, \\\"iata_code\\\": \\\"CLD\\\"}, {\\\"id\\\": 597, \\\"name\\\": \\\"John Wayne Airport (Orange County Airport)\\\", \\\"distance\\\": 1.194849106791315, \\\"iata_code\\\": \\\"SNA\\\"}]\", \"latitude\": 32.7153, \"population\": 1307402, \"id\": 8, \"name\": \"San Diego, CA\" }, { \"rating\": 3.46667, \"airbnb_listings\": \"https://www.airbnb.com/s/Dallas%2C+TX/homes\", \"short_name\": \"Dallas\", \"photo\": \"https://cdn.roadgoat.com/uploads/photo/image/385/travel-guide-of-dallas-tx-usa-original.jpg\", \"walkability\": \"https://www.walkscore.com/TX/Dallas\", \"nearest_parks\": \"[{\\\"id\\\": 441, \\\"name\\\": \\\"Waco Mammoth National Monument\\\", \\\"distance\\\": 1.2349409911986569}, {\\\"id\\\": 92, \\\"name\\\": \\\"Chickasaw National Recreation Area\\\", \\\"distance\\\": 1.689383578626973}, {\\\"id\\\": 127, \\\"name\\\": \\\"El Camino Real de los Tejas National Historic Trail\\\", \\\"distance\\\": 2.743064071553707}]\", \"longitude\": -96.8067, \"long_name\": \"Dallas, Texas, US\", \"cost\": 6, \"safety\": 4, \"hiking_trails\": \"https://www.alltrails.com/explore?b_tl_lat=33.38&b_tl_lng=-97.41&b_br_lat=32.18&b_br_lng=-96.21\", \"nearest_airports\": \"[{\\\"id\\\": 224, \\\"name\\\": \\\"Dallas/Fort Worth International Airport\\\", \\\"distance\\\": 0.2612130000593432, \\\"iata_code\\\": \\\"DFW\\\"}, {\\\"id\\\": 695, \\\"name\\\": \\\"Waco Regional Airport\\\", \\\"distance\\\": 1.2424737523585794, \\\"iata_code\\\": \\\"ACT\\\"}, {\\\"id\\\": 680, \\\"name\\\": \\\"Tyler Pounds Regional Airport\\\", \\\"distance\\\": 1.4622879382064151, \\\"iata_code\\\": \\\"TYR\\\"}]\", \"latitude\": 32.7831, \"population\": 1197816, \"id\": 9, \"name\": \"Dallas, TX\" }, { \"rating\": 3.4, \"airbnb_listings\": \"https://www.airbnb.com/s/San+Jose%2C+CA/homes\", \"short_name\": \"San Jose\", \"photo\": \"https://cdn.roadgoat.com/uploads/photo/image/1893/9551931765_5d28e6a037_o.jpg\", \"walkability\": \"https://www.walkscore.com/CA/San_Jose\", \"nearest_parks\": \"[{\\\"id\\\": 132, \\\"name\\\": \\\"Eugene O'Neill National Historic Site\\\", \\\"distance\\\": 0.5042901960383047}, {\\\"id\\\": 238, \\\"name\\\": \\\"John Muir National Historic Site\\\", \\\"distance\\\": 0.6859359398624124}, {\\\"id\\\": 386, \\\"name\\\": \\\"San Francisco Maritime National Historical Park\\\", \\\"distance\\\": 0.7084346782980879}]\", \"longitude\": -121.895, \"long_name\": \"San Jose, Santa Clara County, California, US\", \"cost\": 7, \"safety\": 4, \"hiking_trails\": \"https://www.alltrails.com/explore?b_tl_lat=37.94&b_tl_lng=-122.49&b_br_lat=36.74&b_br_lng=-121.29\", \"nearest_airports\": \"[{\\\"id\\\": 593, \\\"name\\\": \\\"San Jose International Airport\\\", \\\"distance\\\": 0.0419265309797988, \\\"iata_code\\\": \\\"SJC\\\"}, {\\\"id\\\": 487, \\\"name\\\": \\\"Oakland International Airport\\\", \\\"distance\\\": 0.4947174555238586, \\\"iata_code\\\": \\\"OAK\\\"}, {\\\"id\\\": 592, \\\"name\\\": \\\"San Francisco International Airport\\\", \\\"distance\\\": 0.5601117803617464, \\\"iata_code\\\": \\\"SFO\\\"}]\", \"latitude\": 37.3394, \"population\": 945942, \"id\": 10, \"name\": \"San Jose, CA\" }, { \"rating\": 4.27273, \"airbnb_listings\": \"https://www.airbnb.com/s/Austin%2C+TX/homes\", \"short_name\": \"Austin\", \"photo\": \"https://cdn.roadgoat.com/uploads/photo/image/382/travel-guide-of-austin-tx-usa-original.jpg\", \"walkability\": \"https://www.walkscore.com/TX/Austin\", \"nearest_parks\": \"[{\\\"id\\\": 127, \\\"name\\\": \\\"El Camino Real de los Tejas National Historic Trail\\\", \\\"distance\\\": 0.4395671383543051}, {\\\"id\\\": 275, \\\"name\\\": \\\"Lyndon B Johnson National Historical Park\\\", \\\"distance\\\": 0.8639977718064996}, {\\\"id\\\": 385, \\\"name\\\": \\\"San Antonio Missions National Historical Park\\\", \\\"distance\\\": 1.17540373142943}]\", \"longitude\": -97.7431, \"long_name\": \"Austin, Texas, US\", \"cost\": 7, \"safety\": 4, \"hiking_trails\": \"https://www.alltrails.com/explore?b_tl_lat=30.87&b_tl_lng=-98.34&b_br_lat=29.67&b_br_lng=-97.14\", \"nearest_airports\": \"[{\\\"id\\\": 41, \\\"name\\\": \\\"Austin\\u2013Bergstrom International Airport\\\", \\\"distance\\\": 0.10363130696850646, \\\"iata_code\\\": \\\"AUS\\\"}, {\\\"id\\\": 344, \\\"name\\\": \\\"Skylark Field\\\", \\\"distance\\\": 0.8222123602506838, \\\"iata_code\\\": \\\"ILE\\\"}, {\\\"id\\\": 590, \\\"name\\\": \\\"San Antonio International Airport\\\", \\\"distance\\\": 1.0332795362364429, \\\"iata_code\\\": \\\"SAT\\\"}]\", \"latitude\": 30.2672, \"population\": 790390, \"id\": 11, \"name\": \"Austin, TX\" }, { \"rating\": 3.66667, \"airbnb_listings\": \"https://www.airbnb.com/s/Jacksonville%2C+FL/homes\", \"short_name\": \"Jacksonville\", \"photo\": \"https://cdn.roadgoat.com/uploads/photo/image/1905/jack.jpeg\", \"walkability\": \"https://www.walkscore.com/FL/Jacksonville\", \"nearest_parks\": \"[{\\\"id\\\": 420, \\\"name\\\": \\\"Timucuan Ecological & Historic Preserve\\\", \\\"distance\\\": 0.20994645934000356}, {\\\"id\\\": 77, \\\"name\\\": \\\"Castillo de San Marcos National Monument\\\", \\\"distance\\\": 0.5537271725360141}, {\\\"id\\\": 108, \\\"name\\\": \\\"Cumberland Island National Seashore\\\", \\\"distance\\\": 0.564222408392015}]\", \"longitude\": -81.6556, \"long_name\": \"Jacksonville, Florida, US\", \"cost\": 5, \"safety\": 4, \"hiking_trails\": \"https://www.alltrails.com/explore?b_tl_lat=30.93&b_tl_lng=-82.26&b_br_lat=29.73&b_br_lng=-81.06\", \"nearest_airports\": \"[{\\\"id\\\": 312, \\\"name\\\": \\\"Jacksonville International Airport\\\", \\\"distance\\\": 0.16507980157790203, \\\"iata_code\\\": \\\"JAX\\\"}, {\\\"id\\\": 227, \\\"name\\\": \\\"Gainesville Regional Airport\\\", \\\"distance\\\": 0.8959765920625425, \\\"iata_code\\\": \\\"GNV\\\"}, {\\\"id\\\": 87, \\\"name\\\": \\\"Brunswick Golden Isles Airport\\\", \\\"distance\\\": 0.941759707148803, \\\"iata_code\\\": \\\"BQK\\\"}]\", \"latitude\": 30.3322, \"population\": 821784, \"id\": 12, \"name\": \"Jacksonville, FL\" } ]"
 				}
 			]
 		},
 		{
 			"name": "Airports",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"GET airports list API call\", function () {\r",
+							"    pm.test(\"Status code is 200\", function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "api.parkscape.me/airports?city=<string>&state=<string>&international=<boolean>",
+					"raw": "api.parkscape.me/airports?page=<int>&city=<string>&state=<string>&international=<boolean>",
 					"host": [
 						"api",
 						"parkscape",
@@ -375,6 +687,11 @@
 					],
 					"query": [
 						{
+							"key": "page",
+							"value": "<int>",
+							"description": "Get page of airports."
+						},
+						{
 							"key": "city",
 							"value": "<string>",
 							"description": "Find airports near the specified city."
@@ -382,7 +699,7 @@
 						{
 							"key": "state",
 							"value": "<string>",
-							"description": "Find airports in the specified state."
+							"description": "Find airports only in the specified state."
 						},
 						{
 							"key": "international",
@@ -391,7 +708,7 @@
 						}
 					]
 				},
-				"description": "Returns a list of airports"
+				"description": "Returns a list of airport objects."
 			},
 			"response": [
 				{
@@ -400,21 +717,30 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "api.parkscape.me/airports",
+							"raw": "api.parkscape.me/airports/1",
 							"host": [
 								"api",
 								"parkscape",
 								"me"
 							],
 							"path": [
-								"airports"
+								"airports",
+								"1"
 							]
 						}
 					},
-					"_postman_previewlanguage": null,
-					"header": null,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
 					"cookie": [],
-					"body": null
+					"body": "[\n    {\n        \"website\": \"http://www.aberdeenregionalairport.us/\",\n        \"city\": \"Aberdeen\",\n        \"name\": \"Aberdeen Regional Airport\",\n        \"icao_code\": \"KABR\",\n        \"nearest_parks\": \"[{\\\"id\\\": 350, \\\"name\\\": \\\"Pipestone National Monument\\\", \\\"distance\\\": 2.5404610273826584}, {\\\"id\\\": 294, \\\"name\\\": \\\"Missouri National Recreational River\\\", \\\"distance\\\": 2.7905797079897208}, {\\\"id\\\": 321, \\\"name\\\": \\\"Niobrara National Scenic River\\\", \\\"distance\\\": 3.053679914743943}]\",\n        \"longitude\": -98.4177,\n        \"iata_code\": \"ABR\",\n        \"phone\": \"+1 605-626-7020\",\n        \"state\": \"South Dakota\",\n        \"address\": \"4740 6th Avenue Southeast\",\n        \"latitude\": 45.4535,\n        \"nearest_cities\": \"[{\\\"id\\\": 37, \\\"name\\\": \\\"Omaha, NE\\\", \\\"distance\\\": 4.8737514476872965}, {\\\"id\\\": 70, \\\"name\\\": \\\"Lincoln, NE\\\", \\\"distance\\\": 4.971905081160946}, {\\\"id\\\": 44, \\\"name\\\": \\\"Minneapolis, MN\\\", \\\"distance\\\": 5.175588906819592}]\",\n        \"id\": 1,\n        \"zip_code\": \"57401\"\n    },\n    {\n        \"website\": \"http://iflyabi.com/\",\n        \"city\": \"Abilene\",\n        \"name\": \"Abilene Regional Airport\",\n        \"icao_code\": \"KABI\",\n        \"nearest_parks\": \"[{\\\"id\\\": 275, \\\"name\\\": \\\"Lyndon B Johnson National Historical Park\\\", \\\"distance\\\": 2.411822937832262}, {\\\"id\\\": 441, \\\"name\\\": \\\"Waco Mammoth National Monument\\\", \\\"distance\\\": 2.6308877799801187}, {\\\"id\\\": 15, \\\"name\\\": \\\"Amistad National Recreation Area\\\", \\\"distance\\\": 3.197253496020941}]\",\n        \"longitude\": -99.68,\n        \"iata_code\": \"ABI\",\n        \"phone\": \"+1 325-676-6367\",\n        \"state\": \"Texas\",\n        \"address\": \"2933 Airport Boulevard\",\n        \"latitude\": 32.4119,\n        \"nearest_cities\": \"[{\\\"id\\\": 12, \\\"name\\\": \\\"Fort Worth, TX\\\", \\\"distance\\\": 2.379936300536645}, {\\\"id\\\": 85, \\\"name\\\": \\\"Lubbock, TX\\\", \\\"distance\\\": 2.467921486731697}, {\\\"id\\\": 48, \\\"name\\\": \\\"Arlington, TX\\\", \\\"distance\\\": 2.5922775891119443}]\",\n        \"id\": 2,\n        \"zip_code\": \"79602\"\n    },\n    {\n        \"website\": \"https://adak-ak.us/\",\n        \"city\": \"Adak\",\n        \"name\": \"Adak Airport\",\n        \"icao_code\": \"PADK\",\n        \"nearest_parks\": \"[{\\\"id\\\": 10, \\\"name\\\": \\\"Aleutian Islands World War II National Historic Area\\\", \\\"distance\\\": 10.33053421990795}, {\\\"id\\\": 34, \\\"name\\\": \\\"Bering Land Bridge National Preserve\\\", \\\"distance\\\": 18.65586521494312}, {\\\"id\\\": 19, \\\"name\\\": \\\"Aniakchak National Monument & Preserve\\\", \\\"distance\\\": 19.73048324737164}]\",\n        \"longitude\": -176.648,\n        \"iata_code\": \"ADK\",\n        \"phone\": \"+1 907-592-4500\",\n        \"state\": \"Alaska\",\n        \"address\": \" \",\n        \"latitude\": 51.8813,\n        \"nearest_cities\": \"[{\\\"id\\\": 74, \\\"name\\\": \\\"Anchorage, AK\\\", \\\"distance\\\": 28.33067355520601}, {\\\"id\\\": 53, \\\"name\\\": \\\"Honolulu, HI\\\", \\\"distance\\\": 35.886661800036926}, {\\\"id\\\": 24, \\\"name\\\": \\\"Portland, OR\\\", \\\"distance\\\": 54.34519607315618}]\",\n        \"id\": 3,\n        \"zip_code\": \"99546\"\n    },\n    {\n        \"website\": \"https://nfdc.faa.gov/nfdcApps/airportLookup/airportDisplay.jsp?category=nasr&airportId=Z13\",\n        \"city\": \"Akiachak\",\n        \"name\": \"Akiachak Airport (FAA: Z13)\",\n        \"icao_code\": \"\",\n        \"nearest_parks\": \"[{\\\"id\\\": 19, \\\"name\\\": \\\"Aniakchak National Monument & Preserve\\\", \\\"distance\\\": 5.600277413709113}, {\\\"id\\\": 7, \\\"name\\\": \\\"Alagnak Wild River\\\", \\\"distance\\\": 5.622909989985655}, {\\\"id\\\": 34, \\\"name\\\": \\\"Bering Land Bridge National Preserve\\\", \\\"distance\\\": 5.873089880833772}]\",\n        \"longitude\": -161.421,\n        \"iata_code\": \"KKI\",\n        \"phone\": \"+1 907-269-0747\",\n        \"state\": \"Alaska\",\n        \"address\": \" \",\n        \"latitude\": 60.9045,\n        \"nearest_cities\": \"[{\\\"id\\\": 74, \\\"name\\\": \\\"Anchorage, AK\\\", \\\"distance\\\": 11.524895434520376}, {\\\"id\\\": 53, \\\"name\\\": \\\"Honolulu, HI\\\", \\\"distance\\\": 39.757531961252944}, {\\\"id\\\": 17, \\\"name\\\": \\\"Seattle, WA\\\", \\\"distance\\\": 41.28901557506462}]\",\n        \"id\": 4,\n        \"zip_code\": \"99551\"\n    },\n    {\n        \"website\": \"https://nfdc.faa.gov/nfdcApps/services/ajv5/airportDisplay.jsp?airportId=aki\",\n        \"city\": \"Akiak\",\n        \"name\": \"Akiak Airport\",\n        \"icao_code\": \"PFAK\",\n        \"nearest_parks\": \"[{\\\"id\\\": 7, \\\"name\\\": \\\"Alagnak Wild River\\\", \\\"distance\\\": 5.4434709998241235}, {\\\"id\\\": 19, \\\"name\\\": \\\"Aniakchak National Monument & Preserve\\\", \\\"distance\\\": 5.469509962712067}, {\\\"id\\\": 34, \\\"name\\\": \\\"Bering Land Bridge National Preserve\\\", \\\"distance\\\": 5.973565907820082}]\",\n        \"longitude\": -161.231,\n        \"iata_code\": \"AKI\",\n        \"phone\": \"+1 907-543-2495\",\n        \"state\": \"Alaska\",\n        \"address\": \" \",\n        \"latitude\": 60.9025,\n        \"nearest_cities\": \"[{\\\"id\\\": 74, \\\"name\\\": \\\"Anchorage, AK\\\", \\\"distance\\\": 11.33533398000116}, {\\\"id\\\": 53, \\\"name\\\": \\\"Honolulu, HI\\\", \\\"distance\\\": 39.738930792186515}, {\\\"id\\\": 17, \\\"name\\\": \\\"Seattle, WA\\\", \\\"distance\\\": 41.10881268642613}]\",\n        \"id\": 5,\n        \"zip_code\": \"99552\"\n    },\n    {\n        \"website\": \"http://www.akroncantonairport.com/\",\n        \"city\": \"North Canton\",\n        \"name\": \"Akron-Canton Airport\",\n        \"icao_code\": \"KCAK\",\n        \"nearest_parks\": \"[{\\\"id\\\": 136, \\\"name\\\": \\\"First Ladies National Historic Site\\\", \\\"distance\\\": 0.13566838435081535}, {\\\"id\\\": 110, \\\"name\\\": \\\"Cuyahoga Valley National Park\\\", \\\"distance\\\": 0.3689493957819031}, {\\\"id\\\": 232, \\\"name\\\": \\\"James A Garfield National Historic Site\\\", \\\"distance\\\": 0.7549926798170713}]\",\n        \"longitude\": -81.4419,\n        \"iata_code\": \"CAK\",\n        \"phone\": \"+1 888-434-2359\",\n        \"state\": \"Ohio\",\n        \"address\": \"5400 Lauby Road\",\n        \"latitude\": 40.9154,\n        \"nearest_cities\": \"[{\\\"id\\\": 52, \\\"name\\\": \\\"Cleveland, OH\\\", \\\"distance\\\": 0.6367641359247517}, {\\\"id\\\": 69, \\\"name\\\": \\\"Pittsburgh, PA\\\", \\\"distance\\\": 1.5219438418023152}, {\\\"id\\\": 13, \\\"name\\\": \\\"Columbus, OH\\\", \\\"distance\\\": 1.8260436057224911}]\",\n        \"id\": 6,\n        \"zip_code\": \"44720\"\n    },\n    {\n        \"website\": \"\",\n        \"city\": \"\",\n        \"name\": \"Akutan Seaplane Base\",\n        \"icao_code\": \"\",\n        \"nearest_parks\": \"[{\\\"id\\\": 45, \\\"name\\\": \\\"Blackwell School National Historic Site\\\", \\\"distance\\\": 0.0}, {\\\"id\\\": 55, \\\"name\\\": \\\"Buck Island Reef National Monument\\\", \\\"distance\\\": 67.03160943153506}, {\\\"id\\\": 94, \\\"name\\\": \\\"Christiansted National Historic Site\\\", \\\"distance\\\": 67.11540939859312}]\",\n        \"longitude\": 0,\n        \"iata_code\": \"KQA\",\n        \"phone\": \"\",\n        \"state\": \"\",\n        \"address\": \" \",\n        \"latitude\": 0,\n        \"nearest_cities\": \"[{\\\"id\\\": 22, \\\"name\\\": \\\"Boston, MA\\\", \\\"distance\\\": 82.72682457654108}, {\\\"id\\\": 43, \\\"name\\\": \\\"Miami, FL\\\", \\\"distance\\\": 84.23381802001201}, {\\\"id\\\": 41, \\\"name\\\": \\\"Virginia Beach, VA\\\", \\\"distance\\\": 84.44402533054071}]\",\n        \"id\": 7,\n        \"zip_code\": \"\"\n    },\n    {\n        \"website\": \"\",\n        \"city\": \"Alakanuk\",\n        \"name\": \"Alakanuk Airport\",\n        \"icao_code\": \"\",\n        \"nearest_parks\": \"[{\\\"id\\\": 34, \\\"name\\\": \\\"Bering Land Bridge National Preserve\\\", \\\"distance\\\": 3.290493486512678}, {\\\"id\\\": 67, \\\"name\\\": \\\"Cape Krusenstern National Monument\\\", \\\"distance\\\": 4.87412264925883}, {\\\"id\\\": 254, \\\"name\\\": \\\"Kobuk Valley National Park\\\", \\\"distance\\\": 7.188671834038126}]\",\n        \"longitude\": -164.66,\n        \"iata_code\": \"AUK\",\n        \"phone\": \"\",\n        \"state\": \"Alaska\",\n        \"address\": \" \",\n        \"latitude\": 62.68,\n        \"nearest_cities\": \"[{\\\"id\\\": 74, \\\"name\\\": \\\"Anchorage, AK\\\", \\\"distance\\\": 14.831945355953804}, {\\\"id\\\": 53, \\\"name\\\": \\\"Honolulu, HI\\\", \\\"distance\\\": 41.92842482794339}, {\\\"id\\\": 17, \\\"name\\\": \\\"Seattle, WA\\\", \\\"distance\\\": 44.93186845713184}]\",\n        \"id\": 8,\n        \"zip_code\": \"99554\"\n    },\n    {\n        \"website\": \"http://ci.alamogordo.nm.us/\",\n        \"city\": \"Alamogordo\",\n        \"name\": \"Alamogordo–White Sands Regional Airport\",\n        \"icao_code\": \"KALM\",\n        \"nearest_parks\": \"[{\\\"id\\\": 449, \\\"name\\\": \\\"White Sands National Park\\\", \\\"distance\\\": 0.3447633769659869}, {\\\"id\\\": 84, \\\"name\\\": \\\"Chamizal National Memorial\\\", \\\"distance\\\": 1.1671958157467348}, {\\\"id\\\": 126, \\\"name\\\": \\\"El Camino Real de Tierra Adentro National Historic Trail\\\", \\\"distance\\\": 1.2966116694059977}]\",\n        \"longitude\": -105.994,\n        \"iata_code\": \"ALM\",\n        \"phone\": \"+1 575-439-4110\",\n        \"state\": \"New Mexico\",\n        \"address\": \"3500 Airport Road\",\n        \"latitude\": 32.8398,\n        \"nearest_cities\": \"[{\\\"id\\\": 23, \\\"name\\\": \\\"El Paso, TX\\\", \\\"distance\\\": 1.1882040253576005}, {\\\"id\\\": 30, \\\"name\\\": \\\"Albuquerque, NM\\\", \\\"distance\\\": 2.33886616353224}, {\\\"id\\\": 85, \\\"name\\\": \\\"Lubbock, TX\\\", \\\"distance\\\": 4.204095126463713}]\",\n        \"id\": 9,\n        \"zip_code\": \"88310\"\n    },\n    {\n        \"website\": \"http://www.sanluisvalleyairport.org/\",\n        \"city\": \"Alamosa\",\n        \"name\": \"San Luis Valley Regional Airport\",\n        \"icao_code\": \"KALS\",\n        \"nearest_parks\": \"[{\\\"id\\\": 198, \\\"name\\\": \\\"Great Sand Dunes National Park & Preserve\\\", \\\"distance\\\": 0.4425954709219824}, {\\\"id\\\": 139, \\\"name\\\": \\\"Florissant Fossil Beds National Monument\\\", \\\"distance\\\": 1.5806659063660224}, {\\\"id\\\": 280, \\\"name\\\": \\\"Manhattan Project National Historical Park\\\", \\\"distance\\\": 1.623003055278702}]\",\n        \"longitude\": -105.865,\n        \"iata_code\": \"ALS\",\n        \"phone\": \"+1 719-589-1138\",\n        \"state\": \"Colorado\",\n        \"address\": \"2490 State Avenue\",\n        \"latitude\": 37.4438,\n        \"nearest_cities\": \"[{\\\"id\\\": 38, \\\"name\\\": \\\"Colorado Springs, CO\\\", \\\"distance\\\": 1.737915672155582}, {\\\"id\\\": 18, \\\"name\\\": \\\"Denver, CO\\\", \\\"distance\\\": 2.458145013481504}, {\\\"id\\\": 30, \\\"name\\\": \\\"Albuquerque, NM\\\", \\\"distance\\\": 2.4870377819936724}]\",\n        \"id\": 10,\n        \"zip_code\": \"81101\"\n    },\n    {\n        \"website\": \"http://www.albanyairport.com/\",\n        \"city\": \"\",\n        \"name\": \"Albany International Airport\",\n        \"icao_code\": \"KALB\",\n        \"nearest_parks\": \"[{\\\"id\\\": 392, \\\"name\\\": \\\"Saratoga National Historical Park\\\", \\\"distance\\\": 0.3003832822888383}, {\\\"id\\\": 285, \\\"name\\\": \\\"Martin Van Buren National Historic Site\\\", \\\"distance\\\": 0.3927219128611577}, {\\\"id\\\": 415, \\\"name\\\": \\\"Thomas Cole National Historic Site\\\", \\\"distance\\\": 0.5259986319766394}]\",\n        \"longitude\": -73.8055,\n        \"iata_code\": \"ALB\",\n        \"phone\": \"+1 518-242-2200\",\n        \"state\": \"New York\",\n        \"address\": \" Albany Shaker Road\",\n        \"latitude\": 42.7487,\n        \"nearest_cities\": \"[{\\\"id\\\": 0, \\\"name\\\": \\\"New York, NY\\\", \\\"distance\\\": 2.0152294494744307}, {\\\"id\\\": 68, \\\"name\\\": \\\"Jersey City, NJ\\\", \\\"distance\\\": 2.038794369744042}, {\\\"id\\\": 61, \\\"name\\\": \\\"Newark, NJ\\\", \\\"distance\\\": 2.046207198550529}]\",\n        \"id\": 11,\n        \"zip_code\": \"\"\n    },\n    {\n        \"website\": \"http://www.corvallisoregon.gov/\",\n        \"city\": \"Corvallis\",\n        \"name\": \"Corvallis Municipal Airport\",\n        \"icao_code\": \"KCVO\",\n        \"nearest_parks\": \"[{\\\"id\\\": 162, \\\"name\\\": \\\"Fort Vancouver National Historic Site\\\", \\\"distance\\\": 1.2871618356292505}, {\\\"id\\\": 264, \\\"name\\\": \\\"Lewis and Clark National Historical Park\\\", \\\"distance\\\": 1.8434682776620608}, {\\\"id\\\": 105, \\\"name\\\": \\\"Crater Lake National Park\\\", \\\"distance\\\": 1.9370031087280808}]\",\n        \"longitude\": -123.287,\n        \"iata_code\": \"CVO\",\n        \"phone\": \"+1 541-766-6783\",\n        \"state\": \"Oregon\",\n        \"address\": \"5695 Southwest Airport Avenue\",\n        \"latitude\": 44.4972,\n        \"nearest_cities\": \"[{\\\"id\\\": 24, \\\"name\\\": \\\"Portland, OR\\\", \\\"distance\\\": 1.1941872573696282}, {\\\"id\\\": 17, \\\"name\\\": \\\"Seattle, WA\\\", \\\"distance\\\": 3.2523367933078484}, {\\\"id\\\": 81, \\\"name\\\": \\\"Reno, NV\\\", \\\"distance\\\": 6.061187505009557}]\",\n        \"id\": 12,\n        \"zip_code\": \"97333\"\n    }\n]"
 				}
 			]
 		}
