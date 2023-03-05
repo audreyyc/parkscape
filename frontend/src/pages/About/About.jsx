@@ -100,9 +100,6 @@ function AboutPage() {
 
   return (
     <>
-      {/* Navbar */}
-      <Navigation></Navigation>
-
       {/* Description */}
       <Container class="container text-center mt-5 mb-4">
         <h1>About ParkScape</h1>
