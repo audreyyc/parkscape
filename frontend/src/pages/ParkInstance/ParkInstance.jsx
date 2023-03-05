@@ -8,17 +8,16 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Image from "react-bootstrap/Image";
-import Navigation from '../../components/Navigation/Navigation';
+import Navigation from "../../components/Navigation/Navigation";
 import { ListGroup, Spinner } from "react-bootstrap";
 
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
 
 function ParkInstance() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const parkId = useParams().id;
   // const parkId = 1; // temp
-  
 
   useEffect(() => {
     setLoading(true);
@@ -31,7 +30,7 @@ function ParkInstance() {
     if (data) setLoading(false);
   }, [data]);
 
-  return ( 
+  return (
     <>
       <Container className="container text-center mt-5">
         {loading ? (
@@ -40,9 +39,6 @@ function ParkInstance() {
           </Container>
         ) : (
           <>
-            {/* Navbar */}
-            <Navigation></Navigation>
-            
             <Container className="container mt-5">
               {/* Title and Desc. */}
               <Row>
@@ -55,9 +51,9 @@ function ParkInstance() {
                 {JSON.parse(data.photos).map((img) => {
                   return (
                     <Col>
-                    <Image src={img} className="img-thumbnail mt-5"></Image>
+                      <Image src={img} className="img-thumbnail mt-5"></Image>
                     </Col>
-                  )
+                  );
                 })}
               </Row>
 
@@ -66,29 +62,29 @@ function ParkInstance() {
                 {/* Activities */}
                 <Container class="col-md-4 col-sm-12 mt-4">
                   <Card>
-                    <Card.Header><h5>Activities</h5></Card.Header>
+                    <Card.Header>
+                      <h5>Activities</h5>
+                    </Card.Header>
                     <Card.Body>
                       <ul>
                         {JSON.parse(data.activities).map((item) => {
-                          return (
-                            <li>{item}</li>
-                          )
+                          return <li>{item}</li>;
                         })}
                       </ul>
                     </Card.Body>
                   </Card>
                 </Container>
-                
+
                 {/* Topics */}
                 <Container class="col-md-4 col-sm-12 mt-4">
                   <Card>
-                    <Card.Header><h5>Topics</h5></Card.Header>
+                    <Card.Header>
+                      <h5>Topics</h5>
+                    </Card.Header>
                     <Card.Body>
                       <ul>
                         {JSON.parse(data.topics).map((item) => {
-                          return (
-                            <li>{item}</li>
-                          )
+                          return <li>{item}</li>;
                         })}
                       </ul>
                     </Card.Body>
@@ -106,37 +102,37 @@ function ParkInstance() {
                     </thead>
                     <tbody>
                       <tr>
-                          <th scope="row">Monday</th>
-                          <td>{JSON.parse(data.weekdays)[0]}</td>
+                        <th scope="row">Monday</th>
+                        <td>{JSON.parse(data.weekdays)[0]}</td>
                       </tr>
                       <tr>
-                          <th scope="row">Tuesday</th>
-                          <td>{JSON.parse(data.weekdays)[1]}</td>
+                        <th scope="row">Tuesday</th>
+                        <td>{JSON.parse(data.weekdays)[1]}</td>
                       </tr>
                       <tr>
-                          <th scope="row">Wednesday</th>
-                          <td>{JSON.parse(data.weekdays)[2]}</td>
+                        <th scope="row">Wednesday</th>
+                        <td>{JSON.parse(data.weekdays)[2]}</td>
                       </tr>
                       <tr>
-                          <th scope="row">Thursday</th>
-                          <td>{JSON.parse(data.weekdays)[3]}</td>
+                        <th scope="row">Thursday</th>
+                        <td>{JSON.parse(data.weekdays)[3]}</td>
                       </tr>
                       <tr>
-                          <th scope="row">Friday</th>
-                          <td>{JSON.parse(data.weekdays)[4]}</td>
+                        <th scope="row">Friday</th>
+                        <td>{JSON.parse(data.weekdays)[4]}</td>
                       </tr>
                       <tr>
-                          <th scope="row">Saturday</th>
-                          <td>{JSON.parse(data.weekdays)[5]}</td>
+                        <th scope="row">Saturday</th>
+                        <td>{JSON.parse(data.weekdays)[5]}</td>
                       </tr>
                       <tr>
-                          <th scope="row">Sunday</th>
-                          <td>{JSON.parse(data.weekdays)[6]}</td>
+                        <th scope="row">Sunday</th>
+                        <td>{JSON.parse(data.weekdays)[6]}</td>
                       </tr>
                     </tbody>
                   </Table>
                 </Container>
-                
+
                 {/* Fees */}
                 <Container class="col-md-4 col-sm-12 mt-4">
                   <Table class="table table-hover table-bordered">
@@ -151,9 +147,9 @@ function ParkInstance() {
                       </tr>
                     </tbody>
                   </Table>
-                </Container>                
+                </Container>
               </Row>
-              
+
               {/* Map */}
               <Container className="d-flex my-5">
                 <iframe
@@ -167,7 +163,7 @@ function ParkInstance() {
                   src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAa0pVSA26KxyWPdzXupgd8-OTjlsq_Rvc&q=${data.name}`}
                 ></iframe>
               </Container>
-              
+
               {/* Links to Pages */}
               <Container className="my-5">
                 <Row>
@@ -177,7 +173,9 @@ function ParkInstance() {
                       <Card.Body>
                         <Container className="my-3">
                           <Link
-                            to={`/parks/${JSON.parse(data.nearest_cities)[0].id}`}
+                            to={`/cities/${
+                              JSON.parse(data.nearest_cities)[0].id
+                            }`}
                             id={JSON.parse(data.nearest_cities)[0].id}
                             className="link-card d-flex align-items-stretch"
                           >
@@ -188,7 +186,9 @@ function ParkInstance() {
                         </Container>
                         <Container className="my-3">
                           <Link
-                            to={`/parks/${JSON.parse(data.nearest_cities)[1].id}`}
+                            to={`/cities/${
+                              JSON.parse(data.nearest_cities)[1].id
+                            }`}
                             id={JSON.parse(data.nearest_cities)[1].id}
                             className="link-card d-flex align-items-stretch"
                           >
@@ -199,12 +199,14 @@ function ParkInstance() {
                         </Container>
                         <Container className="my-3">
                           <Link
-                            to={`/parks/${JSON.parse(data.nearest_parks)[2].id}`}
-                            id={JSON.parse(data.nearest_parks)[2].id}
+                            to={`/cities/${
+                              JSON.parse(data.nearest_cities)[2].id
+                            }`}
+                            id={JSON.parse(data.nearest_cities)[2].id}
                             className="link-card d-flex align-items-stretch"
                           >
                             <Button variant="primary">
-                              {JSON.parse(data.nearest_parks)[2].name}
+                              {JSON.parse(data.nearest_cities)[2].name}
                             </Button>
                           </Link>
                         </Container>
@@ -264,11 +266,22 @@ function ParkInstance() {
               <Row>
                 <Col>
                   <Card class="card mt-4">
-                    <Card.Header><h5>Contact Information</h5></Card.Header>
+                    <Card.Header>
+                      <h5>Contact Information</h5>
+                    </Card.Header>
                     <Card.Body>
-                      <Card.Text><b>Phone: </b>{data.phone}</Card.Text>
-                      <Card.Text><b>Email: </b>{data.email}</Card.Text>
-                      <Card.Text><b>Website: </b><a href={data.website}>{data.website}</a></Card.Text>
+                      <Card.Text>
+                        <b>Phone: </b>
+                        {data.phone}
+                      </Card.Text>
+                      <Card.Text>
+                        <b>Email: </b>
+                        {data.email}
+                      </Card.Text>
+                      <Card.Text>
+                        <b>Website: </b>
+                        <a href={data.website}>{data.website}</a>
+                      </Card.Text>
                     </Card.Body>
                   </Card>
                 </Col>
