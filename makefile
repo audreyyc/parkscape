@@ -25,6 +25,16 @@ build-backend:
 docker-backend:
 	docker run -p 5000:5000 backend-container
 
+# Runs Python unit tests
+make python-tests:
+	echo "Running Python unit tests..."
+	python backend/tests.py
+
+# Runs Selenium GUI tests
+make selenium-tests:
+	echo "Running Selenium unit tests..."
+	python frontend/guitests.py
+
 status: 
 	make clean
 	@echo
