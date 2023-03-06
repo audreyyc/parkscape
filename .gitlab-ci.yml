@@ -9,20 +9,21 @@ build-job:
     - echo "Building code..."
     - echo "Build complete."
 
-python-test:
+python-tests:
   image: python:2.7.18-stretch
   stage: test
   before_script:
     - pip install -r backend/requirements.txt
   script:
     - make python-tests
-
-test-job:   
-  stage: test    
+  
+selenium-tests:
+  image: forbesye/selenium-ci
+  stage: test
+  befores_script:
+    - pip install -r frontend/requirements.txt
   script:
-    - echo "Running unit tests... This will take about 5 seconds."
-    - sleep 5
-    - echo "Unit tests complete."
+    make selenium-tests
 
 deploy-dev-job:     
   only:
