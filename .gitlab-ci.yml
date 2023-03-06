@@ -24,7 +24,7 @@ selenium-tests:
     - selenium/standalone-chrome
   before_script:
     - pip install -r frontend/requirements.txt
-    - cd front-end
+    - cd frontend
     - apt-get update -q -y
     - apt-get --yes install libnss3
     - apt-get --yes install libgconf-2-4
