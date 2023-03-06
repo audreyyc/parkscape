@@ -5,8 +5,8 @@ import json
 app.app.config["TESTING"] = True
 client = app.app.test_client()
 
+
 class Tests(unittest.TestCase):
-    
     def test_cities_page(self):
         with client:
             response = client.get("/cities/1")
@@ -48,7 +48,7 @@ class Tests(unittest.TestCase):
             self.assertEqual(response.status_code, 200)
             data = json.loads(response.data)
             self.assertEqual(len(data), 707)
-    
+
     def test_city(self):
         with client:
             response = client.get("/city/10")
@@ -75,7 +75,7 @@ class Tests(unittest.TestCase):
             self.assertEqual(data["state"], "Massachusetts")
             self.assertEqual(data["name"], "Laurence G. Hanscom Field")
             self.assertEqual(data["iata_code"], "BED")
-            
+
 
 if __name__ == "__main__":
     unittest.main()

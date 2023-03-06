@@ -17,6 +17,15 @@ check: $(CFILES)
 clean:
 	rm -f  *.tmp
 
+# formates backend files with black
+format:
+	black backend/app.py
+	black backend/tests.py
+	black backend/data/scrapper.py
+	black backend/data/models.py
+	black backend/data/db.py
+	black frontend/guitests.py
+
 # build backend Docker image
 build-backend:
 	docker build -t backend-container ./backend
