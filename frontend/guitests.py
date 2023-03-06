@@ -103,5 +103,45 @@ class Test(unittest.TestCase):
             print("API card not found " + str(e))
         self.assertEqual(str(self.driver.current_url), 'https://rapidapi.com/Active-api/api/airport-info/')
 
+    def test_park_card(self):
+        self.driver.get(URL + "parks/")
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="0"]')))
+        try:
+            element = self.driver.find_element_by_xpath('//*[@id="0"]')
+            self.driver.execute_script("arguments[0].click()", element)
+        except Exception as e:
+            print("Park card not found " + str(e))
+        self.assertEqual(str(self.driver.current_url), 'https://dev.d1rkv95cbxfqn4.amplifyapp.com/parks/0')
+
+    def test_city_card(self):
+        self.driver.get(URL + "cities/")
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="0"]')))
+        try:
+            element = self.driver.find_element_by_xpath('//*[@id="0"]')
+            self.driver.execute_script("arguments[0].click()", element)
+        except Exception as e:
+            print("Park card not found " + str(e))
+        self.assertEqual(str(self.driver.current_url), 'https://dev.d1rkv95cbxfqn4.amplifyapp.com/cities/0')
+
+    def test_airport_card(self):
+        self.driver.get(URL + "airports/")
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="0"]/button')))
+        try:
+            element = self.driver.find_element_by_xpath('//*[@id="0"]/button')
+            self.driver.execute_script("arguments[0].click()", element)
+        except Exception as e:
+            print("Park card not found " + str(e))
+        self.assertEqual(str(self.driver.current_url), 'https://dev.d1rkv95cbxfqn4.amplifyapp.com/airports/0')
+
+    def test_nearest_city(self):
+        self.driver.get(URL + 'parks/2')
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="22"]/button')))
+        try:
+            element = self.driver.find_element_by_xpath('//*[@id="22"]/button')
+            self.driver.execute_script('arguments[0].click()', element)
+        except Exception as e:
+            print("Nearest city button not found " + str(e))
+        self.assertEqual(str(self.driver.current_url), 'https://dev.d1rkv95cbxfqn4.amplifyapp.com/cities/22')
+
 if __name__ == '__main__':
     unittest.main()
