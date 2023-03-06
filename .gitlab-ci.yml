@@ -20,7 +20,7 @@ python-tests:
 selenium-tests:
   image: forbesye/selenium-ci
   stage: test
-  befores_script:
+  before_script:
     - pip install -r frontend/requirements.txt
   script:
     make selenium-tests
