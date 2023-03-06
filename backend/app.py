@@ -5,14 +5,16 @@ from sqlalchemy import Integer, Column, String, Table, MetaData, Float, JSON
 import json
 
 PARKS, CITIES, AIRPORTS = 468, 101, 731
-db_url = 'mysql://admin:020402020402@idb7-db.cyvindjupys7.us-east-2.rds.amazonaws.com:3306/idb7?charset=utf8'
+db_url = "mysql://admin:020402020402@idb7-db.cyvindjupys7.us-east-2.rds.amazonaws.com:3306/idb7?charset=utf8"
 
 app = Flask(__name__)
 CORS(app)
 
+
 @app.route("/")
 def home():
     return ""
+
 
 @app.route("/cities/all")
 def get_all_cities():
@@ -20,12 +22,12 @@ def get_all_cities():
     conn = engine.connect()
     metadata = db.MetaData()
 
-    cities = db.Table('cities', metadata, autoload=True, autoload_with=engine) 
+    cities = db.Table("cities", metadata, autoload=True, autoload_with=engine)
 
-    queryCommnand = 'SELECT * FROM cities'
+    queryCommnand = "SELECT * FROM cities"
     result = conn.execute(queryCommnand).fetchall()
-    
-    currentCity = {} 
+
+    currentCity = {}
     citiesJSON = []
 
     for row in result:
@@ -47,8 +49,9 @@ def get_all_cities():
         currentCity["nearest_parks"] = row[15]
         citiesJSON.append(currentCity)
         currentCity = {}
-    
-    return json.dumps(citiesJSON, indent = 4)
+
+    return json.dumps(citiesJSON, indent=4)
+
 
 @app.route("/airports/all")
 def get_all_airports():
@@ -56,12 +59,12 @@ def get_all_airports():
     conn = engine.connect()
     metadata = db.MetaData()
 
-    cities = db.Table('airports', metadata, autoload=True, autoload_with=engine) 
+    cities = db.Table("airports", metadata, autoload=True, autoload_with=engine)
 
-    queryCommnand = 'SELECT * FROM airports'
+    queryCommnand = "SELECT * FROM airports"
     result = conn.execute(queryCommnand).fetchall()
-    
-    currentAirport = {} 
+
+    currentAirport = {}
     airportsJSON = []
 
     for row in result:
@@ -81,8 +84,9 @@ def get_all_airports():
         currentAirport["nearest_parks"] = row[13]
         airportsJSON.append(currentAirport)
         currentAirport = {}
-    
-    return json.dumps(airportsJSON, indent = 4)   
+
+    return json.dumps(airportsJSON, indent=4)
+
 
 @app.route("/parks/all")
 def get_all_parks():
@@ -90,12 +94,12 @@ def get_all_parks():
     conn = engine.connect()
     metadata = db.MetaData()
 
-    parks = db.Table('parks', metadata, autoload=True, autoload_with=engine) 
+    parks = db.Table("parks", metadata, autoload=True, autoload_with=engine)
 
-    queryCommnand = 'SELECT * FROM parks'
+    queryCommnand = "SELECT * FROM parks"
     result = conn.execute(queryCommnand).fetchall()
-    
-    currentPark = {} 
+
+    currentPark = {}
     parksJSON = []
 
     for row in result:
@@ -117,8 +121,9 @@ def get_all_parks():
         currentPark["nearest_cities"] = row[15]
         parksJSON.append(currentPark)
         currentPark = {}
-    
-    return json.dumps(parksJSON, indent = 4)             
+
+    return json.dumps(parksJSON, indent=4)
+
 
 @app.route("/cities/<int:r_page>")
 def get_cities(r_page):
@@ -129,12 +134,14 @@ def get_cities(r_page):
     conn = engine.connect()
     metadata = db.MetaData()
 
-    cities = db.Table('cities', metadata, autoload=True, autoload_with=engine) 
+    cities = db.Table("cities", metadata, autoload=True, autoload_with=engine)
 
-    queryCommnand = 'SELECT * FROM cities WHERE id BETWEEN ' + str(startID) + ' AND ' + str(endID)
+    queryCommnand = (
+        "SELECT * FROM cities WHERE id BETWEEN " + str(startID) + " AND " + str(endID)
+    )
     result = conn.execute(queryCommnand).fetchall()
-    
-    currentCity = {} 
+
+    currentCity = {}
     citiesJSON = []
 
     for row in result:
@@ -156,10 +163,10 @@ def get_cities(r_page):
         currentCity["nearest_parks"] = row[15]
         citiesJSON.append(currentCity)
         currentCity = {}
-    
-    return json.dumps(citiesJSON, indent = 4)
-                      
-    
+
+    return json.dumps(citiesJSON, indent=4)
+
+
 @app.route("/airports/<int:r_page>")
 def get_airports(r_page):
     startID = (r_page - 1) * 12 + 1
@@ -169,12 +176,14 @@ def get_airports(r_page):
     conn = engine.connect()
     metadata = db.MetaData()
 
-    cities = db.Table('airports', metadata, autoload=True, autoload_with=engine) 
+    cities = db.Table("airports", metadata, autoload=True, autoload_with=engine)
 
-    queryCommnand = 'SELECT * FROM airports WHERE id BETWEEN ' + str(startID) + ' AND ' + str(endID)
+    queryCommnand = (
+        "SELECT * FROM airports WHERE id BETWEEN " + str(startID) + " AND " + str(endID)
+    )
     result = conn.execute(queryCommnand).fetchall()
-    
-    currentAirport = {} 
+
+    currentAirport = {}
     airportsJSON = []
 
     for row in result:
@@ -194,8 +203,9 @@ def get_airports(r_page):
         currentAirport["nearest_parks"] = row[13]
         airportsJSON.append(currentAirport)
         currentAirport = {}
-    
-    return json.dumps(airportsJSON, indent = 4)
+
+    return json.dumps(airportsJSON, indent=4)
+
 
 @app.route("/parks/<int:r_page>")
 def get_parks(r_page):
@@ -206,12 +216,14 @@ def get_parks(r_page):
     conn = engine.connect()
     metadata = db.MetaData()
 
-    parks = db.Table('parks', metadata, autoload=True, autoload_with=engine) 
+    parks = db.Table("parks", metadata, autoload=True, autoload_with=engine)
 
-    queryCommnand = 'SELECT * FROM parks WHERE id BETWEEN ' + str(startID) + ' AND ' + str(endID)
+    queryCommnand = (
+        "SELECT * FROM parks WHERE id BETWEEN " + str(startID) + " AND " + str(endID)
+    )
     result = conn.execute(queryCommnand).fetchall()
-    
-    currentPark = {} 
+
+    currentPark = {}
     parksJSON = []
 
     for row in result:
@@ -233,20 +245,21 @@ def get_parks(r_page):
         currentPark["nearest_cities"] = row[15]
         parksJSON.append(currentPark)
         currentPark = {}
-    
-    return json.dumps(parksJSON, indent = 4)
+
+    return json.dumps(parksJSON, indent=4)
+
 
 @app.route("/city/<int:r_id>")
 def get_city(r_id):
     engine = db.create_engine(db_url)
     conn = engine.connect()
     metadata = db.MetaData()
-    cities = db.Table('cities', metadata, autoload=True, autoload_with=engine) 
+    cities = db.Table("cities", metadata, autoload=True, autoload_with=engine)
 
-    queryCommnand = 'SELECT * FROM cities WHERE id = ' + str(r_id + 1)
+    queryCommnand = "SELECT * FROM cities WHERE id = " + str(r_id + 1)
     result = conn.execute(queryCommnand).fetchone()
-    
-    city = {} 
+
+    city = {}
     city["id"] = result[0]
     city["airbnb_listings"] = result[1]
     city["cost"] = result[2]
@@ -262,19 +275,20 @@ def get_city(r_id):
     city["short_name"] = result[12]
     city["walkability"] = result[13]
     city["nearest_airports"] = result[14]
-    city["nearest_parks"] = result[15]    
-    return json.dumps(city, indent = 4)
+    city["nearest_parks"] = result[15]
+    return json.dumps(city, indent=4)
+
 
 @app.route("/airport/<int:r_id>")
 def get_airport(r_id):
     engine = db.create_engine(db_url)
     conn = engine.connect()
     metadata = db.MetaData()
-    airports = db.Table('airports', metadata, autoload=True, autoload_with=engine) 
+    airports = db.Table("airports", metadata, autoload=True, autoload_with=engine)
 
-    queryCommnand = 'SELECT * FROM airports WHERE id = ' + str(r_id + 1)
+    queryCommnand = "SELECT * FROM airports WHERE id = " + str(r_id + 1)
     row = conn.execute(queryCommnand).fetchone()
-    
+
     airport = {}
     airport["id"] = row[0]
     airport["address"] = row[1]
@@ -290,18 +304,19 @@ def get_airport(r_id):
     airport["zip_code"] = row[11]
     airport["nearest_cities"] = row[12]
     airport["nearest_parks"] = row[13]
-    return json.dumps(airport, indent = 4)
+    return json.dumps(airport, indent=4)
+
 
 @app.route("/park/<int:r_id>")
 def get_park(r_id):
     engine = db.create_engine(db_url)
     conn = engine.connect()
     metadata = db.MetaData()
-    parks = db.Table('parks', metadata, autoload=True, autoload_with=engine) 
+    parks = db.Table("parks", metadata, autoload=True, autoload_with=engine)
 
-    queryCommnand = 'SELECT * FROM parks WHERE id = ' + str(r_id + 1)
+    queryCommnand = "SELECT * FROM parks WHERE id = " + str(r_id + 1)
     row = conn.execute(queryCommnand).fetchone()
-    
+
     park = {}
     park["id"] = row[0]
     park["activities"] = row[1]
@@ -319,7 +334,8 @@ def get_park(r_id):
     park["weekdays"] = row[13]
     park["nearest_airports"] = row[14]
     park["nearest_cities"] = row[15]
-    return json.dumps(park, indent = 4)
+    return json.dumps(park, indent=4)
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

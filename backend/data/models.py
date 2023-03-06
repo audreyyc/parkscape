@@ -1,10 +1,26 @@
 import json
 
-class Park():
-    
-    def __init__(self, id, name, description, latitude, longitude, photos, 
-                 phone, email, website, activities, topics, states, weekdays, 
-                 fee, nearest_cities, nearest_airports):
+
+class Park:
+    def __init__(
+        self,
+        id,
+        name,
+        description,
+        latitude,
+        longitude,
+        photos,
+        phone,
+        email,
+        website,
+        activities,
+        topics,
+        states,
+        weekdays,
+        fee,
+        nearest_cities,
+        nearest_airports,
+    ):
         self.id = id
         self.name = name
         self.description = description
@@ -21,13 +37,28 @@ class Park():
         self.fee = fee
         self.nearest_cities = nearest_cities
         self.nearest_ariports = nearest_airports
-    
-class City():
 
-    def __init__(self, id, name, short_name, long_name, latitude, 
-                longitude, population, cost, safety, rating, airbnb_listings, 
-                walkability, hiking_trails, nearest_airports, nearest_parks,
-                photo):
+
+class City:
+    def __init__(
+        self,
+        id,
+        name,
+        short_name,
+        long_name,
+        latitude,
+        longitude,
+        population,
+        cost,
+        safety,
+        rating,
+        airbnb_listings,
+        walkability,
+        hiking_trails,
+        nearest_airports,
+        nearest_parks,
+        photo,
+    ):
         self.id = id
         self.name = name
         self.short_name = short_name
@@ -45,11 +76,25 @@ class City():
         self.nearest_parks = nearest_parks
         self.photo = photo
 
-class Airport():
 
-    def __init__(self, id, name, iata_code, city, state, icao_code, phone, 
-                address, zip_code, latitude, longitude, website,
-                nearest_cities, nearest_parks):
+class Airport:
+    def __init__(
+        self,
+        id,
+        name,
+        iata_code,
+        city,
+        state,
+        icao_code,
+        phone,
+        address,
+        zip_code,
+        latitude,
+        longitude,
+        website,
+        nearest_cities,
+        nearest_parks,
+    ):
         self.id = id
         self.name = name
         self.iata_code = iata_code
