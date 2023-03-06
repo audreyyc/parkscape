@@ -20,6 +20,8 @@ python-tests:
 selenium-tests:
   image: joyzoursky/python-chromedriver:2.7-selenium
   stage: test
+  services:
+    - selenium/standalone-chrome
   before_script:
     - pip install -r frontend/requirements.txt
   script:
