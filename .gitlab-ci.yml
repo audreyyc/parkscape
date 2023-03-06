@@ -18,7 +18,7 @@ python-tests:
     - make python-tests
   
 selenium-tests:
-  image: forbesye/selenium-ci
+  image: docker-python-chromedriver
   stage: test
   before_script:
     - pip install -r frontend/requirements.txt
