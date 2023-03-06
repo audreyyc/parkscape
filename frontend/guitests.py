@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
 import unittest
 
 URL = "https://dev.d1rkv95cbxfqn4.amplifyapp.com/"
@@ -10,10 +11,13 @@ class Test(unittest.TestCase):
 
     @classmethod
     def setUpClass(self):
-        chrome_options = webdriver.ChromeOptions()
+        chrome_options = Options()
+        chrome_options.add_argument("--window-size=1920,1080")
+        chrome_options.add_argument("--start-maximized")
         chrome_options.add_argument('--headless')
-        chrome_options.add_argument('--disable-gpu')
         chrome_options.add_argument('--no-sandbox')
+        
+        self.driver = webdriver.Chrome(chrome_options=chrome_options)
         self.driver = webdriver.Chrome()
         self.driver.get(URL)
 
