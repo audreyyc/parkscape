@@ -18,7 +18,7 @@ python-tests:
     - make python-tests
   
 selenium-tests:
-  image: forbesye/selenium-ci
+  image: joyzoursky/python-chromedriver:2.7-selenium
   stage: test
   before_script:
     - pip install -r frontend/requirements.txt
