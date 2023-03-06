@@ -18,7 +18,7 @@ python-tests:
     - make python-tests
   
 selenium-tests:
-  image: docker-python-chromedriver
+  image: joyzoursky/python-chromedriver
   stage: test
   before_script:
     - pip install -r frontend/requirements.txt
