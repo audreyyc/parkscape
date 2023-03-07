@@ -84,3 +84,17 @@ One page per model with description and multimedia, grid of cards for each model
 
 
 **Comments:** Referenced [GeoJobs](https://gitlab.com/sarthaksirotiya/cs373-idb/) for splash page layout. React is listed as one of the tools on the About page, but we did not use it for this phase.
+
+
+### Phase 2
+
+| Team Member     | Estimated time | Actual time |
+| --------------- | -------------- | ----------- |
+| Petar Iliev     |                |             |
+| Tanya Joseph    |                |             |
+| Audrey Chen     |                |             |
+| Noah Liu        |                |             |
+| Pawan Somavarpu |                |             |
+
+
+**Comments:**
