@@ -10,6 +10,8 @@
 
 **Phase 1:** Petar Iliev
 
+**Phase 2:** 
+
 | Name            | UTEID   | GitLab           |
 | --------------- | ------- | ---------------- |
 | Petar Iliev     | pi2338  | @petarilievCS    |
@@ -27,6 +29,8 @@
 **Pipeline:** https://gitlab.com/petarilievCS/cs373-idb7/-/pipelines
 
 **Git SHA:** [637d2150](https://gitlab.com/petarilievCS/cs373-idb7/-/commit/637d2150fc4a6c61319fc95f950f04c1f2470d43)
+
+**Postman Docs:** https://documenter.getpostman.com/view/25781480/2s935uGgU4
 
 ## Description
 
