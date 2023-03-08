@@ -7,7 +7,7 @@ import "./AirportCard.css";
 
 const AirportCard = ({ name, iata, location, website, phone, airportId }) => {
   return (
-    <Container className="col col-sm-12 col-md-6 col-lg-6 col-xl-4 d-flex align-items-stretch">
+    <Container data-testid="airport-card" className="col col-sm-12 col-md-6 col-lg-6 col-xl-4 d-flex align-items-stretch">
       <Card className="airport-card ms-auto me-auto mb-4 mt-4">
         <Card.Body style={{ textAlign: "center" }}>
           <Card.Title>{name}</Card.Title>

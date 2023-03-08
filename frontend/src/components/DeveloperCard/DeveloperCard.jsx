@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 
 function DeveloperCard(props) {
   return (
-    <Card className="card h-100">
+    <Card data-testid="dev-card" className="card h-100">
       <Card.Img variant="top" src={props.image}></Card.Img>
       <Card.Body>
         <Card.Title>
