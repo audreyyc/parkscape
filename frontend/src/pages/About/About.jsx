@@ -154,18 +154,8 @@ function AboutPage() {
         <h1>Tools</h1>
       </Container>
       <Container className="container text-center mt-5 mb-4">
-        <Row className="row row-cols-md-4 g-3">
-          {ToolsInfo.slice(0, 4).map((tool) => {
-            return (
-              <Col className="col">
-                <ToolCard {...tool}></ToolCard>
-              </Col>
-            );
-          })}
-        </Row>
-        <br></br>
-        <Row className="row row-cols-md-4 g-3">
-          {ToolsInfo.slice(4).map((tool) => {
+        <Row className="row row-cols-md-5 g-3">
+          {ToolsInfo.map((tool) => {
             return (
               <Col className="col">
                 <ToolCard {...tool}></ToolCard>
