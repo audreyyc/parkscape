@@ -25,3 +25,12 @@ test("Testing About Page", () => {
   expect(screen.getByText("Tools")).toBeInTheDocument();
   expect(screen.getByText("APIs")).toBeInTheDocument();
 });
+
+test("Testing Navigation", () => {
+  render(<Navigation />, { wrapper: BrowserRouter });
+  expect(screen.getByText("Home")).toBeInTheDocument();
+  expect(screen.getByText("About")).toBeInTheDocument();
+  expect(screen.getByText("Parks")).toBeInTheDocument();
+  expect(screen.getByText("Cities")).toBeInTheDocument();
+  expect(screen.getByText("Airports")).toBeInTheDocument();
+});
