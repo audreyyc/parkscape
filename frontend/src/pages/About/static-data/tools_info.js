@@ -3,6 +3,7 @@ import Postman from "./images/postman.png";
 import VSCode from "./images/vscode.png";
 import React from "./images/react.png";
 import Bootstrap from "./images/bootstrap.png";
+import Jest from "./images/jest.png";
 import MySQL from "./images/mysql.png";
 import SQLA from "./images/sqla.png";
 import Flask from "./images/flask.png";
@@ -41,6 +42,12 @@ const ToolsInfo = [
     link: "https://getbootstrap.com",
     name: "Bootstrap",
     desc: "A free and open-source CSS framework directed at responsive, mobile-first front-end web development. Used in conjunction with React for UI design.",
+  },
+  {
+    image: Jest,
+    link: "https://jestjs.io/",
+    name: "Jest",
+    desc: "A Javascript testing framework. Used to create and run our javascript unit tests.",
   },
   {
     image: MySQL,
