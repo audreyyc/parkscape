@@ -26,6 +26,7 @@ selenium-tests:
     make selenium-tests
 
 jest-tests:
+  image: node:10-alpine
   stage: test
   script:
     make update-front
