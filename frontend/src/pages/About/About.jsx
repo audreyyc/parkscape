@@ -125,7 +125,7 @@ function AboutPage() {
         <Row className="row row-cols-md-5 g-4">
           {DeveloperInfo.map((user) => {
             return (
-              <Col className="col">
+              <Col key={user.name} className="col">
                 <DeveloperCard {...user}></DeveloperCard>
               </Col>
             );
@@ -144,7 +144,9 @@ function AboutPage() {
             <br></br>
             <Card.Subtitle as="h5">Total Issues: {totalIssues}</Card.Subtitle>
             <br></br>
-            <Card.Subtitle as="h5">Total Unit Tests: {total_unittests()}</Card.Subtitle>
+            <Card.Subtitle as="h5">
+              Total Unit Tests: {total_unittests()}
+            </Card.Subtitle>
           </Card.Body>
         </Card>
       </Container>
@@ -167,7 +169,7 @@ function AboutPage() {
         <Row className="row row-cols-md-4 g-3">
           {ToolsInfo.slice(4).map((tool) => {
             return (
-              <Col className="col">
+              <Col key={tool.name} className="col">
                 <ToolCard {...tool}></ToolCard>
               </Col>
             );
@@ -183,7 +185,7 @@ function AboutPage() {
         <Row className="row row-cols-md-5 g-3">
           {APIInfo.map((api) => {
             return (
-              <Col className="col">
+              <Col key={api.name} className="col">
                 <ToolCard {...api}></ToolCard>
               </Col>
             );

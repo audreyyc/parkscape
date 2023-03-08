@@ -12,8 +12,8 @@ function HomePage() {
   return (
     <>
       {/* Photo and Title */}
-      <div class="bg-image">
-        <h1 class="bg-text">Welcome to ParkScape!</h1>
+      <div className="bg-image">
+        <h1 className="bg-text">Welcome to ParkScape!</h1>
       </div>
 
       {/* Cards */}
@@ -31,8 +31,10 @@ function HomePage() {
                   Visit some of the most beautiful landscapes the United States
                   has to offer.
                 </Card.Text>
-                <Link to={`/parks`}
-                      className="link-card d-flex align-items-stretch">
+                <Link
+                  to={`/parks`}
+                  className="link-card d-flex align-items-stretch"
+                >
                   <Button variant="primary"> Search parks </Button>
                 </Link>
               </Card.Body>
@@ -46,8 +48,10 @@ function HomePage() {
                   Find the best airports to suit your transportation needs,
                   wherever you plan your vacation.
                 </Card.Text>
-                <Link to={`/airports`}
-                      className="link-card d-flex align-items-stretch">
+                <Link
+                  to={`/airports`}
+                  className="link-card d-flex align-items-stretch"
+                >
                   <Button variant="primary"> Search airports </Button>
                 </Link>
               </Card.Body>
@@ -61,8 +65,10 @@ function HomePage() {
                   Discover great cities and travel across the United States
                   according to your preferences.
                 </Card.Text>
-                <Link to={`/cities`}
-                      className="link-card d-flex align-items-stretch">
+                <Link
+                  to={`/cities`}
+                  className="link-card d-flex align-items-stretch"
+                >
                   <Button variant="primary"> Search cities </Button>
                 </Link>
               </Card.Body>
