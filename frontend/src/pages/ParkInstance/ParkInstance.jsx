@@ -17,6 +17,13 @@ function ParkInstance() {
   const [loading, setLoading] = useState(true);
   const parkId = useParams().id;
 
+  const style = {
+    thumb: {
+      height: '100%',
+      objectFit: 'cover'
+    }
+  }
+
   useEffect(() => {
     setLoading(true);
     axios.get(`https://api.parkscape.me/park/${parkId}`).then((res) => {
@@ -50,7 +57,7 @@ function ParkInstance() {
                 {JSON.parse(data.photos).map((img) => {
                   return (
                     <Col>
-                      <Image src={img} className="img-thumbnail mt-5"></Image>
+                      <Image src={img} className="img-thumbnail" style={style.thumb}></Image>
                     </Col>
                   );
                 })}
@@ -93,7 +100,7 @@ function ParkInstance() {
                 {/* Topics */}
                 <Container className="col-md-4 col-sm-12 mt-4">
                   <Table className="table table-hover table-bordered">
-                    <thead class="thead-dark">
+                    <thead>
                       <tr>
                         <th scope="col">Day</th>
                         <th scope="col">Hours</th>
@@ -133,7 +140,7 @@ function ParkInstance() {
 
                   {/* Fees */}
                   <Table className="table table-hover table-bordered">
-                    <thead class="thead-dark">
+                    <thead>
                       <tr>
                         <th scope="col">Fee</th>
                       </tr>
