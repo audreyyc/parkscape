@@ -19,7 +19,10 @@ const CityCard = ({
   cityId,
 }) => {
   return (
-    <Container className="col col-sm-12 col-md-6 col-lg-6 col-xl-4 d-flex align-items-stretch">
+    <Container
+      data-testid="city-card"
+      className="col col-sm-12 col-md-6 col-lg-6 col-xl-4 d-flex align-items-stretch"
+    >
       <Card className="city-card ms-auto me-auto mb-4 mt-4">
         <Link
           to={`/cities/${cityId - 1}`}
@@ -55,9 +58,10 @@ const CityCard = ({
               />
               <br />
               Population:{" "}
-              {population
-                .toString()
-                .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
+              {population != null &&
+                population
+                  .toString()
+                  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
               <br />
               Budget: {budget}
               <br />
