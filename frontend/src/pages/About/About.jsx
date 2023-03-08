@@ -28,7 +28,7 @@ function AboutPage() {
       result.forEach((data) => {
         DeveloperInfo.forEach((user) => {
           if (data.name === user.name) {
-            user.commits += data.commits; // TODO: needs to be fixed after commit history is fixed
+            user.commits = data.commits;
           }
         });
       });
