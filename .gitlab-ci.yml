@@ -28,7 +28,7 @@ selenium-tests:
 jest-tests:
   stage: test
   script:
-    make update
+    make update-front
     make jest-tests
 
 deploy-dev-job:     
