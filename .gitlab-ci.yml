@@ -25,6 +25,11 @@ selenium-tests:
   script:
     make selenium-tests
 
+jest-tests:
+  stage: test
+  script:
+    make jest-tests
+
 deploy-dev-job:     
   only:
       variables:
