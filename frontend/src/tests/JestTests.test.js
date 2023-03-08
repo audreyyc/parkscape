@@ -7,6 +7,7 @@ import "@testing-library/jest-dom";
 import HomePage from "../pages/Home/Home";
 import AboutPage from "../pages/About/About";
 import Navigation from "../components/Navigation/Navigation";
+import CityCard from "../components/CityCard/CityCard";
 
 test("Testing Home Page", () => {
   render(<HomePage />, { wrapper: BrowserRouter });
@@ -33,4 +34,9 @@ test("Testing Navigation", () => {
   expect(screen.getByText("Parks")).toBeInTheDocument();
   expect(screen.getByText("Cities")).toBeInTheDocument();
   expect(screen.getByText("Airports")).toBeInTheDocument();
+});
+
+test("Testing City Card", () => {
+  render(<CityCard />, { wrapper: BrowserRouter });
+  expect(screen.getByTestId("city-card")).toBeInTheDocument();
 });
