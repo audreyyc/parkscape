@@ -43,6 +43,14 @@ make python-tests:
 make selenium-tests:
 	echo "Running Selenium unit tests..."
 	python frontend/guitests.py
+	
+# Runs Jest unit tests
+make jest-tests:
+	echo "Running Jest unit tests..."
+	cd frontend/ && npm test
+
+make update-front:
+	cd frontend/ && npm install
 
 status: 
 	make clean
