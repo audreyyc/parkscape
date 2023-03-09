@@ -10,7 +10,7 @@
 
 **Phase 1:** Petar Iliev
 
-**Phase 2:** 
+**Phase 2:** Tanya Joseph
 
 | Name            | UTEID   | GitLab           |
 | --------------- | ------- | ---------------- |
@@ -95,10 +95,10 @@ One page per model with description and multimedia, grid of cards for each model
 | Team Member     | Estimated time | Actual time |
 | --------------- | -------------- | ----------- |
 | Petar Iliev     |                |             |
-| Tanya Joseph    |                |             |
+| Tanya Joseph    | 12             | 16          |
 | Audrey Chen     |                |             |
 | Noah Liu        |                |             |
-| Pawan Somavarpu |                |             |
+| Pawan Somavarpu | 10             | 15          |
 
 
 **Comments:**
