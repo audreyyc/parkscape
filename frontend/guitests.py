@@ -99,12 +99,12 @@ class Test(unittest.TestCase):
         self.driver.get(URL + "about")
         WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable(
-                (By.XPATH, '//*[@id="root"]/div/div[8]/div[2]/div[1]/div/a')
+                (By.XPATH, '//*[@id="root"]/div/div[8]/div/div[4]/div/a')
             )
         )
         try:
             element = self.driver.find_element_by_xpath(
-                '//*[@id="root"]/div/div[8]/div[2]/div[1]/div/a'
+                '//*[@id="root"]/div/div[8]/div/div[4]/div/a'
             )
             self.driver.execute_script("arguments[0].click();", element)
         except Exception as e:
