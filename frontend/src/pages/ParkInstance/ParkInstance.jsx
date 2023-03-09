@@ -8,8 +8,7 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Image from "react-bootstrap/Image";
-import Navigation from "../../components/Navigation/Navigation";
-import { ListGroup, Spinner } from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
 
 import "bootstrap/dist/css/bootstrap.css";
 
@@ -17,7 +16,13 @@ function ParkInstance() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const parkId = useParams().id;
-  // const parkId = 1; // temp
+
+  const style = {
+    thumb: {
+      height: '100%',
+      objectFit: 'cover'
+    }
+  }
 
   useEffect(() => {
     setLoading(true);
@@ -39,19 +44,20 @@ function ParkInstance() {
           </Container>
         ) : (
           <>
-            <Container className="container mt-5">
+            <Container className="container text-start mt-5">
               {/* Title and Desc. */}
               <Row>
                 <h1>{data.name}</h1>
+                <br></br>
                 <p>{data.description}</p>
               </Row>
-
+            
               {/* Images */}
               <Row>
                 {JSON.parse(data.photos).map((img) => {
                   return (
                     <Col>
-                      <Image src={img} className="img-thumbnail mt-5"></Image>
+                      <Image src={img} className="img-thumbnail" style={style.thumb}></Image>
                     </Col>
                   );
                 })}
@@ -60,7 +66,7 @@ function ParkInstance() {
               {/* Information */}
               <Row>
                 {/* Activities */}
-                <Container class="col-md-4 col-sm-12 mt-4">
+                <Container className="col-md-4 col-sm-12 mt-4">
                   <Card>
                     <Card.Header>
                       <h5>Activities</h5>
@@ -76,7 +82,7 @@ function ParkInstance() {
                 </Container>
 
                 {/* Topics */}
-                <Container class="col-md-4 col-sm-12 mt-4">
+                <Container className="col-md-4 col-sm-12 mt-4">
                   <Card>
                     <Card.Header>
                       <h5>Topics</h5>
@@ -92,9 +98,9 @@ function ParkInstance() {
                 </Container>
 
                 {/* Topics */}
-                <Container class="col-md-4 col-sm-12 mt-4">
-                  <Table class="table table-hover table-bordered">
-                    <thead class="thead-dark">
+                <Container className="col-md-4 col-sm-12 mt-4">
+                  <Table className="table table-hover table-bordered">
+                    <thead>
                       <tr>
                         <th scope="col">Day</th>
                         <th scope="col">Hours</th>
@@ -131,12 +137,10 @@ function ParkInstance() {
                       </tr>
                     </tbody>
                   </Table>
-                </Container>
 
-                {/* Fees */}
-                <Container class="col-md-4 col-sm-12 mt-4">
-                  <Table class="table table-hover table-bordered">
-                    <thead class="thead-dark">
+                  {/* Fees */}
+                  <Table className="table table-hover table-bordered">
+                    <thead>
                       <tr>
                         <th scope="col">Fee</th>
                       </tr>
@@ -165,7 +169,7 @@ function ParkInstance() {
               </Container>
 
               {/* Links to Pages */}
-              <Container className="my-5">
+              <Container className="text-center my-5">
                 <Row>
                   <Col>
                     <Card>
@@ -265,7 +269,7 @@ function ParkInstance() {
               {/* Contact Information */}
               <Row>
                 <Col>
-                  <Card class="card mt-4">
+                  <Card className="card mb-5">
                     <Card.Header>
                       <h5>Contact Information</h5>
                     </Card.Header>

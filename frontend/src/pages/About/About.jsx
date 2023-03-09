@@ -4,7 +4,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Navigation from "../../components/Navigation/Navigation.jsx";
 import DeveloperCard from "../../components/DeveloperCard/DeveloperCard.jsx";
 import { DeveloperInfo } from "./static-data/developer_info.js";
 import ToolCard from "../../components/ToolCard/ToolCard.jsx";
@@ -29,7 +28,7 @@ function AboutPage() {
       result.forEach((data) => {
         DeveloperInfo.forEach((user) => {
           if (data.name === user.name) {
-            user.commits += data.commits; // TODO: needs to be fixed after commit history is fixed
+            user.commits = data.commits;
           }
         });
       });
@@ -101,10 +100,10 @@ function AboutPage() {
   return (
     <>
       {/* Description */}
-      <Container class="container text-center mt-5 mb-4">
+      <Container className="container text-center mt-5 mb-4">
         <h1>About ParkScape</h1>
       </Container>
-      <Container class="container text-left mt-5 mb-4">
+      <Container className="container text-start mt-5 mb-4">
         <p>
           ParkScape compiles information about United States airports, nearby
           cities, and their local state/national parks -- helping travelers who
@@ -119,14 +118,14 @@ function AboutPage() {
       </Container>
 
       {/* Developer Cards */}
-      <Container class="container text-center mt-5 mb-4">
+      <Container className="container text-center mt-5 mb-4">
         <h1>Our Team</h1>
       </Container>
-      <Container class="container text-center mt-5 mb-4">
-        <Row class="row row-cols-md-5 g-4">
+      <Container className="container text-start mt-5 mb-4">
+        <Row className="row row-cols-md-5 g-4">
           {DeveloperInfo.map((user) => {
             return (
-              <Col class="col">
+              <Col key={user.name} className="col">
                 <DeveloperCard {...user}></DeveloperCard>
               </Col>
             );
@@ -135,40 +134,32 @@ function AboutPage() {
       </Container>
 
       {/* Repository Data */}
-      <Container class="container text-center mt-5 mb-4">
+      <Container className="container text-center mt-5 mb-4">
         <h2>Total GitLab Statistics</h2>
       </Container>
-      <Container class="container text-center mt-5 mb-4">
+      <Container className="container text-center mt-5 mb-4">
         <Card>
           <Card.Body>
-            <Card.Subtitle>Total Commits: {totalCommits}</Card.Subtitle>
+            <Card.Subtitle as="h5">Total Commits: {totalCommits}</Card.Subtitle>
             <br></br>
-            <Card.Subtitle>Total Issues: {totalIssues}</Card.Subtitle>
+            <Card.Subtitle as="h5">Total Issues: {totalIssues}</Card.Subtitle>
             <br></br>
-            <Card.Subtitle>Total Unit Tests: {total_unittests()}</Card.Subtitle>
+            <Card.Subtitle as="h5">
+              Total Unit Tests: {total_unittests()}
+            </Card.Subtitle>
           </Card.Body>
         </Card>
       </Container>
 
       {/* Tools Cards */}
-      <Container class="container text-center mt-5 mb-4">
+      <Container className="container text-center mt-5 mb-4">
         <h1>Tools</h1>
       </Container>
-      <Container class="container text-center mt-5 mb-4">
-        <Row class="row row-cols-md-4 g-3">
-          {ToolsInfo.slice(0, 4).map((tool) => {
+      <Container className="container text-center mt-5 mb-4">
+        <Row className="row row-cols-md-5 g-3">
+          {ToolsInfo.map((tool) => {
             return (
-              <Col class="col">
-                <ToolCard {...tool}></ToolCard>
-              </Col>
-            );
-          })}
-        </Row>
-        <br></br>
-        <Row class="row row-cols-md-4 g-3">
-          {ToolsInfo.slice(4).map((tool) => {
-            return (
-              <Col class="col">
+              <Col key={tool.name} className="col">
                 <ToolCard {...tool}></ToolCard>
               </Col>
             );
@@ -177,21 +168,21 @@ function AboutPage() {
       </Container>
 
       {/* API Cards */}
-      <Container class="container text-center mt-5 mb-4">
+      <Container className="container text-center mt-5 mb-4">
         <h1>APIs</h1>
       </Container>
-      <Container class="container text-center mt-5 mb-4">
-        <Row class="row row-cols-md-5 g-3">
+      <Container className="container text-center mt-5 mb-4">
+        <Row className="row row-cols-md-5 g-3">
           {APIInfo.map((api) => {
             return (
-              <Col class="col">
+              <Col key={api.name} className="col">
                 <ToolCard {...api}></ToolCard>
               </Col>
             );
           })}
         </Row>
       </Container>
-      <Container class="container text-center mt-5 mb-5">
+      <Container className="container text-center mt-5 mb-5">
         <a href="https://documenter.getpostman.com/view/25781480/2s935uGgU4">
           <Button variant="dark">Our API</Button>
         </a>

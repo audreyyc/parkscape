@@ -14,7 +14,7 @@ const ParkCard = ({
   parkId,
 }) => {
   return (
-    <Container className="col col-sm-12 col-md-6 col-lg-6 col-xl-4 d-flex align-items-stretch">
+    <Container data-testid="park-card" className="col col-sm-12 col-md-6 col-lg-6 col-xl-4 d-flex align-items-stretch">
       <Card className="park-card ms-auto me-auto mb-4 mt-4">
         <Link
           to={`/parks/${parkId - 1}`}
@@ -50,10 +50,12 @@ const ParkCard = ({
 
 function OperatingHours({ operatingHours }) {
   var weekdays = [1, 1, 1, 1, 1, 1, 1];
-
-  for (var i = 0; i < operatingHours.length; i++) {
-    if (operatingHours[i] === "Closed") {
-      weekdays[i] = 0;
+  
+  if (operatingHours) {
+    for (var i = 0; i < operatingHours.length; i++) {
+      if (operatingHours[i] === "Closed") {
+        weekdays[i] = 0;
+      }
     }
   }
 

@@ -1,10 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import Navigation from "../../components/Navigation/Navigation";
 import "bootstrap/dist/css/bootstrap.css";
 import "./home.css";
 
@@ -12,18 +12,18 @@ function HomePage() {
   return (
     <>
       {/* Photo and Title */}
-      <div class="bg-image">
-        <h1 class="bg-text">Welcome to ParkScape!</h1>
+      <div className="bg-image">
+        <h1 className="bg-text">Welcome to ParkScape!</h1>
       </div>
 
       {/* Cards */}
-      <Container class="container text-center mt-5 mb-4">
+      <Container className="container text-center mt-5 mb-4">
         <h2>Explore</h2>
       </Container>
 
-      <Container class="container text-center mt-5 mb-5">
-        <Row class="row row-cols-md-3 g-4">
-          <Col class="col">
+      <Container className="container text-center mt-5 mb-5">
+        <Row className="row row-cols-md-3 g-4">
+          <Col className="col">
             <Card>
               <Card.Body>
                 <Card.Title>Parks</Card.Title>
@@ -31,13 +31,16 @@ function HomePage() {
                   Visit some of the most beautiful landscapes the United States
                   has to offer.
                 </Card.Text>
-                <Button variant="primary" href="#parks">
-                  Search parks
-                </Button>
+                <Link
+                  to={`/parks`}
+                  className="link-card d-flex align-items-stretch"
+                >
+                  <Button variant="primary"> Search parks </Button>
+                </Link>
               </Card.Body>
             </Card>
           </Col>
-          <Col class="col">
+          <Col className="col">
             <Card>
               <Card.Body>
                 <Card.Title>Airports</Card.Title>
@@ -45,13 +48,16 @@ function HomePage() {
                   Find the best airports to suit your transportation needs,
                   wherever you plan your vacation.
                 </Card.Text>
-                <Button variant="primary" href="#airports">
-                  Search airports
-                </Button>
+                <Link
+                  to={`/airports`}
+                  className="link-card d-flex align-items-stretch"
+                >
+                  <Button variant="primary"> Search airports </Button>
+                </Link>
               </Card.Body>
             </Card>
           </Col>
-          <Col class="col">
+          <Col className="col">
             <Card>
               <Card.Body>
                 <Card.Title>Cities</Card.Title>
@@ -59,9 +65,12 @@ function HomePage() {
                   Discover great cities and travel across the United States
                   according to your preferences.
                 </Card.Text>
-                <Button variant="primary" href="#cities">
-                  Search cities
-                </Button>
+                <Link
+                  to={`/cities`}
+                  className="link-card d-flex align-items-stretch"
+                >
+                  <Button variant="primary"> Search cities </Button>
+                </Link>
               </Card.Body>
             </Card>
           </Col>
