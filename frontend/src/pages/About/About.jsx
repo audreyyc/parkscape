@@ -19,6 +19,7 @@ function AboutPage() {
 
   // Get commits per user
   async function get_commits() {
+    var numCommits = 0;
     var request = new XMLHttpRequest();
     var url =
       "https://gitlab.com/api/v4/projects/43345825/repository/contributors/";
@@ -29,9 +30,11 @@ function AboutPage() {
         DeveloperInfo.forEach((user) => {
           if (data.name === user.name) {
             user.commits = data.commits;
+            numCommits += data.commits;
           }
         });
       });
+      setTotalCommits(numCommits);
     };
     request.send();
   }
@@ -52,20 +55,6 @@ function AboutPage() {
       };
       request.send();
     });
-  }
-
-  // Get total commits
-  async function total_commits() {
-    var request = new XMLHttpRequest();
-    var url =
-      "https://gitlab.com/api/v4/projects/43345825/repository/commits/?per_page=1000";
-    request.open("GET", url);
-    request.onload = function () {
-      var result = JSON.parse(this.response);
-      var num = result.length;
-      setTotalCommits(num);
-    };
-    request.send();
   }
 
   // Get total issues
@@ -93,7 +82,7 @@ function AboutPage() {
   useEffect(() => {
     get_commits();
     get_issues();
-    total_commits();
+    // total_commits();
     total_issues();
   }, []);
 
