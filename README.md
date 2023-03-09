@@ -97,8 +97,8 @@ One page per model with description and multimedia, grid of cards for each model
 | Petar Iliev     | 20             | 20          |
 | Tanya Joseph    | 12             | 16          |
 | Audrey Chen     | 15             | 18          |
-| Noah Liu        |                |             |
+| Noah Liu        | 10             | 10          |
 | Pawan Somavarpu | 10             | 15          |
 
 
-**Comments:** As we've discussed with our TA, our API has issues where it tends to go down occasionally, which breaks our model and instance pages. It seems to be a problem on NameCheap's end.
+**Comments:** As we've discussed with our TA, our API has issues where it tends to go down occasionally, which breaks our model and instance pages. This also causes our Selenium and Postman tests to fail. It seems to be a problem on NameCheap's end. 
