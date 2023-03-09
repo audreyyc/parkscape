@@ -23,7 +23,15 @@ selenium-tests:
   before_script:
     - pip install -r frontend/requirements.txt
   script:
-    make selenium-tests
+    - make selenium-tests
+
+jest-tests:
+  image: node:latest
+  stage: test
+  before_script:
+    - make update-front
+  script:
+    - make jest-tests
 
 deploy-dev-job:     
   only:
