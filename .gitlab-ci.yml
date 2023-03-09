@@ -35,9 +35,12 @@ jest-tests:
 
 postman-tests:
   stage: test
-  image: postman/newman
+  image: 
+    name: postman/newman:alpine
+    entrypoint: [""]
   script:
     - cd backend
+    - newman --version
     - newman run Postman.json
 
 deploy-dev-job:     
