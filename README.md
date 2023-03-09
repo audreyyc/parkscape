@@ -96,9 +96,9 @@ One page per model with description and multimedia, grid of cards for each model
 | --------------- | -------------- | ----------- |
 | Petar Iliev     | 20             | 20          |
 | Tanya Joseph    | 12             | 16          |
-| Audrey Chen     |                |             |
+| Audrey Chen     | 15             | 18          |
 | Noah Liu        |                |             |
 | Pawan Somavarpu | 10             | 15          |
 
 
-**Comments:**
+**Comments:** As we've discussed with our TA, our API has issues where it tends to go down occasionally, which breaks our model and instance pages. It seems to be a problem on NameCheap's end.
