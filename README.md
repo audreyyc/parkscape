@@ -98,7 +98,7 @@ One page per model with description and multimedia, grid of cards for each model
 | Tanya Joseph    |                |             |
 | Audrey Chen     |                |             |
 | Noah Liu        |                |             |
-| Pawan Somavarpu |                |             |
+| Pawan Somavarpu | 10             | 15          |
 
 
 **Comments:**
