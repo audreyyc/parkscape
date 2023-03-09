@@ -25,8 +25,16 @@ test("Testing Home Page", () => {
 test("Testing About Page", () => {
   render(<AboutPage />, { wrapper: BrowserRouter });
   expect(screen.getByText("About ParkScape")).toBeInTheDocument();
+});
+
+test("Testing Gitlab Stats Rendering in About Page", () => {
+  render(<AboutPage />, { wrapper: BrowserRouter });
   expect(screen.getByText("Our Team")).toBeInTheDocument();
   expect(screen.getByText("Total GitLab Statistics")).toBeInTheDocument();
+});
+
+test("Testing Tool and API information Rendering in About Page", () => {
+  render(<AboutPage />, { wrapper: BrowserRouter });
   expect(screen.getByText("Tools")).toBeInTheDocument();
   expect(screen.getByText("APIs")).toBeInTheDocument();
 });
