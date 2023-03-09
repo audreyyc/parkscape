@@ -56,11 +56,11 @@ test("Testing Park Card", () => {
 });
 
 test("Testing Developer Card", () => {
-  render(<ToolCard />, { wrapper: BrowserRouter });
-  expect(screen.getByTestId("tool-card")).toBeInTheDocument();
+  render(<DeveloperCard />, { wrapper: BrowserRouter });
+  expect(screen.getByTestId("dev-card")).toBeInTheDocument();
 });
 
 test("Testing Tool Card", () => {
-  render(<DeveloperCard />, { wrapper: BrowserRouter });
-  expect(screen.getByTestId("dev-card")).toBeInTheDocument();
+  render(<ToolCard />, { wrapper: BrowserRouter });
+  expect(screen.getByTestId("tool-card")).toBeInTheDocument();
 });
