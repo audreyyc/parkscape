@@ -13,12 +13,9 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"GET park API call\", function () {\r",
-							"    pm.test(\"Status code is 200\", function () {\r",
-							"        pm.response.to.have.status(200);\r",
-							"    });\r",
-							"});\r",
-							""
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -100,10 +97,8 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"GET city API call\", function () {\r",
-							"    pm.test(\"Status code is 200\", function () {\r",
-							"        pm.response.to.have.status(200);\r",
-							"    });\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -185,12 +180,9 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"GET airport API call\", function () {\r",
-							"    pm.test(\"Status code is 200\", function () {\r",
-							"        pm.response.to.have.status(200);\r",
-							"    });\r",
-							"});\r",
-							""
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -271,10 +263,8 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"pm.test(\"GET parks list API call\", function () {\r",
-							"    pm.test(\"Status code is 200\", function () {\r",
-							"        pm.response.to.have.status(200);\r",
-							"    });\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -339,10 +329,8 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"GET cities list API call\", function () {\r",
-							"    pm.test(\"Status code is 200\", function () {\r",
-							"        pm.response.to.have.status(200);\r",
-							"    });\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -399,10 +387,8 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"GET airports list API call\", function () {\r",
-							"    pm.test(\"Status code is 200\", function () {\r",
-							"        pm.response.to.have.status(200);\r",
-							"    });\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -467,10 +453,8 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"GET all parks API call\", function () {\r",
-							"    pm.test(\"Status code is 200\", function () {\r",
-							"        pm.response.to.have.status(200);\r",
-							"    });\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -503,10 +487,8 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"GET all cities API call\", function () {\r",
-							"    pm.test(\"Status code is 200\", function () {\r",
-							"        pm.response.to.have.status(200);\r",
-							"    });\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -539,10 +521,8 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"GET all airports API call\", function () {\r",
-							"    pm.test(\"Status code is 200\", function () {\r",
-							"        pm.response.to.have.status(200);\r",
-							"    });\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
 						"type": "text/javascript"
