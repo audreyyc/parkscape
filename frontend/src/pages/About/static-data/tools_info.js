@@ -94,5 +94,3 @@ const ToolsInfo = [
 ];
 
 export { ToolsInfo };
-
-export { ToolsInfo };
