@@ -1,0 +1,46 @@
+
+.operatingHoursDayBoxOpen {
+    padding: 10px;
+    display: inline-block;
+    border-radius: 25%;
+    font-size: 12px;
+    font-style: normal;
+    text-align: center;
+    background: #278944;
+    color: #fff;
+}
+
+.operatingHoursDayBoxClosed {
+    padding: 10px;
+    display: inline-block;
+    border-radius: 25%;
+    font-size: 12px;
+    font-style: normal;
+    text-align: center;
+    background: #c03131;
+    color: #fff;
+}
+
+.weekdays {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.park-card {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  width: 100%;
+}
+
+.link-card {
+    flex-direction: column;
+    text-decoration: none;
+    color: black;
+    transition: all 0.2s ease;
+    height: 100%;
+    width: 100%;
+}
+
+.link-card:hover {
+    color: black;
+}

@@ -9,12 +9,39 @@ build-job:
     - echo "Building code..."
     - echo "Build complete."
 
-test-job:   
-  stage: test    
+python-tests:
+  image: python:2.7.18-stretch
+  stage: test
+  before_script:
+    - pip install -r backend/requirements.txt
   script:
-    - echo "Running unit tests... This will take about 5 seconds."
-    - sleep 5
-    - echo "Unit tests complete."
+    - make python-tests
+  
+selenium-tests:
+  image: joyzoursky/python-chromedriver:2.7-selenium
+  stage: test
+  before_script:
+    - pip install -r frontend/requirements.txt
+  script:
+    - make selenium-tests
+
+jest-tests:
+  image: node:latest
+  stage: test
+  before_script:
+    - make update-front
+  script:
+    - make jest-tests
+
+postman-tests:
+  stage: test
+  image: 
+    name: postman/newman:alpine
+    entrypoint: [""]
+  script:
+    - cd backend
+    - newman --version
+    - newman run Postman.json
 
 deploy-dev-job:     
   only:
