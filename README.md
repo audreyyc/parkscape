@@ -28,7 +28,7 @@
 
 **Pipeline:** https://gitlab.com/petarilievCS/cs373-idb7/-/pipelines
 
-**Git SHA:** [689c6056](https://gitlab.com/petarilievCS/cs373-idb7/-/commit/689c6056fdadb2a69363493433db491e0ebaf281)
+**Git SHA:** [14589e73](https://gitlab.com/petarilievCS/cs373-idb7/-/commit/14589e730406d378db7402378cee7da65333fbb6)
 
 **Postman Docs:** https://documenter.getpostman.com/view/25781480/2s935uGgU4
 
