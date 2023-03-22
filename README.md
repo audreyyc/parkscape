@@ -28,7 +28,7 @@
 
 **Pipeline:** https://gitlab.com/petarilievCS/cs373-idb7/-/pipelines
 
-**Git SHA:** [637d2150](https://gitlab.com/petarilievCS/cs373-idb7/-/commit/637d2150fc4a6c61319fc95f950f04c1f2470d43)
+**Git SHA:** [550cea8b](https://gitlab.com/petarilievCS/cs373-idb7/-/commit/550cea8b6e5f622b8fcb120f2d72d341a8cf1e5e)
 
 **Postman Docs:** https://documenter.getpostman.com/view/25781480/2s935uGgU4
 
@@ -94,11 +94,13 @@ One page per model with description and multimedia, grid of cards for each model
 
 | Team Member     | Estimated time | Actual time |
 | --------------- | -------------- | ----------- |
-| Petar Iliev     |                |             |
+| Petar Iliev     | 20             | 20          |
 | Tanya Joseph    | 12             | 16          |
-| Audrey Chen     |                |             |
-| Noah Liu        |                |             |
+| Audrey Chen     | 15             | 18          |
+| Noah Liu        | 10             | 10          |
 | Pawan Somavarpu | 10             | 15          |
 
+
+**Comments:** As we've discussed with our TA, our API has issues where it tends to go down occasionally, which breaks our model and instance pages. This also causes our Selenium and Postman tests to fail. It seems to be a problem on NameCheap's end. 
 
 **Comments:**

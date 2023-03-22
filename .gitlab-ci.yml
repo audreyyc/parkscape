@@ -33,6 +33,19 @@ jest-tests:
   script:
     - make jest-tests
 
+<<<<<<< HEAD
+=======
+postman-tests:
+  stage: test
+  image: 
+    name: postman/newman
+    entrypoint: [""]
+  script:
+    - cd backend
+    - newman --version
+    - newman run Postman.json
+
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
 deploy-dev-job:     
   only:
       variables:

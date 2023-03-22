@@ -19,6 +19,10 @@ function AboutPage() {
 
   // Get commits per user
   async function get_commits() {
+<<<<<<< HEAD
+=======
+    var numCommits = 0;
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
     var request = new XMLHttpRequest();
     var url =
       "https://gitlab.com/api/v4/projects/43345825/repository/contributors/";
@@ -29,9 +33,17 @@ function AboutPage() {
         DeveloperInfo.forEach((user) => {
           if (data.name === user.name) {
             user.commits = data.commits;
+<<<<<<< HEAD
           }
         });
       });
+=======
+            numCommits += data.commits;
+          }
+        });
+      });
+      setTotalCommits(numCommits);
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
     };
     request.send();
   }
@@ -54,6 +66,7 @@ function AboutPage() {
     });
   }
 
+<<<<<<< HEAD
   // Get total commits
   async function total_commits() {
     var request = new XMLHttpRequest();
@@ -68,6 +81,8 @@ function AboutPage() {
     request.send();
   }
 
+=======
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
   // Get total issues
   async function total_issues() {
     var request = new XMLHttpRequest();
@@ -93,7 +108,11 @@ function AboutPage() {
   useEffect(() => {
     get_commits();
     get_issues();
+<<<<<<< HEAD
     total_commits();
+=======
+    // total_commits();
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
     total_issues();
   }, []);
 
@@ -156,8 +175,23 @@ function AboutPage() {
         <h1>Tools</h1>
       </Container>
       <Container className="container text-center mt-5 mb-4">
+<<<<<<< HEAD
         <Row className="row row-cols-md-5 g-3">
           {ToolsInfo.map((tool) => {
+=======
+        <Row className="row row-cols-md-4 g-3">
+          {ToolsInfo.slice(0, 4).map((tool) => {
+            return (
+              <Col className="col">
+                <ToolCard {...tool}></ToolCard>
+              </Col>
+            );
+          })}
+        </Row>
+        <br></br>
+        <Row className="row row-cols-md-4 g-3">
+          {ToolsInfo.slice(4).map((tool) => {
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
             return (
               <Col key={tool.name} className="col">
                 <ToolCard {...tool}></ToolCard>

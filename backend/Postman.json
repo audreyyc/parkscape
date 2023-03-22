@@ -18,6 +18,7 @@
 							"        pm.response.to.have.status(200);\r",
 							"    });\r",
 							"});\r",
+<<<<<<< HEAD
 							"\r",
 							"pm.test(\"GET park results\", function () {\r",
 							"    pm.test(\"Contains website URL\", function () {\r",
@@ -77,6 +78,8 @@
 							"        pm.expect(jsonData).to.have.property(\"name\");\r",
 							"    });\r",
 							"});\r",
+=======
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
 							""
 						],
 						"type": "text/javascript"
@@ -94,7 +97,11 @@
 					"raw": ""
 				},
 				"url": {
+<<<<<<< HEAD
 					"raw": "https://api.parkscape.me/park/:parkID",
+=======
+					"raw": "https://api.parkscape.me/park/1",
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
 					"protocol": "https",
 					"host": [
 						"api",
@@ -103,6 +110,7 @@
 					],
 					"path": [
 						"park",
+<<<<<<< HEAD
 						":parkID"
 					],
 					"variable": [
@@ -110,6 +118,9 @@
 							"key": "parkID",
 							"value": null
 						}
+=======
+						"1"
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
 					]
 				},
 				"description": "Returns the following information about a park.\n\n- **website** - the URL of the park website\n- **activities** - an array of activities available in the park\n- **fee** - the cost of entry for the park\n- **description** - a short description of the park\n- **photos** - the URL of photos of the park\n- **nearest_airports** - an array of three airports closest to the park\n- **topics** - an array of topics commonly associated with the park\n- **weekdays** - the hours of the park for each day of the week\n- **longitude** - longitude coordinate of the park\n- **id** - the ID for accessing the park with the API\n- **states** - the US state(s) in which the park is located\n- **phone** - contact phone number of the park\n- **latitude** - latitude coordinate of the park\n- **nearest_cities** - an array of three cities located closest to the park\n- **email** - contact email for the park\n- **name** - full name of the park"
@@ -169,6 +180,7 @@
 							"    pm.test(\"Status code is 200\", function () {\r",
 							"        pm.response.to.have.status(200);\r",
 							"    });\r",
+<<<<<<< HEAD
 							"});\r",
 							"\r",
 							"pm.test(\"GET city results\", function () {\r",
@@ -234,6 +246,9 @@
 							"    });\r",
 							"});\r",
 							""
+=======
+							"});"
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
 						],
 						"type": "text/javascript"
 					}
@@ -250,7 +265,11 @@
 					"raw": ""
 				},
 				"url": {
+<<<<<<< HEAD
 					"raw": "api.parkscape.me/city/:cityID",
+=======
+					"raw": "api.parkscape.me/city/1",
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
 					"host": [
 						"api",
 						"parkscape",
@@ -258,6 +277,7 @@
 					],
 					"path": [
 						"city",
+<<<<<<< HEAD
 						":cityID"
 					],
 					"variable": [
@@ -265,6 +285,9 @@
 							"key": "cityID",
 							"value": null
 						}
+=======
+						"1"
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
 					]
 				},
 				"description": "Returns the following information about a city.\n\n- **rating** - the user rating of the city\n- **airbnb_listings** - URL to the AirBnB listings in the city\n- **short_name** - name of the city\n- **photo** - URL to a photo of the city\n- **walkability** - URL to the city walkability score\n- **nearest_parks** - an array of three parks located closest to the city\n- **longitude** - longitude coordinate of the city\n- **long_name** - name of the city, name of the state, name of the country\n- **cost** - cost score of the city\n- **safety** - safety score of the city\n- **hiking_trails** - URL to Alltrails hiking trail search in the city\n- **nearest_airports** - an array of three airports closest to the city\n- **latitude** - latitude coordinate of the city\n- **population** - population of the city\n- **id** - the ID for accessing the city with the API\n- **name** - name of the city, abbreviation of the state"
@@ -325,6 +348,7 @@
 							"        pm.response.to.have.status(200);\r",
 							"    });\r",
 							"});\r",
+<<<<<<< HEAD
 							"\r",
 							"pm.test(\"GET airport results\", function () {\r",
 							"    pm.test(\"Contains website\", function () {\r",
@@ -380,6 +404,8 @@
 							"        pm.expect(jsonData).to.have.property(\"zip_code\");\r",
 							"    });\r",
 							"});\r",
+=======
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
 							""
 						],
 						"type": "text/javascript"
@@ -397,7 +423,11 @@
 					"raw": ""
 				},
 				"url": {
+<<<<<<< HEAD
 					"raw": "api.parkscape.me/airport/:airportID",
+=======
+					"raw": "api.parkscape.me/airport/1",
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
 					"host": [
 						"api",
 						"parkscape",
@@ -405,6 +435,7 @@
 					],
 					"path": [
 						"airport",
+<<<<<<< HEAD
 						":airportID"
 					],
 					"variable": [
@@ -412,6 +443,9 @@
 							"key": "airportID",
 							"value": null
 						}
+=======
+						"1"
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
 					]
 				},
 				"description": "Returns the following information about an airport.\n\n- **website** - the URL of the airport website\n- **city** - city in which the airport is located\n- **name** - full name of the airport\n- **icao_code** - ICAO airport code\n- **nearest_parks** - an array of three parks closest to the airport\n- **longitude** - longitude coordinate of the airport\n- **iata_code** - IATA airport code\n- **phone** - contact phone number of the airport\n- **state** - the US state in which the airport is located\n- **address** - airport address\n- **latitude** - latitude coordinate of the airport\n- **nearest_cities** - an array of three cities located closest to the airport\n- **id** - the ID for accessing the airport with the API\n- **zip_code** - zip code of the airport"
@@ -461,16 +495,34 @@
 			]
 		},
 		{
+<<<<<<< HEAD
 			"name": "Parks",
+=======
+			"name": "Parks page",
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
 						"exec": [
+<<<<<<< HEAD
 							"pm.test(\"GET parks list API call\", function () {\r",
 							"    pm.test(\"Status code is 200\", function () {\r",
 							"        pm.response.to.have.status(200);\r",
 							"    });\r",
+=======
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
 							"});"
 						],
 						"type": "text/javascript"
@@ -481,13 +533,18 @@
 				"method": "GET",
 				"header": [],
 				"url": {
+<<<<<<< HEAD
 					"raw": "api.parkscape.me/parks?page=<int>&state=<string>&activity=<string>&amenities=<string>&maxcost=<int>&mincost=<int>",
+=======
+					"raw": "api.parkscape.me/parks/1",
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
 					"host": [
 						"api",
 						"parkscape",
 						"me"
 					],
 					"path": [
+<<<<<<< HEAD
 						"parks"
 					],
 					"query": [
@@ -524,6 +581,13 @@
 					]
 				},
 				"description": "Returns a list of park objects."
+=======
+						"parks",
+						"1"
+					]
+				},
+				"description": "Returns a page of park objects."
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
 			},
 			"response": [
 				{
@@ -560,7 +624,11 @@
 			]
 		},
 		{
+<<<<<<< HEAD
 			"name": "Cities",
+=======
+			"name": "Cities page",
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
 			"event": [
 				{
 					"listen": "test",
@@ -580,13 +648,18 @@
 				"method": "GET",
 				"header": [],
 				"url": {
+<<<<<<< HEAD
 					"raw": "api.parkscape.me/cities?page=<int>&state=<string>&maxpop=<int>&minpop=<int>&maxbudget=<int>&minsafety=<int>&minrating=<int>",
+=======
+					"raw": "api.parkscape.me/cities/1",
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
 					"host": [
 						"api",
 						"parkscape",
 						"me"
 					],
 					"path": [
+<<<<<<< HEAD
 						"cities"
 					],
 					"query": [
@@ -628,6 +701,13 @@
 					]
 				},
 				"description": "Returns a list of city objects."
+=======
+						"cities",
+						"1"
+					]
+				},
+				"description": "Returns a page of city objects."
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
 			},
 			"response": [
 				{
@@ -656,7 +736,11 @@
 			]
 		},
 		{
+<<<<<<< HEAD
 			"name": "Airports",
+=======
+			"name": "Airports page",
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
 			"event": [
 				{
 					"listen": "test",
@@ -676,13 +760,18 @@
 				"method": "GET",
 				"header": [],
 				"url": {
+<<<<<<< HEAD
 					"raw": "api.parkscape.me/airports?page=<int>&city=<string>&state=<string>&international=<boolean>",
+=======
+					"raw": "api.parkscape.me/airports/1",
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
 					"host": [
 						"api",
 						"parkscape",
 						"me"
 					],
 					"path": [
+<<<<<<< HEAD
 						"airports"
 					],
 					"query": [
@@ -709,6 +798,13 @@
 					]
 				},
 				"description": "Returns a list of airport objects."
+=======
+						"airports",
+						"1"
+					]
+				},
+				"description": "Returns a page of airport objects."
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
 			},
 			"response": [
 				{
@@ -743,6 +839,120 @@
 					"body": "[\n    {\n        \"website\": \"http://www.aberdeenregionalairport.us/\",\n        \"city\": \"Aberdeen\",\n        \"name\": \"Aberdeen Regional Airport\",\n        \"icao_code\": \"KABR\",\n        \"nearest_parks\": \"[{\\\"id\\\": 350, \\\"name\\\": \\\"Pipestone National Monument\\\", \\\"distance\\\": 2.5404610273826584}, {\\\"id\\\": 294, \\\"name\\\": \\\"Missouri National Recreational River\\\", \\\"distance\\\": 2.7905797079897208}, {\\\"id\\\": 321, \\\"name\\\": \\\"Niobrara National Scenic River\\\", \\\"distance\\\": 3.053679914743943}]\",\n        \"longitude\": -98.4177,\n        \"iata_code\": \"ABR\",\n        \"phone\": \"+1 605-626-7020\",\n        \"state\": \"South Dakota\",\n        \"address\": \"4740 6th Avenue Southeast\",\n        \"latitude\": 45.4535,\n        \"nearest_cities\": \"[{\\\"id\\\": 37, \\\"name\\\": \\\"Omaha, NE\\\", \\\"distance\\\": 4.8737514476872965}, {\\\"id\\\": 70, \\\"name\\\": \\\"Lincoln, NE\\\", \\\"distance\\\": 4.971905081160946}, {\\\"id\\\": 44, \\\"name\\\": \\\"Minneapolis, MN\\\", \\\"distance\\\": 5.175588906819592}]\",\n        \"id\": 1,\n        \"zip_code\": \"57401\"\n    },\n    {\n        \"website\": \"http://iflyabi.com/\",\n        \"city\": \"Abilene\",\n        \"name\": \"Abilene Regional Airport\",\n        \"icao_code\": \"KABI\",\n        \"nearest_parks\": \"[{\\\"id\\\": 275, \\\"name\\\": \\\"Lyndon B Johnson National Historical Park\\\", \\\"distance\\\": 2.411822937832262}, {\\\"id\\\": 441, \\\"name\\\": \\\"Waco Mammoth National Monument\\\", \\\"distance\\\": 2.6308877799801187}, {\\\"id\\\": 15, \\\"name\\\": \\\"Amistad National Recreation Area\\\", \\\"distance\\\": 3.197253496020941}]\",\n        \"longitude\": -99.68,\n        \"iata_code\": \"ABI\",\n        \"phone\": \"+1 325-676-6367\",\n        \"state\": \"Texas\",\n        \"address\": \"2933 Airport Boulevard\",\n        \"latitude\": 32.4119,\n        \"nearest_cities\": \"[{\\\"id\\\": 12, \\\"name\\\": \\\"Fort Worth, TX\\\", \\\"distance\\\": 2.379936300536645}, {\\\"id\\\": 85, \\\"name\\\": \\\"Lubbock, TX\\\", \\\"distance\\\": 2.467921486731697}, {\\\"id\\\": 48, \\\"name\\\": \\\"Arlington, TX\\\", \\\"distance\\\": 2.5922775891119443}]\",\n        \"id\": 2,\n        \"zip_code\": \"79602\"\n    },\n    {\n        \"website\": \"https://adak-ak.us/\",\n        \"city\": \"Adak\",\n        \"name\": \"Adak Airport\",\n        \"icao_code\": \"PADK\",\n        \"nearest_parks\": \"[{\\\"id\\\": 10, \\\"name\\\": \\\"Aleutian Islands World War II National Historic Area\\\", \\\"distance\\\": 10.33053421990795}, {\\\"id\\\": 34, \\\"name\\\": \\\"Bering Land Bridge National Preserve\\\", \\\"distance\\\": 18.65586521494312}, {\\\"id\\\": 19, \\\"name\\\": \\\"Aniakchak National Monument & Preserve\\\", \\\"distance\\\": 19.73048324737164}]\",\n        \"longitude\": -176.648,\n        \"iata_code\": \"ADK\",\n        \"phone\": \"+1 907-592-4500\",\n        \"state\": \"Alaska\",\n        \"address\": \" \",\n        \"latitude\": 51.8813,\n        \"nearest_cities\": \"[{\\\"id\\\": 74, \\\"name\\\": \\\"Anchorage, AK\\\", \\\"distance\\\": 28.33067355520601}, {\\\"id\\\": 53, \\\"name\\\": \\\"Honolulu, HI\\\", \\\"distance\\\": 35.886661800036926}, {\\\"id\\\": 24, \\\"name\\\": \\\"Portland, OR\\\", \\\"distance\\\": 54.34519607315618}]\",\n        \"id\": 3,\n        \"zip_code\": \"99546\"\n    },\n    {\n        \"website\": \"https://nfdc.faa.gov/nfdcApps/airportLookup/airportDisplay.jsp?category=nasr&airportId=Z13\",\n        \"city\": \"Akiachak\",\n        \"name\": \"Akiachak Airport (FAA: Z13)\",\n        \"icao_code\": \"\",\n        \"nearest_parks\": \"[{\\\"id\\\": 19, \\\"name\\\": \\\"Aniakchak National Monument & Preserve\\\", \\\"distance\\\": 5.600277413709113}, {\\\"id\\\": 7, \\\"name\\\": \\\"Alagnak Wild River\\\", \\\"distance\\\": 5.622909989985655}, {\\\"id\\\": 34, \\\"name\\\": \\\"Bering Land Bridge National Preserve\\\", \\\"distance\\\": 5.873089880833772}]\",\n        \"longitude\": -161.421,\n        \"iata_code\": \"KKI\",\n        \"phone\": \"+1 907-269-0747\",\n        \"state\": \"Alaska\",\n        \"address\": \" \",\n        \"latitude\": 60.9045,\n        \"nearest_cities\": \"[{\\\"id\\\": 74, \\\"name\\\": \\\"Anchorage, AK\\\", \\\"distance\\\": 11.524895434520376}, {\\\"id\\\": 53, \\\"name\\\": \\\"Honolulu, HI\\\", \\\"distance\\\": 39.757531961252944}, {\\\"id\\\": 17, \\\"name\\\": \\\"Seattle, WA\\\", \\\"distance\\\": 41.28901557506462}]\",\n        \"id\": 4,\n        \"zip_code\": \"99551\"\n    },\n    {\n        \"website\": \"https://nfdc.faa.gov/nfdcApps/services/ajv5/airportDisplay.jsp?airportId=aki\",\n        \"city\": \"Akiak\",\n        \"name\": \"Akiak Airport\",\n        \"icao_code\": \"PFAK\",\n        \"nearest_parks\": \"[{\\\"id\\\": 7, \\\"name\\\": \\\"Alagnak Wild River\\\", \\\"distance\\\": 5.4434709998241235}, {\\\"id\\\": 19, \\\"name\\\": \\\"Aniakchak National Monument & Preserve\\\", \\\"distance\\\": 5.469509962712067}, {\\\"id\\\": 34, \\\"name\\\": \\\"Bering Land Bridge National Preserve\\\", \\\"distance\\\": 5.973565907820082}]\",\n        \"longitude\": -161.231,\n        \"iata_code\": \"AKI\",\n        \"phone\": \"+1 907-543-2495\",\n        \"state\": \"Alaska\",\n        \"address\": \" \",\n        \"latitude\": 60.9025,\n        \"nearest_cities\": \"[{\\\"id\\\": 74, \\\"name\\\": \\\"Anchorage, AK\\\", \\\"distance\\\": 11.33533398000116}, {\\\"id\\\": 53, \\\"name\\\": \\\"Honolulu, HI\\\", \\\"distance\\\": 39.738930792186515}, {\\\"id\\\": 17, \\\"name\\\": \\\"Seattle, WA\\\", \\\"distance\\\": 41.10881268642613}]\",\n        \"id\": 5,\n        \"zip_code\": \"99552\"\n    },\n    {\n        \"website\": \"http://www.akroncantonairport.com/\",\n        \"city\": \"North Canton\",\n        \"name\": \"Akron-Canton Airport\",\n        \"icao_code\": \"KCAK\",\n        \"nearest_parks\": \"[{\\\"id\\\": 136, \\\"name\\\": \\\"First Ladies National Historic Site\\\", \\\"distance\\\": 0.13566838435081535}, {\\\"id\\\": 110, \\\"name\\\": \\\"Cuyahoga Valley National Park\\\", \\\"distance\\\": 0.3689493957819031}, {\\\"id\\\": 232, \\\"name\\\": \\\"James A Garfield National Historic Site\\\", \\\"distance\\\": 0.7549926798170713}]\",\n        \"longitude\": -81.4419,\n        \"iata_code\": \"CAK\",\n        \"phone\": \"+1 888-434-2359\",\n        \"state\": \"Ohio\",\n        \"address\": \"5400 Lauby Road\",\n        \"latitude\": 40.9154,\n        \"nearest_cities\": \"[{\\\"id\\\": 52, \\\"name\\\": \\\"Cleveland, OH\\\", \\\"distance\\\": 0.6367641359247517}, {\\\"id\\\": 69, \\\"name\\\": \\\"Pittsburgh, PA\\\", \\\"distance\\\": 1.5219438418023152}, {\\\"id\\\": 13, \\\"name\\\": \\\"Columbus, OH\\\", \\\"distance\\\": 1.8260436057224911}]\",\n        \"id\": 6,\n        \"zip_code\": \"44720\"\n    },\n    {\n        \"website\": \"\",\n        \"city\": \"\",\n        \"name\": \"Akutan Seaplane Base\",\n        \"icao_code\": \"\",\n        \"nearest_parks\": \"[{\\\"id\\\": 45, \\\"name\\\": \\\"Blackwell School National Historic Site\\\", \\\"distance\\\": 0.0}, {\\\"id\\\": 55, \\\"name\\\": \\\"Buck Island Reef National Monument\\\", \\\"distance\\\": 67.03160943153506}, {\\\"id\\\": 94, \\\"name\\\": \\\"Christiansted National Historic Site\\\", \\\"distance\\\": 67.11540939859312}]\",\n        \"longitude\": 0,\n        \"iata_code\": \"KQA\",\n        \"phone\": \"\",\n        \"state\": \"\",\n        \"address\": \" \",\n        \"latitude\": 0,\n        \"nearest_cities\": \"[{\\\"id\\\": 22, \\\"name\\\": \\\"Boston, MA\\\", \\\"distance\\\": 82.72682457654108}, {\\\"id\\\": 43, \\\"name\\\": \\\"Miami, FL\\\", \\\"distance\\\": 84.23381802001201}, {\\\"id\\\": 41, \\\"name\\\": \\\"Virginia Beach, VA\\\", \\\"distance\\\": 84.44402533054071}]\",\n        \"id\": 7,\n        \"zip_code\": \"\"\n    },\n    {\n        \"website\": \"\",\n        \"city\": \"Alakanuk\",\n        \"name\": \"Alakanuk Airport\",\n        \"icao_code\": \"\",\n        \"nearest_parks\": \"[{\\\"id\\\": 34, \\\"name\\\": \\\"Bering Land Bridge National Preserve\\\", \\\"distance\\\": 3.290493486512678}, {\\\"id\\\": 67, \\\"name\\\": \\\"Cape Krusenstern National Monument\\\", \\\"distance\\\": 4.87412264925883}, {\\\"id\\\": 254, \\\"name\\\": \\\"Kobuk Valley National Park\\\", \\\"distance\\\": 7.188671834038126}]\",\n        \"longitude\": -164.66,\n        \"iata_code\": \"AUK\",\n        \"phone\": \"\",\n        \"state\": \"Alaska\",\n        \"address\": \" \",\n        \"latitude\": 62.68,\n        \"nearest_cities\": \"[{\\\"id\\\": 74, \\\"name\\\": \\\"Anchorage, AK\\\", \\\"distance\\\": 14.831945355953804}, {\\\"id\\\": 53, \\\"name\\\": \\\"Honolulu, HI\\\", \\\"distance\\\": 41.92842482794339}, {\\\"id\\\": 17, \\\"name\\\": \\\"Seattle, WA\\\", \\\"distance\\\": 44.93186845713184}]\",\n        \"id\": 8,\n        \"zip_code\": \"99554\"\n    },\n    {\n        \"website\": \"http://ci.alamogordo.nm.us/\",\n        \"city\": \"Alamogordo\",\n        \"name\": \"Alamogordo–White Sands Regional Airport\",\n        \"icao_code\": \"KALM\",\n        \"nearest_parks\": \"[{\\\"id\\\": 449, \\\"name\\\": \\\"White Sands National Park\\\", \\\"distance\\\": 0.3447633769659869}, {\\\"id\\\": 84, \\\"name\\\": \\\"Chamizal National Memorial\\\", \\\"distance\\\": 1.1671958157467348}, {\\\"id\\\": 126, \\\"name\\\": \\\"El Camino Real de Tierra Adentro National Historic Trail\\\", \\\"distance\\\": 1.2966116694059977}]\",\n        \"longitude\": -105.994,\n        \"iata_code\": \"ALM\",\n        \"phone\": \"+1 575-439-4110\",\n        \"state\": \"New Mexico\",\n        \"address\": \"3500 Airport Road\",\n        \"latitude\": 32.8398,\n        \"nearest_cities\": \"[{\\\"id\\\": 23, \\\"name\\\": \\\"El Paso, TX\\\", \\\"distance\\\": 1.1882040253576005}, {\\\"id\\\": 30, \\\"name\\\": \\\"Albuquerque, NM\\\", \\\"distance\\\": 2.33886616353224}, {\\\"id\\\": 85, \\\"name\\\": \\\"Lubbock, TX\\\", \\\"distance\\\": 4.204095126463713}]\",\n        \"id\": 9,\n        \"zip_code\": \"88310\"\n    },\n    {\n        \"website\": \"http://www.sanluisvalleyairport.org/\",\n        \"city\": \"Alamosa\",\n        \"name\": \"San Luis Valley Regional Airport\",\n        \"icao_code\": \"KALS\",\n        \"nearest_parks\": \"[{\\\"id\\\": 198, \\\"name\\\": \\\"Great Sand Dunes National Park & Preserve\\\", \\\"distance\\\": 0.4425954709219824}, {\\\"id\\\": 139, \\\"name\\\": \\\"Florissant Fossil Beds National Monument\\\", \\\"distance\\\": 1.5806659063660224}, {\\\"id\\\": 280, \\\"name\\\": \\\"Manhattan Project National Historical Park\\\", \\\"distance\\\": 1.623003055278702}]\",\n        \"longitude\": -105.865,\n        \"iata_code\": \"ALS\",\n        \"phone\": \"+1 719-589-1138\",\n        \"state\": \"Colorado\",\n        \"address\": \"2490 State Avenue\",\n        \"latitude\": 37.4438,\n        \"nearest_cities\": \"[{\\\"id\\\": 38, \\\"name\\\": \\\"Colorado Springs, CO\\\", \\\"distance\\\": 1.737915672155582}, {\\\"id\\\": 18, \\\"name\\\": \\\"Denver, CO\\\", \\\"distance\\\": 2.458145013481504}, {\\\"id\\\": 30, \\\"name\\\": \\\"Albuquerque, NM\\\", \\\"distance\\\": 2.4870377819936724}]\",\n        \"id\": 10,\n        \"zip_code\": \"81101\"\n    },\n    {\n        \"website\": \"http://www.albanyairport.com/\",\n        \"city\": \"\",\n        \"name\": \"Albany International Airport\",\n        \"icao_code\": \"KALB\",\n        \"nearest_parks\": \"[{\\\"id\\\": 392, \\\"name\\\": \\\"Saratoga National Historical Park\\\", \\\"distance\\\": 0.3003832822888383}, {\\\"id\\\": 285, \\\"name\\\": \\\"Martin Van Buren National Historic Site\\\", \\\"distance\\\": 0.3927219128611577}, {\\\"id\\\": 415, \\\"name\\\": \\\"Thomas Cole National Historic Site\\\", \\\"distance\\\": 0.5259986319766394}]\",\n        \"longitude\": -73.8055,\n        \"iata_code\": \"ALB\",\n        \"phone\": \"+1 518-242-2200\",\n        \"state\": \"New York\",\n        \"address\": \" Albany Shaker Road\",\n        \"latitude\": 42.7487,\n        \"nearest_cities\": \"[{\\\"id\\\": 0, \\\"name\\\": \\\"New York, NY\\\", \\\"distance\\\": 2.0152294494744307}, {\\\"id\\\": 68, \\\"name\\\": \\\"Jersey City, NJ\\\", \\\"distance\\\": 2.038794369744042}, {\\\"id\\\": 61, \\\"name\\\": \\\"Newark, NJ\\\", \\\"distance\\\": 2.046207198550529}]\",\n        \"id\": 11,\n        \"zip_code\": \"\"\n    },\n    {\n        \"website\": \"http://www.corvallisoregon.gov/\",\n        \"city\": \"Corvallis\",\n        \"name\": \"Corvallis Municipal Airport\",\n        \"icao_code\": \"KCVO\",\n        \"nearest_parks\": \"[{\\\"id\\\": 162, \\\"name\\\": \\\"Fort Vancouver National Historic Site\\\", \\\"distance\\\": 1.2871618356292505}, {\\\"id\\\": 264, \\\"name\\\": \\\"Lewis and Clark National Historical Park\\\", \\\"distance\\\": 1.8434682776620608}, {\\\"id\\\": 105, \\\"name\\\": \\\"Crater Lake National Park\\\", \\\"distance\\\": 1.9370031087280808}]\",\n        \"longitude\": -123.287,\n        \"iata_code\": \"CVO\",\n        \"phone\": \"+1 541-766-6783\",\n        \"state\": \"Oregon\",\n        \"address\": \"5695 Southwest Airport Avenue\",\n        \"latitude\": 44.4972,\n        \"nearest_cities\": \"[{\\\"id\\\": 24, \\\"name\\\": \\\"Portland, OR\\\", \\\"distance\\\": 1.1941872573696282}, {\\\"id\\\": 17, \\\"name\\\": \\\"Seattle, WA\\\", \\\"distance\\\": 3.2523367933078484}, {\\\"id\\\": 81, \\\"name\\\": \\\"Reno, NV\\\", \\\"distance\\\": 6.061187505009557}]\",\n        \"id\": 12,\n        \"zip_code\": \"97333\"\n    }\n]"
 				}
 			]
+<<<<<<< HEAD
 		}
 	]
 }
+=======
+		},
+		{
+			"name": "All parks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"GET all parks API call\", function () {\r",
+							"    pm.test(\"Status code is 200\", function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "api.parkscape.me/parks/all",
+					"host": [
+						"api",
+						"parkscape",
+						"me"
+					],
+					"path": [
+						"parks",
+						"all"
+					]
+				},
+				"description": "Return a list of all parks."
+			},
+			"response": []
+		},
+		{
+			"name": "All cities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"GET all cities API call\", function () {\r",
+							"    pm.test(\"Status code is 200\", function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "api.parkscape.me/cities/all",
+					"host": [
+						"api",
+						"parkscape",
+						"me"
+					],
+					"path": [
+						"cities",
+						"all"
+					]
+				},
+				"description": "Return a list of all cities."
+			},
+			"response": []
+		},
+		{
+			"name": "All airports",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"GET all airports API call\", function () {\r",
+							"    pm.test(\"Status code is 200\", function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "api.parkscape.me/airports/all",
+					"host": [
+						"api",
+						"parkscape",
+						"me"
+					],
+					"path": [
+						"airports",
+						"all"
+					]
+				},
+				"description": "Return a list of all airports."
+			},
+			"response": []
+		}
+	]
+}
+>>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
