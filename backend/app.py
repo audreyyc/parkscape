@@ -23,7 +23,7 @@ def get_all_cities():
     metadata = db.MetaData()
 
     cities = db.Table("cities", metadata, autoload=True, autoload_with=engine)
-
+    
     queryCommnand = "SELECT * FROM cities"
     result = conn.execute(queryCommnand).fetchall()
 
@@ -59,7 +59,7 @@ def get_all_airports():
     conn = engine.connect()
     metadata = db.MetaData()
 
-    cities = db.Table("airports", metadata, autoload=True, autoload_with=engine)
+    airports = db.Table("airports", metadata, autoload=True, autoload_with=engine)
 
     queryCommnand = "SELECT * FROM airports"
     result = conn.execute(queryCommnand).fetchall()
@@ -336,6 +336,122 @@ def get_park(r_id):
     park["nearest_cities"] = row[15]
     return json.dumps(park, indent=4)
 
+@app.route("/search/cities/<string:query>")
+def search_cities(query):
+    engine = db.create_engine(db_url)
+    conn = engine.connect()
+    metadata = db.MetaData()
+
+    terms = query.split()
+    
+    queryCommand = "SELECT * FROM cities WHERE"
+    for i in range(0, len(terms)):
+        queryCommand += " long_name LIKE '%%{0}%%' OR cost LIKE '%%{0}%%' OR safety LIKE '%%{0}%%' OR population LIKE '%%{0}%%' OR name LIKE '%%{0}%%'".format(terms[i])
+        if i < (len(terms) - 1):
+            queryCommand += " OR"
+    result = conn.execute(queryCommand).fetchall()
+
+    currentCity = {}
+    citiesJSON = []
+
+    for row in result:
+        currentCity["id"] = row[0]
+        currentCity["airbnb_listings"] = row[1]
+        currentCity["cost"] = row[2]
+        currentCity["hiking_trails"] = row[3]
+        currentCity["latitude"] = row[4]
+        currentCity["long_name"] = row[5]
+        currentCity["longitude"] = row[6]
+        currentCity["name"] = row[7]
+        currentCity["photo"] = row[8]
+        currentCity["population"] = row[9]
+        currentCity["rating"] = row[10]
+        currentCity["safety"] = row[11]
+        currentCity["short_name"] = row[12]
+        currentCity["walkability"] = row[13]
+        currentCity["nearest_airports"] = row[14]
+        currentCity["nearest_parks"] = row[15]
+        citiesJSON.append(currentCity)
+        currentCity = {}
+
+    return json.dumps(citiesJSON, indent=4)
+
+@app.route("/search/airports/<string:query>")
+def search_airports(query):
+    engine = db.create_engine(db_url)
+    conn = engine.connect()
+    metadata = db.MetaData()
+    terms = query.split()
+
+    queryCommand = "SELECT * FROM airports WHERE"
+    for i in range(0, len(terms)):
+        queryCommand += (" name LIKE '%%{0}%%' OR city LIKE '%%{0}%%' OR state LIKE '%%{0}%%' OR address LIKE '%%{0}%%' OR icao_code LIKE '%%{0}%%' OR iata_code LIKE '%%{0}%%' OR phone LIKE '%%{0}%%' OR zip_code LIKE '%%{0}%%'").format(terms[i])
+        if i < (len(terms) - 1):
+            queryCommand += " OR"
+    result = conn.execute(queryCommand).fetchall()
+
+    currentAirport = {}
+    airportsJSON = []
+
+    for row in result:
+        currentAirport["id"] = row[0]
+        currentAirport["address"] = row[1]
+        currentAirport["city"] = row[2]
+        currentAirport["iata_code"] = row[3]
+        currentAirport["icao_code"] = row[4]
+        currentAirport["latitude"] = row[5]
+        currentAirport["longitude"] = row[6]
+        currentAirport["name"] = row[7]
+        currentAirport["phone"] = row[8]
+        currentAirport["state"] = row[9]
+        currentAirport["website"] = row[10]
+        currentAirport["zip_code"] = row[11]
+        currentAirport["nearest_cities"] = row[12]
+        currentAirport["nearest_parks"] = row[13]
+        airportsJSON.append(currentAirport)
+        currentAirport = {}
+
+    return json.dumps(airportsJSON, indent=4)
+
+@app.route('/search/parks/<string:query>')
+def search_parks(query):
+    engine = db.create_engine(db_url)
+    conn = engine.connect()
+    metadata = db.MetaData()
+    terms = query.split()
+
+    queryCommand = "SELECT * FROM parks WHERE"
+    for i in range(0, len(terms)):
+        queryCommand += (" name LIKE '%%{0}%%' OR phone LIKE '%%{0}%%' OR email LIKE '%%{0}%%'").format(terms[i])
+        if i < (len(terms) - 1):
+            queryCommand += " OR"
+    result = conn.execute(queryCommand).fetchall()
+
+    currentPark = {}
+    parksJSON = []
+
+    for row in result:
+        currentPark["id"] = row[0]
+        currentPark["activities"] = row[1]
+        currentPark["description"] = row[2]
+        currentPark["email"] = row[3]
+        currentPark["fee"] = row[4]
+        currentPark["latitude"] = row[5]
+        currentPark["longitude"] = row[6]
+        currentPark["name"] = row[7]
+        currentPark["phone"] = row[8]
+        currentPark["photos"] = row[9]
+        currentPark["states"] = row[10]
+        currentPark["topics"] = row[11]
+        currentPark["website"] = row[12]
+        currentPark["weekdays"] = row[13]
+        currentPark["nearest_airports"] = row[14]
+        currentPark["nearest_cities"] = row[15]
+        parksJSON.append(currentPark)
+        currentPark = {}
+
+    return json.dumps(parksJSON, indent=4)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
+
