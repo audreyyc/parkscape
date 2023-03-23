@@ -1,15 +1,13 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
-import sqlalchemy as db
-from sqlalchemy import Integer, Column, String, Table, MetaData, Float, JSON
+from models import app, db, Park, City, Airport
+from schema import city_schema, park_schema, airport_schema
+from sqlalchemy import Integer, Column, String, Table, MetaData, Float, JSON, desc
 import json
 
 PARKS, CITIES, AIRPORTS = 468, 101, 731
-db_url = "mysql://admin:020402020402@idb7-db.cyvindjupys7.us-east-2.rds.amazonaws.com:3306/idb7?charset=utf8"
 
-app = Flask(__name__)
-CORS(app)
-
+DEFAULT_PAGE_SIZE = 12
 
 @app.route("/")
 def home():
@@ -125,128 +123,79 @@ def get_all_parks():
     return json.dumps(parksJSON, indent=4)
 
 
-@app.route("/cities/<int:r_page>")
-def get_cities(r_page):
-    startID = (r_page - 1) * 12 + 1
-    endID = r_page * 12
+@app.route("/cities")
+def get_cities():
+    page = request.args.get("pg")
+    sort = request.args.get("sort")
 
-    engine = db.create_engine(db_url)
-    conn = engine.connect()
-    metadata = db.MetaData()
+    query = db.session.query(City)
 
-    cities = db.Table("cities", metadata, autoload=True, autoload_with=engine)
+    for filter in City.filters:
+        arg = request.args.get(filter)
+        if arg is not None:
+            query = query.filter(getattr(City, filter) == arg)
 
-    queryCommnand = (
-        "SELECT * FROM cities WHERE id BETWEEN " + str(startID) + " AND " + str(endID)
-    )
-    result = conn.execute(queryCommnand).fetchall()
+    if sort is not None:
+        sort_params = sort.split("_")
+        sort_attr = getattr(City, sort_params[0])
+        asc = (sort_params[1] == "asc")
+        query = query.order_by(sort_attr if asc else desc(sort_attr))
 
-    currentCity = {}
-    citiesJSON = []
+    if page is not None:
+        query = paginate(query, page)
 
-    for row in result:
-        currentCity["id"] = row[0]
-        currentCity["airbnb_listings"] = row[1]
-        currentCity["cost"] = row[2]
-        currentCity["hiking_trails"] = row[3]
-        currentCity["latitude"] = row[4]
-        currentCity["long_name"] = row[5]
-        currentCity["longitude"] = row[6]
-        currentCity["name"] = row[7]
-        currentCity["photo"] = row[8]
-        currentCity["population"] = row[9]
-        currentCity["rating"] = row[10]
-        currentCity["safety"] = row[11]
-        currentCity["short_name"] = row[12]
-        currentCity["walkability"] = row[13]
-        currentCity["nearest_airports"] = row[14]
-        currentCity["nearest_parks"] = row[15]
-        citiesJSON.append(currentCity)
-        currentCity = {}
-
-    return json.dumps(citiesJSON, indent=4)
+    result = city_schema.dump(query, many=True)
+    return jsonify({"data": result})
 
 
-@app.route("/airports/<int:r_page>")
-def get_airports(r_page):
-    startID = (r_page - 1) * 12 + 1
-    endID = r_page * 12
+@app.route("/airports")
+def get_airports():
+    page = request.args.get("pg")
+    sort = request.args.get("sort")
 
-    engine = db.create_engine(db_url)
-    conn = engine.connect()
-    metadata = db.MetaData()
+    query = db.session.query(Airport)
 
-    cities = db.Table("airports", metadata, autoload=True, autoload_with=engine)
+    for filter in Airport.filters:
+        arg = request.args.get(filter)
+        if arg is not None:
+            query = query.filter(getattr(Airport, filter) == arg)
 
-    queryCommnand = (
-        "SELECT * FROM airports WHERE id BETWEEN " + str(startID) + " AND " + str(endID)
-    )
-    result = conn.execute(queryCommnand).fetchall()
+    if sort is not None:
+        sort_params = sort.split("_")
+        sort_attr = getattr(Airport, sort_params[0])
+        asc = (sort_params[1] == "asc")
+        query = query.order_by(sort_attr if asc else desc(sort_attr))
 
-    currentAirport = {}
-    airportsJSON = []
+    if page is not None:
+        query = paginate(query, page)
 
-    for row in result:
-        currentAirport["id"] = row[0]
-        currentAirport["address"] = row[1]
-        currentAirport["city"] = row[2]
-        currentAirport["iata_code"] = row[3]
-        currentAirport["icao_code"] = row[4]
-        currentAirport["latitude"] = row[5]
-        currentAirport["longitude"] = row[6]
-        currentAirport["name"] = row[7]
-        currentAirport["phone"] = row[8]
-        currentAirport["state"] = row[9]
-        currentAirport["website"] = row[10]
-        currentAirport["zip_code"] = row[11]
-        currentAirport["nearest_cities"] = row[12]
-        currentAirport["nearest_parks"] = row[13]
-        airportsJSON.append(currentAirport)
-        currentAirport = {}
-
-    return json.dumps(airportsJSON, indent=4)
+    result = airport_schema.dump(query, many=True)
+    return jsonify({"data": result})
 
 
-@app.route("/parks/<int:r_page>")
-def get_parks(r_page):
-    startID = (r_page - 1) * 12 + 1
-    endID = r_page * 12
+@app.route("/parks")
+def get_parks():
+    page = request.args.get("pg")
+    sort = request.args.get("sort")
 
-    engine = db.create_engine(db_url)
-    conn = engine.connect()
-    metadata = db.MetaData()
+    query = db.session.query(Park)
 
-    parks = db.Table("parks", metadata, autoload=True, autoload_with=engine)
+    for filter in Park.filters:
+        arg = request.args.get(filter)
+        if arg is not None:
+            query = query.filter(getattr(Park, filter) == arg)
 
-    queryCommnand = (
-        "SELECT * FROM parks WHERE id BETWEEN " + str(startID) + " AND " + str(endID)
-    )
-    result = conn.execute(queryCommnand).fetchall()
+    if sort is not None:
+        sort_params = sort.split("_")
+        sort_attr = getattr(Park, sort_params[0])
+        asc = (sort_params[1] == "asc")
+        query = query.order_by(sort_attr if asc else desc(sort_attr))
 
-    currentPark = {}
-    parksJSON = []
+    if page is not None:
+        query = paginate(query, page)
 
-    for row in result:
-        currentPark["id"] = row[0]
-        currentPark["activities"] = row[1]
-        currentPark["description"] = row[2]
-        currentPark["email"] = row[3]
-        currentPark["fee"] = row[4]
-        currentPark["latitude"] = row[5]
-        currentPark["longitude"] = row[6]
-        currentPark["name"] = row[7]
-        currentPark["phone"] = row[8]
-        currentPark["photos"] = row[9]
-        currentPark["states"] = row[10]
-        currentPark["topics"] = row[11]
-        currentPark["website"] = row[12]
-        currentPark["weekdays"] = row[13]
-        currentPark["nearest_airports"] = row[14]
-        currentPark["nearest_cities"] = row[15]
-        parksJSON.append(currentPark)
-        currentPark = {}
-
-    return json.dumps(parksJSON, indent=4)
+    result = park_schema.dump(query, many=True)
+    return jsonify({"data": result})
 
 
 @app.route("/city/<int:r_id>")
@@ -451,6 +400,15 @@ def search_parks(query):
         currentPark = {}
 
     return json.dumps(parksJSON, indent=4)
+
+
+def to_dict(table):
+    return {col.name: getattr(table, col.name) for col in table.__table__.columns}
+
+
+def paginate(query, page_num, page_size=DEFAULT_PAGE_SIZE):
+    return query.paginate(page=page_num, per_page=page_size, error_out=False).items
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
