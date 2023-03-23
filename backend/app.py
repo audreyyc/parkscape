@@ -32,12 +32,12 @@ def get_cities():
         query = query.order_by(sort_attr if asc else desc(sort_attr))
 
     if page is not None:
-        query = paginate(query, page)
+        query = paginate(query, int(page))
 
     result = city_schema.dump(query, many=True)
     return jsonify(
         {
-            "count": query.count(),
+            "count": len(query),
             "data": result,
         }
     )
@@ -62,12 +62,12 @@ def get_airports():
         query = query.order_by(sort_attr if asc else desc(sort_attr))
 
     if page is not None:
-        query = paginate(query, page)
+        query = paginate(query, int(page))
 
     result = airport_schema.dump(query, many=True)
     return jsonify(
         {
-            "count": query.count(),
+            "count": len(query),
             "data": result,
         }
     )
@@ -92,12 +92,12 @@ def get_parks():
         query = query.order_by(sort_attr if asc else desc(sort_attr))
 
     if page is not None:
-        query = paginate(query, page)
+        query = paginate(query, int(page))
 
     result = park_schema.dump(query, many=True)
     return jsonify(
         {
-            "count": query.count(),
+            "count": len(query),
             "data": result,
         }
     )
