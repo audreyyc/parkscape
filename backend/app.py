@@ -1,8 +1,7 @@
-from flask import Flask, jsonify, request
-from flask_cors import CORS
+from flask import jsonify, request
 from models import app, db, Park, City, Airport
 from schema import city_schema, park_schema, airport_schema
-from sqlalchemy import Integer, Column, String, Table, MetaData, Float, JSON, desc
+from sqlalchemy import desc
 import json
 
 PARKS, CITIES, AIRPORTS = 468, 101, 731
