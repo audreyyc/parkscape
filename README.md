@@ -102,5 +102,3 @@ One page per model with description and multimedia, grid of cards for each model
 
 
 **Comments:** As we've discussed with our TA, our API has issues where it tends to go down occasionally, which breaks our model and instance pages. This also causes our Selenium and Postman tests to fail. It seems to be a problem on NameCheap's end. 
-
-**Comments:**

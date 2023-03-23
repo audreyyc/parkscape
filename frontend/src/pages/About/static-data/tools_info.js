@@ -94,8 +94,3 @@ const ToolsInfo = [
 ];
 
 export { ToolsInfo };
-<<<<<<< HEAD
-
-export { ToolsInfo };
-=======
->>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
