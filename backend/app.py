@@ -1,5 +1,5 @@
 from flask import jsonify, request
-from models import app, db, Park, City, Airport
+from models import app, db, Park, City, Airport, db_url
 from schema import city_schema, park_schema, airport_schema
 from sqlalchemy import desc
 import json
@@ -35,7 +35,12 @@ def get_cities():
         query = paginate(query, page)
 
     result = city_schema.dump(query, many=True)
-    return jsonify({"data": result})
+    return jsonify(
+        {
+            "count": query.count(),
+            "data": result,
+        }
+    )
 
 
 @app.route("/airports")
@@ -60,7 +65,12 @@ def get_airports():
         query = paginate(query, page)
 
     result = airport_schema.dump(query, many=True)
-    return jsonify({"data": result})
+    return jsonify(
+        {
+            "count": query.count(),
+            "data": result,
+        }
+    )
 
 
 @app.route("/parks")
@@ -85,7 +95,12 @@ def get_parks():
         query = paginate(query, page)
 
     result = park_schema.dump(query, many=True)
-    return jsonify({"data": result})
+    return jsonify(
+        {
+            "count": query.count(),
+            "data": result,
+        }
+    )
 
 
 @app.route("/city/<int:r_id>")
