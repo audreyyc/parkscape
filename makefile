@@ -32,7 +32,7 @@ build-backend:
 
 # run backend Docker image
 docker-backend:
-	docker run -p 5000:5000 backend-container
+	docker run --rm -p 5000:5000 backend-container
 
 # Runs Python unit tests
 make python-tests:
