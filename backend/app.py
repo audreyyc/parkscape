@@ -1,7 +1,7 @@
 from flask import jsonify, request
 from models import app, db, Park, City, Airport, db_url
 from schema import city_schema, park_schema, airport_schema
-from sqlalchemy import desc
+from sqlalchemy import desc, or_
 import json
 
 PARKS, CITIES, AIRPORTS = 468, 101, 731
@@ -37,7 +37,7 @@ def get_cities():
     result = city_schema.dump(query, many=True)
     return jsonify(
         {
-            "count": len(query),
+            "count": len(result),
             "data": result,
         }
     )
@@ -67,7 +67,7 @@ def get_airports():
     result = airport_schema.dump(query, many=True)
     return jsonify(
         {
-            "count": len(query),
+            "count": len(result),
             "data": result,
         }
     )
@@ -97,7 +97,7 @@ def get_parks():
     result = park_schema.dump(query, many=True)
     return jsonify(
         {
-            "count": len(query),
+            "count": len(result),
             "data": result,
         }
     )
@@ -123,123 +123,67 @@ def get_park(r_id):
     result = park_schema.dump(query, many=True)[0]
     return jsonify({"data": result})
 
+@app.route("/search/cities/<string:terms>")
+def search_cities(terms):
+    search_terms = terms.split()
+    query = db.session.query(City)
 
-@app.route("/search/cities/<string:query>")
-def search_cities(query):
-    engine = db.create_engine(db_url)
-    conn = engine.connect()
-    metadata = db.MetaData()
+    clauses = [City.long_name.like('%{0}%'.format(k)) for k in search_terms]
+    clauses += [City.state.like('%{0}%'.format(k)) for k in search_terms]
+    clauses += [City.cost.like('%{0}%'.format(k)) for k in search_terms]
+    clauses += [City.population.like('%{0}%'.format(k)) for k in search_terms]
+    clauses += [City.rating.like('%{0}%'.format(k)) for k in search_terms]
+    clauses += [City.safety.like('%{0}%'.format(k)) for k in search_terms]
+    query = query.filter(or_(*clauses))
 
-    terms = query.split()
-    
-    queryCommand = "SELECT * FROM cities WHERE"
-    for i in range(0, len(terms)):
-        queryCommand += " long_name LIKE '%%{0}%%' OR cost LIKE '%%{0}%%' OR safety LIKE '%%{0}%%' OR population LIKE '%%{0}%%' OR name LIKE '%%{0}%%'".format(terms[i])
-        if i < (len(terms) - 1):
-            queryCommand += " OR"
-    result = conn.execute(queryCommand).fetchall()
+    result = city_schema.dump(query, many=True)
+    return jsonify(
+        {
+            "count": len(result),
+            "data": result
+        }
+    )
 
-    currentCity = {}
-    citiesJSON = []
+@app.route("/search/airports/<string:terms>")
+def search_airports(terms):
+    search_terms = terms.split()
+    query = db.session.query(Airport)
 
-    for row in result:
-        currentCity["id"] = row[0]
-        currentCity["airbnb_listings"] = row[1]
-        currentCity["cost"] = row[2]
-        currentCity["hiking_trails"] = row[3]
-        currentCity["latitude"] = row[4]
-        currentCity["long_name"] = row[5]
-        currentCity["longitude"] = row[6]
-        currentCity["name"] = row[7]
-        currentCity["photo"] = row[8]
-        currentCity["population"] = row[9]
-        currentCity["rating"] = row[10]
-        currentCity["safety"] = row[11]
-        currentCity["short_name"] = row[12]
-        currentCity["walkability"] = row[13]
-        currentCity["nearest_airports"] = row[14]
-        currentCity["nearest_parks"] = row[15]
-        citiesJSON.append(currentCity)
-        currentCity = {}
+    clauses = [Airport.name.like('%{0}%'.format(k)) for k in search_terms]
+    clauses += [Airport.address.like('%{0}%'.format(k)) for k in search_terms]
+    clauses += [Airport.city.like('%{0}%'.format(k)) for k in search_terms]
+    clauses += [Airport.iata_code.like('%{0}%'.format(k)) for k in search_terms]
+    clauses += [Airport.icao_code.like('%{0}%'.format(k)) for k in search_terms]
+    clauses += [Airport.state.like('%{0}%'.format(k)) for k in search_terms]
+    clauses += [Airport.phone.like('%{0}%'.format(k)) for k in search_terms]
+    clauses += [Airport.zip_code.like('%{0}%'.format(k)) for k in search_terms]
+    query = query.filter(or_(*clauses))
 
-    return json.dumps(citiesJSON, indent=4)
+    result = airport_schema.dump(query, many=True)
+    return jsonify(
+        {
+            "count": len(result),
+            "data": result
+        }
+    )
 
-@app.route("/search/airports/<string:query>")
-def search_airports(query):
-    engine = db.create_engine(db_url)
-    conn = engine.connect()
-    metadata = db.MetaData()
-    terms = query.split()
+@app.route("/search/parks/<string:terms>")
+def search_parks(terms):
+    search_terms = terms.split()
+    query = db.session.query(Park)
 
-    queryCommand = "SELECT * FROM airports WHERE"
-    for i in range(0, len(terms)):
-        queryCommand += (" name LIKE '%%{0}%%' OR city LIKE '%%{0}%%' OR state LIKE '%%{0}%%' OR address LIKE '%%{0}%%' OR icao_code LIKE '%%{0}%%' OR iata_code LIKE '%%{0}%%' OR phone LIKE '%%{0}%%' OR zip_code LIKE '%%{0}%%'").format(terms[i])
-        if i < (len(terms) - 1):
-            queryCommand += " OR"
-    result = conn.execute(queryCommand).fetchall()
+    clauses = [Park.name.like('%{0}%'.format(k)) for k in search_terms]
+    clauses += [Park.phone.like('%{0}%'.format(k)) for k in search_terms]
+    clauses += [Park.email.like('%{0}%'.format(k)) for k in search_terms]
+    query = query.filter(or_(*clauses))
 
-    currentAirport = {}
-    airportsJSON = []
-
-    for row in result:
-        currentAirport["id"] = row[0]
-        currentAirport["address"] = row[1]
-        currentAirport["city"] = row[2]
-        currentAirport["iata_code"] = row[3]
-        currentAirport["icao_code"] = row[4]
-        currentAirport["latitude"] = row[5]
-        currentAirport["longitude"] = row[6]
-        currentAirport["name"] = row[7]
-        currentAirport["phone"] = row[8]
-        currentAirport["state"] = row[9]
-        currentAirport["website"] = row[10]
-        currentAirport["zip_code"] = row[11]
-        currentAirport["nearest_cities"] = row[12]
-        currentAirport["nearest_parks"] = row[13]
-        airportsJSON.append(currentAirport)
-        currentAirport = {}
-
-    return json.dumps(airportsJSON, indent=4)
-
-@app.route('/search/parks/<string:query>')
-def search_parks(query):
-    engine = db.create_engine(db_url)
-    conn = engine.connect()
-    metadata = db.MetaData()
-    terms = query.split()
-
-    queryCommand = "SELECT * FROM parks WHERE"
-    for i in range(0, len(terms)):
-        queryCommand += (" name LIKE '%%{0}%%' OR phone LIKE '%%{0}%%' OR email LIKE '%%{0}%%'").format(terms[i])
-        if i < (len(terms) - 1):
-            queryCommand += " OR"
-    result = conn.execute(queryCommand).fetchall()
-
-    currentPark = {}
-    parksJSON = []
-
-    for row in result:
-        currentPark["id"] = row[0]
-        currentPark["activities"] = row[1]
-        currentPark["description"] = row[2]
-        currentPark["email"] = row[3]
-        currentPark["fee"] = row[4]
-        currentPark["latitude"] = row[5]
-        currentPark["longitude"] = row[6]
-        currentPark["name"] = row[7]
-        currentPark["phone"] = row[8]
-        currentPark["photos"] = row[9]
-        currentPark["states"] = row[10]
-        currentPark["topics"] = row[11]
-        currentPark["website"] = row[12]
-        currentPark["weekdays"] = row[13]
-        currentPark["nearest_airports"] = row[14]
-        currentPark["nearest_cities"] = row[15]
-        parksJSON.append(currentPark)
-        currentPark = {}
-
-    return json.dumps(parksJSON, indent=4)
-
+    result = park_schema.dump(query, many=True)
+    return jsonify(
+        {
+            "count": len(result),
+            "data": result
+        }
+    )
 
 def to_dict(table):
     return {col.name: getattr(table, col.name) for col in table.__table__.columns}

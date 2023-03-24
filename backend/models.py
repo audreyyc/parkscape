@@ -13,6 +13,7 @@ class City(db.Model):
     __tablename__ = "cities"
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String)
+    state = db.Column(db.String)
     rating = db.Column(db.Float)
     airbnb_listings = db.Column(db.String)
     short_name = db.Column(db.String)
