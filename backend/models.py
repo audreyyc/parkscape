@@ -4,13 +4,15 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 CORS(app)
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://admin:020402020402@idb7-db.cyvindjupys7.us-east-2.rds.amazonaws.com:3306/idb7"
+app.config[
+    "SQLALCHEMY_DATABASE_URI"
+] = "mysql://admin:020402020402@idb7-db.cyvindjupys7.us-east-2.rds.amazonaws.com:3306/idb7"
 db = SQLAlchemy(app)
 
 
 class City(db.Model):
     __tablename__ = "cities"
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     state = db.Column(db.String)
     rating = db.Column(db.Float)
@@ -32,7 +34,7 @@ class City(db.Model):
 
 class Park(db.Model):
     __tablename__ = "parks"
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     website = db.Column(db.String)
     activities = db.Column(db.JSON)
@@ -53,7 +55,7 @@ class Park(db.Model):
 
 class Airport(db.Model):
     __tablename__ = "airports"
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     website = db.Column(db.String)
     city = db.Column(db.String)

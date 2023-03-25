@@ -21,6 +21,8 @@ clean:
 format:
 	black backend/app.py
 	black backend/tests.py
+	black backend/models.py
+	black backend/schema.py
 	black backend/data/scrapper.py
 	black backend/data/models.py
 	black backend/data/db.py

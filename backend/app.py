@@ -7,6 +7,7 @@ PARKS, CITIES, AIRPORTS = 468, 101, 731
 
 DEFAULT_PAGE_SIZE = 12
 
+
 @app.route("/")
 def home():
     return ""
@@ -27,7 +28,7 @@ def get_cities():
     if sort is not None:
         sort_params = sort.split("_")
         sort_attr = getattr(City, sort_params[0])
-        asc = (sort_params[1] == "asc")
+        asc = sort_params[1] == "asc"
         query = query.order_by(sort_attr if asc else desc(sort_attr))
 
     if page is not None:
@@ -57,7 +58,7 @@ def get_airports():
     if sort is not None:
         sort_params = sort.split("_")
         sort_attr = getattr(Airport, sort_params[0])
-        asc = (sort_params[1] == "asc")
+        asc = sort_params[1] == "asc"
         query = query.order_by(sort_attr if asc else desc(sort_attr))
 
     if page is not None:
@@ -87,7 +88,7 @@ def get_parks():
     if sort is not None:
         sort_params = sort.split("_")
         sort_attr = getattr(Park, sort_params[0])
-        asc = (sort_params[1] == "asc")
+        asc = sort_params[1] == "asc"
         query = query.order_by(sort_attr if asc else desc(sort_attr))
 
     if page is not None:
@@ -122,67 +123,55 @@ def get_park(r_id):
     result = park_schema.dump(query, many=True)[0]
     return jsonify({"data": result})
 
+
 @app.route("/search/cities/<string:terms>")
 def search_cities(terms):
     search_terms = terms.split()
     query = db.session.query(City)
 
-    clauses = [City.long_name.like('%{0}%'.format(k)) for k in search_terms]
-    clauses += [City.state.like('%{0}%'.format(k)) for k in search_terms]
-    clauses += [City.cost.like('%{0}%'.format(k)) for k in search_terms]
-    clauses += [City.population.like('%{0}%'.format(k)) for k in search_terms]
-    clauses += [City.rating.like('%{0}%'.format(k)) for k in search_terms]
-    clauses += [City.safety.like('%{0}%'.format(k)) for k in search_terms]
+    clauses = [City.long_name.like("%{0}%".format(k)) for k in search_terms]
+    clauses += [City.state.like("%{0}%".format(k)) for k in search_terms]
+    clauses += [City.cost.like("%{0}%".format(k)) for k in search_terms]
+    clauses += [City.population.like("%{0}%".format(k)) for k in search_terms]
+    clauses += [City.rating.like("%{0}%".format(k)) for k in search_terms]
+    clauses += [City.safety.like("%{0}%".format(k)) for k in search_terms]
     query = query.filter(or_(*clauses))
 
     result = city_schema.dump(query, many=True)
-    return jsonify(
-        {
-            "count": len(result),
-            "data": result
-        }
-    )
+    return jsonify({"count": len(result), "data": result})
+
 
 @app.route("/search/airports/<string:terms>")
 def search_airports(terms):
     search_terms = terms.split()
     query = db.session.query(Airport)
 
-    clauses = [Airport.name.like('%{0}%'.format(k)) for k in search_terms]
-    clauses += [Airport.address.like('%{0}%'.format(k)) for k in search_terms]
-    clauses += [Airport.city.like('%{0}%'.format(k)) for k in search_terms]
-    clauses += [Airport.iata_code.like('%{0}%'.format(k)) for k in search_terms]
-    clauses += [Airport.icao_code.like('%{0}%'.format(k)) for k in search_terms]
-    clauses += [Airport.state.like('%{0}%'.format(k)) for k in search_terms]
-    clauses += [Airport.phone.like('%{0}%'.format(k)) for k in search_terms]
-    clauses += [Airport.zip_code.like('%{0}%'.format(k)) for k in search_terms]
+    clauses = [Airport.name.like("%{0}%".format(k)) for k in search_terms]
+    clauses += [Airport.address.like("%{0}%".format(k)) for k in search_terms]
+    clauses += [Airport.city.like("%{0}%".format(k)) for k in search_terms]
+    clauses += [Airport.iata_code.like("%{0}%".format(k)) for k in search_terms]
+    clauses += [Airport.icao_code.like("%{0}%".format(k)) for k in search_terms]
+    clauses += [Airport.state.like("%{0}%".format(k)) for k in search_terms]
+    clauses += [Airport.phone.like("%{0}%".format(k)) for k in search_terms]
+    clauses += [Airport.zip_code.like("%{0}%".format(k)) for k in search_terms]
     query = query.filter(or_(*clauses))
 
     result = airport_schema.dump(query, many=True)
-    return jsonify(
-        {
-            "count": len(result),
-            "data": result
-        }
-    )
+    return jsonify({"count": len(result), "data": result})
+
 
 @app.route("/search/parks/<string:terms>")
 def search_parks(terms):
     search_terms = terms.split()
     query = db.session.query(Park)
 
-    clauses = [Park.name.like('%{0}%'.format(k)) for k in search_terms]
-    clauses += [Park.phone.like('%{0}%'.format(k)) for k in search_terms]
-    clauses += [Park.email.like('%{0}%'.format(k)) for k in search_terms]
+    clauses = [Park.name.like("%{0}%".format(k)) for k in search_terms]
+    clauses += [Park.phone.like("%{0}%".format(k)) for k in search_terms]
+    clauses += [Park.email.like("%{0}%".format(k)) for k in search_terms]
     query = query.filter(or_(*clauses))
 
     result = park_schema.dump(query, many=True)
-    return jsonify(
-        {
-            "count": len(result),
-            "data": result
-        }
-    )
+    return jsonify({"count": len(result), "data": result})
 
 
 def paginate(query, page_num, page_size=DEFAULT_PAGE_SIZE):
@@ -191,4 +180,3 @@ def paginate(query, page_num, page_size=DEFAULT_PAGE_SIZE):
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
-

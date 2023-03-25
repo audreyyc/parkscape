@@ -9,42 +9,42 @@ client = app.app.test_client()
 class Tests(unittest.TestCase):
     def test_cities_page(self):
         with client:
-            response = client.get("/cities/1")
+            response = client.get("/cities?page=1")
             self.assertEqual(response.status_code, 200)
             data = json.loads(response.data)
             self.assertEqual(len(data), 12)
 
     def test_parks_page(self):
         with client:
-            response = client.get("/parks/2")
+            response = client.get("/parks?page=2")
             self.assertEqual(response.status_code, 200)
             data = json.loads(response.data)
             self.assertEqual(len(data), 12)
 
     def test_airports_page(self):
         with client:
-            response = client.get("/airports/3")
+            response = client.get("/airports?page=3")
             self.assertEqual(response.status_code, 200)
             data = json.loads(response.data)
             self.assertEqual(len(data), 12)
 
     def test_all_cities(self):
         with client:
-            response = client.get("/cities/all")
+            response = client.get("/cities")
             self.assertEqual(response.status_code, 200)
             data = json.loads(response.data)
             self.assertEqual(len(data), 101)
 
     def test_all_parks(self):
         with client:
-            response = client.get("/parks/all")
+            response = client.get("/parks")
             self.assertEqual(response.status_code, 200)
             data = json.loads(response.data)
             self.assertEqual(len(data), 468)
 
     def test_all_airports(self):
         with client:
-            response = client.get("/airports/all")
+            response = client.get("/airports")
             self.assertEqual(response.status_code, 200)
             data = json.loads(response.data)
             self.assertEqual(len(data), 707)
@@ -67,7 +67,7 @@ class Tests(unittest.TestCase):
             self.assertEqual(data["fee"], 30.0)
             self.assertEqual(data["states"], "UT")
 
-    def test_airpot(self):
+    def test_airport(self):
         with client:
             response = client.get("/airport/54")
             self.assertEqual(response.status_code, 200)
