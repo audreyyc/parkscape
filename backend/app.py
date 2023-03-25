@@ -1,8 +1,7 @@
 from flask import jsonify, request
-from models import app, db, Park, City, Airport, db_url
+from models import app, db, Park, City, Airport
 from schema import city_schema, park_schema, airport_schema
 from sqlalchemy import desc, or_
-import json
 
 PARKS, CITIES, AIRPORTS = 468, 101, 731
 
@@ -184,9 +183,6 @@ def search_parks(terms):
             "data": result
         }
     )
-
-def to_dict(table):
-    return {col.name: getattr(table, col.name) for col in table.__table__.columns}
 
 
 def paginate(query, page_num, page_size=DEFAULT_PAGE_SIZE):
