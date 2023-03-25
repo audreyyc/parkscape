@@ -15,7 +15,7 @@ def home():
 
 @app.route("/cities")
 def get_cities():
-    page = request.args.get("pg")
+    page = request.args.get("page")
     sort = request.args.get("sort")
 
     query = db.session.query(City)
@@ -45,7 +45,7 @@ def get_cities():
 
 @app.route("/airports")
 def get_airports():
-    page = request.args.get("pg")
+    page = request.args.get("page")
     sort = request.args.get("sort")
 
     query = db.session.query(Airport)
@@ -75,7 +75,7 @@ def get_airports():
 
 @app.route("/parks")
 def get_parks():
-    page = request.args.get("pg")
+    page = request.args.get("page")
     sort = request.args.get("sort")
 
     query = db.session.query(Park)
