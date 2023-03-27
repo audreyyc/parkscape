@@ -2,6 +2,7 @@ from flask import jsonify, request
 from models import app, db, Park, City, Airport
 from schema import city_schema, park_schema, airport_schema
 from sqlalchemy import desc, or_
+import json
 
 PARKS, CITIES, AIRPORTS = 468, 101, 731
 
@@ -52,7 +53,7 @@ def get_cities():
             "count": len(result),
             "data": result,
         }
-    )
+    )   
 
 
 @app.route("/airports")
@@ -114,10 +115,19 @@ def get_parks():
         clauses += [Park.email.like("%{0}%".format(k)) for k in search_terms]
         query = query.filter(or_(*clauses))
 
+
+
     for filter in Park.filters:
         arg = request.args.get(filter)
         if arg is not None:
-            query = query.filter(getattr(Park, filter) == arg)
+            if filter == "states":
+                query = query.filter(Park.states.contains(arg))
+            elif filter == "activities":
+                query = query.filter(Park.activities.contains(arg))
+            elif filter == "topics":
+                query = query.filter(Park.topics.contains(arg))
+            else:
+                query = query.filter(getattr(Park, filter) == arg)
 
     if sort is not None:
         sort_params = sort.split("_")

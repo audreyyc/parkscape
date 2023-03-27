@@ -51,7 +51,7 @@ class Park(db.Model):
     latitude = db.Column(db.Float)
     nearest_cities = db.Column(db.JSON)
     email = db.Column(db.String)
-    filters = {"state", "topics", "activites"}
+    filters = {"states", "topics", "activities", 'fee'}
     sorts = {"name", "fee"}
 
 
