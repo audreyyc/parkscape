@@ -30,6 +30,7 @@ class City(db.Model):
     nearest_airports = db.Column(db.JSON)
     population = db.Column(db.Integer)
     filters = {"budget", "safety", "state"}
+    sorts = {"name", "population"}
 
 
 class Park(db.Model):
@@ -50,7 +51,8 @@ class Park(db.Model):
     latitude = db.Column(db.Float)
     nearest_cities = db.Column(db.JSON)
     email = db.Column(db.String)
-    filters = {"phone", "phone", "state"}
+    filters = {"state", "topics", "activites"}
+    sorts = {"name", "fee"}
 
 
 class Airport(db.Model):
@@ -70,3 +72,4 @@ class Airport(db.Model):
     nearest_cities = db.Column(db.JSON)
     zip_code = db.Column(db.String)
     filters = {"phone", "website", "state"}
+    sorts = {"name", "iata_code"}

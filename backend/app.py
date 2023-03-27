@@ -27,9 +27,10 @@ def get_cities():
 
     if sort is not None:
         sort_params = sort.split("_")
-        sort_attr = getattr(City, sort_params[0])
-        asc = sort_params[1] == "asc"
-        query = query.order_by(sort_attr if asc else desc(sort_attr))
+        if sort_params[0] in City.sorts:
+            sort_attr = getattr(City, sort_params[0])
+            asc = sort_params[1] == "asc"
+            query = query.order_by(sort_attr if asc else desc(sort_attr))
 
     if page is not None:
         query = paginate(query, int(page))
@@ -57,9 +58,10 @@ def get_airports():
 
     if sort is not None:
         sort_params = sort.split("_")
-        sort_attr = getattr(Airport, sort_params[0])
-        asc = sort_params[1] == "asc"
-        query = query.order_by(sort_attr if asc else desc(sort_attr))
+        if sort_params[0] in Airport.sorts:
+            sort_attr = getattr(Airport, sort_params[0])
+            asc = sort_params[1] == "asc"
+            query = query.order_by(sort_attr if asc else desc(sort_attr))
 
     if page is not None:
         query = paginate(query, int(page))
@@ -87,9 +89,10 @@ def get_parks():
 
     if sort is not None:
         sort_params = sort.split("_")
-        sort_attr = getattr(Park, sort_params[0])
-        asc = sort_params[1] == "asc"
-        query = query.order_by(sort_attr if asc else desc(sort_attr))
+        if sort_params[0] in Park.sorts:
+            sort_attr = getattr(Park, sort_params[0])
+            asc = sort_params[1] == "asc"
+            query = query.order_by(sort_attr if asc else desc(sort_attr))
 
     if page is not None:
         query = paginate(query, int(page))

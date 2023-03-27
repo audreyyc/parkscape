@@ -1,6 +1,5 @@
 import app
 import unittest
-import json
 
 app.app.config["TESTING"] = True
 client = app.app.test_client()
