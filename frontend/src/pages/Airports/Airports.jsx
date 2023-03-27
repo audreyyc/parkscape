@@ -5,26 +5,45 @@ import AirportCard from "../../components/AirportCard/AirportCard";
 import Pagination from "../../components/Pagination/Pagination";
 import { Spinner } from "react-bootstrap";
 
-const Airports = () => {
+const Airports = ({ searchInput }) => {
   const [data, setData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalInstances, setTotalInstances] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState(searchInput);
 
-  // TODO CHANGE THIS
-  useEffect(() => {
-    axios.get(`https://api.parkscape.me/airports/all`).then((res) => {
-      setTotalInstances(res.data.length);
+  function api() {
+    let searchURI = search ? `&search=${encodeURI(search)}` : "";
+
+    let size_url = `https://api.parkscape.me/airports?${searchURI}`;
+    let url = `https://api.parkscape.me/airports?page=${currentPage}${searchURI}`;
+
+    axios.get(size_url).then((res) => {
+      setTotalInstances(res.data.count);
     });
-  }, [totalInstances]);
+
+    axios.get(url).then((res) => {
+      setData(res.data.data);
+    });
+  }
+
+  useEffect(() => {
+    if (searchInput) {
+      setSearch(searchInput);
+    }
+  }, [searchInput]);
+
+  useEffect(() => {
+    if (search) {
+      setLoading(true);
+      api();
+      setCurrentPage(1);
+    }
+  }, [search]);
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get(`https://api.parkscape.me/airports/${currentPage}`)
-      .then((res) => {
-        setData(res.data);
-      });
+    api();
   }, [currentPage]);
 
   useEffect(() => {
@@ -32,7 +51,6 @@ const Airports = () => {
   }, [data]);
 
   const cardsPerPage = 12;
-
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
@@ -49,12 +67,21 @@ const Airports = () => {
           className="d-flex mx-auto mt-5 mb-4"
           role="search"
           style={{ width: "50%" }}
+          onSubmit={(e) => {
+            e.preventDefault();
+            var searchedTerm = document.getElementById("airportsSearch").value;
+            if (!searchedTerm) {
+              searchedTerm = " ";
+            }
+            setSearch(searchedTerm);
+          }}
         >
           <input
             className="form-control me-2"
             type="search"
             placeholder="Search"
             aria-label="Search"
+            id="airportsSearch"
           />
           <button className="btn btn-outline-success" type="submit">
             Search
