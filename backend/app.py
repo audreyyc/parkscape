@@ -1,7 +1,7 @@
 from flask import jsonify, request
 from models import app, db, Park, City, Airport
 from schema import city_schema, park_schema, airport_schema
-from sqlalchemy import desc, or_
+from sqlalchemy import desc, or_, not_
 import json
 
 PARKS, CITIES, AIRPORTS = 468, 101, 731
@@ -79,13 +79,27 @@ def get_airports():
     for filter in Airport.filters:
         arg = request.args.get(filter)
         if arg is not None:
-            query = query.filter(getattr(Airport, filter) == arg)
+            if filter == "website":
+                if arg == "no":
+                    query = query.filter(Airport.website.like(""))
+                else:
+                    query = query.filter(not_(Airport.website.like("")))
+            elif filter == "phone":
+                if arg == "no":
+                    query = query.filter(Airport.phone.like(""))
+                else:
+                    query = query.filter(not_(Airport.phone.like("")))
+            else:
+                query = query.filter(getattr(Airport, filter) == arg)
+           
 
     if sort is not None:
         sort_params = sort.split("_")
         if sort_params[0] in Airport.sorts:
             sort_attr = getattr(Airport, sort_params[0])
             asc = sort_params[1] == "asc"
+            if sort_attr == "iata":
+                asc = sort_params[2] == "asc"
             query = query.order_by(sort_attr if asc else desc(sort_attr))
 
     if page is not None:
@@ -98,7 +112,6 @@ def get_airports():
             "data": result,
         }
     )
-
 
 @app.route("/parks")
 def get_parks():
@@ -114,8 +127,6 @@ def get_parks():
         clauses += [Park.phone.like("%{0}%".format(k)) for k in search_terms]
         clauses += [Park.email.like("%{0}%".format(k)) for k in search_terms]
         query = query.filter(or_(*clauses))
-
-
 
     for filter in Park.filters:
         arg = request.args.get(filter)
