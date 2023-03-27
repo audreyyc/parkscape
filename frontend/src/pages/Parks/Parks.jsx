@@ -158,6 +158,7 @@ const Parks = ({ searchInput }) => {
                 email={park.email}
                 parkId={park.id}
                 key={park.id}
+                search={search}
               />
             ))
           ) : (

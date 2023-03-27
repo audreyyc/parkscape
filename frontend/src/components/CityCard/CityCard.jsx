@@ -8,6 +8,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faStar2 } from "@fortawesome/free-regular-svg-icons";
 import Rating from "react-rating";
 import "./CityCard.css";
+import Highlighter from "react-highlight-words";
 
 const CityCard = ({
   name,
@@ -17,7 +18,20 @@ const CityCard = ({
   safety,
   rating,
   cityId,
+  search
 }) => {
+
+  function highlightSearch (text) {
+    if (search != null){
+      return <Highlighter
+      searchWords={search.split(" ")}
+      autoEscape={true}
+      textToHighlight={text}
+      />
+    }
+    return text
+  }
+
   return (
     <Container
       data-testid="city-card"
@@ -35,7 +49,7 @@ const CityCard = ({
             style={{ width: "100%", height: "240px" }}
           />
           <Card.Body style={{ textAlign: "left" }}>
-            <Card.Title>{name}</Card.Title>
+            <Card.Title>{highlightSearch(name)}</Card.Title>
             <Card.Text style={{ lineHeight: "27px" }} className="mt-3">
               Rating:{" "}
               <Rating
@@ -58,14 +72,14 @@ const CityCard = ({
               />
               <br />
               Population:{" "}
-              {population != null &&
+              {highlightSearch(String(population != null &&
                 population
                   .toString()
-                  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}
+                  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")))}
               <br />
-              Budget: {budget}
+              Budget: {highlightSearch(budget)}
               <br />
-              Safety: {safety}
+              Safety: {highlightSearch(safety)}
               <br />
             </Card.Text>
           </Card.Body>

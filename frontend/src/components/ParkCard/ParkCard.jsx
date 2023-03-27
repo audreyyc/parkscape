@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import Highlighter from "react-highlight-words";
 
 const ParkCard = ({
   title,
@@ -12,7 +13,20 @@ const ParkCard = ({
   phone,
   email,
   parkId,
+  search
 }) => {
+
+  function highlightSearch (text) {
+    if (search != null){
+      return <Highlighter
+      searchWords={search.split(" ")}
+      autoEscape={true}
+      textToHighlight={text}
+      />
+    }
+    return text
+  }
+
   return (
     <Container data-testid="park-card" className="col col-sm-12 col-md-6 col-lg-6 col-xl-4 d-flex align-items-stretch">
       <Card className="park-card ms-auto me-auto mb-4 mt-4">
@@ -27,15 +41,15 @@ const ParkCard = ({
             style={{ width: "100%", height: "240px" }}
           />
           <Card.Body style={{ textAlign: "left" }}>
-            <Card.Title>{title}</Card.Title>
+            <Card.Title>{highlightSearch(title)}</Card.Title>
             <Card.Text className="mt-3">
               Operating Hours:
               <br />
               <OperatingHours operatingHours={operatingHours} />
               <br />
-              Phone: {phone}
+              Phone: {highlightSearch(phone)}
               <br />
-              Email: {email}
+              Email: {highlightSearch(email)}
               <br />
             </Card.Text>
           </Card.Body>

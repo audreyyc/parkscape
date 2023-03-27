@@ -164,6 +164,7 @@ const Cities = ({ searchInput }) => {
                 safety={city.safety}
                 cityId={city.id}
                 key={city.id}
+                search={search}
               />
             ))
           ) : (

@@ -156,6 +156,7 @@ const Airports = ({ searchInput }) => {
                 website={<a href={airport.website}>{airport.website}</a>}
                 phone={airport.phone}
                 airportId={airport.id}
+                search={search}
                 key={airport.id}
               />
             ))
