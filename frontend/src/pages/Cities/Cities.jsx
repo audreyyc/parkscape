@@ -11,12 +11,21 @@ const Cities = ({ searchInput }) => {
   const [totalInstances, setTotalInstances] = useState(null);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState(searchInput);
+  const [sort, setSort] = useState(null);
+  const [state, setState] = useState(null);
+  const [budget, setBudget] = useState(null);
+  const [safety, setSafety] = useState(null);
 
   function api() {
     let searchURI = search ? `&search=${encodeURI(search)}` : "";
 
-    let size_url = `https://api.parkscape.me/cities?${searchURI}`;
-    let url = `https://api.parkscape.me/cities?page=${currentPage}${searchURI}`;
+    let sortURI = sort ? `&sort=${encodeURI(sort)}` : "";
+    let stateURI = state ? `&state=${encodeURI(state)}` : "";
+    let budgetURI = budget ? `&cost=${encodeURI(budget)}` : "";
+    let safetyURI = safety ? `&safety=${encodeURI(safety)}` : "";
+
+    let size_url = `https://api.parkscape.me/cities?${searchURI}${sortURI}${stateURI}${budgetURI}${safetyURI}`;
+    let url = `https://api.parkscape.me/cities?page=${currentPage}${searchURI}${sortURI}${stateURI}${budgetURI}${safetyURI}`;
 
     axios.get(size_url).then((res) => {
       setTotalInstances(res.data.count);
@@ -95,14 +104,21 @@ const Cities = ({ searchInput }) => {
               className="form-select form-select-lg mb-3"
               aria-label=".form-select-lg example"
               defaultValue={"0"}
+              id="sort"
+              onChange={() => {
+                var value = document.getElementById("sort").value;
+                if (value == 0) {
+                  setSort(null);
+                } else if (value == 1) {
+                  setSort("name_asc");
+                } else {
+                  setSort("name_desc");
+                }
+              }}
             >
               <option value="0">Sort</option>
               <option value="1">Name (A-Z)</option>
               <option value="2">Name (Z-A)</option>
-              <option value="3">State (A-Z)</option>
-              <option value="3">State (Z-A)</option>
-              <option value="3">Rating (High to Low)</option>
-              <option value="3">Rating (Low to High)</option>
             </select>
           </div>
           <div className="col">
@@ -110,12 +126,21 @@ const Cities = ({ searchInput }) => {
               className="form-select form-select-lg mb-3"
               aria-label=".form-select-lg example"
               defaultValue={"0"}
+              id="budget"
+              onChange={() => {
+                var e = document.getElementById("budget");
+                if (e.value == 0) {
+                  setBudget(null);
+                } else {
+                  setBudget(e.options[e.selectedIndex].text);
+                }
+              }}
             >
-              <option value="0">Budget</option>
-              <option value="1">Very High</option>
-              <option value="2">High</option>
-              <option value="3">Medium High</option>
-              <option value="3">Medium</option>
+              {budgets.map((score, index) => (
+                <option value={index} key={index}>
+                  {score}
+                </option>
+              ))}
             </select>
           </div>
           <div className="col">
@@ -123,11 +148,21 @@ const Cities = ({ searchInput }) => {
               className="form-select form-select-lg mb-3"
               aria-label=".form-select-lg example"
               defaultValue={"0"}
+              id="safety"
+              onChange={() => {
+                var e = document.getElementById("safety");
+                if (e.value == 0) {
+                  setSafety(null);
+                } else {
+                  setSafety(e.options[e.selectedIndex].text);
+                }
+              }}
             >
-              <option value="0">Safety</option>
-              <option value="1">Very High</option>
-              <option value="2">High</option>
-              <option value="3">Medium</option>
+              {safetyOptions.map((state, index) => (
+                <option value={index} key={index}>
+                  {state}
+                </option>
+              ))}
             </select>
           </div>
           <div className="col">
@@ -135,17 +170,36 @@ const Cities = ({ searchInput }) => {
               className="form-select form-select-lg mb-3"
               aria-label=".form-select-lg example"
               defaultValue={"0"}
+              id="state"
+              onChange={() => {
+                var e = document.getElementById("state");
+                if (e.value == 0) {
+                  setState(null);
+                } else {
+                  setState(
+                    document.getElementById("state").options[e.selectedIndex]
+                      .text
+                  );
+                }
+              }}
             >
-              <option value="0">State</option>
-              <option value="1">TX</option>
-              <option value="2">CO</option>
-              <option value="3">NV</option>
+              {states.map((state, index) => (
+                <option value={index} key={index}>
+                  {state}
+                </option>
+              ))}
             </select>
           </div>
         </div>
 
         <div className="text-center mt-3 mb-5">
-          <button className="btn btn-large btn-success btn-lg" type="apply">
+          <button
+            className="btn btn-large btn-success btn-lg"
+            type="apply"
+            onClick={() => {
+              api();
+            }}
+          >
             Apply
           </button>
         </div>
@@ -188,5 +242,79 @@ const Cities = ({ searchInput }) => {
     </Container>
   );
 };
+
+const safetyOptions = ["Safety Score", "1", "2", "3", "4", "5"];
+
+const budgets = [
+  "Max Cost Score",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+];
+
+const states = [
+  "State",
+  "AK",
+  "AL",
+  "AR",
+  "AZ",
+  "CA",
+  "CO",
+  "CT",
+  "DC",
+  "DE",
+  "FL",
+  "GA",
+  "GU",
+  "HI",
+  "IA",
+  "ID",
+  "IL",
+  "IN",
+  "KS",
+  "KY",
+  "LA",
+  "MA",
+  "MD",
+  "ME",
+  "MI",
+  "MN",
+  "MO",
+  "MP",
+  "MS",
+  "MT",
+  "NC",
+  "ND",
+  "NE",
+  "NH",
+  "NJ",
+  "NM",
+  "NV",
+  "NY",
+  "OH",
+  "OK",
+  "OR",
+  "PA",
+  "PR",
+  "RI",
+  "SC",
+  "SD",
+  "TN",
+  "TX",
+  "UT",
+  "VA",
+  "VT",
+  "WA",
+  "WI",
+  "WV",
+  "WY",
+];
 
 export default Cities;
