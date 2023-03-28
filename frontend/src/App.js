@@ -10,6 +10,7 @@ import Airports from "./pages/Airports/Airports.jsx";
 import CityInstance from "./pages/CityInstance/CityInstance.jsx";
 import ParkInstance from "./pages/ParkInstance/ParkInstance.jsx";
 import AirportInstance from "./pages/AirportInstance/AirportInstance.jsx";
+import Search from "./pages/Search/Search.jsx";
 
 import { Route, Routes } from "react-router-dom";
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/cities/:id" element={<CityInstance />} />
         <Route path="/airports" element={<Airports />} />
         <Route path="/airports/:id" element={<AirportInstance />} />
+        <Route path="/search/:query" element={<Search />} />
       </Routes>
     </div>
   );
