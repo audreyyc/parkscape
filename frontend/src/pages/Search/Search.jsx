@@ -8,8 +8,10 @@ import { useLocation } from "react-router-dom";
 const Search = () => {
     // from GeoJobs (https://gitlab.com/sarthaksirotiya/cs373-idb/)
     const location = useLocation();
-    const input = location.pathname.split("/search/").at(-1);
-    const search = input.replace("%20", " ");
+    var search = location.pathname.split("/search/").at(-1);
+    if (search.includes("%20")) {
+        search = search.replace("%20", " ");
+    }
 
     return (
         <>
