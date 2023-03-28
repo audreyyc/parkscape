@@ -6,21 +6,33 @@ import { Link } from "react-router-dom";
 import "./AirportCard.css";
 import Highlighter from "react-highlight-words";
 
-const AirportCard = ({ name, iata, location, website, phone, airportId, search }) => {
-  
-  function highlightSearch (text) {
-    if (search != null){
-      return <Highlighter
-      searchWords={search.split(" ")}
-      autoEscape={true}
-      textToHighlight={text}
-      />
+const AirportCard = ({
+  name,
+  iata,
+  location,
+  website,
+  phone,
+  airportId,
+  search,
+}) => {
+  function highlightSearch(text) {
+    if (search != null) {
+      return (
+        <Highlighter
+          searchWords={search.split(" ")}
+          autoEscape={true}
+          textToHighlight={text}
+        />
+      );
     }
-    return text
+    return text;
   }
 
   return (
-    <Container data-testid="airport-card" className="col col-sm-12 col-md-6 col-lg-6 col-xl-4 d-flex align-items-stretch">
+    <Container
+      data-testid="airport-card"
+      className="col col-sm-12 col-md-6 col-lg-6 col-xl-4 d-flex align-items-stretch"
+    >
       <Card className="airport-card ms-auto me-auto mb-4 mt-4">
         <Card.Body style={{ textAlign: "center" }}>
           <Card.Title>{highlightSearch(name)}</Card.Title>
@@ -38,8 +50,8 @@ const AirportCard = ({ name, iata, location, website, phone, airportId, search }
 
         <Card.Footer className="d-flex flex-column">
           <Link
-            to={`/airports/${airportId - 1}`}
-            id={airportId - 1}
+            to={`/airports/${airportId}`}
+            id={airportId}
             className="link-card d-flex align-items-stretch"
           >
             <Button variant="primary">Learn More</Button>

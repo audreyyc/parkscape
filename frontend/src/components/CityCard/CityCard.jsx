@@ -18,18 +18,19 @@ const CityCard = ({
   safety,
   rating,
   cityId,
-  search
+  search,
 }) => {
-
-  function highlightSearch (text) {
-    if (search != null){
-      return <Highlighter
-      searchWords={search.split(" ")}
-      autoEscape={true}
-      textToHighlight={text}
-      />
+  function highlightSearch(text) {
+    if (search != null) {
+      return (
+        <Highlighter
+          searchWords={search.split(" ")}
+          autoEscape={true}
+          textToHighlight={text}
+        />
+      );
     }
-    return text
+    return text;
   }
 
   return (
@@ -39,8 +40,8 @@ const CityCard = ({
     >
       <Card className="city-card ms-auto me-auto mb-4 mt-4">
         <Link
-          to={`/cities/${cityId - 1}`}
-          id={cityId - 1}
+          to={`/cities/${cityId}`}
+          id={cityId}
           className="link-card d-flex align-items-stretch"
         >
           <Card.Img
@@ -72,10 +73,14 @@ const CityCard = ({
               />
               <br />
               Population:{" "}
-              {highlightSearch(String(population != null &&
-                population
-                  .toString()
-                  .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")))}
+              {highlightSearch(
+                String(
+                  population != null &&
+                    population
+                      .toString()
+                      .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+                )
+              )}
               <br />
               Budget: {highlightSearch(budget)}
               <br />

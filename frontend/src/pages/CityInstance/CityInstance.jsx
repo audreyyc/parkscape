@@ -20,7 +20,7 @@ function CityInstance() {
   useEffect(() => {
     setLoading(true);
     axios.get(`https://api.parkscape.me/city/${cityId}`).then((res) => {
-      setData(res.data);
+      setData(res.data.data);
     });
   }, [cityId]);
 
@@ -133,40 +133,34 @@ function CityInstance() {
                     <Card.Body>
                       <Container className="my-3">
                         <Link
-                          to={`/airports/${
-                            JSON.parse(data.nearest_airports)[0].id
-                          }`}
-                          id={JSON.parse(data.nearest_airports)[0].id}
+                          to={`/airports/${data.nearest_airports[0].id + 1}`}
+                          id={data.nearest_airports[0].id + 1}
                           className="link-card d-flex align-items-stretch"
                         >
                           <Button variant="primary">
-                            {JSON.parse(data.nearest_airports)[0].name}
+                            {data.nearest_airports[0].name}
                           </Button>
                         </Link>
                       </Container>
                       <Container className="my-3">
                         <Link
-                          to={`/airports/${
-                            JSON.parse(data.nearest_airports)[1].id
-                          }`}
-                          id={JSON.parse(data.nearest_airports)[1].id}
+                          to={`/airports/${data.nearest_airports[1].id + 1}`}
+                          id={data.nearest_airports[1].id + 1}
                           className="link-card d-flex align-items-stretch"
                         >
                           <Button variant="primary">
-                            {JSON.parse(data.nearest_airports)[1].name}
+                            {data.nearest_airports[1].name}
                           </Button>
                         </Link>
                       </Container>
                       <Container className="my-3">
                         <Link
-                          to={`/airports/${
-                            JSON.parse(data.nearest_airports)[2].id
-                          }`}
-                          id={JSON.parse(data.nearest_airports)[2].id}
+                          to={`/airports/${data.nearest_airports[2].id + 1}`}
+                          id={data.nearest_airports[2].id + 1}
                           className="link-card d-flex align-items-stretch"
                         >
                           <Button variant="primary">
-                            {JSON.parse(data.nearest_airports)[2].name}
+                            {data.nearest_airports[2].name}
                           </Button>
                         </Link>
                       </Container>
@@ -179,34 +173,34 @@ function CityInstance() {
                     <Card.Body>
                       <Container className="my-3">
                         <Link
-                          to={`/parks/${JSON.parse(data.nearest_parks)[0].id}`}
-                          id={JSON.parse(data.nearest_parks)[0].id}
+                          to={`/parks/${data.nearest_parks[0].id + 1}`}
+                          id={data.nearest_parks[0].id + 1}
                           className="link-card d-flex align-items-stretch"
                         >
                           <Button variant="primary">
-                            {JSON.parse(data.nearest_parks)[0].name}
+                            {data.nearest_parks[0].name}
                           </Button>
                         </Link>
                       </Container>
                       <Container className="my-3">
                         <Link
-                          to={`/parks/${JSON.parse(data.nearest_parks)[1].id}`}
-                          id={JSON.parse(data.nearest_parks)[1].id}
+                          to={`/parks/${data.nearest_parks[1].id + 1}`}
+                          id={data.nearest_parks[1].id + 1}
                           className="link-card d-flex align-items-stretch"
                         >
                           <Button variant="primary">
-                            {JSON.parse(data.nearest_parks)[1].name}
+                            {data.nearest_parks[1].name}
                           </Button>
                         </Link>
                       </Container>
                       <Container className="my-3">
                         <Link
-                          to={`/parks/${JSON.parse(data.nearest_parks)[2].id}`}
-                          id={JSON.parse(data.nearest_parks)[2].id}
+                          to={`/parks/${data.nearest_parks[2].id + 1}`}
+                          id={data.nearest_parks[2].id + 1}
                           className="link-card d-flex align-items-stretch"
                         >
                           <Button variant="primary">
-                            {JSON.parse(data.nearest_parks)[2].name}
+                            {data.nearest_parks[2].name}
                           </Button>
                         </Link>
                       </Container>

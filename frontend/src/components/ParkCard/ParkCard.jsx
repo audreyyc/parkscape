@@ -13,26 +13,30 @@ const ParkCard = ({
   phone,
   email,
   parkId,
-  search
+  search,
 }) => {
-
-  function highlightSearch (text) {
-    if (search != null){
-      return <Highlighter
-      searchWords={search.split(" ")}
-      autoEscape={true}
-      textToHighlight={text}
-      />
+  function highlightSearch(text) {
+    if (search != null) {
+      return (
+        <Highlighter
+          searchWords={search.split(" ")}
+          autoEscape={true}
+          textToHighlight={text}
+        />
+      );
     }
-    return text
+    return text;
   }
 
   return (
-    <Container data-testid="park-card" className="col col-sm-12 col-md-6 col-lg-6 col-xl-4 d-flex align-items-stretch">
+    <Container
+      data-testid="park-card"
+      className="col col-sm-12 col-md-6 col-lg-6 col-xl-4 d-flex align-items-stretch"
+    >
       <Card className="park-card ms-auto me-auto mb-4 mt-4">
         <Link
-          to={`/parks/${parkId - 1}`}
-          id={parkId - 1}
+          to={`/parks/${parkId}`}
+          id={parkId}
           className="link-card d-flex align-items-stretch"
         >
           <Card.Img
@@ -64,7 +68,7 @@ const ParkCard = ({
 
 function OperatingHours({ operatingHours }) {
   var weekdays = [1, 1, 1, 1, 1, 1, 1];
-  
+
   if (operatingHours) {
     for (var i = 0; i < operatingHours.length; i++) {
       if (operatingHours[i] === "Closed") {

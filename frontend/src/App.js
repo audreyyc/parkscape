@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React from "react";
 import "./App.css";
 import Navigation from "./components/Navigation/Navigation.jsx";
 import Home from "./pages/Home/Home.jsx";
