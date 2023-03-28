@@ -29,7 +29,7 @@ class City(db.Model):
     latitude = db.Column(db.Float)
     nearest_airports = db.Column(db.JSON)
     population = db.Column(db.Integer)
-    filters = {"budget", "safety", "state"}
+    filters = {"cost", "safety", "state"}
     sorts = {"name", "population"}
 
 
