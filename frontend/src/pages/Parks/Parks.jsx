@@ -63,7 +63,7 @@ const Parks = ({ searchInput }) => {
         </p>
       </Container>
 
-      <Container>
+      <Container id="search-filter">
         <form
           className="d-flex mx-auto mt-5 mb-4"
           role="search"

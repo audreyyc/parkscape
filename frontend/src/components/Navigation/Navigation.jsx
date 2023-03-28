@@ -69,8 +69,8 @@ function Navigation() {
           </Nav>
           <Form className="d-flex justify-content-end" onSubmit={onSearch}>
             <Form.Control type="search" id="searchText" placeholder="Search..." className="mx-2" aria-label="Search"></Form.Control>
+            <Button type="submit" variant="dark">Search</Button>
           </Form>
-          <Button type="submit" variant="dark">Search</Button>
         </Navbar.Collapse>
       </Container>
     </Navbar>
