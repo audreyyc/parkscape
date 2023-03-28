@@ -5,7 +5,7 @@ import AirportCard from "../../components/AirportCard/AirportCard";
 import Pagination from "../../components/Pagination/Pagination";
 import { Spinner } from "react-bootstrap";
 
-const Airports = ({ searchInput }) => {
+const Airports = ({ searchInput, showFilters }) => {
   const [data, setData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalInstances, setTotalInstances] = useState(null);
@@ -62,7 +62,7 @@ const Airports = ({ searchInput }) => {
         </p>
       </Container>
 
-      <Container>
+      {showFilters && <Container>
         <form
           className="d-flex mx-auto mt-5 mb-4"
           role="search"
@@ -143,7 +143,7 @@ const Airports = ({ searchInput }) => {
             Apply
           </button>
         </div>
-      </Container>
+      </Container> }
 
       <Container className="px-4">
         <Container className="row gx-3">
@@ -168,7 +168,7 @@ const Airports = ({ searchInput }) => {
         </Container>
       </Container>
 
-      {!loading ? (
+      {!loading && showFilters? (
         <Pagination
           currentPage={currentPage}
           cardsPerPage={cardsPerPage}

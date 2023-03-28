@@ -20,11 +20,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/parks" element={<Parks />} />
+        <Route path="/parks" element={<Parks showFilters={true} />} />
         <Route path="/parks/:id" element={<ParkInstance />} />
-        <Route path="/cities" element={<Cities />} />
+        <Route path="/cities" element={<Cities showFilters={true} />} />
         <Route path="/cities/:id" element={<CityInstance />} />
-        <Route path="/airports" element={<Airports />} />
+        <Route path="/airports" element={<Airports showFilters={true} />} />
         <Route path="/airports/:id" element={<AirportInstance />} />
         <Route path="/search/:query" element={<Search />} />
       </Routes>

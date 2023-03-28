@@ -5,7 +5,7 @@ import CityCard from "../../components/CityCard/CityCard";
 import Pagination from "../../components/Pagination/Pagination";
 import { Spinner } from "react-bootstrap";
 
-const Cities = ({ searchInput }) => {
+const Cities = ({ searchInput, showFilters }) => {
   const [data, setData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalInstances, setTotalInstances] = useState(null);
@@ -72,7 +72,7 @@ const Cities = ({ searchInput }) => {
         </p>
       </Container>
 
-      <Container>
+      {showFilters && <Container>
         <form
           className="d-flex mx-auto mt-5 mb-4"
           role="search"
@@ -203,7 +203,7 @@ const Cities = ({ searchInput }) => {
             Apply
           </button>
         </div>
-      </Container>
+      </Container> }
 
       <Container className="px-4">
         <Container className="row gx-3">
@@ -229,7 +229,7 @@ const Cities = ({ searchInput }) => {
         </Container>
       </Container>
 
-      {!loading ? (
+      {!loading && showFilters ? (
         <Pagination
           currentPage={currentPage}
           cardsPerPage={cardsPerPage}

@@ -6,7 +6,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import "./Parks.css";
 import { Spinner } from "react-bootstrap";
 
-const Parks = ({ searchInput }) => {
+const Parks = ({ searchInput, showFilters }) => {
   const [data, setData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalInstances, setTotalInstances] = useState(null);
@@ -63,7 +63,7 @@ const Parks = ({ searchInput }) => {
         </p>
       </Container>
 
-      <Container id="search-filter">
+      {showFilters && <Container>
         <form
           className="d-flex mx-auto mt-5 mb-4"
           role="search"
@@ -144,7 +144,7 @@ const Parks = ({ searchInput }) => {
             Apply
           </button>
         </div>
-      </Container>
+      </Container> }
 
       <Container className="px-4">
         <Container className="row gx-3">
@@ -169,7 +169,7 @@ const Parks = ({ searchInput }) => {
         </Container>
       </Container>
 
-      {!loading ? (
+      {!loading && showFilters ? (
         <Pagination
           currentPage={currentPage}
           cardsPerPage={cardsPerPage}
