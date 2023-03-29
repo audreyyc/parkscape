@@ -194,16 +194,26 @@ class Test(unittest.TestCase):
 
     def test_website_search(self):
         self.driver.get(URL)
-        search_bar = self.driver.find_element(By.XPATH, '/html/body/div/div/nav/div/div/form/input')
+        search_bar = self.driver.find_element(
+            By.XPATH, "/html/body/div/div/nav/div/div/form/input"
+        )
         search_bar.send_keys("California")
 
-        search_button = self.driver.find_element(By.XPATH, '/html/body/div/div/nav/div/div/form/button')
+        search_button = self.driver.find_element(
+            By.XPATH, "/html/body/div/div/nav/div/div/form/button"
+        )
         search_button.click()
-        time.sleep(3) # Wait for results to show
+        time.sleep(3)  # Wait for results to show
 
-        num_of_parks = self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[1]/div[1]/p').text
-        num_of_cities = self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[2]/div[1]/p').text
-        num_of_airports = self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[3]/div[1]/p').text
+        num_of_parks = self.driver.find_element(
+            By.XPATH, "/html/body/div/div/div/div[1]/div[1]/p"
+        ).text
+        num_of_cities = self.driver.find_element(
+            By.XPATH, "/html/body/div/div/div/div[2]/div[1]/p"
+        ).text
+        num_of_airports = self.driver.find_element(
+            By.XPATH, "/html/body/div/div/div/div[3]/div[1]/p"
+        ).text
 
         self.assertEqual(int(num_of_parks), 1)
         self.assertEqual(int(num_of_cities), 17)
@@ -211,27 +221,45 @@ class Test(unittest.TestCase):
 
     def test_sorting(self):
         self.driver.get(URL + "parks")
-        sorting_select = Select(self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[2]/div[1]/div[1]/select'))
+        sorting_select = Select(
+            self.driver.find_element(
+                By.XPATH, "/html/body/div/div/div/div[2]/div[1]/div[1]/select"
+            )
+        )
         sorting_select.select_by_index(2)
-        apply_button = self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[2]/div[2]/button')
+        apply_button = self.driver.find_element(
+            By.XPATH, "/html/body/div/div/div/div[2]/div[2]/button"
+        )
         apply_button.click()
         time.sleep(2)
-        first_park_name = self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[3]/div/div[1]/div/a/div[1]/div').text
-        self.assertEqual(first_park_name, 'Zion National Park')
+        first_park_name = self.driver.find_element(
+            By.XPATH, "/html/body/div/div/div/div[3]/div/div[1]/div/a/div[1]/div"
+        ).text
+        self.assertEqual(first_park_name, "Zion National Park")
 
     def test_filtering(self):
         self.driver.get(URL + "cities")
-        filtering_select = Select(self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[2]/div[1]/div[4]/select'))
+        filtering_select = Select(
+            self.driver.find_element(
+                By.XPATH, "/html/body/div/div/div/div[2]/div[1]/div[4]/select"
+            )
+        )
         filtering_select.select_by_index(10)
-        apply_button = self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[2]/div[2]/button')
+        apply_button = self.driver.find_element(
+            By.XPATH, "/html/body/div/div/div/div[2]/div[2]/button"
+        )
         apply_button.click()
         time.sleep(2)
 
-        first_city_name = self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[3]/div/div[1]/div/a/div[1]/div').text
-        second_city_name = self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[3]/div/div[2]/div/a/div[1]/div').text
-        self.assertEqual(first_city_name, 'Jacksonville, Florida, US')
-        self.assertEqual(second_city_name, 'Miami, Florida, US')
+        first_city_name = self.driver.find_element(
+            By.XPATH, "/html/body/div/div/div/div[3]/div/div[1]/div/a/div[1]/div"
+        ).text
+        second_city_name = self.driver.find_element(
+            By.XPATH, "/html/body/div/div/div/div[3]/div/div[2]/div/a/div[1]/div"
+        ).text
+        self.assertEqual(first_city_name, "Jacksonville, Florida, US")
+        self.assertEqual(second_city_name, "Miami, Florida, US")
 
-       
+
 if __name__ == "__main__":
     unittest.main()

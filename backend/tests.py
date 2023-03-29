@@ -97,16 +97,21 @@ class Tests(unittest.TestCase):
             response = client.get("/airports?search=Newark")
             self.assertEqual(response.status_code, 200)
             data = response.json["data"]
-            self.assertTrue(check_search(data, "name", "Newark Liberty International Airport"))
+            self.assertTrue(
+                check_search(data, "name", "Newark Liberty International Airport")
+            )
+
 
 def check_search(data, attr, expected):
     return data[0][attr] == expected
+
 
 def check_filter(data, attr, expected):
     for obj in data:
         if obj[attr].find(expected) < 0:
             return False
     return True
+
 
 def check_sort(data, attr, asc):
     prev = 0
@@ -116,6 +121,7 @@ def check_sort(data, attr, asc):
                 return False
         prev = obj[attr]
     return True
+
 
 if __name__ == "__main__":
     unittest.main()

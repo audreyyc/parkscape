@@ -53,7 +53,7 @@ def get_cities():
             "count": len(result),
             "data": result,
         }
-    )   
+    )
 
 
 @app.route("/airports")
@@ -91,7 +91,6 @@ def get_airports():
                     query = query.filter(not_(Airport.phone.like("")))
             else:
                 query = query.filter(getattr(Airport, filter) == arg)
-           
 
     if sort is not None:
         sort_params = sort.split("_")
@@ -112,6 +111,7 @@ def get_airports():
             "data": result,
         }
     )
+
 
 @app.route("/parks")
 def get_parks():
