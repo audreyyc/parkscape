@@ -284,7 +284,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "api.parkscape.me/parks?page=1&sort=name_asc&state=TX",
+					"raw": "api.parkscape.me/parks?page=1&sort=name_asc&states=TX&activities=Astronomy&topics=Animals",
 					"host": [
 						"api",
 						"parkscape",
@@ -302,12 +302,22 @@
 						{
 							"key": "sort",
 							"value": "name_asc",
-							"description": "Sort list of parks by attribute. Values ending in \"_asc\" indicate ascending order and \"_desc\" indicates descending order."
+							"description": "Sort list of parks by attribute. Values ending in \"_asc\" indicate ascending order and \"_desc\" indicates descending order. Supported attributes: name, fee"
 						},
 						{
-							"key": "state",
+							"key": "states",
 							"value": "TX",
 							"description": "Filter parks by state. "
+						},
+						{
+							"key": "activities",
+							"value": "Astronomy",
+							"description": "Filter parks by activities."
+						},
+						{
+							"key": "topics",
+							"value": "Animals",
+							"description": "Filter parks by topics."
 						}
 					]
 				},
@@ -320,7 +330,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "api.parkscape.me/parks?page=1&sort=name_asc&state=TX",
+							"raw": "api.parkscape.me/parks?page=1&sort=name_asc&states=TX&activities=Astronomy&topics=Animals",
 							"host": [
 								"api",
 								"parkscape",
@@ -339,8 +349,16 @@
 									"value": "name_asc"
 								},
 								{
-									"key": "state",
+									"key": "states",
 									"value": "TX"
+								},
+								{
+									"key": "activities",
+									"value": "Astronomy"
+								},
+								{
+									"key": "topics",
+									"value": "Animals"
 								}
 							]
 						}
@@ -397,7 +415,7 @@
 						{
 							"key": "sort",
 							"value": "name_asc",
-							"description": "Sort list of cities by attribute. Values ending in \"_asc\" indicate ascending order and \"_desc\" indicates descending order."
+							"description": "Sort list of cities by attribute. Values ending in \"_asc\" indicate ascending order and \"_desc\" indicates descending order. Supported attributes: name, population "
 						},
 						{
 							"key": "state",
@@ -484,7 +502,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "api.parkscape.me/airports?page=1&sort=name_asc&state=TX",
+					"raw": "api.parkscape.me/airports?page=1&sort=name_asc&state=Texas&website=yes&phone=yes",
 					"host": [
 						"api",
 						"parkscape",
@@ -502,12 +520,22 @@
 						{
 							"key": "sort",
 							"value": "name_asc",
-							"description": "Sort list of airports by attribute. Values ending in \"_asc\" indicate ascending order and \"_desc\" indicates descending order."
+							"description": "Sort list of airports by attribute. Values ending in \"_asc\" indicate ascending order and \"_desc\" indicates descending order. Supported attributes: name, iata_code"
 						},
 						{
 							"key": "state",
-							"value": "TX",
+							"value": "Texas",
 							"description": "Filter airports by state."
+						},
+						{
+							"key": "website",
+							"value": "yes",
+							"description": "Filter airports by whether they have a website."
+						},
+						{
+							"key": "phone",
+							"value": "yes",
+							"description": "Filter airports by whether they have a phone. "
 						}
 					]
 				},
@@ -520,7 +548,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "api.parkscape.me/airports?page=1&sort=name_asc&state=TX",
+							"raw": "api.parkscape.me/airports?page=1&sort=name_asc&state=Texas&website=yes&phone=yes",
 							"host": [
 								"api",
 								"parkscape",
@@ -540,7 +568,15 @@
 								},
 								{
 									"key": "state",
-									"value": "TX"
+									"value": "Texas"
+								},
+								{
+									"key": "website",
+									"value": "yes"
+								},
+								{
+									"key": "phone",
+									"value": "yes"
 								}
 							]
 						}
