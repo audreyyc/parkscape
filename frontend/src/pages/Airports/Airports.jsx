@@ -210,7 +210,7 @@ const Airports = ({ searchInput, showFilters }) => {
                 name={airport.name}
                 iata={airport.iata_code}
                 location={`${airport.city}, ${airport.state}`}
-                website={<a href={airport.website}>{airport.website}</a>}
+                website={airport.website}
                 phone={airport.phone}
                 airportId={airport.id}
                 search={search}

@@ -28,6 +28,8 @@ const AirportCard = ({
     return text;
   }
 
+  console.log(website)
+
   return (
     <Container
       data-testid="airport-card"
@@ -43,7 +45,7 @@ const AirportCard = ({
             <br />
             Phone: {highlightSearch(phone)}
             <br />
-            Website: {highlightSearch(website)}
+            Website: {<a href={website}>{highlightSearch(website)}</a>}
             <br />
           </Card.Text>
         </Card.Body>
