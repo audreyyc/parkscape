@@ -13,6 +13,7 @@ import ParkCard from "../components/ParkCard/ParkCard";
 import DeveloperCard from "../components/DeveloperCard/DeveloperCard";
 import ToolCard from "../components/ToolCard/ToolCard";
 import Search from "../pages/Search/Search";
+import Parks from "../pages/Parks/Parks";
 
 test("Testing Home Page", () => {
   render(<HomePage />, { wrapper: BrowserRouter });
@@ -79,4 +80,43 @@ test("Testing Search Page", () => {
   expect(screen.getByText("Parks")).toBeInTheDocument();
   expect(screen.getByText("Cities")).toBeInTheDocument();
   expect(screen.getByText("Airports")).toBeInTheDocument();
+});
+
+test("Testing Sorting", () => {
+  render(<Parks />, { wrapper: BrowserRouter});
+  expect(screen.getByText("Sort")).toBeInTheDocument();
+  expect(screen.getByText("Name (A-Z)")).toBeInTheDocument();
+  expect(screen.getByText("Name (Z-A)")).toBeInTheDocument();
+});
+
+test("Testing Filtering Airports", () => {
+  render(<Parks />, { wrapper: BrowserRouter});
+  expect(screen.getByText("Phone")).toBeInTheDocument();
+  expect(screen.getByText("yes")).toBeInTheDocument();
+  expect(screen.getByText("no")).toBeInTheDocument();
+  expect(screen.getByText("Website")).toBeInTheDocument();
+  expect(screen.getByText("yes")).toBeInTheDocument();
+  expect(screen.getByText("no")).toBeInTheDocument();
+  expect(screen.getByText("State")).toBeInTheDocument();
+  expect(screen.getByText("Alabama")).toBeInTheDocument();
+});
+
+test("Testing Filtering Cities", () => {
+  render(<Parks />, { wrapper: BrowserRouter});
+  expect(screen.getByText("Max Cost Score")).toBeInTheDocument();
+  expect(screen.getByText("1")).toBeInTheDocument();
+  expect(screen.getByText("Safety Score")).toBeInTheDocument();
+  expect(screen.getByText("1")).toBeInTheDocument();
+  expect(screen.getByText("State")).toBeInTheDocument();
+  expect(screen.getByText("Alabama")).toBeInTheDocument();
+});
+
+test("Testing Filtering Cities", () => {
+  render(<Parks />, { wrapper: BrowserRouter});
+  expect(screen.getByText("Topic")).toBeInTheDocument();
+  expect(screen.getByText("Abolition Movement")).toBeInTheDocument();
+  expect(screen.getByText("Activity")).toBeInTheDocument();
+  expect(screen.getByText("ATV Off-Roading")).toBeInTheDocument();
+  expect(screen.getByText("State")).toBeInTheDocument();
+  expect(screen.getByText("Alabama")).toBeInTheDocument();
 });
