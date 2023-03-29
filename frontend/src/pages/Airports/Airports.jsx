@@ -11,12 +11,21 @@ const Airports = ({ searchInput, showFilters }) => {
   const [totalInstances, setTotalInstances] = useState(null);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState(searchInput);
+  const [sort, setSort] = useState(null);
+  const [state, setState] = useState(null);
+  const [website, setWebsite] = useState(null);
+  const [phone, setPhone] = useState(null);
 
   function api() {
     let searchURI = search ? `&search=${encodeURI(search)}` : "";
 
-    let size_url = `https://api.parkscape.me/airports?${searchURI}`;
-    let url = `https://api.parkscape.me/airports?page=${currentPage}${searchURI}`;
+    let sortURI = sort ? `&sort=${encodeURI(sort)}` : "";
+    let stateURI = state ? `&state=${encodeURI(state)}` : "";
+    let websiteURI = website ? `&website=${encodeURI(website)}` : "";
+    let phoneURI = phone ? `&phone=${encodeURI(phone)}` : "";
+
+    let size_url = `https://api.parkscape.me/airports?${searchURI}${sortURI}${stateURI}${websiteURI}${phoneURI}`;
+    let url = `https://api.parkscape.me/airports?page=${currentPage}${searchURI}${sortURI}${stateURI}${websiteURI}${phoneURI}`;
 
     axios.get(size_url).then((res) => {
       setTotalInstances(res.data.count);
@@ -62,88 +71,136 @@ const Airports = ({ searchInput, showFilters }) => {
         </p>
       </Container>
 
-      {showFilters && <Container>
-        <form
-          className="d-flex mx-auto mt-5 mb-4"
-          role="search"
-          style={{ width: "50%" }}
-          onSubmit={(e) => {
-            e.preventDefault();
-            var searchedTerm = document.getElementById("airportsSearch").value;
-            if (!searchedTerm) {
-              searchedTerm = " ";
-            }
-            setSearch(searchedTerm);
-          }}
-        >
-          <input
-            className="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-            id="airportsSearch"
-          />
-          <button className="btn btn-outline-success" type="submit">
-            Search
-          </button>
-        </form>
+      {showFilters && (
+        <Container>
+          <form
+            className="d-flex mx-auto mt-5 mb-4"
+            role="search"
+            style={{ width: "50%" }}
+            onSubmit={(e) => {
+              e.preventDefault();
+              var searchedTerm =
+                document.getElementById("airportsSearch").value;
+              if (!searchedTerm) {
+                searchedTerm = " ";
+              }
+              setSearch(searchedTerm);
+            }}
+          >
+            <input
+              className="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              id="airportsSearch"
+            />
+            <button className="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
 
-        <div className="row mx-auto" style={{ width: "80%" }}>
-          <div className="col">
-            <select
-              className="form-select form-select-lg mb-3"
-              aria-label=".form-select-lg example"
-              defaultValue={"0"}
-            >
-              <option value="0">Sort</option>
-              <option value="1">Name (A-Z)</option>
-              <option value="2">Name (Z-A)</option>
-              <option value="3">State (A-Z)</option>
-              <option value="3">State (Z-A)</option>
-            </select>
+          <div className="row mx-auto" style={{ width: "80%" }}>
+            <div className="col">
+              <select
+                className="form-select form-select-lg mb-3"
+                aria-label=".form-select-lg example"
+                defaultValue={"0"}
+                id="sort"
+                onChange={() => {
+                  var value = document.getElementById("sort").value;
+                  if (value == 0) {
+                    setSort(null);
+                  } else if (value == 1) {
+                    setSort("name_asc");
+                  } else {
+                    setSort("name_desc");
+                  }
+                }}
+              >
+                <option value="0">Sort</option>
+                <option value="1">Name (A-Z)</option>
+                <option value="2">Name (Z-A)</option>
+              </select>
+            </div>
+            <div className="col">
+              <select
+                className="form-select form-select-lg mb-3"
+                aria-label=".form-select-lg example"
+                defaultValue={"0"}
+                id="phone"
+                onChange={() => {
+                  var e = document.getElementById("phone");
+                  var value = e.value;
+                  if (value == 0) {
+                    setPhone(null);
+                  } else {
+                    setPhone(e.options[e.selectedIndex].text);
+                  }
+                }}
+              >
+                <option value="0">Phone</option>
+                <option value="1">yes</option>
+                <option value="2">no</option>
+              </select>
+            </div>
+            <div className="col">
+              <select
+                className="form-select form-select-lg mb-3"
+                aria-label=".form-select-lg example"
+                defaultValue={"0"}
+                id="Website"
+                onChange={() => {
+                  var e = document.getElementById("Website");
+                  var value = e.value;
+                  if (value == 0) {
+                    setWebsite(null);
+                  } else {
+                    setWebsite(e.options[e.selectedIndex].text);
+                  }
+                }}
+              >
+                <option value="0">Website</option>
+                <option value="1">yes</option>
+                <option value="2">no</option>
+              </select>
+            </div>
+            <div className="col">
+              <select
+                className="form-select form-select-lg mb-3"
+                aria-label=".form-select-lg example"
+                defaultValue={"0"}
+                id="states"
+                onChange={() => {
+                  var e = document.getElementById("states");
+                  if (e.value == 0) {
+                    setState(null);
+                  } else {
+                    setState(e.options[e.selectedIndex].text);
+                  }
+                }}
+              >
+                {states.map((score, index) => (
+                  <option value={index} key={index}>
+                    {score}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
-          <div className="col">
-            <select
-              className="form-select form-select-lg mb-3"
-              aria-label=".form-select-lg example"
-              defaultValue={"0"}
-            >
-              <option value="0">Phone</option>
-              <option value="1">Yes</option>
-              <option value="2">No</option>
-            </select>
-          </div>
-          <div className="col">
-            <select
-              className="form-select form-select-lg mb-3"
-              aria-label=".form-select-lg example"
-              defaultValue={"0"}
-            >
-              <option value="0">Website</option>
-              <option value="1">Yes</option>
-              <option value="2">No</option>
-            </select>
-          </div>
-          <div className="col">
-            <select
-              className="form-select form-select-lg mb-3"
-              aria-label=".form-select-lg example"
-              defaultValue={"0"}
-            >
-              <option value="0">State</option>
-              <option value="1">TX</option>
-              <option value="2">CO</option>
-              <option value="3">NV</option>
-            </select>
-          </div>
-        </div>
 
-        <div className="text-center mt-3 mb-5">
-          <button className="btn btn-large btn-success btn-lg" type="apply">
-            Apply
-          </button>
-        </div>
-      </Container> }
+          <div className="text-center mt-3 mb-5">
+            <button
+              className="btn btn-large btn-success btn-lg"
+              type="apply"
+              onClick={() => {
+                api();
+              }}
+            >
+              Apply
+            </button>
+          </div>
+        </Container>
+      )}
 
       <Container className="px-4">
         <Container className="row gx-3">
@@ -168,7 +225,7 @@ const Airports = ({ searchInput, showFilters }) => {
         </Container>
       </Container>
 
-      {!loading && showFilters? (
+      {!loading && showFilters ? (
         <Pagination
           currentPage={currentPage}
           cardsPerPage={cardsPerPage}
@@ -181,5 +238,63 @@ const Airports = ({ searchInput, showFilters }) => {
     </Container>
   );
 };
+
+const states = [
+  "State",
+  "Alabama",
+  "Alaska",
+  "American Samoa",
+  "Arizona",
+  "Arkansas",
+  "California",
+  "Colorado",
+  "Connecticut",
+  "Delaware",
+  "District of Columbia",
+  "Florida",
+  "Georgia",
+  "Guam",
+  "Hawaii",
+  "Idaho",
+  "Illinois",
+  "Indiana",
+  "Iowa",
+  "Kansas",
+  "Kentucky",
+  "Louisiana",
+  "Maine",
+  "Maryland",
+  "Massachusetts",
+  "Michigan",
+  "Minnesota",
+  "Mississippi",
+  "Missouri",
+  "Montana",
+  "Nebraska",
+  "Nevada",
+  "New Hampshire",
+  "New Jersey",
+  "New Mexico",
+  "New York",
+  "North Carolina",
+  "North Dakota",
+  "Ohio",
+  "Oklahoma",
+  "Oregon",
+  "Pennsylvania",
+  "Rhode Island",
+  "South Carolina",
+  "South Dakota",
+  "Tennessee",
+  "Texas",
+  "Utah",
+  "Vermont",
+  "Virgin Island",
+  "Virginia",
+  "Washington",
+  "West Virginia",
+  "Wisconsin",
+  "Wyoming",
+];
 
 export default Airports;

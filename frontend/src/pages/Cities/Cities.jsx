@@ -33,6 +33,7 @@ const Cities = ({ searchInput, showFilters }) => {
 
     axios.get(url).then((res) => {
       setData(res.data.data);
+      console.log(res.data);
     });
   }
 
@@ -72,138 +73,140 @@ const Cities = ({ searchInput, showFilters }) => {
         </p>
       </Container>
 
-      {showFilters && <Container>
-        <form
-          className="d-flex mx-auto mt-5 mb-4"
-          role="search"
-          style={{ width: "50%" }}
-          onSubmit={(e) => {
-            e.preventDefault();
-            var searchedTerm = document.getElementById("citiesSearch").value;
-            if (!searchedTerm) {
-              searchedTerm = " ";
-            }
-            setSearch(searchedTerm);
-          }}
-        >
-          <input
-            className="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-            id="citiesSearch"
-          />
-          <button className="btn btn-outline-success" type="submit">
-            Search
-          </button>
-        </form>
-
-        <div className="row mx-auto" style={{ width: "80%" }}>
-          <div className="col">
-            <select
-              className="form-select form-select-lg mb-3"
-              aria-label=".form-select-lg example"
-              defaultValue={"0"}
-              id="sort"
-              onChange={() => {
-                var value = document.getElementById("sort").value;
-                if (value == 0) {
-                  setSort(null);
-                } else if (value == 1) {
-                  setSort("name_asc");
-                } else {
-                  setSort("name_desc");
-                }
-              }}
-            >
-              <option value="0">Sort</option>
-              <option value="1">Name (A-Z)</option>
-              <option value="2">Name (Z-A)</option>
-            </select>
-          </div>
-          <div className="col">
-            <select
-              className="form-select form-select-lg mb-3"
-              aria-label=".form-select-lg example"
-              defaultValue={"0"}
-              id="budget"
-              onChange={() => {
-                var e = document.getElementById("budget");
-                if (e.value == 0) {
-                  setBudget(null);
-                } else {
-                  setBudget(e.options[e.selectedIndex].text);
-                }
-              }}
-            >
-              {budgets.map((score, index) => (
-                <option value={index} key={index}>
-                  {score}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="col">
-            <select
-              className="form-select form-select-lg mb-3"
-              aria-label=".form-select-lg example"
-              defaultValue={"0"}
-              id="safety"
-              onChange={() => {
-                var e = document.getElementById("safety");
-                if (e.value == 0) {
-                  setSafety(null);
-                } else {
-                  setSafety(e.options[e.selectedIndex].text);
-                }
-              }}
-            >
-              {safetyOptions.map((state, index) => (
-                <option value={index} key={index}>
-                  {state}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="col">
-            <select
-              className="form-select form-select-lg mb-3"
-              aria-label=".form-select-lg example"
-              defaultValue={"0"}
-              id="state"
-              onChange={() => {
-                var e = document.getElementById("state");
-                if (e.value == 0) {
-                  setState(null);
-                } else {
-                  setState(
-                    document.getElementById("state").options[e.selectedIndex]
-                      .text
-                  );
-                }
-              }}
-            >
-              {states.map((state, index) => (
-                <option value={index} key={index}>
-                  {state}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        <div className="text-center mt-3 mb-5">
-          <button
-            className="btn btn-large btn-success btn-lg"
-            type="apply"
-            onClick={() => {
-              api();
+      {showFilters && (
+        <Container>
+          <form
+            className="d-flex mx-auto mt-5 mb-4"
+            role="search"
+            style={{ width: "50%" }}
+            onSubmit={(e) => {
+              e.preventDefault();
+              var searchedTerm = document.getElementById("citiesSearch").value;
+              if (!searchedTerm) {
+                searchedTerm = " ";
+              }
+              setSearch(searchedTerm);
             }}
           >
-            Apply
-          </button>
-        </div>
-      </Container> }
+            <input
+              className="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              id="citiesSearch"
+            />
+            <button className="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+
+          <div className="row mx-auto" style={{ width: "80%" }}>
+            <div className="col">
+              <select
+                className="form-select form-select-lg mb-3"
+                aria-label=".form-select-lg example"
+                defaultValue={"0"}
+                id="sort"
+                onChange={() => {
+                  var value = document.getElementById("sort").value;
+                  if (value == 0) {
+                    setSort(null);
+                  } else if (value == 1) {
+                    setSort("name_asc");
+                  } else {
+                    setSort("name_desc");
+                  }
+                }}
+              >
+                <option value="0">Sort</option>
+                <option value="1">Name (A-Z)</option>
+                <option value="2">Name (Z-A)</option>
+              </select>
+            </div>
+            <div className="col">
+              <select
+                className="form-select form-select-lg mb-3"
+                aria-label=".form-select-lg example"
+                defaultValue={"0"}
+                id="budget"
+                onChange={() => {
+                  var e = document.getElementById("budget");
+                  if (e.value == 0) {
+                    setBudget(null);
+                  } else {
+                    setBudget(e.options[e.selectedIndex].text);
+                  }
+                }}
+              >
+                {budgets.map((score, index) => (
+                  <option value={index} key={index}>
+                    {score}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="col">
+              <select
+                className="form-select form-select-lg mb-3"
+                aria-label=".form-select-lg example"
+                defaultValue={"0"}
+                id="safety"
+                onChange={() => {
+                  var e = document.getElementById("safety");
+                  if (e.value == 0) {
+                    setSafety(null);
+                  } else {
+                    setSafety(e.options[e.selectedIndex].text);
+                  }
+                }}
+              >
+                {safetyOptions.map((state, index) => (
+                  <option value={index} key={index}>
+                    {state}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="col">
+              <select
+                className="form-select form-select-lg mb-3"
+                aria-label=".form-select-lg example"
+                defaultValue={"0"}
+                id="state"
+                onChange={() => {
+                  var e = document.getElementById("state");
+                  if (e.value == 0) {
+                    setState(null);
+                  } else {
+                    setState(
+                      document.getElementById("state").options[e.selectedIndex]
+                        .text
+                    );
+                  }
+                }}
+              >
+                {states.map((state, index) => (
+                  <option value={index} key={index}>
+                    {state}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="text-center mt-3 mb-5">
+            <button
+              className="btn btn-large btn-success btn-lg"
+              type="apply"
+              onClick={() => {
+                api();
+              }}
+            >
+              Apply
+            </button>
+          </div>
+        </Container>
+      )}
 
       <Container className="px-4">
         <Container className="row gx-3">
