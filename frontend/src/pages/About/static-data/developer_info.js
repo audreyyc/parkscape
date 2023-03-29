@@ -27,7 +27,7 @@ const DeveloperInfo = [
     bio: "I am a sophomore computer science major at the University of Texas at Austin. In my free time, I enjoy dancing, watching TV, playing cards, and bouldering.",
     commits: 0,
     issues: 0,
-    unittests: 0,
+    unittests: 4,
   },
   {
     image: Audrey,
@@ -38,7 +38,7 @@ const DeveloperInfo = [
     bio: "I'm a sophomore Computer Science major at UT Austin originally from Houston, Texas. My hobbies include playing instruments and video games.",
     commits: 0,
     issues: 0,
-    unittests: 5,
+    unittests: 6,
   },
   {
     image: Noah,

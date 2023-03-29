@@ -82,7 +82,7 @@ test("Testing Search Page", () => {
   expect(screen.getByText("Airports")).toBeInTheDocument();
 });
 
-test("Testing Sorting", () => {
+test("Testing Park Sorting", () => {
   render(<Parks />, { wrapper: BrowserRouter});
   expect(screen.getByText("Sort")).toBeInTheDocument();
   expect(screen.getByText("Name (A-Z)")).toBeInTheDocument();
@@ -90,7 +90,7 @@ test("Testing Sorting", () => {
 });
 
 test("Testing Filtering Airports", () => {
-  render(<Parks />, { wrapper: BrowserRouter});
+  render(<Airports />, { wrapper: BrowserRouter});
   expect(screen.getByText("Phone")).toBeInTheDocument();
   expect(screen.getByText("yes")).toBeInTheDocument();
   expect(screen.getByText("no")).toBeInTheDocument();
@@ -102,7 +102,7 @@ test("Testing Filtering Airports", () => {
 });
 
 test("Testing Filtering Cities", () => {
-  render(<Parks />, { wrapper: BrowserRouter});
+  render(<Cities />, { wrapper: BrowserRouter});
   expect(screen.getByText("Max Cost Score")).toBeInTheDocument();
   expect(screen.getByText("1")).toBeInTheDocument();
   expect(screen.getByText("Safety Score")).toBeInTheDocument();
@@ -111,7 +111,7 @@ test("Testing Filtering Cities", () => {
   expect(screen.getByText("Alabama")).toBeInTheDocument();
 });
 
-test("Testing Filtering Cities", () => {
+test("Testing Filtering Parks", () => {
   render(<Parks />, { wrapper: BrowserRouter});
   expect(screen.getByText("Topic")).toBeInTheDocument();
   expect(screen.getByText("Abolition Movement")).toBeInTheDocument();
