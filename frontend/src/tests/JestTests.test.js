@@ -12,6 +12,7 @@ import AirportCard from "../components/AirportCard/AirportCard";
 import ParkCard from "../components/ParkCard/ParkCard";
 import DeveloperCard from "../components/DeveloperCard/DeveloperCard";
 import ToolCard from "../components/ToolCard/ToolCard";
+import Search from "../pages/Search/Search";
 
 test("Testing Home Page", () => {
   render(<HomePage />, { wrapper: BrowserRouter });
@@ -25,10 +26,6 @@ test("Testing Home Page", () => {
 test("Testing About Page", () => {
   render(<AboutPage />, { wrapper: BrowserRouter });
   expect(screen.getByText("About ParkScape")).toBeInTheDocument();
-<<<<<<< HEAD
-  expect(screen.getByText("Our Team")).toBeInTheDocument();
-  expect(screen.getByText("Total GitLab Statistics")).toBeInTheDocument();
-=======
 });
 
 test("Testing Gitlab Stats Rendering in About Page", () => {
@@ -39,7 +36,6 @@ test("Testing Gitlab Stats Rendering in About Page", () => {
 
 test("Testing Tool and API information Rendering in About Page", () => {
   render(<AboutPage />, { wrapper: BrowserRouter });
->>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
   expect(screen.getByText("Tools")).toBeInTheDocument();
   expect(screen.getByText("APIs")).toBeInTheDocument();
 });
@@ -69,16 +65,6 @@ test("Testing Park Card", () => {
 });
 
 test("Testing Developer Card", () => {
-<<<<<<< HEAD
-  render(<ToolCard />, { wrapper: BrowserRouter });
-  expect(screen.getByTestId("tool-card")).toBeInTheDocument();
-});
-
-test("Testing Tool Card", () => {
-  render(<DeveloperCard />, { wrapper: BrowserRouter });
-  expect(screen.getByTestId("dev-card")).toBeInTheDocument();
-});
-=======
   render(<DeveloperCard />, { wrapper: BrowserRouter });
   expect(screen.getByTestId("dev-card")).toBeInTheDocument();
 });
@@ -87,4 +73,10 @@ test("Testing Tool Card", () => {
   render(<ToolCard />, { wrapper: BrowserRouter });
   expect(screen.getByTestId("tool-card")).toBeInTheDocument();
 });
->>>>>>> 977cd985ee8c557e9986c6fa89c3174470d50e18
+
+test("Testing Search Page", () => {
+  render(<Search />, { wrapper: BrowserRouter});
+  expect(screen.getByText("Parks")).toBeInTheDocument();
+  expect(screen.getByText("Cities")).toBeInTheDocument();
+  expect(screen.getByText("Airports")).toBeInTheDocument();
+});
