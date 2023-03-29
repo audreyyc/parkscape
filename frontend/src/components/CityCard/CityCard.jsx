@@ -82,9 +82,9 @@ const CityCard = ({
                 )
               )}
               <br />
-              Budget: {highlightSearch(budget)}
+              Budget: {highlightSearch(String(budget))}
               <br />
-              Safety: {highlightSearch(safety)}
+              Safety: {highlightSearch(String(safety))}
               <br />
             </Card.Text>
           </Card.Body>
