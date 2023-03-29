@@ -5,7 +5,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver import Remote
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.support.select import Select
 import unittest
+import time
 
 URL = "https://dev.d1rkv95cbxfqn4.amplifyapp.com/"
 
@@ -109,7 +111,7 @@ class Test(unittest.TestCase):
             self.driver.execute_script("arguments[0].click();", element)
         except Exception as e:
             print("React card not found " + str(e))
-        self.assertEqual(str(self.driver.current_url), "https://reactjs.org/")
+        self.assertEqual(str(self.driver.current_url), "https://react.dev/")
 
     def test_api_card(self):
         self.driver.get(URL + "about")
@@ -131,65 +133,105 @@ class Test(unittest.TestCase):
         )
 
     def test_park_card(self):
-        self.driver.get(URL + "parks/")
+        self.driver.get(URL + "parks")
         WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, '//*[@id="0"]'))
+            EC.element_to_be_clickable((By.XPATH, '//*[@id="1"]'))
         )
         try:
-            element = self.driver.find_element_by_xpath('//*[@id="0"]')
+            element = self.driver.find_element_by_xpath('//*[@id="1"]')
             self.driver.execute_script("arguments[0].click()", element)
         except Exception as e:
             print("Park card not found " + str(e))
         self.assertEqual(
             str(self.driver.current_url),
-            "https://dev.d1rkv95cbxfqn4.amplifyapp.com/parks/0",
+            "https://dev.d1rkv95cbxfqn4.amplifyapp.com/parks/1",
         )
 
     def test_city_card(self):
-        self.driver.get(URL + "cities/")
+        self.driver.get(URL + "cities")
         WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, '//*[@id="0"]'))
+            EC.element_to_be_clickable((By.XPATH, '//*[@id="1"]'))
         )
         try:
-            element = self.driver.find_element_by_xpath('//*[@id="0"]')
+            element = self.driver.find_element_by_xpath('//*[@id="1"]')
             self.driver.execute_script("arguments[0].click()", element)
         except Exception as e:
             print("Park card not found " + str(e))
         self.assertEqual(
             str(self.driver.current_url),
-            "https://dev.d1rkv95cbxfqn4.amplifyapp.com/cities/0",
+            "https://dev.d1rkv95cbxfqn4.amplifyapp.com/cities/1",
         )
 
     def test_airport_card(self):
-        self.driver.get(URL + "airports/")
+        self.driver.get(URL + "airports")
         WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, '//*[@id="0"]/button'))
+            EC.element_to_be_clickable((By.XPATH, '//*[@id="1"]/button'))
         )
         try:
-            element = self.driver.find_element_by_xpath('//*[@id="0"]/button')
+            element = self.driver.find_element_by_xpath('//*[@id="1"]/button')
             self.driver.execute_script("arguments[0].click()", element)
         except Exception as e:
             print("Park card not found " + str(e))
         self.assertEqual(
             str(self.driver.current_url),
-            "https://dev.d1rkv95cbxfqn4.amplifyapp.com/airports/0",
+            "https://dev.d1rkv95cbxfqn4.amplifyapp.com/airports/1",
         )
 
     def test_nearest_city(self):
         self.driver.get(URL + "parks/2")
         WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, '//*[@id="22"]/button'))
+            EC.element_to_be_clickable((By.XPATH, '//*[@id="23"]/button'))
         )
         try:
-            element = self.driver.find_element_by_xpath('//*[@id="22"]/button')
+            element = self.driver.find_element_by_xpath('//*[@id="23"]/button')
             self.driver.execute_script("arguments[0].click()", element)
         except Exception as e:
             print("Nearest city button not found " + str(e))
         self.assertEqual(
             str(self.driver.current_url),
-            "https://dev.d1rkv95cbxfqn4.amplifyapp.com/cities/22",
+            "https://dev.d1rkv95cbxfqn4.amplifyapp.com/cities/23",
         )
 
+    def test_website_search(self):
+        self.driver.get(URL)
+        search_bar = self.driver.find_element(By.XPATH, '/html/body/div/div/nav/div/div/form/input')
+        search_bar.send_keys("California")
 
+        search_button = self.driver.find_element(By.XPATH, '/html/body/div/div/nav/div/div/form/button')
+        search_button.click()
+        time.sleep(3) # Wait for results to show
+
+        num_of_parks = self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[1]/div[1]/p').text
+        num_of_cities = self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[2]/div[1]/p').text
+        num_of_airports = self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[3]/div[1]/p').text
+
+        self.assertEqual(int(num_of_parks), 1)
+        self.assertEqual(int(num_of_cities), 17)
+        self.assertEqual(int(num_of_airports), 36)
+
+    def test_sorting(self):
+        self.driver.get(URL + "parks")
+        sorting_select = Select(self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[2]/div[1]/div[1]/select'))
+        sorting_select.select_by_index(2)
+        apply_button = self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[2]/div[2]/button')
+        apply_button.click()
+        time.sleep(2)
+        first_park_name = self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[3]/div/div[1]/div/a/div[1]/div').text
+        self.assertEqual(first_park_name, 'Zion National Park')
+
+    def test_filtering(self):
+        self.driver.get(URL + "cities")
+        filtering_select = Select(self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[2]/div[1]/div[4]/select'))
+        filtering_select.select_by_index(10)
+        apply_button = self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[2]/div[2]/button')
+        apply_button.click()
+        time.sleep(2)
+
+        first_city_name = self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[3]/div/div[1]/div/a/div[1]/div').text
+        second_city_name = self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[3]/div/div[2]/div/a/div[1]/div').text
+        self.assertEqual(first_city_name, 'Jacksonville, Florida, US')
+        self.assertEqual(second_city_name, 'Miami, Florida, US')
+
+       
 if __name__ == "__main__":
     unittest.main()
