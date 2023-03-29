@@ -28,8 +28,6 @@ const AirportCard = ({
     return text;
   }
 
-  console.log(website)
-
   return (
     <Container
       data-testid="airport-card"
