@@ -7,6 +7,7 @@ const Filter = ({ filterId, data, setFilter }) => {
       aria-label=".form-select-lg example"
       defaultValue={"0"}
       id={filterId}
+      data-testid="select"
       onChange={() => {
         var e = document.getElementById(filterId);
         if (e.value == 0) {
@@ -17,7 +18,7 @@ const Filter = ({ filterId, data, setFilter }) => {
       }}
     >
       {data.map((option, index) => (
-        <option value={index} key={index}>
+        <option data-testid="option" value={index} key={index}>
           {option}
         </option>
       ))}
