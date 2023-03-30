@@ -81,7 +81,7 @@ const Parks = ({ searchInput, showFilters }) => {
 
           <div className="row mx-auto" style={{ width: "80%" }}>
             <div className="col">
-            <Sort setSort={setSort} />
+              <Sort setSort={setSort} />
             </div>
 
             <div className="col">

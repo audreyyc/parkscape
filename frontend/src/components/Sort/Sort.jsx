@@ -3,6 +3,7 @@ import React from "react";
 const Sort = ({ setSort }) => {
     return (
         <select
+            data-testid="sort"
             className="form-select form-select-lg mb-3"
             aria-label=".form-select-lg example"
             defaultValue={"0"}

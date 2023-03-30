@@ -5,6 +5,7 @@ const SearchBar = ({ setSearch, searchID }) => {
     return (
         <Container>
             <form
+                data-testid="model-search"
                 className="d-flex mx-auto mt-5 mb-4"
                 role="search"
                 style={{ width: "50%" }}

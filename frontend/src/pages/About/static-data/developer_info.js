@@ -38,7 +38,7 @@ const DeveloperInfo = [
     bio: "I'm a sophomore Computer Science major at UT Austin originally from Houston, Texas. My hobbies include playing instruments and video games.",
     commits: 0,
     issues: 0,
-    unittests: 6,
+    unittests: 8,
   },
   {
     image: Noah,
@@ -60,7 +60,7 @@ const DeveloperInfo = [
     bio: "Hello! My name is Pawan Somavarpu and I grew up in San Antonio, Texas. I am a junior Computer Science and Economics student. I love playing poker and riding my electric skateboard.",
     commits: 0,
     issues: 0,
-    unittests: 5,
+    unittests: 6,
   },
 ];
 

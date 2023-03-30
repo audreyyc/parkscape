@@ -12,7 +12,10 @@ import AirportCard from "../components/AirportCard/AirportCard";
 import ParkCard from "../components/ParkCard/ParkCard";
 import DeveloperCard from "../components/DeveloperCard/DeveloperCard";
 import ToolCard from "../components/ToolCard/ToolCard";
+import SearchBar from "../components/SearchBar/SearchBar";
+import Sort from "../components/Sort/Sort";
 import Filter from "../components/Filter/Filter";
+// import SearchPage from "../pages/Search/Search";
 
 test("Testing Home Page", () => {
   render(<HomePage />, { wrapper: BrowserRouter });
@@ -74,9 +77,24 @@ test("Testing Tool Card", () => {
   expect(screen.getByTestId("tool-card")).toBeInTheDocument();
 });
 
+test("Testing SearchBar Component", () => {
+  render(<SearchBar />, { wrapper: BrowserRouter });
+  expect(screen.getByTestId("model-search")).toBeInTheDocument();
+});
+
+test("Testing Sort Component", () => {
+  render(<Sort />, { wrapper: BrowserRouter });
+  expect(screen.getByTestId("sort")).toBeInTheDocument();
+});
+
 test("Testing Filter Component", () => {
   render(<Filter data={["Test", "Test"]} />, { wrapper: BrowserRouter });
   expect(screen.getByTestId("select")).toBeInTheDocument();
+});
+
+test("Testing Site-wide Search Bar", () => {
+  render(<Navigation />, { wrapper: BrowserRouter });
+  expect(screen.getByText("Search")).toBeInTheDocument();
 });
 
 // test("Testing Search Page", () => {
