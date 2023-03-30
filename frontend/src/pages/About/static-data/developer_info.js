@@ -16,7 +16,7 @@ const DeveloperInfo = [
     bio: "I'm a sophomore studying Computer Science at UT Austin. I'm from Macedonia (a small country in southern Europe). I like developing iOS applications, boxing, working out and travelling.",
     commits: 0,
     issues: 0,
-    unittests: 19,
+    unittests: 22,
   },
   {
     image: Tanya,
@@ -49,7 +49,7 @@ const DeveloperInfo = [
     bio: "I'm a second year computer science student studying at the University of Texas at Austin. In my spare time I enjoy cooking, hiking, and playing the guitar.",
     commits: 0,
     issues: 0,
-    unittests: 6,
+    unittests: 12,
   },
   {
     image: Pawan,
