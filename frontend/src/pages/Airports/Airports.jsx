@@ -3,6 +3,8 @@ import axios from "axios";
 import Container from "react-bootstrap/esm/Container";
 import AirportCard from "../../components/AirportCard/AirportCard";
 import Pagination from "../../components/Pagination/Pagination";
+import SearchBar from "../../components/SearchBar/SearchBar.jsx";
+import Sort from "../../components/Sort/Sort.jsx";
 import Filter from "../../components/Filter/Filter";
 import { Spinner } from "react-bootstrap";
 
@@ -74,55 +76,13 @@ const Airports = ({ searchInput, showFilters }) => {
 
       {showFilters && (
         <Container>
-          <form
-            className="d-flex mx-auto mt-5 mb-4"
-            role="search"
-            style={{ width: "50%" }}
-            onSubmit={(e) => {
-              e.preventDefault();
-              var searchedTerm =
-                document.getElementById("airportsSearch").value;
-              if (!searchedTerm) {
-                searchedTerm = " ";
-              }
-              setSearch(searchedTerm);
-            }}
-          >
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-              id="airportsSearch"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
+          <SearchBar setSearch={setSearch} searchID={"airportsSearch"}/>
 
           <div className="row mx-auto" style={{ width: "80%" }}>
             <div className="col">
-              <select
-                className="form-select form-select-lg mb-3"
-                aria-label=".form-select-lg example"
-                defaultValue={"0"}
-                id="sort"
-                onChange={() => {
-                  var value = document.getElementById("sort").value;
-                  if (value == 0) {
-                    setSort(null);
-                  } else if (value == 1) {
-                    setSort("name_asc");
-                  } else {
-                    setSort("name_desc");
-                  }
-                }}
-              >
-                <option value="0">Sort</option>
-                <option value="1">Name (A-Z)</option>
-                <option value="2">Name (Z-A)</option>
-              </select>
+              <Sort setSort={setSort} />
             </div>
+
             <div className="col">
               <Filter
                 filterId={"phone"}
@@ -130,6 +90,7 @@ const Airports = ({ searchInput, showFilters }) => {
                 data={phoneOptions}
               />
             </div>
+
             <div className="col">
               <Filter
                 filterId={"website"}
@@ -137,6 +98,7 @@ const Airports = ({ searchInput, showFilters }) => {
                 data={websiteOptions}
               />
             </div>
+            
             <div className="col">
               <Filter filterId={"states"} setFilter={setState} data={states} />
             </div>

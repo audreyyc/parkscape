@@ -3,6 +3,8 @@ import axios from "axios";
 import Container from "react-bootstrap/esm/Container";
 import CityCard from "../../components/CityCard/CityCard";
 import Pagination from "../../components/Pagination/Pagination";
+import SearchBar from "../../components/SearchBar/SearchBar.jsx";
+import Sort from "../../components/Sort/Sort.jsx";
 import Filter from "../../components/Filter/Filter";
 import { Spinner } from "react-bootstrap";
 
@@ -76,54 +78,13 @@ const Cities = ({ searchInput, showFilters }) => {
 
       {showFilters && (
         <Container>
-          <form
-            className="d-flex mx-auto mt-5 mb-4"
-            role="search"
-            style={{ width: "50%" }}
-            onSubmit={(e) => {
-              e.preventDefault();
-              var searchedTerm = document.getElementById("citiesSearch").value;
-              if (!searchedTerm) {
-                searchedTerm = " ";
-              }
-              setSearch(searchedTerm);
-            }}
-          >
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-              id="citiesSearch"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
+          <SearchBar setSearch={setSearch} searchID={"citiesSearch"}/>
 
           <div className="row mx-auto" style={{ width: "80%" }}>
             <div className="col">
-              <select
-                className="form-select form-select-lg mb-3"
-                aria-label=".form-select-lg example"
-                defaultValue={"0"}
-                id="sort"
-                onChange={() => {
-                  var value = document.getElementById("sort").value;
-                  if (value == 0) {
-                    setSort(null);
-                  } else if (value == 1) {
-                    setSort("name_asc");
-                  } else {
-                    setSort("name_desc");
-                  }
-                }}
-              >
-                <option value="0">Sort</option>
-                <option value="1">Name (A-Z)</option>
-                <option value="2">Name (Z-A)</option>
-              </select>
+              <Sort setSort={setSort} />
             </div>
+
             <div className="col">
               <Filter
                 filterId={"budget"}
@@ -131,6 +92,7 @@ const Cities = ({ searchInput, showFilters }) => {
                 data={budgets}
               />
             </div>
+
             <div className="col">
               <Filter
                 filterId={"safety"}
@@ -138,6 +100,7 @@ const Cities = ({ searchInput, showFilters }) => {
                 data={safetyOptions}
               />
             </div>
+            
             <div className="col">
               <Filter filterId={"states"} setFilter={setState} data={states} />
             </div>
