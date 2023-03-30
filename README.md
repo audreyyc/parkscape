@@ -30,7 +30,7 @@
 
 **Pipeline:** https://gitlab.com/petarilievCS/cs373-idb7/-/pipelines
 
-**Git SHA:** [550cea8b](https://gitlab.com/petarilievCS/cs373-idb7/-/commit/550cea8b6e5f622b8fcb120f2d72d341a8cf1e5e)
+**Git SHA:** [f94260bf](https://gitlab.com/petarilievCS/cs373-idb7/-/commit/f94260bfafe2ad97e1a667e3084b05c3e6d09b45)
 
 **Postman Docs:** https://documenter.getpostman.com/view/25781480/2s935uGgU4
 
