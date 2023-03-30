@@ -12,6 +12,8 @@
 
 **Phase 2:** Tanya Joseph
 
+**Phase 3:** Audrey Chen
+
 | Name            | UTEID   | GitLab           |
 | --------------- | ------- | ---------------- |
 | Petar Iliev     | pi2338  | @petarilievCS    |
@@ -102,3 +104,17 @@ One page per model with description and multimedia, grid of cards for each model
 
 
 **Comments:** As we've discussed with our TA, our API has issues where it tends to go down occasionally, which breaks our model and instance pages. This also causes our Selenium and Postman tests to fail. It seems to be a problem on NameCheap's end. 
+
+
+### Phase 3
+
+| Team Member     | Estimated time | Actual time |
+| --------------- | -------------- | ----------- |
+| Petar Iliev     | 8              | 10          |
+| Tanya Joseph    | 10             | 10          |
+| Audrey Chen     | 10             | 15          |
+| Noah Liu        | 7              | 11          |
+| Pawan Somavarpu | 13             | 15          |
+
+
+**Comments:** As we've discussed with our TA, our API has issues where it tends to go down occasionally, which breaks our model and instance pages. This also causes our Selenium and Postman tests to fail. It seems to be a problem on NameCheap's end.
