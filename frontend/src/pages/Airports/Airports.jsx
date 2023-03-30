@@ -3,6 +3,7 @@ import axios from "axios";
 import Container from "react-bootstrap/esm/Container";
 import AirportCard from "../../components/AirportCard/AirportCard";
 import Pagination from "../../components/Pagination/Pagination";
+import Filter from "../../components/Filter/Filter";
 import { Spinner } from "react-bootstrap";
 
 const Airports = ({ searchInput, showFilters }) => {
@@ -123,68 +124,21 @@ const Airports = ({ searchInput, showFilters }) => {
               </select>
             </div>
             <div className="col">
-              <select
-                className="form-select form-select-lg mb-3"
-                aria-label=".form-select-lg example"
-                defaultValue={"0"}
-                id="phone"
-                onChange={() => {
-                  var e = document.getElementById("phone");
-                  var value = e.value;
-                  if (value == 0) {
-                    setPhone(null);
-                  } else {
-                    setPhone(e.options[e.selectedIndex].text);
-                  }
-                }}
-              >
-                <option value="0">Phone</option>
-                <option value="1">yes</option>
-                <option value="2">no</option>
-              </select>
+              <Filter
+                filterId={"phone"}
+                setFilter={setPhone}
+                data={phoneOptions}
+              />
             </div>
             <div className="col">
-              <select
-                className="form-select form-select-lg mb-3"
-                aria-label=".form-select-lg example"
-                defaultValue={"0"}
-                id="Website"
-                onChange={() => {
-                  var e = document.getElementById("Website");
-                  var value = e.value;
-                  if (value == 0) {
-                    setWebsite(null);
-                  } else {
-                    setWebsite(e.options[e.selectedIndex].text);
-                  }
-                }}
-              >
-                <option value="0">Website</option>
-                <option value="1">yes</option>
-                <option value="2">no</option>
-              </select>
+              <Filter
+                filterId={"website"}
+                setFilter={setWebsite}
+                data={websiteOptions}
+              />
             </div>
             <div className="col">
-              <select
-                className="form-select form-select-lg mb-3"
-                aria-label=".form-select-lg example"
-                defaultValue={"0"}
-                id="states"
-                onChange={() => {
-                  var e = document.getElementById("states");
-                  if (e.value == 0) {
-                    setState(null);
-                  } else {
-                    setState(e.options[e.selectedIndex].text);
-                  }
-                }}
-              >
-                {states.map((score, index) => (
-                  <option value={index} key={index}>
-                    {score}
-                  </option>
-                ))}
-              </select>
+              <Filter filterId={"states"} setFilter={setState} data={states} />
             </div>
           </div>
 
@@ -238,6 +192,10 @@ const Airports = ({ searchInput, showFilters }) => {
     </Container>
   );
 };
+
+const phoneOptions = ["Phone", "yes", "no"];
+
+const websiteOptions = ["Website", "yes", "no"];
 
 const states = [
   "State",

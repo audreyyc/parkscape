@@ -3,6 +3,7 @@ import axios from "axios";
 import Container from "react-bootstrap/esm/Container";
 import CityCard from "../../components/CityCard/CityCard";
 import Pagination from "../../components/Pagination/Pagination";
+import Filter from "../../components/Filter/Filter";
 import { Spinner } from "react-bootstrap";
 
 const Cities = ({ searchInput, showFilters }) => {
@@ -124,73 +125,21 @@ const Cities = ({ searchInput, showFilters }) => {
               </select>
             </div>
             <div className="col">
-              <select
-                className="form-select form-select-lg mb-3"
-                aria-label=".form-select-lg example"
-                defaultValue={"0"}
-                id="budget"
-                onChange={() => {
-                  var e = document.getElementById("budget");
-                  if (e.value == 0) {
-                    setBudget(null);
-                  } else {
-                    setBudget(e.options[e.selectedIndex].text);
-                  }
-                }}
-              >
-                {budgets.map((score, index) => (
-                  <option value={index} key={index}>
-                    {score}
-                  </option>
-                ))}
-              </select>
+              <Filter
+                filterId={"budget"}
+                setFilter={setBudget}
+                data={budgets}
+              />
             </div>
             <div className="col">
-              <select
-                className="form-select form-select-lg mb-3"
-                aria-label=".form-select-lg example"
-                defaultValue={"0"}
-                id="safety"
-                onChange={() => {
-                  var e = document.getElementById("safety");
-                  if (e.value == 0) {
-                    setSafety(null);
-                  } else {
-                    setSafety(e.options[e.selectedIndex].text);
-                  }
-                }}
-              >
-                {safetyOptions.map((state, index) => (
-                  <option value={index} key={index}>
-                    {state}
-                  </option>
-                ))}
-              </select>
+              <Filter
+                filterId={"safety"}
+                setFilter={setSafety}
+                data={safetyOptions}
+              />
             </div>
             <div className="col">
-              <select
-                className="form-select form-select-lg mb-3"
-                aria-label=".form-select-lg example"
-                defaultValue={"0"}
-                id="state"
-                onChange={() => {
-                  var e = document.getElementById("state");
-                  if (e.value == 0) {
-                    setState(null);
-                  } else {
-                    setState(
-                      document.getElementById("state").options[e.selectedIndex]
-                        .text
-                    );
-                  }
-                }}
-              >
-                {states.map((state, index) => (
-                  <option value={index} key={index}>
-                    {state}
-                  </option>
-                ))}
-              </select>
+              <Filter filterId={"states"} setFilter={setState} data={states} />
             </div>
           </div>
 

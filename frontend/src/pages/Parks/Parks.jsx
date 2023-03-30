@@ -3,6 +3,7 @@ import axios from "axios";
 import Container from "react-bootstrap/esm/Container";
 import ParkCard from "../../../src/components/ParkCard/ParkCard.jsx";
 import Pagination from "../../components/Pagination/Pagination";
+import Filter from "../../components/Filter/Filter.jsx";
 import "./Parks.css";
 import { Spinner } from "react-bootstrap";
 
@@ -123,77 +124,17 @@ const Parks = ({ searchInput, showFilters }) => {
               </select>
             </div>
             <div className="col">
-              <select
-                className="form-select form-select-lg mb-3"
-                aria-label=".form-select-lg example"
-                defaultValue={"0"}
-                id="topic"
-                onChange={() => {
-                  var e = document.getElementById("topic");
-                  if (e.value == 0) {
-                    setTopic(null);
-                  } else {
-                    setTopic(e.options[e.selectedIndex].text);
-                  }
-                }}
-              >
-                {topics.map((score, index) => (
-                  <option value={index} key={index}>
-                    {score}
-                  </option>
-                ))}
-              </select>
+              <Filter filterId={"topic"} setFilter={setTopic} data={topics} />
             </div>
             <div className="col">
-              <select
-                className="form-select form-select-lg mb-3"
-                aria-label=".form-select-lg example"
-                defaultValue={"0"}
-                id="activity"
-                onChange={() => {
-                  var e = document.getElementById("activity");
-                  if (e.value == 0) {
-                    setActivity(null);
-                  } else {
-                    setActivity(e.options[e.selectedIndex].text);
-                  }
-                }}
-              >
-                {activities.map((score, index) => (
-                  <option value={index} key={index}>
-                    {score}
-                  </option>
-                ))}
-              </select>
+              <Filter
+                filterId={"activities"}
+                setFilter={setActivity}
+                data={activities}
+              />
             </div>
             <div className="col">
-              <select
-                className="form-select form-select-lg mb-3"
-                aria-label=".form-select-lg example"
-                defaultValue={"0"}
-                id="state"
-                onChange={() => {
-                  var e = document.getElementById("state");
-                  if (e.value == 0) {
-                    setState(null);
-                  } else {
-                    setState(
-                      document.getElementById("state").options[e.selectedIndex]
-                        .text
-                    );
-                    console.log(
-                      document.getElementById("state").options[e.selectedIndex]
-                        .text
-                    );
-                  }
-                }}
-              >
-                {states.map((state, index) => (
-                  <option value={index} key={index}>
-                    {state}
-                  </option>
-                ))}
-              </select>
+              <Filter filterId={"states"} setFilter={setState} data={states} />
             </div>
           </div>
 
