@@ -110,11 +110,11 @@ One page per model with description and multimedia, grid of cards for each model
 
 | Team Member     | Estimated time | Actual time |
 | --------------- | -------------- | ----------- |
-| Petar Iliev     | 8              | 10          |
-| Tanya Joseph    | 10             | 10          |
-| Audrey Chen     | 10             | 15          |
-| Noah Liu        | 7              | 11          |
+| Petar Iliev     |                |             |
+| Tanya Joseph    |                |             |
+| Audrey Chen     | 10             | 13          |
+| Noah Liu        |                |             |
 | Pawan Somavarpu | 13             | 15          |
 
 
-**Comments:** As we've discussed with our TA, our API has issues where it tends to go down occasionally, which breaks our model and instance pages. This also causes our Selenium and Postman tests to fail. It seems to be a problem on NameCheap's end.
+**Comments:** As we've discussed with our TA, our API has issues where it tends to go down occasionally, which breaks our model and instance pages. This also causes our Selenium and Postman tests to fail. It seems to be a problem on NameCheap's end. We also ran out of CI minutes after the last phase, but they should be replenished soon.
