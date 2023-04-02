@@ -116,7 +116,8 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "api.parkscape.me/city/1",
+					"raw": "https://api.parkscape.me/city/1",
+					"protocol": "https",
 					"host": [
 						"api",
 						"parkscape",
@@ -199,7 +200,8 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "api.parkscape.me/airport/1",
+					"raw": "https://api.parkscape.me/airport/1",
+					"protocol": "https",
 					"host": [
 						"api",
 						"parkscape",
@@ -284,7 +286,8 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "api.parkscape.me/parks?page=1&sort=name_asc&states=TX&activities=Astronomy&topics=Animals",
+					"raw": "https://api.parkscape.me/parks?page=1&sort=name_asc&states=TX&activities=Astronomy&topics=Animals",
+					"protocol": "https",
 					"host": [
 						"api",
 						"parkscape",
@@ -397,7 +400,8 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "api.parkscape.me/cities?page=1&sort=name_asc&state=TX&cost=7&safety=3",
+					"raw": "https://api.parkscape.me/cities?page=1&sort=name_asc&state=TX&cost=7&safety=3",
+					"protocol": "https",
 					"host": [
 						"api",
 						"parkscape",
@@ -502,7 +506,8 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "api.parkscape.me/airports?page=1&sort=name_asc&state=Texas&website=yes&phone=yes",
+					"raw": "https://api.parkscape.me/airports?page=1&sort=name_asc&state=Texas&website=yes&phone=yes",
+					"protocol": "https",
 					"host": [
 						"api",
 						"parkscape",
