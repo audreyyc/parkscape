@@ -193,22 +193,20 @@ class Test(unittest.TestCase):
             "https://www.parkscape.me/cities/23",
         )
 
-    def test_website_search(self):
-        self.driver.get(URL)
-        search_bar = self.driver.find_element(
-            By.XPATH, "/html/body/div/div/nav/div/div/form/input"
-        )
-        search_bar.send_keys("California")
+    def test_search(self):
+        self.driver.get(URL + "cities")
+        search_bar = self.driver.find_element(By.ID, "citiesSearch")
+        search_bar.send_keys("los angeles")
         search_bar.send_keys(Keys.RETURN)
-        time.sleep(10)  # Wait for results to show
+        time.sleep(5)  # Wait for results to show
 
-        num_of_parks = self.driver.find_element_by_id('num_parks').text
-        num_of_cities = self.driver.find_element_by_id('num_cities').text
-        num_of_airports = self.driver.find_element_by_id('num_airports').text
+        city = self.driver.find_element(By.XPATH, '/html/body/div/div/div/div[3]/div/div/div/a/div[2]/button')
+        city.click()
 
-        self.assertEqual(int(num_of_parks), 1)
-        self.assertEqual(int(num_of_cities), 17)
-        self.assertEqual(int(num_of_airports), 36)
+        self.assertEqual(
+            str(self.driver.current_url),
+            "https://www.parkscape.me/cities/2",
+        )
 
     def test_sorting(self):
         self.driver.get(URL + "parks")
