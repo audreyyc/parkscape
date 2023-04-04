@@ -10,7 +10,7 @@ build-job:
     - echo "Build complete."
 
 python-tests:
-  image: python:2.7.18-stretch
+  image: python:3
   stage: test
   before_script:
     - pip install -r backend/requirements.txt
@@ -18,7 +18,7 @@ python-tests:
     - make python-tests
   
 selenium-tests:
-  image: joyzoursky/python-chromedriver:2.7-selenium
+  image: joyzoursky/python-chromedriver:3.9-selenium
   stage: test
   before_script:
     - pip install -r frontend/requirements.txt

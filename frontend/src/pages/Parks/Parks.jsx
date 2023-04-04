@@ -70,7 +70,7 @@ const Parks = ({ searchInput, showFilters }) => {
     <Container className="d-flex justify-content-center flex-column">
       <Container className="container text-center mt-5 mb-4">
         <h1>Parks!</h1>
-        <p style={{ fontSize: "20px", color: "darkgray" }}>
+        <p id="num_parks" style={{ fontSize: "20px", color: "darkgray" }}>
           {!loading ? totalInstances : "---"}
         </p>
       </Container>
