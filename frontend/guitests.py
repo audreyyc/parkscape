@@ -9,7 +9,7 @@ from selenium.webdriver.support.select import Select
 import unittest
 import time
 
-URL = "https://dev.d1rkv95cbxfqn4.amplifyapp.com/"
+URL = "https://www.parkscape.me/"
 
 
 class Test(unittest.TestCase):
@@ -144,7 +144,7 @@ class Test(unittest.TestCase):
             print("Park card not found " + str(e))
         self.assertEqual(
             str(self.driver.current_url),
-            "https://dev.d1rkv95cbxfqn4.amplifyapp.com/parks/1",
+            "https://www.parkscape.me/parks/1",
         )
 
     def test_city_card(self):
@@ -159,7 +159,7 @@ class Test(unittest.TestCase):
             print("Park card not found " + str(e))
         self.assertEqual(
             str(self.driver.current_url),
-            "https://dev.d1rkv95cbxfqn4.amplifyapp.com/cities/1",
+            "https://www.parkscape.me/cities/1",
         )
 
     def test_airport_card(self):
@@ -174,7 +174,7 @@ class Test(unittest.TestCase):
             print("Park card not found " + str(e))
         self.assertEqual(
             str(self.driver.current_url),
-            "https://dev.d1rkv95cbxfqn4.amplifyapp.com/airports/1",
+            "https://www.parkscape.me/airports/1",
         )
 
     def test_nearest_city(self):
@@ -189,7 +189,7 @@ class Test(unittest.TestCase):
             print("Nearest city button not found " + str(e))
         self.assertEqual(
             str(self.driver.current_url),
-            "https://dev.d1rkv95cbxfqn4.amplifyapp.com/cities/23",
+            "https://www.parkscape.me/cities/23",
         )
 
     def test_website_search(self):
@@ -223,15 +223,15 @@ class Test(unittest.TestCase):
         self.driver.get(URL + "parks")
         sorting_select = Select(
             self.driver.find_element(
-                By.XPATH, "/html/body/div/div/div/div[2]/div[1]/div[1]/select"
+                By.ID, "sort"
             )
         )
         sorting_select.select_by_index(2)
         apply_button = self.driver.find_element(
-            By.XPATH, "/html/body/div/div/div/div[2]/div[2]/button"
+            By.XPATH, '//*[@id="root"]/div/div/div[2]/div[3]/button'
         )
         apply_button.click()
-        time.sleep(2)
+        time.sleep(5)
         first_park_name = self.driver.find_element(
             By.XPATH, "/html/body/div/div/div/div[3]/div/div[1]/div/a/div[1]/div"
         ).text
@@ -239,15 +239,17 @@ class Test(unittest.TestCase):
 
     def test_filtering(self):
         self.driver.get(URL + "cities")
+
+
         filtering_select = Select(
             self.driver.find_element(
-                By.XPATH, "/html/body/div/div/div/div[2]/div[1]/div[4]/select"
+                By.ID, "states"
             )
         )
         filtering_select.select_by_index(10)
-        apply_button = self.driver.find_element(
-            By.XPATH, "/html/body/div/div/div/div[2]/div[2]/button"
-        )
+
+  
+        apply_button = self.driver.find_element(By.XPATH, '//*[@id="root"]/div/div/div[2]/div[3]/button')
         apply_button.click()
         time.sleep(2)
 
