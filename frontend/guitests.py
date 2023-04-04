@@ -203,13 +203,13 @@ class Test(unittest.TestCase):
         time.sleep(5)  # Wait for results to show
 
         num_of_parks = self.driver.find_element(
-            By.XPATH, '//*[@id="root"]/div/div/div[1]/div[1]/p'
+            By.ID, 'num_parks'
         ).text
         num_of_cities = self.driver.find_element(
-            By.XPATH, '//*[@id="root"]/div/div/div[2]/div[1]/p'
+            By.ID, 'num_cities'
         ).text
         num_of_airports = self.driver.find_element(
-            By.XPATH, '//*[@id="root"]/div/div/div[3]/div[1]/p'
+            By.ID, 'num_airports'
         ).text
 
         self.assertEqual(int(num_of_parks), 1)
