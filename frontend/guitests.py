@@ -16,14 +16,14 @@ class Test(unittest.TestCase):
     @classmethod
     def setUpClass(self):
         chrome_options = Options()
-        chrome_options.add_argument("--window-size=1920,1080")
-        chrome_options.add_argument("--start-maximized")
-        chrome_options.add_argument("disable-infobars")
-        chrome_options.add_argument("--disable-extensions")
-        chrome_options.add_argument("--disable-gpu")
-        chrome_options.add_argument("--disable-dev-shm-usage")
-        chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--headless")
+        # chrome_options.add_argument("--window-size=1920,1080")
+        # chrome_options.add_argument("--start-maximized")
+        # chrome_options.add_argument("disable-infobars")
+        # chrome_options.add_argument("--disable-extensions")
+        # chrome_options.add_argument("--disable-gpu")
+        # chrome_options.add_argument("--disable-dev-shm-usage")
+        # chrome_options.add_argument("--no-sandbox")
+        # chrome_options.add_argument("--headless")
         self.driver = webdriver.Chrome(chrome_options=chrome_options)
         self.driver.get(URL)
 
@@ -205,11 +205,14 @@ class Test(unittest.TestCase):
         search_button.click()
         time.sleep(5)  # Wait for results to show
 
+        num_of_parks = self.driver.find_element(
+            By.XPATH, '//*[@id="root"]/div/div/div[1]/div[1]/p'
+        )
         num_of_cities = self.driver.find_element(
-            By.XPATH, "/html/body/div/div/div/div[2]/div[1]/p"
+            By.XPATH, '//*[@id="root"]/div/div/div[2]/div[1]/p'
         ).text
         num_of_airports = self.driver.find_element(
-            By.XPATH, "/html/body/div/div/div/div[3]/div[1]/p"
+            By.XPATH, '//*[@id="root"]/div/div/div[3]/div[1]/p'
         ).text
 
         self.assertEqual(int(num_of_cities), 17)
