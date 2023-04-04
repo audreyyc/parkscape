@@ -200,7 +200,7 @@ class Test(unittest.TestCase):
         )
         search_bar.send_keys("California")
         search_bar.send_keys(Keys.RETURN)
-        time.sleep(5)  # Wait for results to show
+        time.sleep(10)  # Wait for results to show
 
         num_of_parks = self.driver.find_element_by_id('num_parks').text
         num_of_cities = self.driver.find_element_by_id('num_cities').text
