@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver import Remote
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.select import Select
 import unittest
 import time
@@ -198,16 +199,12 @@ class Test(unittest.TestCase):
             By.XPATH, "/html/body/div/div/nav/div/div/form/input"
         )
         search_bar.send_keys("California")
-
-        search_button = self.driver.find_element(
-            By.XPATH, "/html/body/div/div/nav/div/div/form/button"
-        )
-        search_button.click()
+        search_bar.send_keys(Keys.RETURN)
         time.sleep(5)  # Wait for results to show
 
         num_of_parks = self.driver.find_element(
             By.XPATH, '//*[@id="root"]/div/div/div[1]/div[1]/p'
-        )
+        ).text
         num_of_cities = self.driver.find_element(
             By.XPATH, '//*[@id="root"]/div/div/div[2]/div[1]/p'
         ).text
@@ -215,6 +212,7 @@ class Test(unittest.TestCase):
             By.XPATH, '//*[@id="root"]/div/div/div[3]/div[1]/p'
         ).text
 
+        self.assertEqual(int(num_of_parks), 1)
         self.assertEqual(int(num_of_cities), 17)
         self.assertEqual(int(num_of_airports), 36)
 
