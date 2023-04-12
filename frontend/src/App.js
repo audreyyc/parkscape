@@ -10,6 +10,7 @@ import CityInstance from "./pages/CityInstance/CityInstance.jsx";
 import ParkInstance from "./pages/ParkInstance/ParkInstance.jsx";
 import AirportInstance from "./pages/AirportInstance/AirportInstance.jsx";
 import Search from "./pages/Search/Search.jsx";
+import Visualizations from "./pages/Visualizations/Visualizations.jsx";
 
 import { Route, Routes } from "react-router-dom";
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/airports" element={<Airports showFilters={true} />} />
         <Route path="/airports/:id" element={<AirportInstance />} />
         <Route path="/search/:query" element={<Search />} />
+        <Route path="/visualizations" element={<Visualizations />} />
       </Routes>
     </div>
   );
