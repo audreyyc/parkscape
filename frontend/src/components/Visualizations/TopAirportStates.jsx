@@ -248,15 +248,13 @@ const TopAirportStates = () => {
         fetchData();
     }, []);
 
-    console.log(data);
-
     return (
         <Container fluid="md">
             <Row style={{ width: "100%", height: 600 }}>
                 <h3 className="p-5 text-center">Number of Airports in Each State</h3>
                 <Col>
                     <ResponsiveContainer width="100%" height="100%">
-                        <PieChart width={400} height={400}>
+                        <PieChart width={500} height={500}>
                             <Pie
                                 dataKey="count"
                                 isAnimationActive={false}
@@ -274,6 +272,6 @@ const TopAirportStates = () => {
             </Row>
         </Container>
     );
-}
+};
 
 export default TopAirportStates;
