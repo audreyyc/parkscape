@@ -1,5 +1,6 @@
 import React from "react";
 import Container from "react-bootstrap/esm/Container";
+import TopAirportStates from "../../components/Visualizations/TopAirportStates";
 
 const Visualizations = () => {
     return (
@@ -9,6 +10,7 @@ const Visualizations = () => {
                 <h1>Visualizations!</h1>
             </Container>
         </Container>
+        <TopAirportStates />
         </>
     );
 }
