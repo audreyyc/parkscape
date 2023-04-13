@@ -9,8 +9,8 @@ const Visualizations = () => {
             <Container className="container text-center mt-5 mb-4">
                 <h1>Visualizations!</h1>
             </Container>
+            <TopAirportStates />
         </Container>
-        <TopAirportStates />
         </>
     );
 }
