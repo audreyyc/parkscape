@@ -8,7 +8,7 @@ import { PieChart, Pie, Tooltip, ResponsiveContainer } from 'recharts';
 const TopAirportStates = () => {
     const [data, setData] = useState(null);
 
-    const url = "https://api.parkscape.me/airports";
+    const url = "https://api.parkscape.me/airports?";
 
     // const top_states = ["Texas", "Alaska", "Pennsylvania", "New York", "California", "Colorado", "Illinois", "Florida", "Michigan", "Hawaii"];
     useEffect(() => {
@@ -232,7 +232,7 @@ const TopAirportStates = () => {
                 },
             ];
 
-            const response = await axios.get('https://api.parkscape.me/airports?');
+            const response = await axios.get(url);
             let airportData = response.data.data;
             for (let airportInd in airportData){
                 let curState = airportData[airportInd]["state"];
