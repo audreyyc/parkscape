@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "react-bootstrap/esm/Container";
 import TopAirportStates from "../../components/Visualizations/TopAirportStates";
+import CampgroundFees from "../../components/Visualizations/CampgroundFees";
 
 const Visualizations = () => {
     return (
@@ -10,6 +11,7 @@ const Visualizations = () => {
                 <h1>Visualizations!</h1>
             </Container>
             <TopAirportStates />
+            <CampgroundFees />
         </Container>
         </>
     );
