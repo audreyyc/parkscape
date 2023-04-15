@@ -25,7 +25,7 @@ class Test(unittest.TestCase):
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--headless")
-        self.driver = webdriver.Chrome(chrome_options=chrome_options)
+        self.driver = webdriver.Chrome(executable_path="./chromedriver.exe", chrome_options=chrome_options)
         self.driver.get(URL)
 
     @classmethod
@@ -100,7 +100,7 @@ class Test(unittest.TestCase):
             )
         )
         try:
-            element = self.driver.find_element_by_xpath(
+            element = self.driver.find_element(By.XPATH,
                 '//*[@id="root"]/div/div[8]/div/div[4]/div/a'
             )
             self.driver.execute_script("arguments[0].click();", element)
@@ -116,7 +116,7 @@ class Test(unittest.TestCase):
             )
         )
         try:
-            element = self.driver.find_element_by_xpath(
+            element = self.driver.find_element(By.XPATH,
                 '//*[@id="root"]/div/div[10]/div/div[3]/div/a'
             )
             self.driver.execute_script("arguments[0].click()", element)
@@ -133,7 +133,7 @@ class Test(unittest.TestCase):
             EC.element_to_be_clickable((By.XPATH, '//*[@id="1"]'))
         )
         try:
-            element = self.driver.find_element_by_xpath('//*[@id="1"]')
+            element = self.driver.find_element(By.XPATH, '//*[@id="1"]')
             self.driver.execute_script("arguments[0].click()", element)
         except Exception as e:
             print("Park card not found " + str(e))
@@ -148,7 +148,7 @@ class Test(unittest.TestCase):
             EC.element_to_be_clickable((By.XPATH, '//*[@id="1"]'))
         )
         try:
-            element = self.driver.find_element_by_xpath('//*[@id="1"]')
+            element = self.driver.find_element(By.XPATH, '//*[@id="1"]')
             self.driver.execute_script("arguments[0].click()", element)
         except Exception as e:
             print("Park card not found " + str(e))
@@ -163,7 +163,7 @@ class Test(unittest.TestCase):
             EC.element_to_be_clickable((By.XPATH, '//*[@id="1"]/button'))
         )
         try:
-            element = self.driver.find_element_by_xpath('//*[@id="1"]/button')
+            element = self.driver.find_element(By.XPATH, '//*[@id="1"]/button')
             self.driver.execute_script("arguments[0].click()", element)
         except Exception as e:
             print("Park card not found " + str(e))
@@ -178,7 +178,7 @@ class Test(unittest.TestCase):
             EC.element_to_be_clickable((By.XPATH, '//*[@id="23"]/button'))
         )
         try:
-            element = self.driver.find_element_by_xpath('//*[@id="23"]/button')
+            element = self.driver.find_element(By.XPATH, '//*[@id="23"]/button')
             self.driver.execute_script("arguments[0].click()", element)
         except Exception as e:
             print("Nearest city button not found " + str(e))
