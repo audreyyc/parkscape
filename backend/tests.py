@@ -102,10 +102,12 @@ class Tests(unittest.TestCase):
             )
 
 
+# Check if correct object is returned from search
 def check_search(data, attr, expected):
     return data[0][attr] == expected
 
 
+# Check if returned objects have given attribute
 def check_filter(data, attr, expected):
     for obj in data:
         if obj[attr].find(expected) < 0:
@@ -113,6 +115,7 @@ def check_filter(data, attr, expected):
     return True
 
 
+# Check if returned objects are ordered correctly
 def check_sort(data, attr, asc):
     prev = 0
     for obj in data:
