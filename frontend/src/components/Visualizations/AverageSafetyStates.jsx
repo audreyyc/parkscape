@@ -369,8 +369,8 @@ const AverageSafetyStates = () => {
                 <Col>
                     <ResponsiveContainer width="100%" height="100%">
                         <BarChart width={500} height={500} data={data}>
-                            <XAxis dataKey="name" textAnchor= "end" sclaeToFit="true"  interval={0} angle= "-90" />
-                            <YAxis tickCount={6} domain={[0, 'dataMax']} />
+                            <XAxis dataKey="name" textAnchor= "end" scaleToFit="true" interval={0} angle= "-90" />
+                            <YAxis tickCount={6} />
                             <Tooltip />
                             <Bar dataKey="average" fill="#c06c84" />
                         </BarChart>

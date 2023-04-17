@@ -3,6 +3,7 @@ import Container from "react-bootstrap/esm/Container";
 import TopAirportStates from "../../components/Visualizations/TopAirportStates";
 import CampgroundFees from "../../components/Visualizations/CampgroundFees";
 import AverageSafetyStates from "../../components/Visualizations/AverageSafetyStates";
+import TrailDurations from "../../components/Visualizations/TrailDurations";
 
 const Visualizations = () => {
     return (
@@ -15,9 +16,10 @@ const Visualizations = () => {
                     <TopAirportStates />
                     <AverageSafetyStates />
                 </Container>
-                <Container className="container text-center mt-5 mb-4"></Container>
+                <Container className="container text-center mt-5 mb-5"></Container>
                     <i><h2>Re-Park-Able</h2></i><h6>(Our Developer)</h6>
                     <CampgroundFees />
+                    <TrailDurations />
                 </Container>
         </Container>
         </>
