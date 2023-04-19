@@ -4,7 +4,7 @@ import TopAirportStates from "../../components/Visualizations/TopAirportStates";
 import CampgroundFees from "../../components/Visualizations/CampgroundFees";
 import AverageSafetyStates from "../../components/Visualizations/AverageSafetyStates";
 import TrailDurations from "../../components/Visualizations/TrailDurations";
-import ParksByState from "../../components/Visualizations/ParksByState";
+import ParksEntranceFees from "../../components/Visualizations/ParkEntranceFees";
 import ParksByFees from "../../components/Visualizations/ParksByFees";
 
 const Visualizations = () => {
@@ -17,7 +17,7 @@ const Visualizations = () => {
             <h2>
               <i>ParkScape</i>
             </h2>
-            <ParksByState />
+            <ParksEntranceFees />
             <TopAirportStates />
             <AverageSafetyStates />
           </Container>
