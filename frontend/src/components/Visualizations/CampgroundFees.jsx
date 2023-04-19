@@ -21,12 +21,7 @@ const CampgroundFees = () => {
                 let curFees = campData[campInd]["fees"];
                 let curSites = campData[campInd]["totalSites"];
                 let curName = campData[campInd]["name"];
-                // if (curSites == 5000){
-                //     continue;
-                // }
-                // if (curFees > 400){
-                //     continue;
-                // }
+                
                 fee_sites.push({
                     name: curName,
                     fee: curFees,

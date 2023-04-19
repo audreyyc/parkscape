@@ -82,7 +82,6 @@ function AboutPage() {
   useEffect(() => {
     get_commits();
     get_issues();
-    // total_commits();
     total_issues();
   }, []);
 

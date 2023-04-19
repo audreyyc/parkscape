@@ -10,7 +10,6 @@ const TopAirportStates = () => {
 
     const url = "https://api.parkscape.me/airports?";
 
-    // const top_states = ["Texas", "Alaska", "Pennsylvania", "New York", "California", "Colorado", "Illinois", "Florida", "Michigan", "Hawaii"];
     useEffect(() => {
         const fetchData = async () => {
             const states_counts = [
