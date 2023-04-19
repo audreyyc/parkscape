@@ -15,7 +15,6 @@ import ToolCard from "../components/ToolCard/ToolCard";
 import SearchBar from "../components/SearchBar/SearchBar";
 import Sort from "../components/Sort/Sort";
 import Filter from "../components/Filter/Filter";
-// import SearchPage from "../pages/Search/Search";
 
 test("Testing Home Page", () => {
   render(<HomePage />, { wrapper: BrowserRouter });
@@ -96,49 +95,3 @@ test("Testing Site-wide Search Bar", () => {
   render(<Navigation />, { wrapper: BrowserRouter });
   expect(screen.getByText("Search")).toBeInTheDocument();
 });
-
-// test("Testing Search Page", () => {
-//   render(<Search />, { wrapper: BrowserRouter});
-//   expect(screen.getByText("Parks")).toBeInTheDocument();
-//   expect(screen.getByText("Cities")).toBeInTheDocument();
-//   expect(screen.getByText("Airports")).toBeInTheDocument();
-// });
-
-// test("Testing Park Sorting", () => {
-//   render(<Parks />, { wrapper: BrowserRouter});
-//   expect(screen.getByText("Sort")).toBeInTheDocument();
-//   expect(screen.getByText("Name (A-Z)")).toBeInTheDocument();
-//   expect(screen.getByText("Name (Z-A)")).toBeInTheDocument();
-// });
-
-// test("Testing Filtering Airports", () => {
-//   render(<Airports />, { wrapper: BrowserRouter});
-//   expect(screen.getByText("Phone")).toBeInTheDocument();
-//   expect(screen.getByText("yes")).toBeInTheDocument();
-//   expect(screen.getByText("no")).toBeInTheDocument();
-//   expect(screen.getByText("Website")).toBeInTheDocument();
-//   expect(screen.getByText("yes")).toBeInTheDocument();
-//   expect(screen.getByText("no")).toBeInTheDocument();
-//   expect(screen.getByText("State")).toBeInTheDocument();
-//   expect(screen.getByText("Alabama")).toBeInTheDocument();
-// });
-
-// test("Testing Filtering Cities", () => {
-//   render(<Cities />, { wrapper: BrowserRouter});
-//   expect(screen.getByText("Max Cost Score")).toBeInTheDocument();
-//   expect(screen.getByText("1")).toBeInTheDocument();
-//   expect(screen.getByText("Safety Score")).toBeInTheDocument();
-//   expect(screen.getByText("1")).toBeInTheDocument();
-//   expect(screen.getByText("State")).toBeInTheDocument();
-//   expect(screen.getByText("Alabama")).toBeInTheDocument();
-// });
-
-// test("Testing Filtering Parks", () => {
-//   render(<Parks />, { wrapper: BrowserRouter});
-//   expect(screen.getByText("Topic")).toBeInTheDocument();
-//   expect(screen.getByText("Abolition Movement")).toBeInTheDocument();
-//   expect(screen.getByText("Activity")).toBeInTheDocument();
-//   expect(screen.getByText("ATV Off-Roading")).toBeInTheDocument();
-//   expect(screen.getByText("State")).toBeInTheDocument();
-//   expect(screen.getByText("Alabama")).toBeInTheDocument();
-// });
