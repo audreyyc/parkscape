@@ -1,0 +1,12 @@
+{
+    "prod": {
+        "app_function": "app.app",
+        "aws_region": "us-east-2",
+        "profile_name": "default",
+        "project_name": "backend",
+        "runtime": "python3.9",
+        "s3_bucket": "zappa-parkscape-api"
+        "certificate_arn": "arn:aws:acm:us-east-1:014496916054:certificate/b60ac14a-b0ee-42b0-ae2e-00124bf0eaf0",
+        "domain": "api4.parkscape.me"
+    }
+}

@@ -44,7 +44,7 @@ make python-tests:
 # Runs Selenium GUI tests
 make selenium-tests:
 	echo "Running Selenium unit tests..."
-	python frontend/guitests.py
+	python3 frontend/guitests.py
 	
 # Runs Jest unit tests
 make jest-tests:

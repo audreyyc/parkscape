@@ -2,7 +2,6 @@ from flask import jsonify, request
 from models import app, db, Park, City, Airport
 from schema import city_schema, park_schema, airport_schema
 from sqlalchemy import desc, or_, not_
-import json
 
 PARKS, CITIES, AIRPORTS = 468, 101, 731
 
@@ -24,12 +23,14 @@ def get_cities():
 
     if search is not None:
         search_terms = search.split()
-        clauses = [City.long_name.like("%{0}%".format(k)) for k in search_terms]
-        clauses += [City.state.like("%{0}%".format(k)) for k in search_terms]
-        clauses += [City.cost.like("%{0}%".format(k)) for k in search_terms]
-        clauses += [City.population.like("%{0}%".format(k)) for k in search_terms]
-        clauses += [City.rating.like("%{0}%".format(k)) for k in search_terms]
-        clauses += [City.safety.like("%{0}%".format(k)) for k in search_terms]
+        clauses = (
+            [City.long_name.like("%{0}%".format(k)) for k in search_terms]
+            + [City.state.like("%{0}%".format(k)) for k in search_terms]
+            + [City.cost.like("%{0}%".format(k)) for k in search_terms]
+            + [City.population.like("%{0}%".format(k)) for k in search_terms]
+            + [City.rating.like("%{0}%".format(k)) for k in search_terms]
+            + [City.safety.like("%{0}%".format(k)) for k in search_terms]
+        )
         query = query.filter(or_(*clauses))
 
     for filter in City.filters:
@@ -66,14 +67,16 @@ def get_airports():
 
     if search is not None:
         search_terms = search.split()
-        clauses = [Airport.name.like("%{0}%".format(k)) for k in search_terms]
-        clauses += [Airport.address.like("%{0}%".format(k)) for k in search_terms]
-        clauses += [Airport.city.like("%{0}%".format(k)) for k in search_terms]
-        clauses += [Airport.iata_code.like("%{0}%".format(k)) for k in search_terms]
-        clauses += [Airport.icao_code.like("%{0}%".format(k)) for k in search_terms]
-        clauses += [Airport.state.like("%{0}%".format(k)) for k in search_terms]
-        clauses += [Airport.phone.like("%{0}%".format(k)) for k in search_terms]
-        clauses += [Airport.zip_code.like("%{0}%".format(k)) for k in search_terms]
+        clauses = (
+            [Airport.name.like("%{0}%".format(k)) for k in search_terms]
+            + [Airport.address.like("%{0}%".format(k)) for k in search_terms]
+            + [Airport.city.like("%{0}%".format(k)) for k in search_terms]
+            + [Airport.iata_code.like("%{0}%".format(k)) for k in search_terms]
+            + [Airport.icao_code.like("%{0}%".format(k)) for k in search_terms]
+            + [Airport.state.like("%{0}%".format(k)) for k in search_terms]
+            + [Airport.phone.like("%{0}%".format(k)) for k in search_terms]
+            + [Airport.zip_code.like("%{0}%".format(k)) for k in search_terms]
+        )
         query = query.filter(or_(*clauses))
 
     for filter in Airport.filters:
@@ -123,9 +126,11 @@ def get_parks():
 
     if search is not None:
         search_terms = search.split()
-        clauses = [Park.name.like("%{0}%".format(k)) for k in search_terms]
-        clauses += [Park.phone.like("%{0}%".format(k)) for k in search_terms]
-        clauses += [Park.email.like("%{0}%".format(k)) for k in search_terms]
+        clauses = (
+            [Park.name.like("%{0}%".format(k)) for k in search_terms]
+            + [Park.phone.like("%{0}%".format(k)) for k in search_terms]
+            + [Park.email.like("%{0}%".format(k)) for k in search_terms]
+        )
         query = query.filter(or_(*clauses))
 
     for filter in Park.filters:
@@ -180,6 +185,7 @@ def get_park(r_id):
     return jsonify({"data": result})
 
 
+# Returns a paginated query of the given page number with the given page size
 def paginate(query, page_num, page_size=DEFAULT_PAGE_SIZE):
     return query.paginate(page=page_num, per_page=page_size, error_out=False).items
 
