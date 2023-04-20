@@ -126,7 +126,7 @@ One page per model with description and multimedia, grid of cards for each model
 | Team Member     | Estimated time | Actual time |
 | --------------- | -------------- | ----------- |
 | Petar Iliev     |  5             |  5          |
-| Tanya Joseph    | 10             | 12          |
+| Tanya Joseph    |  5             |  5          |
 | Audrey Chen     |  5             |  5          |
 | Noah Liu        |  5             |  5          |
 | Pawan Somavarpu |  7             |  5          |
