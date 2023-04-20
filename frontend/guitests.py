@@ -194,7 +194,7 @@ class Test(unittest.TestCase):
         search_bar.send_keys(Keys.RETURN)
         time.sleep(5)  # Wait for results to show
         city = self.driver.find_element(
-            By.XPATH, "/html/body/div/div/div/div[3]/div/div/div/a/div[2]/button"
+            By.XPATH, "/html/body/div/div/div/div[4]/div/div/div/a/div[2]/button"
         )
         city.click()
         self.assertEqual(
@@ -212,7 +212,7 @@ class Test(unittest.TestCase):
         apply_button.click()
         time.sleep(5)
         first_park_name = self.driver.find_element(
-            By.XPATH, "/html/body/div/div/div/div[3]/div/div[1]/div/a/div[1]/div"
+            By.XPATH, "/html/body/div/div/div/div[4]/div/div[1]/div/a/div[1]/div"
         ).text
         self.assertEqual(first_park_name, "Zion National Park")
 
@@ -226,10 +226,10 @@ class Test(unittest.TestCase):
         apply_button.click()
         time.sleep(2)
         first_city_name = self.driver.find_element(
-            By.XPATH, "/html/body/div/div/div/div[3]/div/div[1]/div/a/div[1]/div"
+            By.XPATH, "/html/body/div/div/div/div[4]/div/div[1]/div/a/div[1]/div"
         ).text
         second_city_name = self.driver.find_element(
-            By.XPATH, "/html/body/div/div/div/div[3]/div/div[2]/div/a/div[1]/div"
+            By.XPATH, "/html/body/div/div/div/div[4]/div/div[2]/div/a/div[1]/div"
         ).text
         self.assertEqual(first_city_name, "Jacksonville, Florida, US")
         self.assertEqual(second_city_name, "Miami, Florida, US")
