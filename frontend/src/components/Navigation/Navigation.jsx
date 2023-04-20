@@ -74,6 +74,14 @@ function Navigation() {
                 Visualizations
               </Link>
             </Nav.Link>
+            <Nav.Link>
+              <Link
+                style={{ color: "inherit", textDecoration: "inherit" }}
+                to="/provider-visualizations"
+              >
+                Provider Visualizations
+              </Link>
+            </Nav.Link>
           </Nav>
           <Form className="d-flex justify-content-end" onSubmit={onSearch}>
             <Form.Control type="search" id="searchText" placeholder="Search..." className="mx-2" aria-label="Search"></Form.Control>

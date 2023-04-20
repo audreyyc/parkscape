@@ -11,6 +11,7 @@ import ParkInstance from "./pages/ParkInstance/ParkInstance.jsx";
 import AirportInstance from "./pages/AirportInstance/AirportInstance.jsx";
 import Search from "./pages/Search/Search.jsx";
 import Visualizations from "./pages/Visualizations/Visualizations.jsx";
+import ProviderVisualizations from "./pages/Visualizations/ProviderVisualizations";
 
 import { Route, Routes } from "react-router-dom";
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/airports/:id" element={<AirportInstance />} />
         <Route path="/search/:query" element={<Search />} />
         <Route path="/visualizations" element={<Visualizations />} />
+        <Route path="/provider-visualizations" element={<ProviderVisualizations />} />
       </Routes>
     </div>
   );
