@@ -120,6 +120,17 @@ const Cities = ({ searchInput, showFilters }) => {
         </Container>
       )}
 
+      {!loading && showFilters ? (
+        <Pagination
+          currentPage={currentPage}
+          cardsPerPage={cardsPerPage}
+          totalCards={totalInstances}
+          paginate={paginate}
+        />
+      ) : (
+        ""
+      )}
+
       <Container className="px-4">
         <Container className="row gx-3">
           {!loading ? (
